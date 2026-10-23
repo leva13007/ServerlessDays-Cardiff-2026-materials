@@ -1,0 +1,1724 @@
+1
+00:00:00,000 --> 00:00:05,180
+ just want to reiterate how grateful we are for everyone coming here today. It's our sixth
+
+2
+00:00:05,180 --> 00:00:09,840
+ year, I think, in terms of running this event, and it's great to see. I think this year we've
+
+3
+00:00:09,840 --> 00:00:14,780
+ had about 10% more people in terms of registering than ending the year, so clearly there is an
+
+4
+00:00:14,780 --> 00:00:20,480
+ interest in terms of bringing people face-to-face together, trying to network, learn from each
+
+5
+00:00:20,480 --> 00:00:25,500
+ other, and that's fantastic to see. And obviously none of it would be possible without the support
+
+6
+00:00:25,500 --> 00:00:34,500
+ the sponsors, so please do go and see them, speak to them, see what they've got to offer.
+
+7
+00:00:34,500 --> 00:00:40,140
+ Hugely grateful for the speakers. We've had people, all the speakers here today, have given
+
+8
+00:00:40,140 --> 00:00:45,620
+ up their own time to be here. We haven't paid any of the speakers, they've travelled, we have
+
+9
+00:00:45,620 --> 00:00:49,480
+ some local speakers, and then all the way to Stockholm. And all of them have given up the
+
+10
+00:00:49,480 --> 00:00:55,220
+ time to be here to share their experience with us. And obviously thank you, last and
+
+11
+00:00:55,220 --> 00:01:00,220
+ least, to everyone who's given up their day to be here to share the day with us at the
+
+12
+00:01:00,220 --> 00:01:07,220
+ depot. And so now we're going to start with our morning keynote. It's our person who probably
+
+13
+00:01:07,220 --> 00:01:11,220
+ needs no introduction to lots of people. He's one of the most eminent people in the world
+
+14
+00:01:11,220 --> 00:01:17,220
+ of serverless. He's the principal developer advocate for serverless at AWS. So please put
+
+15
+00:01:17,220 --> 00:01:26,220
+ your hands together for Julian Wood.
+
+16
+00:01:26,220 --> 00:01:35,220
+ Hello everybody and good morning. Do you remember the olden times? The times when we used to write
+
+17
+00:01:35,220 --> 00:01:36,220
+ code by hand? Remember that? The documentation was never, ever up to date. Tests, yeah, test in production, we didn't have time to write tests.
+
+18
+00:01:36,220 --> 00:01:55,220
+ Those were the times, the olden times as I think we started to call them, maybe the days before AI. And in those olden times, there was AWS
+
+19
+00:01:55,220 --> 00:02:14,220
+ Lambda, which was a simple service. It was just about uploading your code into the cloud, we would run it on your behalf, we being AWS, it would do something and it would return the kind of information. Slightly simple, but that was the point.
+
+20
+00:02:14,220 --> 00:02:27,220
+ The idea was, well, you could just run your code in the cloud and it would really work. And we spent 10 years doing a whole bunch of work in AWS to improve that experience.
+
+21
+00:02:27,220 --> 00:02:43,220
+ Lambda arrived on the scene in 2014. Some people say that is sort of the start of serverless compute. And we've added many things over the years from Firecracker, which is our virtualization technology, which is super secure and scalable, to adding things like provision concurrency,
+
+22
+00:02:43,220 --> 00:03:02,220
+ so you can get rid of more of those cold starts. One millisecond billing. I mean, that's crazy to think that you could actually have that granularity of a serverless billing model. Being able to use container images, build websites, snap start technology, streaming technology, all of these things over 10 years.
+
+23
+00:03:02,220 --> 00:03:22,220
+ And today, Lambda is a huge service. 15 plus trillion invokes every month. And if anybody has seen any of the stats for Amazon Prime Day, which extensively uses serverless services, it's just crazy amounts of workloads it runs. And Amazon is just another customer of AWS.
+
+24
+00:03:22,220 --> 00:03:40,220
+ Maybe they've got some internal telephones they can ring if something goes wrong. But otherwise, the same Lambda that you use and hopefully love is the same Lambda that Amazon Prime can use on a Prime Day and government agencies and students can use on any day of the year and run it at crazy scale with everyone.
+
+25
+00:03:40,220 --> 00:03:56,220
+ One point eight plus million customers are joining you. And all of it with zero servers that you have to manage. That's our job. Before getting too far ahead, thanks so much for the organizers for inviting me. My name's Julian. I work at AWS.
+
+26
+00:03:56,220 --> 00:04:18,220
+ I'm trying to think back in the annals of my old brain, but I think I've been at every Service Days Cardiff and I have spoken at a bunch of them. So it's great to be chatting to some people this morning who remember me and come up straight away with their burning questions, which I love. So I'll be here all day and love talking about serverless and particularly Lambda and particularly at Service Days Cardiff.
+
+27
+00:04:18,220 --> 00:04:35,220
+ And why do I say particularly at Service Days Cardiff is because you've actually got a great community here. Because yes, there are students, there's a great student contingent, which is here today. Hello to all the students. I know there are startups around as well. There are enterprises, but also a lot of you are working for big government agencies.
+
+28
+00:04:35,220 --> 00:05:00,220
+ And personally from what I've seen in six years of Service Days Cardiff is the amazing innovation and things that government agencies are built. I'm sure you also feel denigrated sometimes when people are thinking government data, the slow movers. Well, I promise you some of the technologies that you are building and you're building at scale in the UK government and for other kind of things is truly impressive and a lot of it is service. So good on you.
+
+29
+00:05:00,220 --> 00:05:14,220
+ So that's a sort of long-winded way to say even though you are IT people, you can actually talk to each other. I'm going to give you some information, but you can grab some information from each other and ask each other questions. That's a cool way to network as well.
+
+30
+00:05:14,220 --> 00:05:25,220
+ So back to the topic of service. So I think now in 2026, heading to the end of the year, we sort of move past the question of why would somebody do service?
+
+31
+00:05:25,220 --> 00:05:36,220
+ Mentioning your government agencies, I think, you know, you've answered that question. If you're a startup building and you want to, or a student building and exploring, a serverless is just a great way to build on the cloud.
+
+32
+00:05:36,220 --> 00:05:42,220
+ So the question has now evolved into sort of more, how can I actually use serverless for more of our workloads?
+
+33
+00:05:42,220 --> 00:05:53,220
+ I like the serverless operating model, don't caring about all the load balancing the servers, you take care of that please AWS, I want to build my application. But I want to be more in that model.
+
+34
+00:05:53,220 --> 00:06:04,220
+ And so literally from the beginning, there are some fundamentals that have been core to serverless. And that is that no service to manage, but also no infrastructure to manage.
+
+35
+00:06:04,220 --> 00:06:11,220
+ Because serverless is no longer just about compute, it's about databases, of course, it's about AI, it's about, you know, all the different things you can run.
+
+36
+00:06:11,220 --> 00:06:22,220
+ And so the infrastructure becomes AWS's problem. Scaling up and scaling down, paying per use, similar to that millisecond billing, and that sort of strong isolation I was mentioning with Firecracker.
+
+37
+00:06:22,220 --> 00:06:29,220
+ Well, at least for Lambda, but lots of other service technologies, that it is as secure as AWS can make it.
+
+38
+00:06:29,220 --> 00:06:38,220
+ As I mentioned, Amazon is using AWS, we're very cautious and very cognizant about security, never mind all the government agencies, security agencies,
+
+39
+00:06:38,220 --> 00:06:47,220
+ and some of the biggest banks in the world, or hospital groups, or insurance companies, who trust AWS with security, in addition to the security that they do.
+
+40
+00:06:47,220 --> 00:06:56,220
+ But then, when we're talking about Lambda, there were some trade-offs, let's call them, or choices that were made for the Lambda event handler model.
+
+41
+00:06:56,220 --> 00:07:01,220
+ There was only ever one request per environment. It was a great thing when it was built.
+
+42
+00:07:01,220 --> 00:07:06,220
+ Because it meant you didn't need to think about strange, multi-concurrent things going on in one environment.
+
+43
+00:07:06,220 --> 00:07:12,220
+ It was super secure, one execution would never trample on another execution. That was great.
+
+44
+00:07:12,220 --> 00:07:20,220
+ We had to pick 15 minutes. Lambda started with one minute, and it's grown up to 15 minutes for a Lambda event function.
+
+45
+00:07:20,220 --> 00:07:24,220
+ But that was a choice to make, to be able to manage the service.
+
+46
+00:07:24,220 --> 00:07:30,220
+ Billing on the war clock time, so a Lambda function used to start, used to finish, and you would pay for the whole time.
+
+47
+00:07:30,220 --> 00:07:35,220
+ And then, the sandbox that Lambda runs in, I'm coming back to that firecracker sandbox again.
+
+48
+00:07:35,220 --> 00:07:39,220
+ You never ever saw that, or had any, could ever control that.
+
+49
+00:07:39,220 --> 00:07:41,220
+ But that was part of Lambda.
+
+50
+00:07:41,220 --> 00:07:45,220
+ And so these were choices for the Lambda you used to love and know.
+
+51
+00:07:45,220 --> 00:07:49,220
+ But customers and people have been asking to do a little bit more.
+
+52
+00:07:49,220 --> 00:07:54,220
+ And part of that was because you had to build some workarounds.
+
+53
+00:07:54,220 --> 00:08:03,220
+ If you were wanting to build a web function, potentially, you had to change and, you know, take on the handler format to be able to do that.
+
+54
+00:08:03,220 --> 00:08:05,220
+ Or you had to run an adapter layer.
+
+55
+00:08:05,220 --> 00:08:13,220
+ So if you were running Next.js or Hano or something like that, or you were even doing PHP or things like that, you'd have to add this adapter layer.
+
+56
+00:08:13,220 --> 00:08:18,220
+ Now, it wasn't a lot of configuration, but again, it was just something different that you had to do.
+
+57
+00:08:18,220 --> 00:08:25,220
+ If you had a service that was waiting for a downstream connection, maybe that's to a database.
+
+58
+00:08:25,220 --> 00:08:27,220
+ Maybe it's to an LLM call that's just waiting.
+
+59
+00:08:27,220 --> 00:08:28,220
+ Well, you had to pay for that.
+
+60
+00:08:28,220 --> 00:08:31,220
+ You know, you just had to suck it up and pay.
+
+61
+00:08:31,220 --> 00:08:36,220
+ If you had some high volume traffic, Lambda maybe could have been a little bit uneconomical,
+
+62
+00:08:36,220 --> 00:08:40,220
+ which is the polite way of saying expensive, at super high scale.
+
+63
+00:08:40,220 --> 00:08:43,220
+ So you had to consider, well, do I move to EC2?
+
+64
+00:08:43,220 --> 00:08:45,220
+ Maybe I have to move to containers.
+
+65
+00:08:45,220 --> 00:08:48,220
+ I've got a long running job, more than 15 minutes.
+
+66
+00:08:48,220 --> 00:08:49,220
+ Well, what do I need to do?
+
+67
+00:08:49,220 --> 00:08:51,220
+ For Lambda, I've got to break it up into different kind of things.
+
+68
+00:08:51,220 --> 00:08:53,220
+ Maybe I'm going to use step functions.
+
+69
+00:08:53,220 --> 00:08:54,220
+ That's another option.
+
+70
+00:08:54,220 --> 00:08:59,220
+ I want to run untrusted code or other kind of untrusted compute that my customers are uploading.
+
+71
+00:08:59,220 --> 00:09:03,220
+ Well, I'm going to spring some EC2 instances together.
+
+72
+00:09:03,220 --> 00:09:06,220
+ I'm not quite sure if containers are secure enough.
+
+73
+00:09:06,220 --> 00:09:07,220
+ We've got Firecracker.
+
+74
+00:09:07,220 --> 00:09:08,220
+ You could do it yourself.
+
+75
+00:09:08,220 --> 00:09:11,220
+ But again, this is stuff you need to do.
+
+76
+00:09:11,220 --> 00:09:17,220
+ And so, Lambda has sort of reimagined itself to take on some more of these workloads.
+
+77
+00:09:17,220 --> 00:09:20,220
+ And some of the service peerists I speak to are quite upset about this,
+
+78
+00:09:20,220 --> 00:09:23,220
+ because Lambda needs to stay exactly what it was.
+
+79
+00:09:23,220 --> 00:09:25,220
+ But the world doesn't stay stable.
+
+80
+00:09:25,220 --> 00:09:28,220
+ And so, Lambda also needs to evolve with that as well.
+
+81
+00:09:28,220 --> 00:09:37,220
+ So, the Lambda you've loved since 2014 does not change, other than just a rename, just to try and avoid some of the confusion.
+
+82
+00:09:37,220 --> 00:09:42,220
+ So, those Lambda functions, it's got called Lambda event functions.
+
+83
+00:09:42,220 --> 00:09:46,220
+ The API changes, the CDK codes, the API doesn't change.
+
+84
+00:09:46,220 --> 00:09:47,220
+ Sorry, now I'm confusing you more.
+
+85
+00:09:47,220 --> 00:09:54,220
+ The API doesn't change, the CLI doesn't change, CloudFormation, Terraform, CDK, all of that doesn't change.
+
+86
+00:09:54,220 --> 00:09:56,220
+ Everything stays the same.
+
+87
+00:09:56,220 --> 00:10:01,220
+ It's just now called Lambda event functions because it's the event handle model.
+
+88
+00:10:01,220 --> 00:10:09,220
+ But then a year ago, within that, there is a SDK that you can run to run durable functions.
+
+89
+00:10:09,220 --> 00:10:13,220
+ So, this is a way that you could create workflows in your code.
+
+90
+00:10:13,220 --> 00:10:14,220
+ I'm going to cover that myself.
+
+91
+00:10:14,220 --> 00:10:18,220
+ I'm going to raise later as well with a whole bunch of cool functionality.
+
+92
+00:10:18,220 --> 00:10:20,220
+ That's all running with event functions.
+
+93
+00:10:20,220 --> 00:10:28,220
+ And then literally, a week ago and a day, we came out with a new form factor for Lambda called web functions.
+
+94
+00:10:28,220 --> 00:10:31,220
+ And this is Lambda reimagined for web workloads.
+
+95
+00:10:31,220 --> 00:10:33,220
+ And we're going to cover all that's going on.
+
+96
+00:10:33,220 --> 00:10:38,220
+ So, two different types of Lambda functions, event functions and web functions.
+
+97
+00:10:38,220 --> 00:10:44,220
+ But customers said, I love all the stuff that we've got inside Lambda, but I want to take advantage of that.
+
+98
+00:10:44,220 --> 00:10:46,220
+ I don't want to just have run a function or something.
+
+99
+00:10:46,220 --> 00:10:47,220
+ I want to run a service.
+
+100
+00:10:47,220 --> 00:10:49,220
+ I want to run something that's much longer.
+
+101
+00:10:49,220 --> 00:10:56,220
+ And so, we wrapped up the secure isolation technology and came out with Lambda micro VMs.
+
+102
+00:10:56,220 --> 00:10:59,220
+ So, Lambda's always run in a little mini micro VM.
+
+103
+00:10:59,220 --> 00:11:00,220
+ You can never do anything with that.
+
+104
+00:11:00,220 --> 00:11:02,220
+ That was just the way Lambda worked.
+
+105
+00:11:02,220 --> 00:11:07,220
+ Now, we expose that externally that you can create these ephemeral micro virtual machines
+
+106
+00:11:07,220 --> 00:11:09,220
+ that you can control.
+
+107
+00:11:09,220 --> 00:11:13,220
+ Functions on the one side and you now have the sandbox on the other side.
+
+108
+00:11:13,220 --> 00:11:18,220
+ Is anybody still confused or am I making this worse by talking about more bits of Lambda?
+
+109
+00:11:18,220 --> 00:11:21,220
+ Hopefully, we will keep going and it will all make sense.
+
+110
+00:11:21,220 --> 00:11:26,220
+ Now, there are two different places or two different ways that you can run all three of these.
+
+111
+00:11:26,220 --> 00:11:27,220
+ One is the on-demand.
+
+112
+00:11:27,220 --> 00:11:32,220
+ That is that serverless, pay-per-use, scale-up, scale-down as you need to.
+
+113
+00:11:32,220 --> 00:11:35,220
+ And that works across all three of the form factors.
+
+114
+00:11:35,220 --> 00:11:36,220
+ Nothing changes.
+
+115
+00:11:36,220 --> 00:11:42,220
+ But on the bottom here, you can see we also have a new way to run Lambda functions, the Lambda event functions.
+
+116
+00:11:42,220 --> 00:11:45,220
+ And this is managed instances.
+
+117
+00:11:45,220 --> 00:11:51,220
+ And this is a way to be able to run EC2 instances that you own in your account, which gives you some good advantages,
+
+118
+00:11:51,220 --> 00:11:53,220
+ which I'll cover shortly.
+
+119
+00:11:53,220 --> 00:11:56,220
+ But it's just another place that you can run your Lambda functions.
+
+120
+00:11:56,220 --> 00:12:00,220
+ And as I mentioned currently, that's only available for the event functions.
+
+121
+00:12:00,220 --> 00:12:07,220
+ So hopefully, that paints a picture of what the Lambda universe looks like today and sort of allays some of the confusion.
+
+122
+00:12:07,220 --> 00:12:15,220
+ But it really is a reimagining of Lambda to be able to take advantage of more workloads, which ultimately will help you in the applications that you build.
+
+123
+00:12:15,220 --> 00:12:21,220
+ So let's cover event functions and actually more durable functions and what that functionality is.
+
+124
+00:12:21,220 --> 00:12:30,220
+ So in, again, the good old times, monoliths would sometimes get a bad rap, but were actually pretty easy to reason about.
+
+125
+00:12:30,220 --> 00:12:32,220
+ You had a big chunk of code.
+
+126
+00:12:32,220 --> 00:12:33,220
+ It ran on a server.
+
+127
+00:12:33,220 --> 00:12:34,220
+ Maybe it ran in the cloud.
+
+128
+00:12:34,220 --> 00:12:35,220
+ Maybe it ran on premises.
+
+129
+00:12:35,220 --> 00:12:38,220
+ It doesn't matter, but you had a big application.
+
+130
+00:12:38,220 --> 00:12:39,220
+ It was all in one place.
+
+131
+00:12:39,220 --> 00:12:43,220
+ If you wanted to see the code, you could see it in, you know, one repo, one file.
+
+132
+00:12:43,220 --> 00:12:45,220
+ You could do step three debugging.
+
+133
+00:12:45,220 --> 00:12:46,220
+ And that was great.
+
+134
+00:12:46,220 --> 00:12:51,220
+ The problem was, if you needed to scale it or you needed to use some other kind of services,
+
+135
+00:12:51,220 --> 00:12:53,220
+ now things started to get hard.
+
+136
+00:12:53,220 --> 00:12:58,220
+ You either need to have a bigger box or you need to have more boxes and then stick load balances in front of it.
+
+137
+00:12:58,220 --> 00:13:00,220
+ And now you're looking after load balances.
+
+138
+00:13:00,220 --> 00:13:01,220
+ And now you're looking after sticky sessions.
+
+139
+00:13:01,220 --> 00:13:04,220
+ And now you're looking after a whole bunch of stuff that you don't want to do.
+
+140
+00:13:04,220 --> 00:13:09,220
+ And so the world came out, and this wasn't an AWS thing, of the concept of microservices.
+
+141
+00:13:09,220 --> 00:13:14,220
+ So why don't we break up that monolith in a few different parts and we could use different
+
+142
+00:13:14,220 --> 00:13:17,220
+ services maybe for different jobs or different programming languages.
+
+143
+00:13:17,220 --> 00:13:21,220
+ We would then need to think about communication channels between those.
+
+144
+00:13:21,220 --> 00:13:24,220
+ how does one microservice talk to another microservice.
+
+145
+00:13:24,220 --> 00:13:25,220
+ And that was great for the scalability.
+
+146
+00:13:25,220 --> 00:13:31,220
+ But obviously more lines and boxes mean more things to manage, more things to look after.
+
+147
+00:13:31,220 --> 00:13:35,220
+ And life, I think, everyone with microservices did get a little bit more complicated.
+
+148
+00:13:35,220 --> 00:13:42,220
+ Some of the service purists, I think, took microservices to the end game, which was maybe a game
+
+149
+00:13:42,220 --> 00:13:46,220
+ of how many Lambda functions you could possibly create for an application.
+
+150
+00:13:46,220 --> 00:13:48,220
+ And that became just a nightmare to manage.
+
+151
+00:13:48,220 --> 00:13:53,220
+ So it's obviously a middle ground between having 2B microservices and middle ground and somewhere
+
+152
+00:13:53,220 --> 00:13:55,220
+ in between which works for you.
+
+153
+00:13:55,220 --> 00:14:02,220
+ But what if we could have a single function and we could see it as a monolithic code base,
+
+154
+00:14:02,220 --> 00:14:08,220
+ but it could take advantage of a distributed system and run like a distributed application.
+
+155
+00:14:08,220 --> 00:14:13,220
+ And this is one of the core fundamentals of AWS Lambda Durable Functions.
+
+156
+00:14:13,220 --> 00:14:17,220
+ Where you have a workflow, and a workflow is a process that you're going to run.
+
+157
+00:14:17,220 --> 00:14:19,220
+ So maybe there's going to be a transaction.
+
+158
+00:14:19,220 --> 00:14:21,220
+ Maybe there's going to be multiple steps.
+
+159
+00:14:21,220 --> 00:14:23,220
+ Maybe there's going to map over something.
+
+160
+00:14:23,220 --> 00:14:24,220
+ Maybe it's if-then statements.
+
+161
+00:14:24,220 --> 00:14:26,220
+ All these kind of things that you run.
+
+162
+00:14:26,220 --> 00:14:29,220
+ Workflows, which people have been doing for ages in code.
+
+163
+00:14:29,220 --> 00:14:33,220
+ And now this makes it a lot easier with durable functions.
+
+164
+00:14:33,220 --> 00:14:38,220
+ So Guber is actually going to do a way better demo of durable functions a little bit later.
+
+165
+00:14:38,220 --> 00:14:41,220
+ So I don't want to steal his thunder, but I'm just quickly going to go through.
+
+166
+00:14:41,220 --> 00:14:46,220
+ So hopefully you can understand the fundamentals of that before Guber shows you the real good stuff.
+
+167
+00:14:46,220 --> 00:14:51,220
+ So the concept, it's called a durable function because it's using what's called a durable execution.
+
+168
+00:14:51,220 --> 00:14:58,220
+ And a durable execution is quite amazing if you think about it, but quite simple, which is a good thing.
+
+169
+00:14:58,220 --> 00:15:03,220
+ And basically, as your code runs, every now and again you just go save state.
+
+170
+00:15:03,220 --> 00:15:09,220
+ If something then dies, or your lambda function dies, or downstream service dies, or whatever,
+
+171
+00:15:09,220 --> 00:15:15,220
+ when the function restarts, all it can do is just catch up where it was initially saved.
+
+172
+00:15:15,220 --> 00:15:19,220
+ And it's a very simple concept, but think how useful that can be.
+
+173
+00:15:19,220 --> 00:15:22,220
+ And the analogy I like to use is think of a save game.
+
+174
+00:15:22,220 --> 00:15:25,220
+ So if there are any gamers in the house, there must be gamers in the house.
+
+175
+00:15:25,220 --> 00:15:29,220
+ So it's a bit early in the morning, but some nervous people are putting their hands up.
+
+176
+00:15:29,220 --> 00:15:33,220
+ Can you imagine if you're playing a game, and you hit save, and you finish your level, and the game's saved.
+
+177
+00:15:33,220 --> 00:15:42,220
+ The next time you come up to play the game, it starts from the last game stage that was automatically saved, and you carry on.
+
+178
+00:15:42,220 --> 00:15:45,220
+ That's far more pleasurable than every time you start a game.
+
+179
+00:15:45,220 --> 00:15:47,220
+ You have to start at the beginning, and build all your way up.
+
+180
+00:15:47,220 --> 00:15:49,220
+ Same kind of thing with durable functions.
+
+181
+00:15:49,220 --> 00:15:55,220
+ So it allows you, with your control, to just create a checkpoint in different parts of your software to say,
+
+182
+00:15:55,220 --> 00:15:59,220
+ I've connected to that API, got the response back, save that response.
+
+183
+00:15:59,220 --> 00:16:01,220
+ Connect to that database, save that response.
+
+184
+00:16:01,220 --> 00:16:07,220
+ I've done a call to an LLM model, LLM, come back, which is non-deterministic, let me save that response.
+
+185
+00:16:07,220 --> 00:16:11,220
+ Something happens, and it just replays through all the different processes, and does that.
+
+186
+00:16:11,220 --> 00:16:14,220
+ And the way that it does that, is there's just an SDK.
+
+187
+00:16:14,220 --> 00:16:18,220
+ On land, you basically tick a box to say, yes, I want this to be a durable function.
+
+188
+00:16:18,220 --> 00:16:21,220
+ You install the SDK, you get the superpowers.
+
+189
+00:16:21,220 --> 00:16:25,220
+ It's available for Node.js, Python, Java, and C#.
+
+190
+00:16:25,220 --> 00:16:32,220
+ And we're working in the open source as well to build some for Go and Rust, I think, are the next two that are being looked at.
+
+191
+00:16:32,220 --> 00:16:35,220
+ So let's just go through a quick, durable function.
+
+192
+00:16:35,220 --> 00:16:38,220
+ So in this example, we are going to be handling receipts.
+
+193
+00:16:38,220 --> 00:16:40,220
+ So we are doing expense claims.
+
+194
+00:16:40,220 --> 00:16:43,220
+ Some of you people may be doing that as well here today.
+
+195
+00:16:43,220 --> 00:16:44,220
+ So this is what it would look like.
+
+196
+00:16:44,220 --> 00:16:46,220
+ On the left-hand side, we've got some pseudocode.
+
+197
+00:16:46,220 --> 00:16:50,220
+ You can see there's some different things in that, like CTX, which is for context.
+
+198
+00:16:50,220 --> 00:17:00,220
+ CTX.map is the way that you're able to communicate with Lambda to be able to use that context to be able to step through and run your application.
+
+199
+00:17:00,220 --> 00:17:04,220
+ And on the right-hand side is a log of what's happening within the durable functions.
+
+200
+00:17:04,220 --> 00:17:08,220
+ And you can see we've got four photos that we've uploaded into the system.
+
+201
+00:17:08,220 --> 00:17:11,220
+ Photos one and two that we processed correctly.
+
+202
+00:17:11,220 --> 00:17:14,220
+ Photo four, the little OCR thing, is a little bit blurry.
+
+203
+00:17:14,220 --> 00:17:18,220
+ But within your durable function, you've configured to say, don't worry about it.
+
+204
+00:17:18,220 --> 00:17:20,220
+ You don't necessarily have to have all of the work in.
+
+205
+00:17:20,220 --> 00:17:22,220
+ You know, three out of four is absolutely fine.
+
+206
+00:17:22,220 --> 00:17:25,220
+ We don't want this expense claim to fail just for one blurry photo.
+
+207
+00:17:25,220 --> 00:17:28,220
+ We want to, you know, let the other three go to the system.
+
+208
+00:17:28,220 --> 00:17:35,220
+ Tell the user at the end, and they can just, you know, once they upload another photo, they can then use that as another expense.
+
+209
+00:17:35,220 --> 00:17:36,220
+ Or just an example.
+
+210
+00:17:36,220 --> 00:17:38,220
+ But there's an issue with photo number three.
+
+211
+00:17:38,220 --> 00:17:40,220
+ We don't know what that is.
+
+212
+00:17:40,220 --> 00:17:41,220
+ Something dies.
+
+213
+00:17:41,220 --> 00:17:43,220
+ Maybe it's a failed execution environment.
+
+214
+00:17:43,220 --> 00:17:47,220
+ Maybe it's the OCR connection at the back, or whatever NLM is being called.
+
+215
+00:17:47,220 --> 00:17:49,220
+ And that call has failed.
+
+216
+00:17:49,220 --> 00:17:54,220
+ So what's going to happen is, when it fails, the Lambda function is going to recover.
+
+217
+00:17:54,220 --> 00:17:57,220
+ You can do that automatically, or you can choose that kind of things.
+
+218
+00:17:57,220 --> 00:18:00,220
+ And you can see, it's not going to do anything for photos one, two, and four.
+
+219
+00:18:00,220 --> 00:18:01,220
+ Because it's handled that.
+
+220
+00:18:01,220 --> 00:18:03,220
+ It doesn't need to do an NLM call.
+
+221
+00:18:03,220 --> 00:18:04,220
+ It doesn't need to do OCR anymore.
+
+222
+00:18:04,220 --> 00:18:06,220
+ And it's just going to reprocess photo number three.
+
+223
+00:18:06,220 --> 00:18:12,220
+ So, really easy to just be able to catch up and fix errors that are happening automatically.
+
+224
+00:18:12,220 --> 00:18:14,220
+ You can also run things in parallel.
+
+225
+00:18:14,220 --> 00:18:16,220
+ So you can see ctx.parallels.
+
+226
+00:18:16,220 --> 00:18:19,220
+ That's a way that you can say, I need to check the policy of this.
+
+227
+00:18:19,220 --> 00:18:24,220
+ Some kind of call to say, you know, is this receipt allowed?
+
+228
+00:18:24,220 --> 00:18:26,220
+ We're going to check the duplicates.
+
+229
+00:18:26,220 --> 00:18:28,220
+ Was this expense claim done last week as well?
+
+230
+00:18:28,220 --> 00:18:30,220
+ So you can run multiple checks in parallel.
+
+231
+00:18:30,220 --> 00:18:33,220
+ You can think of this if you're doing code reviews, or you're doing any kind of processing.
+
+232
+00:18:33,220 --> 00:18:37,220
+ There are often lots of things you can do at the same time for efficiency.
+
+233
+00:18:37,220 --> 00:18:39,220
+ Then the next thing is a callback.
+
+234
+00:18:39,220 --> 00:18:41,220
+ So you can see ctx.callback.
+
+235
+00:18:41,220 --> 00:18:47,220
+ And this is, well, this is say over 500 pounds, 1,000 pounds, whatever your example is with this.
+
+236
+00:18:47,220 --> 00:18:49,220
+ And we actually need to get a manager approval.
+
+237
+00:18:49,220 --> 00:18:53,220
+ And so what's going to happen is, the Lambda function, the Google function is just going to stop.
+
+238
+00:18:53,220 --> 00:18:57,220
+ It's not going to do anything, and it can wait for actually up to a year.
+
+239
+00:18:57,220 --> 00:18:58,220
+ So there we go.
+
+240
+00:18:58,220 --> 00:19:02,220
+ Instead of the 15 minutes for an individual Lambda function invoke, we've got now a weighted
+
+241
+00:19:02,220 --> 00:19:04,220
+ Lambda function that can run up to 15 years.
+
+242
+00:19:04,220 --> 00:19:10,220
+ In fact, each of these different blocks, which is running a Lambda process, can run up to 15 minutes itself.
+
+243
+00:19:10,220 --> 00:19:15,220
+ But the whole thing, you know, can pause and run for up to a year with all these individual steps.
+
+244
+00:19:15,220 --> 00:19:18,220
+ So we don't know how the manager is going to approve it.
+
+245
+00:19:18,220 --> 00:19:19,220
+ Maybe they go to a website.
+
+246
+00:19:19,220 --> 00:19:21,220
+ Maybe they reply to an email or a Slack trade or something.
+
+247
+00:19:21,220 --> 00:19:25,220
+ But anyway, some kind of thing talks back to Lambda and says, yeah, I've approved that.
+
+248
+00:19:25,220 --> 00:19:28,220
+ And then the Lambda function just automatically continues.
+
+249
+00:19:28,220 --> 00:19:30,220
+ Obviously, you're not paying for that waiting time.
+
+250
+00:19:30,220 --> 00:19:33,220
+ The function is just going to pause and suspend.
+
+251
+00:19:33,220 --> 00:19:34,220
+ And be free.
+
+252
+00:19:34,220 --> 00:19:36,220
+ Lambda, the manager approves it.
+
+253
+00:19:36,220 --> 00:19:38,220
+ And off you go and it carries on.
+
+254
+00:19:38,220 --> 00:19:40,220
+ The last step is obviously you want to pay it out.
+
+255
+00:19:40,220 --> 00:19:42,220
+ But here there's a problem with the payment provider.
+
+256
+00:19:42,220 --> 00:19:44,220
+ A failed payment.
+
+257
+00:19:44,220 --> 00:19:45,220
+ What are we going to do?
+
+258
+00:19:45,220 --> 00:19:49,220
+ So, as you may have worked out before, the whole rest of the Lambda function can rerun again.
+
+259
+00:19:49,220 --> 00:19:51,220
+ You don't need to check the photos.
+
+260
+00:19:51,220 --> 00:19:52,220
+ You don't need to check the policy.
+
+261
+00:19:52,220 --> 00:19:54,220
+ You don't need to do the manager approval.
+
+262
+00:19:54,220 --> 00:19:55,220
+ That has all been done before.
+
+263
+00:19:55,220 --> 00:20:00,220
+ Each of those steps are basically stored in an external database of Lambda managers.
+
+264
+00:20:00,220 --> 00:20:03,220
+ And when the log is replayed, it goes done, done, done.
+
+265
+00:20:03,220 --> 00:20:04,220
+ Tick, tick, tick, tick, tick, tick, tick.
+
+266
+00:20:04,220 --> 00:20:05,220
+ All done.
+
+267
+00:20:05,220 --> 00:20:07,220
+ I just need to do the payout.
+
+268
+00:20:07,220 --> 00:20:11,220
+ And this is great because you don't need to then run all of these if-then statements,
+
+269
+00:20:11,220 --> 00:20:16,220
+ all of this complex code to be able to undo the transaction, to be able to redo the workflow
+
+270
+00:20:16,220 --> 00:20:20,220
+ and all different kind of things and say, you know, if photo one has been done, do this.
+
+271
+00:20:20,220 --> 00:20:24,220
+ This is all just handled for you as part of the service.
+
+272
+00:20:24,220 --> 00:20:26,220
+ Item potency is built in as well.
+
+273
+00:20:26,220 --> 00:20:27,220
+ Something like a payment claim.
+
+274
+00:20:27,220 --> 00:20:31,220
+ When you're doing an expense claim, I suppose I wouldn't mind if I was paid twice.
+
+275
+00:20:31,220 --> 00:20:34,220
+ But if it was your credit card being charged, you don't want to pay twice as well.
+
+276
+00:20:34,220 --> 00:20:40,220
+ So using an item potency key, which is just built into the service, allows things to only happen at once.
+
+277
+00:20:40,220 --> 00:20:45,220
+ Again, goodness going to carry through and do a whole bunch of different kind of information on this as well.
+
+278
+00:20:45,220 --> 00:20:50,220
+ So then the clever ones of you are thinking, well, we do already have a service called Step Functions.
+
+279
+00:20:50,220 --> 00:20:52,220
+ What's that all about?
+
+280
+00:20:52,220 --> 00:20:54,220
+ Well, Step Functions is still around.
+
+281
+00:20:54,220 --> 00:20:55,220
+ It is loved.
+
+282
+00:20:55,220 --> 00:20:56,220
+ It is huge.
+
+283
+00:20:56,220 --> 00:20:59,220
+ Used hugely internally at Amazon as well.
+
+284
+00:20:59,220 --> 00:21:02,220
+ And they're two different approaches for running workflows.
+
+285
+00:21:02,220 --> 00:21:05,220
+ Step Functions isn't on the way out.
+
+286
+00:21:05,220 --> 00:21:06,220
+ Lots of investments going in that.
+
+287
+00:21:06,220 --> 00:21:08,220
+ A big team which runs that as well.
+
+288
+00:21:08,220 --> 00:21:13,220
+ But what Step Functions is really good at is basically orchestrating across AWS services.
+
+289
+00:21:13,220 --> 00:21:16,220
+ Because it has the AWS SDK just built in.
+
+290
+00:21:16,220 --> 00:21:25,220
+ So any AWS SDK call, be that writing to DynamoDB, starting a glue job, connecting to some synchronous process.
+
+291
+00:21:25,220 --> 00:21:30,220
+ Literally absolutely anything the SDK can do is built into Step Functions.
+
+292
+00:21:30,220 --> 00:21:34,220
+ Which means you don't actually need to write any code to do that.
+
+293
+00:21:34,220 --> 00:21:42,220
+ And so Step Functions, I think the better use case is codeless, although it's a horrible term because there's a configuration code in there.
+
+294
+00:21:42,220 --> 00:21:46,220
+ But this is about orchestrating across a lot of different AWS services.
+
+295
+00:21:46,220 --> 00:21:48,220
+ Step Functions has got a visual builder.
+
+296
+00:21:48,220 --> 00:21:51,220
+ And of course there's no catching all the things to update.
+
+297
+00:21:51,220 --> 00:22:00,220
+ However, if your Step Functions state machine looked like a whole bunch of coordinating just Lambda functions, that is fine.
+
+298
+00:22:00,220 --> 00:22:04,220
+ But sometimes, some people feel that it's actually easier just to run in a Lambda function.
+
+299
+00:22:04,220 --> 00:22:06,220
+ So you can do Step 3 debugging.
+
+300
+00:22:06,220 --> 00:22:10,220
+ You can run it in the Durable Functions emulator, which runs locally.
+
+301
+00:22:10,220 --> 00:22:16,220
+ And it just makes a little bit more sense that you can see all the code within your individual Lambda function.
+
+302
+00:22:16,220 --> 00:22:24,220
+ And that branching logic, and that calling an LLM, or that doing any photo processing, makes a little bit more sense inside the actual Lambda function.
+
+303
+00:22:25,220 --> 00:22:29,220
+ Obviously that means you're writing code in your own programming language.
+
+304
+00:22:29,220 --> 00:22:34,220
+ Some people prefer that, rather than using the Amazon state's language with Step Functions that it does.
+
+305
+00:22:34,220 --> 00:22:36,220
+ Again, just part of your function.
+
+306
+00:22:36,220 --> 00:22:38,220
+ So different ways of doing it.
+
+307
+00:22:38,220 --> 00:22:44,220
+ But yes, Step Functions still usually use a lot of IT automation steps where they aren't code kind of things.
+
+308
+00:22:44,220 --> 00:22:45,220
+ Or user onboarding.
+
+309
+00:22:45,220 --> 00:22:48,220
+ Where they're creating cognitive user pools.
+
+310
+00:22:48,220 --> 00:22:52,220
+ Or spinning up services for a CI/CD pipeline or a test.
+
+311
+00:22:52,220 --> 00:22:55,220
+ If it is coordinating those services, Step Functions is still great.
+
+312
+00:22:55,220 --> 00:22:57,220
+ But we now have another option.
+
+313
+00:22:57,220 --> 00:23:01,220
+ Rather than you having to learn Step Functions language, you can do everything in code.
+
+314
+00:23:01,220 --> 00:23:03,220
+ So that's Durable Functions.
+
+315
+00:23:03,220 --> 00:23:07,220
+ So a week and a day ago, we then came out with Web Functions.
+
+316
+00:23:07,220 --> 00:23:11,220
+ Which is just a standard HTTP server.
+
+317
+00:23:11,220 --> 00:23:17,220
+ So the question that started all of this is, what if Lambda just listened on a port?
+
+318
+00:23:17,220 --> 00:23:22,220
+ And you can see the left hand side, that is what a Lambda event handler looks like.
+
+319
+00:23:22,220 --> 00:23:27,220
+ You can see an event comes in and you return a status body and a body that comes up in JSON.
+
+320
+00:23:27,220 --> 00:23:30,220
+ But Web frameworks don't look like that.
+
+321
+00:23:30,220 --> 00:23:35,220
+ If any of you are web developers, you actually start a web server that listens on a port.
+
+322
+00:23:35,220 --> 00:23:40,220
+ And then requests are going to come in to that port, maybe via load balancer, maybe directly.
+
+323
+00:23:40,220 --> 00:23:44,220
+ It's just a server process that is running via HTTP.
+
+324
+00:23:44,220 --> 00:23:46,220
+ And there are a lot of benefits of that.
+
+325
+00:23:46,220 --> 00:23:53,220
+ And if you were previously running web services on Lambda, you either had to not run a web server and adopt the event functions model.
+
+326
+00:23:53,220 --> 00:23:57,220
+ Or you had to run your web server but then use the Lambda web adapter as a translation layer.
+
+327
+00:23:57,220 --> 00:24:03,220
+ HTTP would come in, it would turn it into an event model and the adapter would turn it back into HTTP.
+
+328
+00:24:03,220 --> 00:24:08,220
+ Again, clunky stuff that you need to do for Lambda. Unnecessary.
+
+329
+00:24:08,220 --> 00:24:13,220
+ So what Lambda web functions give you is standard HTTP.
+
+330
+00:24:13,220 --> 00:24:15,220
+ You actually run an HTTP server.
+
+331
+00:24:15,220 --> 00:24:20,220
+ Again, that sounds like heresy, but we're bringing a bit of the servers back into servers.
+
+332
+00:24:20,220 --> 00:24:25,220
+ But you are running not the servers that you're going to manage, but the server process that is running.
+
+333
+00:24:25,220 --> 00:24:28,220
+ And so you no longer need any adapter layer.
+
+334
+00:24:28,220 --> 00:24:34,220
+ So popular frameworks, whether you're using Express, Fastify, Hono, React Router, anything like that.
+
+335
+00:24:34,220 --> 00:24:37,220
+ As it runs locally, it can run locally.
+
+336
+00:24:37,220 --> 00:24:38,220
+ NPM will start.
+
+337
+00:24:38,220 --> 00:24:39,220
+ I'm going to show you shortly.
+
+338
+00:24:39,220 --> 00:24:43,220
+ You just upload all that code to Lambda and it's just going to run in Lambda.
+
+339
+00:24:43,220 --> 00:24:44,220
+ It's got streaming built in.
+
+340
+00:24:44,220 --> 00:24:47,220
+ Not only response streaming, but also request streaming.
+
+341
+00:24:47,220 --> 00:24:53,220
+ So you can imagine you've got a client streaming data to your Lambda function because it is a more continuous running process.
+
+342
+00:24:53,220 --> 00:24:55,220
+ And then sending that back.
+
+343
+00:24:55,220 --> 00:24:59,220
+ So it's no longer the Lambda event model where something comes in and Lambda freezes the environment.
+
+344
+00:24:59,220 --> 00:25:06,220
+ We actually keep that server running around for a few minutes at a time to be able to do that as well.
+
+345
+00:25:06,220 --> 00:25:09,220
+ And a big winner as well for two reasons is it just runs low key.
+
+346
+00:25:09,220 --> 00:25:17,220
+ So you do your NPM start, NPM run dev, and check your web function runs low key and then push it up to Lambda and then no code changes require.
+
+347
+00:25:17,220 --> 00:25:25,220
+ And that's super useful because in the days of ALMs writing and testing a whole bunch of things, ALMs are super great at writing web servers.
+
+348
+00:25:25,220 --> 00:25:30,220
+ They know that, you know, all of the models have been trained on web servers, there's new information coming as well.
+
+349
+00:25:30,220 --> 00:25:35,220
+ And so you'll be able to test and iterate locally rather than having to run a Lambda emulator.
+
+350
+00:25:35,220 --> 00:25:41,220
+ It's just much faster and much more sort of native and intuitive that you don't have to do this weird thing for Lambda.
+
+351
+00:25:42,220 --> 00:25:49,220
+ Some other things that are part of it is Lambda Web Functions now actually allows many requests per environment.
+
+352
+00:25:49,220 --> 00:25:55,220
+ So previously I spoke about the Lambda event model where you have just a single event coming into a Lambda function.
+
+353
+00:25:55,220 --> 00:26:02,220
+ Well now you can have many. So you can by default 64 up to 128, you are running the server process, many requests can come in.
+
+354
+00:26:02,220 --> 00:26:08,220
+ Why is that important? Well, because first of all it is native to how web servers run.
+
+355
+00:26:08,220 --> 00:26:11,220
+ Web servers are used to having many requests come in, so that's just the normal way.
+
+356
+00:26:11,220 --> 00:26:22,220
+ And then also for reducing cold starts. Yes, you're going to have a cold start for the very first request, but then that cold start is now amortized over 64 or 128 requests that comes in.
+
+357
+00:26:22,220 --> 00:26:24,220
+ Really much more efficient.
+
+358
+00:26:24,220 --> 00:26:30,220
+ In terms of configuration, a Lambda micro VM just comes with two virtual CPUs and two giga RAM.
+
+359
+00:26:30,220 --> 00:26:35,220
+ And that's just what's built in one of the execution environments.
+
+360
+00:26:35,220 --> 00:26:41,220
+ If that's only one execution environment, obviously Lambda can scale up to many, many execution environments to run it as well.
+
+361
+00:26:41,220 --> 00:26:47,220
+ The next was the billing. So normal event Lambda, you are billed exactly for the time.
+
+362
+00:26:47,220 --> 00:26:52,220
+ Web functions is slightly different and hopefully cheaper for some workloads as well.
+
+363
+00:26:52,220 --> 00:26:59,220
+ So for web functions, you do pay a base level of memory, but it's not the memory that you configure, because that's a fixed amount.
+
+364
+00:26:59,220 --> 00:27:01,220
+ It's just the memory that is actually actively used.
+
+365
+00:27:01,220 --> 00:27:08,220
+ So we look at the memory over a minute in time and then figure out which memory you've actually used and charge you for that.
+
+366
+00:27:08,220 --> 00:27:15,220
+ There's a request charge as well, same with event Lambda, but then for CPU, we only charge you the CPU when something is actually run.
+
+367
+00:27:15,220 --> 00:27:22,220
+ So if you're doing a database call and then coming back and doing some calculations on that or doing a hash function or Jensen interpretation
+
+368
+00:27:22,220 --> 00:27:30,220
+ or reading something from a database and transforming it into something in HTML, any of that, when the CPU is doing something, you're going to be charged for that.
+
+369
+00:27:30,220 --> 00:27:33,220
+ But as soon as the CPU drops, well, you're not being charged anymore.
+
+370
+00:27:33,220 --> 00:27:37,220
+ So you are kicking off a background job or doing some longer query.
+
+371
+00:27:37,220 --> 00:27:40,220
+ Of course, now there's doing an LLM call where you do the call.
+
+372
+00:27:40,220 --> 00:27:45,220
+ You know, Bedrock or Anthropic or OpenAI is doing all that number crunching.
+
+373
+00:27:45,220 --> 00:27:50,220
+ Your web function is just going to sit there and go, "Cool, cool. I'm not actually being charged with the CPU."
+
+374
+00:27:50,220 --> 00:27:52,220
+ So that is super useful.
+
+375
+00:27:52,220 --> 00:27:55,220
+ The next thing is being able to build more global applications.
+
+376
+00:27:55,220 --> 00:27:59,220
+ Specifically in the web world, you have customers all over the world.
+
+377
+00:27:59,220 --> 00:28:04,220
+ So you can selectively choose which regions you want to run your functions in.
+
+378
+00:28:04,220 --> 00:28:09,220
+ And Lambda is going to take the code and the configuration and replicate that code to multiple regions.
+
+379
+00:28:09,220 --> 00:28:14,220
+ It is a particular region, so it's not the concept of, oh, you're just going to run it everywhere in the world.
+
+380
+00:28:14,220 --> 00:28:23,220
+ No, you're going to pick the exact regions that you want it to run in based on your residency requirements or your data sovereignty needs.
+
+381
+00:28:23,220 --> 00:28:26,220
+ And then there are actually sort of two ways that you can reach to that global environment.
+
+382
+00:28:26,220 --> 00:28:32,220
+ One is a multi-region endpoint where we just send the request to the one with the shortest latency.
+
+383
+00:28:32,220 --> 00:28:35,220
+ And you've basically got a single URL that you connect to.
+
+384
+00:28:35,220 --> 00:28:36,220
+ I'm going to show that shortly.
+
+385
+00:28:36,220 --> 00:28:39,220
+ The other one is a regional endpoint where you do have each different function.
+
+386
+00:28:39,220 --> 00:28:42,220
+ It's got its own URL and you decide how you want to route that.
+
+387
+00:28:42,220 --> 00:28:47,220
+ So maybe you're going to have Route 53 or you're going to have some other load balancer or some other router in it.
+
+388
+00:28:47,220 --> 00:28:52,220
+ But behind the scenes, Lambda does that replication and then you have all how stuff gets to your code.
+
+389
+00:28:52,220 --> 00:28:54,220
+ So some flexibility.
+
+390
+00:28:54,220 --> 00:28:59,220
+ And the other cool thing is we've also added built-in canary deploys or blue-green deployments.
+
+391
+00:28:59,220 --> 00:29:01,220
+ So you can have a one Lambda function version one.
+
+392
+00:29:01,220 --> 00:29:03,220
+ You then go to version two.
+
+393
+00:29:03,220 --> 00:29:08,220
+ And you can say I want 90% to go to version one and only 10% to go to version two.
+
+394
+00:29:08,220 --> 00:29:09,220
+ See how that works.
+
+395
+00:29:09,220 --> 00:29:10,220
+ Check your metrics.
+
+396
+00:29:10,220 --> 00:29:12,220
+ Checks everything that's working.
+
+397
+00:29:12,220 --> 00:29:15,220
+ And then just for the configuration change, you can switch to 50-50.
+
+398
+00:29:15,220 --> 00:29:16,220
+ You switch it across.
+
+399
+00:29:16,220 --> 00:29:18,220
+ That's just now built to the service.
+
+400
+00:29:18,220 --> 00:29:20,220
+ So you don't have to use something else.
+
+401
+00:29:20,220 --> 00:29:21,220
+ So yeah.
+
+402
+00:29:21,220 --> 00:29:25,220
+ That's to safely be able to evolve and deploy your new version of your Lambda function.
+
+403
+00:29:25,220 --> 00:29:28,220
+ So why don't we see this at work.
+
+404
+00:29:28,220 --> 00:29:34,220
+ So I have a dashboard and it's called SSE because it's got server-side events.
+
+405
+00:29:34,220 --> 00:29:39,220
+ So previously you could not do this with Lambda because it didn't support server-side events.
+
+406
+00:29:39,220 --> 00:29:40,220
+ So we've got the code up on the screen.
+
+407
+00:29:40,220 --> 00:29:43,220
+ Is that readable on the bigger screens or do I need it bigger?
+
+408
+00:29:43,220 --> 00:29:44,220
+ Yes?
+
+409
+00:29:44,220 --> 00:29:45,220
+ That's okay.
+
+410
+00:29:45,220 --> 00:29:46,220
+ Cool.
+
+411
+00:29:46,220 --> 00:29:48,220
+ Yell bigger if it needs to be bigger.
+
+412
+00:29:48,220 --> 00:29:51,220
+ So I have a web function over here.
+
+413
+00:29:51,220 --> 00:29:54,220
+ And as you can see, it is listening on a port.
+
+414
+00:29:54,220 --> 00:29:59,220
+ Server.listen port is just an environment variable that gets from the Lambda execution environment.
+
+415
+00:29:59,220 --> 00:30:02,220
+ And I'm running a Node server.
+
+416
+00:30:02,220 --> 00:30:07,220
+ Just for the sake of typing on a laptop, I've created a few sort of little scripts in package.json
+
+417
+00:30:07,220 --> 00:30:09,220
+ just to do some kind of things.
+
+418
+00:30:09,220 --> 00:30:11,220
+ But there's nothing specific here for Lambda ready.
+
+419
+00:30:11,220 --> 00:30:16,220
+ So if I do an npm run start, I can always do that verb.
+
+420
+00:30:16,220 --> 00:30:18,220
+ npm run start.
+
+421
+00:30:18,220 --> 00:30:19,220
+ npm run start.
+
+422
+00:30:19,220 --> 00:30:24,220
+ So this is npm run start, which is just running Node.data index.
+
+423
+00:30:24,220 --> 00:30:35,220
+ If I was to head over to my local environment over here and I refresh, I have got - this is a web server literally running locally.
+
+424
+00:30:35,220 --> 00:30:39,220
+ Now, the figures and everything we're going to explore more as it gets deployed into the cloud.
+
+425
+00:30:39,220 --> 00:30:43,220
+ And basically, I've got a Node server that is running locally.
+
+426
+00:30:43,220 --> 00:30:44,220
+ I can do tests.
+
+427
+00:30:44,220 --> 00:30:45,220
+ I can change the colors.
+
+428
+00:30:45,220 --> 00:30:46,220
+ I can evolve my web application.
+
+429
+00:30:46,220 --> 00:30:47,220
+ I don't need to deploy it.
+
+430
+00:30:47,220 --> 00:30:49,220
+ I don't need any Lambda emulator.
+
+431
+00:30:49,220 --> 00:30:49,580
+ I don't have to deploy it.
+

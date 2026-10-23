@@ -1,0 +1,305 @@
+We do have some bad news, which is Ian Massigan, who's the head of Applied AI at Anthropic.
+Unfortunately, he developed COVID symptoms yesterday and has been too sick to travel.
+The only good news is that means we're now back on schedule.
+So in terms of FinTech panel before lunch, we heard a lot of talk around things like sovereignty
+and some of those concerns in terms of US Cloud Act and data sovereignty and where data gets shipped to
+and what controls you can put in place.
+So with that, I'm delighted to announce our next speakers to tell us more around digital sovereignty
+from theory to implementation.
+So please put your hands together for Matt Johnson and Sharmayna Kanda from UBDS.
+Thanks, Matt.
+So great to be here again.
+This is my probably 15th year presenting.
+This is Sharmayna's first time as well.
+So hopefully we'll give you -- I've got the easy part.
+I'm doing the sort of high-level overview and then Sharmayna's going to go into a bit more detail
+around European sovereign cloud and so on.
+So just start with a very quick show of hands.
+How many people here are familiar with the concept of digital sovereignty?
+Am I going to come forward out of the glare of the lights?
+Okay, cool.
+Not bad.
+So that's good.
+How many of you are actively worried about it in your day-to-day role?
+Okay, less.
+Fair enough.
+Okay.
+So this talk isn't going to preach to you.
+It's not going to look at whether it's right or wrong.
+It's going to give you some practical concerns related to sovereignty.
+And it's going to ask the question, could your services still operate if access to a cloud
+or an underlying technological service or environment changed?
+Okay.
+So let's start with some examples.
+Four ways access can fail.
+And four real-world events that's happened in the last few years that show the West.
+This isn't just theory anymore.
+So the first I'm sure everyone is familiar with is Ukraine.
+So back in 2022 until about 11 days before the invasion, Ukraine had a whole bunch of laws
+that said they weren't allowed to move their data outside of their borders.
+And then they changed that just before the Russian invasion.
+And a few of us, AWS and Microsoft and a bunch of other tech providers,
+spent a few months helping them move some of their critical data out of region into the cloud.
+And this gave them some protection because it's very difficult to see on the image there.
+But if you see that red star, that is where a bomb landed.
+The little blue dot just above it is their main data center that had all the government records in.
+So it's 80 meters away from losing all their systems of record.
+Fast forward to March this year.
+I'm not sure if anyone here has been operating AWS services in the Middle East.
+If so, you've probably had a rough six months.
+Again, with the war in Iran, or the conflict in Iran, what we found is that there's been a whole bunch of problems.
+Facilities have been hit.
+It's the first time that a hyperscale provider has been hit in this way.
+And it's caused one region effectively to be rendered offline and the other is lost in full availability zone.
+And so it's no longer just logical.
+We've got the threat of drones breaking through the atmosphere and physically destroying data centers.
+It's not just cyber attacks anymore.
+And then this is probably the one that really got me thinking about sovereignty in detail.
+Called Fable.
+So tomorrow after June, US issued an emergency export control directive and told Anthropic to stop making that model available to anyone outside of the US,
+including non-US citizens working for Anthropic.
+That lasted probably about 12 days.
+It was lifted in stages and so on.
+But it's probably the first time since the 90s when, for those of us old enough to remember, PGP was restricted with export controls.
+It's been that long since we had a problem where the US government, or our government in general, has restricted broad access to a technology that people were using.
+Now whether that impacted many people or not is open to debate, but you can also abstract that forward.
+What happens if they turn off EntraID or they've restricted TLS in AWS?
+So again, those concerns there.
+And then, guess what?
+So this is as if we never learn, as we've been here before.
+Yandex, literally just two weeks ago now.
+Ukraine responded by hitting a bunch of Yandex, so Russia data centers.
+They're equivalent of Google.
+Causing major problems to Russia's in-house or domestically ability to handle both searches and cloud provision and so on.
+And actually, those of you who run web services probably noticed that the amount of bot traffic and malicious traffic dropped significantly for a few minutes as a result of that.
+But again, it's the fact that sovereignty isn't an argument for one particular geography.
+And so I suppose what we're saying is that in-country is not a resilient strategy.
+Some people say it was, and a lot of people when they talk about sovereignty think it needs to be inside borders.
+That's not what we're saying.
+These incidents show that where it runs and who can determine whether it keeps running are distinct things.
+And so, yeah, people think about in-country as owned infrastructure.
+There's a derogatory term that people have used, tin huggers.
+I want to see my servers.
+I want to hug them.
+That's great until somebody drops a bomb on them and then you're back to using pen and paper.
+Domestic cloud is the next option.
+And this is how many people have had the argument that we can only use it if we've got a region in country X.
+You know, I remember the argument back in 2016, 2017 when AWS launched the London region for the first time.
+It opened up a whole bunch of public sector workloads to be able to use that region they hadn't before.
+To use AWS they hadn't been able to use before.
+But as we've seen in the golfers, as we've seen in Russia, just having that domestic cloud capability is no good if you can take that out.
+And then the third area is around what we call imported technology.
+What happens when you're using technology that is under the control of another jurisdiction?
+So, again, it's a sign of the times when geopolitics needs to become part of the IT resilient strategy.
+And so the most important architectural lesson to take from this is to design for the threat model, not the label on the cloud itself.
+And it's worth pointing out that multi-region resilience is not sovereign resilience.
+The design boundaries are different, the failover routines are different.
+It's really key to call on out.
+And Charmin will cover this in a bit more detail.
+But as we all know, AWS regions have strong core isolation.
+What happens in one region should not affect another region.
+And I think this has been proven multiple times.
+What happened in Bahrain didn't affect what happened in London or Ireland.
+What you'll find is there is still the common dependency boundary.
+So this still has a sort of a sovereign risk.
+AWS runs as a global partition, but that global partition is led out of US East 1, so North Virginia, which is in the US.
+The impacts there cause impacts to a bunch of services that are global or partition services.
+And if an impact from a technical perspective can have that issue, then a geopolitical impact could also have that impact as well.
+So again, multi-region resilience and sovereign failover are different things.
+They're different fault boundaries.
+And the key thing is to identify which fault boundary matters most for your service.
+And I'm not saying that you need complete technological independence.
+So that's neither realistic, probably not desirable for most people's workloads.
+You know, just doing multi-cloud is really challenging.
+Trying to do that while thinking about all the complexities of sovereignty is also an issue.
+What we're looking for is what credible options remain if your circumstances change.
+Let's take a really bad hypothetical example.
+What happens if you lost entry ID?
+Yeah, that would keep me up at night.
+It doesn't mean you have to fix it because the chances that happen are very low.
+But you should at least start thinking where are your critical dependencies.
+And we'll cover that a bit later on as well.
+So one way to look at it, and this is the way we've been working at UBDS as well,
+is looking at what we call the eight dimensions of dependency.
+So by that, what are the different aspects you can almost do a risk assessment on
+in terms of is this going to impact me?
+Is this a problem?
+So you obviously have the technology itself.
+So, you know, where the technology is hosted, how it works, who owns it, that sort of thing.
+Where the data sits, how the data moves, who controls it, is encrypted.
+The operations often overlooked.
+You know, both for yourself, where your operators sit, but also your service providers.
+Is it a follow-the-sun model?
+Do they work in jurisdictions you understand?
+Security is a key one.
+We've already talked about identity, but also things like key management,
+things like encryption, things like data transfer.
+People is another dimension that's often overlooked.
+Sovereign technology requires people not just to be able to operate it,
+but to understand it and have those people available to move.
+If you're dependent on a third-party provider, and you've outsourced all your knowledge,
+then that's a bad thing.
+Commercial and contracts are quite closely tied together.
+So what you contractually allow to do, and what can you commercially afford to do?
+Often two separate things.
+And the last one, I think this is the one that's become most relevant recently,
+is the jurisdiction.
+How do we know that we can continue to operate services
+if another government, if another jurisdiction, decides they have problems with that?
+So really the unit of analysis is your critical service and its combined dependencies.
+And of course, moving the code is hopefully the easy part.
+A service, a runnable service or a runnable workload is not the same as a fully recoverable service.
+So you can package an application up as a container, and hopefully you can run it in pretty much any environment.
+But again, as Sharmin is going to cover, how that service can be operated, all the things that wrap around it.
+Whether that's data, DNS, identity, keys, CICD pipelines, deployment, operation support, and so on.
+And I think one of the key things there is a plan isn't an option until you've exercised it.
+This is so often spoken about in terms of backups.
+You know, a backup isn't a backup until you've proved you can restore it.
+Same thing with a disaster recovery or resilience plan.
+A plan's not there until you've had the option to exercise it.
+And again, sovereignty should be proportional to criticality.
+What we're not suggesting is go out and make everything completely cloud-agnostic.
+You know, lots of people have tried this in the past and invariably failed.
+It's about understanding what are your key things you need to think about.
+Where are your critical dependencies and how would you deal with them?
+So first, identify which services really matter.
+You've probably got a list of 100, 200, 300, even thousands of services.
+My guess is the ones that are truly critical to your business or operation are probably a dozen or so, maybe less than that.
+So start thinking about those.
+It doesn't mean you have to move them, you just need to understand them.
+What if we lose access to those?
+If that was to go offline, either because of a technical issue, a legal issue, a jurisdictional issue, what would you do?
+How would you deal with that?
+And so understand where those potential threats are.
+Is it that the hardware provider might not be available?
+Is it that someone turns the network off?
+And critically, can we operate this elsewhere?
+Can we take that workload somehow and then move it somewhere to run?
+Now that is going to be challenging for a lot of people, especially if you've got cloud-native.
+Again, this isn't a pitch to go away and undo all the stuff that Julia was talking around, around service workloads and Lambda web functions.
+I'm looking forward to playing with those myself.
+What I'm saying is that be aware of those decisions you're making and be conscious of those decisions and think about what would happen if you needed to change that.
+So my last slide, and then I'm going to hand over to Sharmin, is effectively what we're talking about now is what changes with the European Sovereign Cloud.
+Just a very quick show of hands, I've mentioned it a few times.
+Who are familiar with European Sovereign Cloud?
+Okay, well Sharmin will cover it briefly, so I won't say too much about it.
+What I will say is that it doesn't eliminate all of the risks.
+So we can have a great debate afterwards about whether it is truly sovereign, whether the US have any control over it.
+You know, we can get into great arguments.
+I used to work at AWS, I've got an opinion, people who work at AWS have an opinion, that's all fine.
+It's not about that, but this is potentially the closest thing you're ever going to get to what I would call a single vendor multi-pack.
+And I nick that from somebody else, but it's a great term.
+In this, you can use all of the same tooling, you can use all of the same approaches, but you effectively have almost complete partitional resilience, which is quite unusual.
+So with that, I'm going to hand over to Sharmin, who's going to look a bit more in detail about European Sovereign Clash.
+So we've had a look at what the digital sovereignty means, and why it matters.
+So now I'm going to look at what that means, and what that changes technically.
+So on the left, we've got London with the commercial AWS cloud, and we've got the European Sovereign Cloud in Bradenburg, Germany.
+But this isn't about geography.
+These aren't two regions.
+These are two different partitions with its own identity, own control plates, and own service endpoints.
+The separation gives operational independence, but that also comes with its complexities.
+We can't assume that everything's going to work as it would normally across two regions, because these are separate partitions.
+And the quick question would then be what needs to exist within these two different partitions.
+And within ESC, that would need to also be a question where we actually ask, as well, what needs to exist.
+So we're going to look at how we're going to achieve that.
+So we've got here a typical commercial workload with its users, applications, database, and object storage, and the supported services around that.
+And we also need to look at how do we actually maintain these data.
+Is it that we're going to transfer it, or are we going to create them or copy them over?
+But then, at the same time, it depends on what the customer wants to use it for.
+Is it going to be a backup, is it a pilot live, or a warm, standby, active environment?
+Or is it just an application simply running in ESC?
+And here we've also got the ESC workload, with the users, and the object storage, and the databases as well, and all the tooling needed.
+But these all come with their own independent KBS keys, as well as their own identity and own users.
+So we can see that these are two different environments, but they all need to be created independently as well.
+So now we're going to look at what the things that we might need to recreate, or what we might need to copy.
+So we've got data, for example, we might want to transfer it, using a backup, export, or control to transfer.
+Application artifacts, such as container images and packages, that can also be transferred over.
+As well as infrastructure as code, where might this code actually sit?
+And then we also have things that might need to be created independently, such as IAM roles, policies, users, as well as KMS keys, policies, and logging and monitoring.
+So the fact that these are two partitions, how might we connect these two partitions?
+So that is something we're now going to look into.
+So we have your commercial cloud, and where data is involved, we might have to use a HTTPS service, which will then create that secure connection.
+We might actually use a VPN, where there's network connectivity level that might need some secure, sorry, let me take a moment.
+We might have, where there's network connectivity level, we might use a VPN.
+And we would also need to consider these two connections would need to be connected securely, and this would require separate credentials.
+So these are the things you will need to consider, and as you can see, we have an example of an S3 endpoint in the commercial cloud, and we also have an S3 endpoint within the ESE cloud.
+So now I'm going to show you a demo, and this is just to show that we've got two of the two environments, the commercial cloud as well as the ESE cloud.
+So we're going to show you a couple of different things, and we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we're going to show you a couple of different things.
+So we'll retrieve pre-created ESE credentials from the commercial region, which we've actually set up beforehand.
+And then we'll then transfer the new records from commercial into ESE over HTTPS.
+And just to verify the integrity, we'll actually be looking at that as well.
+So before we look at the application, I just want to highlight something important about ESE.
+We can see that the URLs for the commercial as well as the URL for ESE are completely different.
+These are two partitions which have their own identities.
+And then we're going to look at the application.
+So here we've got the commercial cloud with its three customer records.
+And we're just showing that this has no dependency on the sovereign cloud.
+And we can see here that it's also got the three records.
+And these records are being pulled from their own independent S3 buckets.
+So now we're going to upload a new JSON file into the commercial bucket.
+And we will then see how that actually has no dependency on the ESE bucket.
+So currently we're uploading that file.
+And then we're going to refresh the records.
+So just refreshing the records, we can now see that there are four customer records.
+And this is within the commercial cloud.
+And as we mentioned previously that we are also using a transfer role that was set up in ESE.
+And it is then also making reference back to the commercial cloud to make sure that that connection is there.
+So now we're going to run the Python script to actually perform the transfer.
+And as you can see we can actually see that that runs successfully and now the four records will now appear in ESE.
+And as we can see that there are now four records and this has been updated within the ESE bucket without the reliance on the commercial bucket.
+And we can also have a look at the integrity of that using the key MS keys within the ESE region, within the ESE partition.
+So there's no dependency to the commercial cloud.
+And again, we can also focus on the cloud watch logs.
+So we wouldn't have to keep going back and forth to the commercial cloud.
+So we can see that that is the actual application performing the successful transfer.
+But then it also raises questions, what happens if the commercial cloud goes down, which I'm now going to demonstrate.
+I'm going to put the commercial cloud into an inactive state, which we can see here.
+And once we refresh the application, we can see it's no longer active.
+But looking back at the ESE application, it's still running.
+So this has no dependency to the commercial cloud.
+And just to show that that is actually the case, we're going to put the application in commercial back online.
+Refresh the page and we can see it's back online.
+So these are two independent applications.
+But at the same time, this is just scratching the surface and it does create and it does make us consider other questions.
+So the things that we do need to consider are things like DNS and failover.
+Is this going to be hosted within commercial?
+Is this going to be hosted within ESC or is this going to be by an independent provider?
+We also need to consider infrastructure as codes and the deployment pipelines.
+Where is the code actually going to sit?
+And in terms of identity and access, who are going to manage the users and across the partitions, how is this going to be achievable?
+And there are other things such as monitoring and audit.
+How do we respect the sovereignty boundary with actually having a look at all the visibility across the two partitions?
+And we have keys and credentials as well as cost.
+So the right architecture will actually depend on what the customer's requirements are and what they would need to achieve their objectives.
+So what are the next steps?
+I'll go with the hand over back to Matt.
+And so I think what we discovered there is that that's just scratching the surface as Charmin mentioned.
+There is so much stuff to consider, especially when some of the patterns you're used to around multi-region things like cross-region, BBC peering and so on and direct connect, don't really work between different regions.
+So you need to do these sort of, I suppose, these more agnostic connections, whether it's VPN or TLS or whatever it might be.
+And that's where all those things that Charmin was talking about, our DNS and the key management and so on comes in.
+So QR code up there.
+If you want to scan it, it's fine.
+If you don't, security, I get it.
+That's the URL it goes to those.
+You can check it out.
+If you need any help on that or you want any discussions around this or conversations, then I'm more than happy to help.
+And with that, again, thank you.
+A big thank you to Charmin for her first ever presentation.
+Mine was to 12 people.
+Hers was to 250 of you.
+So I think that's a fairly brave move.
+So thank you and enjoy the rest of the conference.
+Thank you so much.
+So a huge thank you there to Matt and Charmin.

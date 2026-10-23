@@ -1,0 +1,431 @@
+just want to reiterate how grateful we are for everyone coming here today. It's our sixth
+year, I think, in terms of running this event, and it's great to see. I think this year we've
+had about 10% more people in terms of registering than ending the year, so clearly there is an
+interest in terms of bringing people face-to-face together, trying to network, learn from each
+other, and that's fantastic to see. And obviously none of it would be possible without the support
+the sponsors, so please do go and see them, speak to them, see what they've got to offer.
+Hugely grateful for the speakers. We've had people, all the speakers here today, have given
+up their own time to be here. We haven't paid any of the speakers, they've travelled, we have
+some local speakers, and then all the way to Stockholm. And all of them have given up the
+time to be here to share their experience with us. And obviously thank you, last and
+least, to everyone who's given up their day to be here to share the day with us at the
+depot. And so now we're going to start with our morning keynote. It's our person who probably
+needs no introduction to lots of people. He's one of the most eminent people in the world
+of serverless. He's the principal developer advocate for serverless at AWS. So please put
+your hands together for Julian Wood.
+Hello everybody and good morning. Do you remember the olden times? The times when we used to write
+code by hand? Remember that? The documentation was never, ever up to date. Tests, yeah, test in production, we didn't have time to write tests.
+Those were the times, the olden times as I think we started to call them, maybe the days before AI. And in those olden times, there was AWS
+Lambda, which was a simple service. It was just about uploading your code into the cloud, we would run it on your behalf, we being AWS, it would do something and it would return the kind of information. Slightly simple, but that was the point.
+The idea was, well, you could just run your code in the cloud and it would really work. And we spent 10 years doing a whole bunch of work in AWS to improve that experience.
+Lambda arrived on the scene in 2014. Some people say that is sort of the start of serverless compute. And we've added many things over the years from Firecracker, which is our virtualization technology, which is super secure and scalable, to adding things like provision concurrency,
+so you can get rid of more of those cold starts. One millisecond billing. I mean, that's crazy to think that you could actually have that granularity of a serverless billing model. Being able to use container images, build websites, snap start technology, streaming technology, all of these things over 10 years.
+And today, Lambda is a huge service. 15 plus trillion invokes every month. And if anybody has seen any of the stats for Amazon Prime Day, which extensively uses serverless services, it's just crazy amounts of workloads it runs. And Amazon is just another customer of AWS.
+Maybe they've got some internal telephones they can ring if something goes wrong. But otherwise, the same Lambda that you use and hopefully love is the same Lambda that Amazon Prime can use on a Prime Day and government agencies and students can use on any day of the year and run it at crazy scale with everyone.
+One point eight plus million customers are joining you. And all of it with zero servers that you have to manage. That's our job. Before getting too far ahead, thanks so much for the organizers for inviting me. My name's Julian. I work at AWS.
+I'm trying to think back in the annals of my old brain, but I think I've been at every Service Days Cardiff and I have spoken at a bunch of them. So it's great to be chatting to some people this morning who remember me and come up straight away with their burning questions, which I love. So I'll be here all day and love talking about serverless and particularly Lambda and particularly at Service Days Cardiff.
+And why do I say particularly at Service Days Cardiff is because you've actually got a great community here. Because yes, there are students, there's a great student contingent, which is here today. Hello to all the students. I know there are startups around as well. There are enterprises, but also a lot of you are working for big government agencies.
+And personally from what I've seen in six years of Service Days Cardiff is the amazing innovation and things that government agencies are built. I'm sure you also feel denigrated sometimes when people are thinking government data, the slow movers. Well, I promise you some of the technologies that you are building and you're building at scale in the UK government and for other kind of things is truly impressive and a lot of it is service. So good on you.
+So that's a sort of long-winded way to say even though you are IT people, you can actually talk to each other. I'm going to give you some information, but you can grab some information from each other and ask each other questions. That's a cool way to network as well.
+So back to the topic of service. So I think now in 2026, heading to the end of the year, we sort of move past the question of why would somebody do service?
+Mentioning your government agencies, I think, you know, you've answered that question. If you're a startup building and you want to, or a student building and exploring, a serverless is just a great way to build on the cloud.
+So the question has now evolved into sort of more, how can I actually use serverless for more of our workloads?
+I like the serverless operating model, don't caring about all the load balancing the servers, you take care of that please AWS, I want to build my application. But I want to be more in that model.
+And so literally from the beginning, there are some fundamentals that have been core to serverless. And that is that no service to manage, but also no infrastructure to manage.
+Because serverless is no longer just about compute, it's about databases, of course, it's about AI, it's about, you know, all the different things you can run.
+And so the infrastructure becomes AWS's problem. Scaling up and scaling down, paying per use, similar to that millisecond billing, and that sort of strong isolation I was mentioning with Firecracker.
+Well, at least for Lambda, but lots of other service technologies, that it is as secure as AWS can make it.
+As I mentioned, Amazon is using AWS, we're very cautious and very cognizant about security, never mind all the government agencies, security agencies,
+and some of the biggest banks in the world, or hospital groups, or insurance companies, who trust AWS with security, in addition to the security that they do.
+But then, when we're talking about Lambda, there were some trade-offs, let's call them, or choices that were made for the Lambda event handler model.
+There was only ever one request per environment. It was a great thing when it was built.
+Because it meant you didn't need to think about strange, multi-concurrent things going on in one environment.
+It was super secure, one execution would never trample on another execution. That was great.
+We had to pick 15 minutes. Lambda started with one minute, and it's grown up to 15 minutes for a Lambda event function.
+But that was a choice to make, to be able to manage the service.
+Billing on the war clock time, so a Lambda function used to start, used to finish, and you would pay for the whole time.
+And then, the sandbox that Lambda runs in, I'm coming back to that firecracker sandbox again.
+You never ever saw that, or had any, could ever control that.
+But that was part of Lambda.
+And so these were choices for the Lambda you used to love and know.
+But customers and people have been asking to do a little bit more.
+And part of that was because you had to build some workarounds.
+If you were wanting to build a web function, potentially, you had to change and, you know, take on the handler format to be able to do that.
+Or you had to run an adapter layer.
+So if you were running Next.js or Hano or something like that, or you were even doing PHP or things like that, you'd have to add this adapter layer.
+Now, it wasn't a lot of configuration, but again, it was just something different that you had to do.
+If you had a service that was waiting for a downstream connection, maybe that's to a database.
+Maybe it's to an LLM call that's just waiting.
+Well, you had to pay for that.
+You know, you just had to suck it up and pay.
+If you had some high volume traffic, Lambda maybe could have been a little bit uneconomical,
+which is the polite way of saying expensive, at super high scale.
+So you had to consider, well, do I move to EC2?
+Maybe I have to move to containers.
+I've got a long running job, more than 15 minutes.
+Well, what do I need to do?
+For Lambda, I've got to break it up into different kind of things.
+Maybe I'm going to use step functions.
+That's another option.
+I want to run untrusted code or other kind of untrusted compute that my customers are uploading.
+Well, I'm going to spring some EC2 instances together.
+I'm not quite sure if containers are secure enough.
+We've got Firecracker.
+You could do it yourself.
+But again, this is stuff you need to do.
+And so, Lambda has sort of reimagined itself to take on some more of these workloads.
+And some of the service peerists I speak to are quite upset about this,
+because Lambda needs to stay exactly what it was.
+But the world doesn't stay stable.
+And so, Lambda also needs to evolve with that as well.
+So, the Lambda you've loved since 2014 does not change, other than just a rename, just to try and avoid some of the confusion.
+So, those Lambda functions, it's got called Lambda event functions.
+The API changes, the CDK codes, the API doesn't change.
+Sorry, now I'm confusing you more.
+The API doesn't change, the CLI doesn't change, CloudFormation, Terraform, CDK, all of that doesn't change.
+Everything stays the same.
+It's just now called Lambda event functions because it's the event handle model.
+But then a year ago, within that, there is a SDK that you can run to run durable functions.
+So, this is a way that you could create workflows in your code.
+I'm going to cover that myself.
+I'm going to raise later as well with a whole bunch of cool functionality.
+That's all running with event functions.
+And then literally, a week ago and a day, we came out with a new form factor for Lambda called web functions.
+And this is Lambda reimagined for web workloads.
+And we're going to cover all that's going on.
+So, two different types of Lambda functions, event functions and web functions.
+But customers said, I love all the stuff that we've got inside Lambda, but I want to take advantage of that.
+I don't want to just have run a function or something.
+I want to run a service.
+I want to run something that's much longer.
+And so, we wrapped up the secure isolation technology and came out with Lambda micro VMs.
+So, Lambda's always run in a little mini micro VM.
+You can never do anything with that.
+That was just the way Lambda worked.
+Now, we expose that externally that you can create these ephemeral micro virtual machines
+that you can control.
+Functions on the one side and you now have the sandbox on the other side.
+Is anybody still confused or am I making this worse by talking about more bits of Lambda?
+Hopefully, we will keep going and it will all make sense.
+Now, there are two different places or two different ways that you can run all three of these.
+One is the on-demand.
+That is that serverless, pay-per-use, scale-up, scale-down as you need to.
+And that works across all three of the form factors.
+Nothing changes.
+But on the bottom here, you can see we also have a new way to run Lambda functions, the Lambda event functions.
+And this is managed instances.
+And this is a way to be able to run EC2 instances that you own in your account, which gives you some good advantages,
+which I'll cover shortly.
+But it's just another place that you can run your Lambda functions.
+And as I mentioned currently, that's only available for the event functions.
+So hopefully, that paints a picture of what the Lambda universe looks like today and sort of allays some of the confusion.
+But it really is a reimagining of Lambda to be able to take advantage of more workloads, which ultimately will help you in the applications that you build.
+So let's cover event functions and actually more durable functions and what that functionality is.
+So in, again, the good old times, monoliths would sometimes get a bad rap, but were actually pretty easy to reason about.
+You had a big chunk of code.
+It ran on a server.
+Maybe it ran in the cloud.
+Maybe it ran on premises.
+It doesn't matter, but you had a big application.
+It was all in one place.
+If you wanted to see the code, you could see it in, you know, one repo, one file.
+You could do step three debugging.
+And that was great.
+The problem was, if you needed to scale it or you needed to use some other kind of services,
+now things started to get hard.
+You either need to have a bigger box or you need to have more boxes and then stick load balances in front of it.
+And now you're looking after load balances.
+And now you're looking after sticky sessions.
+And now you're looking after a whole bunch of stuff that you don't want to do.
+And so the world came out, and this wasn't an AWS thing, of the concept of microservices.
+So why don't we break up that monolith in a few different parts and we could use different
+services maybe for different jobs or different programming languages.
+We would then need to think about communication channels between those.
+how does one microservice talk to another microservice.
+And that was great for the scalability.
+But obviously more lines and boxes mean more things to manage, more things to look after.
+And life, I think, everyone with microservices did get a little bit more complicated.
+Some of the service purists, I think, took microservices to the end game, which was maybe a game
+of how many Lambda functions you could possibly create for an application.
+And that became just a nightmare to manage.
+So it's obviously a middle ground between having 2B microservices and middle ground and somewhere
+in between which works for you.
+But what if we could have a single function and we could see it as a monolithic code base,
+but it could take advantage of a distributed system and run like a distributed application.
+And this is one of the core fundamentals of AWS Lambda Durable Functions.
+Where you have a workflow, and a workflow is a process that you're going to run.
+So maybe there's going to be a transaction.
+Maybe there's going to be multiple steps.
+Maybe there's going to map over something.
+Maybe it's if-then statements.
+All these kind of things that you run.
+Workflows, which people have been doing for ages in code.
+And now this makes it a lot easier with durable functions.
+So Guber is actually going to do a way better demo of durable functions a little bit later.
+So I don't want to steal his thunder, but I'm just quickly going to go through.
+So hopefully you can understand the fundamentals of that before Guber shows you the real good stuff.
+So the concept, it's called a durable function because it's using what's called a durable execution.
+And a durable execution is quite amazing if you think about it, but quite simple, which is a good thing.
+And basically, as your code runs, every now and again you just go save state.
+If something then dies, or your lambda function dies, or downstream service dies, or whatever,
+when the function restarts, all it can do is just catch up where it was initially saved.
+And it's a very simple concept, but think how useful that can be.
+And the analogy I like to use is think of a save game.
+So if there are any gamers in the house, there must be gamers in the house.
+So it's a bit early in the morning, but some nervous people are putting their hands up.
+Can you imagine if you're playing a game, and you hit save, and you finish your level, and the game's saved.
+The next time you come up to play the game, it starts from the last game stage that was automatically saved, and you carry on.
+That's far more pleasurable than every time you start a game.
+You have to start at the beginning, and build all your way up.
+Same kind of thing with durable functions.
+So it allows you, with your control, to just create a checkpoint in different parts of your software to say,
+I've connected to that API, got the response back, save that response.
+Connect to that database, save that response.
+I've done a call to an LLM model, LLM, come back, which is non-deterministic, let me save that response.
+Something happens, and it just replays through all the different processes, and does that.
+And the way that it does that, is there's just an SDK.
+On land, you basically tick a box to say, yes, I want this to be a durable function.
+You install the SDK, you get the superpowers.
+It's available for Node.js, Python, Java, and C#.
+And we're working in the open source as well to build some for Go and Rust, I think, are the next two that are being looked at.
+So let's just go through a quick, durable function.
+So in this example, we are going to be handling receipts.
+So we are doing expense claims.
+Some of you people may be doing that as well here today.
+So this is what it would look like.
+On the left-hand side, we've got some pseudocode.
+You can see there's some different things in that, like CTX, which is for context.
+CTX.map is the way that you're able to communicate with Lambda to be able to use that context to be able to step through and run your application.
+And on the right-hand side is a log of what's happening within the durable functions.
+And you can see we've got four photos that we've uploaded into the system.
+Photos one and two that we processed correctly.
+Photo four, the little OCR thing, is a little bit blurry.
+But within your durable function, you've configured to say, don't worry about it.
+You don't necessarily have to have all of the work in.
+You know, three out of four is absolutely fine.
+We don't want this expense claim to fail just for one blurry photo.
+We want to, you know, let the other three go to the system.
+Tell the user at the end, and they can just, you know, once they upload another photo, they can then use that as another expense.
+Or just an example.
+But there's an issue with photo number three.
+We don't know what that is.
+Something dies.
+Maybe it's a failed execution environment.
+Maybe it's the OCR connection at the back, or whatever NLM is being called.
+And that call has failed.
+So what's going to happen is, when it fails, the Lambda function is going to recover.
+You can do that automatically, or you can choose that kind of things.
+And you can see, it's not going to do anything for photos one, two, and four.
+Because it's handled that.
+It doesn't need to do an NLM call.
+It doesn't need to do OCR anymore.
+And it's just going to reprocess photo number three.
+So, really easy to just be able to catch up and fix errors that are happening automatically.
+You can also run things in parallel.
+So you can see ctx.parallels.
+That's a way that you can say, I need to check the policy of this.
+Some kind of call to say, you know, is this receipt allowed?
+We're going to check the duplicates.
+Was this expense claim done last week as well?
+So you can run multiple checks in parallel.
+You can think of this if you're doing code reviews, or you're doing any kind of processing.
+There are often lots of things you can do at the same time for efficiency.
+Then the next thing is a callback.
+So you can see ctx.callback.
+And this is, well, this is say over 500 pounds, 1,000 pounds, whatever your example is with this.
+And we actually need to get a manager approval.
+And so what's going to happen is, the Lambda function, the Google function is just going to stop.
+It's not going to do anything, and it can wait for actually up to a year.
+So there we go.
+Instead of the 15 minutes for an individual Lambda function invoke, we've got now a weighted
+Lambda function that can run up to 15 years.
+In fact, each of these different blocks, which is running a Lambda process, can run up to 15 minutes itself.
+But the whole thing, you know, can pause and run for up to a year with all these individual steps.
+So we don't know how the manager is going to approve it.
+Maybe they go to a website.
+Maybe they reply to an email or a Slack trade or something.
+But anyway, some kind of thing talks back to Lambda and says, yeah, I've approved that.
+And then the Lambda function just automatically continues.
+Obviously, you're not paying for that waiting time.
+The function is just going to pause and suspend.
+And be free.
+Lambda, the manager approves it.
+And off you go and it carries on.
+The last step is obviously you want to pay it out.
+But here there's a problem with the payment provider.
+A failed payment.
+What are we going to do?
+So, as you may have worked out before, the whole rest of the Lambda function can rerun again.
+You don't need to check the photos.
+You don't need to check the policy.
+You don't need to do the manager approval.
+That has all been done before.
+Each of those steps are basically stored in an external database of Lambda managers.
+And when the log is replayed, it goes done, done, done.
+Tick, tick, tick, tick, tick, tick, tick.
+All done.
+I just need to do the payout.
+And this is great because you don't need to then run all of these if-then statements,
+all of this complex code to be able to undo the transaction, to be able to redo the workflow
+and all different kind of things and say, you know, if photo one has been done, do this.
+This is all just handled for you as part of the service.
+Item potency is built in as well.
+Something like a payment claim.
+When you're doing an expense claim, I suppose I wouldn't mind if I was paid twice.
+But if it was your credit card being charged, you don't want to pay twice as well.
+So using an item potency key, which is just built into the service, allows things to only happen at once.
+Again, goodness going to carry through and do a whole bunch of different kind of information on this as well.
+So then the clever ones of you are thinking, well, we do already have a service called Step Functions.
+What's that all about?
+Well, Step Functions is still around.
+It is loved.
+It is huge.
+Used hugely internally at Amazon as well.
+And they're two different approaches for running workflows.
+Step Functions isn't on the way out.
+Lots of investments going in that.
+A big team which runs that as well.
+But what Step Functions is really good at is basically orchestrating across AWS services.
+Because it has the AWS SDK just built in.
+So any AWS SDK call, be that writing to DynamoDB, starting a glue job, connecting to some synchronous process.
+Literally absolutely anything the SDK can do is built into Step Functions.
+Which means you don't actually need to write any code to do that.
+And so Step Functions, I think the better use case is codeless, although it's a horrible term because there's a configuration code in there.
+But this is about orchestrating across a lot of different AWS services.
+Step Functions has got a visual builder.
+And of course there's no catching all the things to update.
+However, if your Step Functions state machine looked like a whole bunch of coordinating just Lambda functions, that is fine.
+But sometimes, some people feel that it's actually easier just to run in a Lambda function.
+So you can do Step 3 debugging.
+You can run it in the Durable Functions emulator, which runs locally.
+And it just makes a little bit more sense that you can see all the code within your individual Lambda function.
+And that branching logic, and that calling an LLM, or that doing any photo processing, makes a little bit more sense inside the actual Lambda function.
+Obviously that means you're writing code in your own programming language.
+Some people prefer that, rather than using the Amazon state's language with Step Functions that it does.
+Again, just part of your function.
+So different ways of doing it.
+But yes, Step Functions still usually use a lot of IT automation steps where they aren't code kind of things.
+Or user onboarding.
+Where they're creating cognitive user pools.
+Or spinning up services for a CI/CD pipeline or a test.
+If it is coordinating those services, Step Functions is still great.
+But we now have another option.
+Rather than you having to learn Step Functions language, you can do everything in code.
+So that's Durable Functions.
+So a week and a day ago, we then came out with Web Functions.
+Which is just a standard HTTP server.
+So the question that started all of this is, what if Lambda just listened on a port?
+And you can see the left hand side, that is what a Lambda event handler looks like.
+You can see an event comes in and you return a status body and a body that comes up in JSON.
+But Web frameworks don't look like that.
+If any of you are web developers, you actually start a web server that listens on a port.
+And then requests are going to come in to that port, maybe via load balancer, maybe directly.
+It's just a server process that is running via HTTP.
+And there are a lot of benefits of that.
+And if you were previously running web services on Lambda, you either had to not run a web server and adopt the event functions model.
+Or you had to run your web server but then use the Lambda web adapter as a translation layer.
+HTTP would come in, it would turn it into an event model and the adapter would turn it back into HTTP.
+Again, clunky stuff that you need to do for Lambda. Unnecessary.
+So what Lambda web functions give you is standard HTTP.
+You actually run an HTTP server.
+Again, that sounds like heresy, but we're bringing a bit of the servers back into servers.
+But you are running not the servers that you're going to manage, but the server process that is running.
+And so you no longer need any adapter layer.
+So popular frameworks, whether you're using Express, Fastify, Hono, React Router, anything like that.
+As it runs locally, it can run locally.
+NPM will start.
+I'm going to show you shortly.
+You just upload all that code to Lambda and it's just going to run in Lambda.
+It's got streaming built in.
+Not only response streaming, but also request streaming.
+So you can imagine you've got a client streaming data to your Lambda function because it is a more continuous running process.
+And then sending that back.
+So it's no longer the Lambda event model where something comes in and Lambda freezes the environment.
+We actually keep that server running around for a few minutes at a time to be able to do that as well.
+And a big winner as well for two reasons is it just runs low key.
+So you do your NPM start, NPM run dev, and check your web function runs low key and then push it up to Lambda and then no code changes require.
+And that's super useful because in the days of ALMs writing and testing a whole bunch of things, ALMs are super great at writing web servers.
+They know that, you know, all of the models have been trained on web servers, there's new information coming as well.
+And so you'll be able to test and iterate locally rather than having to run a Lambda emulator.
+It's just much faster and much more sort of native and intuitive that you don't have to do this weird thing for Lambda.
+Some other things that are part of it is Lambda Web Functions now actually allows many requests per environment.
+So previously I spoke about the Lambda event model where you have just a single event coming into a Lambda function.
+Well now you can have many. So you can by default 64 up to 128, you are running the server process, many requests can come in.
+Why is that important? Well, because first of all it is native to how web servers run.
+Web servers are used to having many requests come in, so that's just the normal way.
+And then also for reducing cold starts. Yes, you're going to have a cold start for the very first request, but then that cold start is now amortized over 64 or 128 requests that comes in.
+Really much more efficient.
+In terms of configuration, a Lambda micro VM just comes with two virtual CPUs and two giga RAM.
+And that's just what's built in one of the execution environments.
+If that's only one execution environment, obviously Lambda can scale up to many, many execution environments to run it as well.
+The next was the billing. So normal event Lambda, you are billed exactly for the time.
+Web functions is slightly different and hopefully cheaper for some workloads as well.
+So for web functions, you do pay a base level of memory, but it's not the memory that you configure, because that's a fixed amount.
+It's just the memory that is actually actively used.
+So we look at the memory over a minute in time and then figure out which memory you've actually used and charge you for that.
+There's a request charge as well, same with event Lambda, but then for CPU, we only charge you the CPU when something is actually run.
+So if you're doing a database call and then coming back and doing some calculations on that or doing a hash function or Jensen interpretation
+or reading something from a database and transforming it into something in HTML, any of that, when the CPU is doing something, you're going to be charged for that.
+But as soon as the CPU drops, well, you're not being charged anymore.
+So you are kicking off a background job or doing some longer query.
+Of course, now there's doing an LLM call where you do the call.
+You know, Bedrock or Anthropic or OpenAI is doing all that number crunching.
+Your web function is just going to sit there and go, "Cool, cool. I'm not actually being charged with the CPU."
+So that is super useful.
+The next thing is being able to build more global applications.
+Specifically in the web world, you have customers all over the world.
+So you can selectively choose which regions you want to run your functions in.
+And Lambda is going to take the code and the configuration and replicate that code to multiple regions.
+It is a particular region, so it's not the concept of, oh, you're just going to run it everywhere in the world.
+No, you're going to pick the exact regions that you want it to run in based on your residency requirements or your data sovereignty needs.
+And then there are actually sort of two ways that you can reach to that global environment.
+One is a multi-region endpoint where we just send the request to the one with the shortest latency.
+And you've basically got a single URL that you connect to.
+I'm going to show that shortly.
+The other one is a regional endpoint where you do have each different function.
+It's got its own URL and you decide how you want to route that.
+So maybe you're going to have Route 53 or you're going to have some other load balancer or some other router in it.
+But behind the scenes, Lambda does that replication and then you have all how stuff gets to your code.
+So some flexibility.
+And the other cool thing is we've also added built-in canary deploys or blue-green deployments.
+So you can have a one Lambda function version one.
+You then go to version two.
+And you can say I want 90% to go to version one and only 10% to go to version two.
+See how that works.
+Check your metrics.
+Checks everything that's working.
+And then just for the configuration change, you can switch to 50-50.
+You switch it across.
+That's just now built to the service.
+So you don't have to use something else.
+So yeah.
+That's to safely be able to evolve and deploy your new version of your Lambda function.
+So why don't we see this at work.
+So I have a dashboard and it's called SSE because it's got server-side events.
+So previously you could not do this with Lambda because it didn't support server-side events.
+So we've got the code up on the screen.
+Is that readable on the bigger screens or do I need it bigger?
+Yes?
+That's okay.
+Cool.
+Yell bigger if it needs to be bigger.
+So I have a web function over here.
+And as you can see, it is listening on a port.
+Server.listen port is just an environment variable that gets from the Lambda execution environment.
+And I'm running a Node server.
+Just for the sake of typing on a laptop, I've created a few sort of little scripts in package.json
+just to do some kind of things.
+But there's nothing specific here for Lambda ready.
+So if I do an npm run start, I can always do that verb.
+npm run start.
+npm run start.
+So this is npm run start, which is just running Node.data index.
+If I was to head over to my local environment over here and I refresh, I have got - this is a web server literally running locally.
+Now, the figures and everything we're going to explore more as it gets deployed into the cloud.
+And basically, I've got a Node server that is running locally.
+I can do tests.
+I can change the colors.
+I can evolve my web application.
+I don't need to deploy it.
+I don't need any Lambda emulator.
+I don't have to deploy it.

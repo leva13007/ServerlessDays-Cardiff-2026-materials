@@ -1,0 +1,500 @@
+1
+00:00:00,000 --> 00:00:06,000
+ as well, and why every model call should stay inside a step, so Replay never asks the model
+
+2
+00:00:06,000 --> 00:00:12,000
+ again. So I have a blog post as well about reason, you can find it in one of the links
+
+3
+00:00:12,000 --> 00:00:18,000
+ at the end as well. So let's talk about state. We've looked at execution history, that's
+
+4
+00:00:18,000 --> 00:00:25,000
+ been the entire conversation so far, and that holds until that conversation outlives a single
+
+5
+00:00:25,000 --> 00:00:32,000
+ execution, or if it moves to another channel. So there are two kinds of state when it comes
+
+6
+00:00:32,000 --> 00:00:40,000
+ to these conversational agents. First, what each of these holds. So the durable execution
+
+7
+00:00:40,000 --> 00:00:45,000
+ state, it is for recovery, which operations ran, what they returned, which callback is
+
+8
+00:00:45,000 --> 00:00:51,000
+ pending, and agent storage on the other hand is for context, what the customer said and
+
+9
+00:00:51,000 --> 00:00:57,000
+ what was agreed upon. And then the scope. Execution state belongs to one execution of
+
+10
+00:00:57,000 --> 00:01:05,000
+ one function. Agent storage, it belongs to the customer. It is across different executions,
+
+11
+00:01:05,000 --> 00:01:10,000
+ across different channels, like I said before, SMS, WhatsApp, voice, whatever that might be,
+
+12
+00:01:10,000 --> 00:01:16,000
+ and it's across agents. And that's the one that makes a phone call, for instance, work as well.
+
+13
+00:01:16,000 --> 00:01:23,000
+ And then we have lifetime. When an execution ends, the history within the Lambda console for
+
+14
+00:01:23,000 --> 00:01:29,000
+ that execution is kept for up to 90 days. It's configurable. But the agent storage, well,
+
+15
+00:01:29,000 --> 00:01:35,000
+ that lives for as long as you want it to stay. And then who reads it? Well, the runtime reads
+
+16
+00:01:35,000 --> 00:01:44,000
+ execution state every time we do a replay. And any agent can read agent storage. And that includes us as
+
+17
+00:01:44,000 --> 00:01:50,000
+ humans can read it using our tools as well. So the execution makes sure that we never send
+
+18
+00:01:50,000 --> 00:01:56,000
+ the same message twice. But agent storage makes sure that the customer never has to repeat themselves
+
+19
+00:01:56,000 --> 00:02:05,000
+ because we have that conversational history stored. And that sits in the architecture diagram just like this.
+
+20
+00:02:05,000 --> 00:02:15,000
+ This is DynamoDB. It could be any type of storage as well. We are using DynamoDB. We're keying it to a customer.
+
+21
+00:02:15,000 --> 00:02:23,000
+ In this case, I've been using, there is a storage library for Strands Agent SDK called Strands
+
+22
+00:02:23,000 --> 00:02:30,000
+ Agents DynamoDB Storage Library. I think it's version 0.1 so far, so maybe not production ready.
+
+23
+00:02:30,000 --> 00:02:38,000
+ But the way it works is a great way to be able to store this type of conversational history across customers.
+
+24
+00:02:38,000 --> 00:02:48,000
+ So let's just follow this then and add on another channel to it. Because so far we have messages.
+
+25
+00:02:48,000 --> 00:02:54,000
+ But what happens when the customer wants to call? Well, let's say then that we have a few beads.
+
+26
+00:02:54,000 --> 00:02:59,000
+ We're going to follow the yellow here. The call starts. The customer is going to now dial the same number
+
+27
+00:02:59,000 --> 00:03:06,000
+ that they've been texting all along. So we're sending a call incoming to a regular Lambda function.
+
+28
+00:03:06,000 --> 00:03:13,000
+ It is now going to find that customer using the caller ID. And it's completing that pending reply callback
+
+29
+00:03:13,000 --> 00:03:20,000
+ that we have in the execution history. And it's going to tell us to connect the call to our voice agent
+
+30
+00:03:20,000 --> 00:03:27,000
+ with the customer ID in the header so we know who the customer is. The voice agent, it runs on target.
+
+31
+00:03:27,000 --> 00:03:34,000
+ And it's going to hold the web socket open for us through the entire call. And it can then read the context
+
+32
+00:03:34,000 --> 00:03:42,000
+ from the agent storage that we had in DiamondDB. So it can open with, well, I see you wanted to move Wednesday's appointment.
+
+33
+00:03:42,000 --> 00:03:49,000
+ Because it knows that from the agent storage. And we're doing then a speech to text, text to speech in this voice relay. And the agents, strands agents on bedrock, we just see it.
+
+34
+00:03:49,000 --> 00:04:14,000
+ The text turns. So you can use bedrock with that text to be able to give a reply back. None of this touches the durable execution. Checkpointing on every sentence in a voice call would add a lot of latency and honestly wouldn't recover anything.
+
+35
+00:04:14,000 --> 00:04:25,000
+ So while we are waiting, the coordinator is waiting for that call, it isn't running. It is still just suspended as of now.
+
+36
+00:04:25,000 --> 00:04:32,000
+ Same as with that hour-long job that we saw before. Something outside is going to do that callback.
+
+37
+00:04:32,000 --> 00:04:40,000
+ And now it's a phone call. But then the call ends, the customer hangs up. Now the agent is going to write the call summary
+
+38
+00:04:40,000 --> 00:04:49,000
+ And it's going to complete call ended with whatever was agreed. Moving the appointment to 9am on Wednesday, for instance.
+
+39
+00:04:49,000 --> 00:05:02,000
+ Now the coordinator, the durable function, is going to resume again. And the specialist can now book it using that summary from the voice call and send out a confirmation text message.
+
+40
+00:05:02,000 --> 00:05:11,000
+ So let's walk through this now. From the beginning. We have the customer phone on the left, agent storage on the right.
+
+41
+00:05:11,000 --> 00:05:20,000
+ The reminder goes out. It's saved as the first turn. It is going to be keyed by that customer so we know who it belongs to.
+
+42
+00:05:20,000 --> 00:05:31,000
+ Can we reschedule? The agent then offers two slots on Thursday. A return goes into the same customer's partition in the agent storage.
+
+43
+00:05:31,000 --> 00:05:38,000
+ Three hours pass. The execution is suspended. Nothing runs. Then easier to just call.
+
+44
+00:05:38,000 --> 00:05:46,000
+ And then they call the number that they've been texting. So switching over to the call instead.
+
+45
+00:05:46,000 --> 00:05:54,000
+ Before the voice agent says a word, the voice agent is going to read the summary from the agent storage so it knows what has happened so far.
+
+46
+00:05:54,000 --> 00:05:59,000
+ It's using that customer ID that came in through the call headers.
+
+47
+00:05:59,000 --> 00:06:08,000
+ It opens with the context. You wanted to move Wednesday's appointment. No one has to repeat anything.
+
+48
+00:06:08,000 --> 00:06:17,000
+ The voice agent agrees on 10. It doesn't book. It doesn't have write access. Because that's the booking agent.
+
+49
+00:06:17,000 --> 00:06:25,000
+ The customer hangs up. Call ended completes with what was agreed and the coordinator resumes where it was suspended.
+
+50
+00:06:25,000 --> 00:06:32,000
+ The booking specialist can now book and the confirmation goes out through SMS back in the thread where it started.
+
+51
+00:06:32,000 --> 00:06:37,000
+ So it's one execution, the text, the call and the follow up.
+
+52
+00:06:37,000 --> 00:06:44,000
+ The customer changes channel. Twice in this case. And the system still knew where the conversation was.
+
+53
+00:06:44,000 --> 00:06:49,000
+ What had been done and what it mustn't do again. That's why.
+
+54
+00:06:53,000 --> 00:06:58,000
+ And here's that same conversation. But as a trace this time.
+
+55
+00:06:58,000 --> 00:07:06,000
+ Turn one. The webhook. The coordinator invocation. Routing. The specialist with its bedrock call nested inside.
+
+56
+00:07:06,000 --> 00:07:10,000
+ The send and the wait for the next reply.
+
+57
+00:07:10,000 --> 00:07:14,000
+ Three hours later a new invocation. And the same trace.
+
+58
+00:07:14,000 --> 00:07:19,000
+ We're using open telemetry. There is a plugin or an SDK for durable functions.
+
+59
+00:07:19,000 --> 00:07:23,000
+ I think it's still in preview. It works really well already.
+
+60
+00:07:23,000 --> 00:07:29,000
+ And it joins it all that way. Using this same conversation ID.
+
+61
+00:07:29,000 --> 00:07:36,000
+ And the voice call. It runs, like we showed, outside of the durable execution.
+
+62
+00:07:36,000 --> 00:07:42,000
+ But it's going to keep that same conversation ID. And meaning that it can join in on that same trace as well.
+
+63
+00:07:42,000 --> 00:07:47,000
+ So the execution history tells you what one execution did.
+
+64
+00:07:47,000 --> 00:07:52,000
+ The trace tells you what happened end to end in this entire conversation.
+
+65
+00:07:52,000 --> 00:08:01,000
+ And to know whether it's helping customers, you have to record the model, the prompt version, and maybe the validation results for every turn as well.
+
+66
+00:08:01,000 --> 00:08:07,000
+ Like I said, the SDK is still in preview, but it is working really well already.
+
+67
+00:08:07,000 --> 00:08:13,000
+ So let's look just at a few production controls. Things that make this work.
+
+68
+00:08:13,000 --> 00:08:24,000
+ And I think there's six decisions. First off, deploys. An execution is going to be pinned to that specific version that started it.
+
+69
+00:08:24,000 --> 00:08:29,000
+ You know, when you update the Lambda function with new code, it's going to generate a new version.
+
+70
+00:08:29,000 --> 00:08:36,000
+ And the execution is pinned to that. When you invoke it as a version or as an alias.
+
+71
+00:08:36,000 --> 00:08:45,000
+ So you should publish your versions and you shouldn't rename steps while old executions can still receive those.
+
+72
+00:08:45,000 --> 00:08:52,000
+ And there are side effects. Remember to use idempotency keys that I showed in an earlier step as well.
+
+73
+00:08:52,000 --> 00:08:58,000
+ And you should have at most ones for sends, like messages, for instance.
+
+74
+00:08:58,000 --> 00:09:05,000
+ Retrys happen per step. If the execution itself fails, nothing is going to retry it.
+
+75
+00:09:05,000 --> 00:09:14,000
+ So you need to have a dead letter cube in place, for instance, or a status event that can clean up these as well.
+
+76
+00:09:14,000 --> 00:09:25,000
+ And finding the execution. To be able to have a callback through a webhook, for instance, that is able to resume that correct execution,
+
+77
+00:09:25,000 --> 00:09:34,000
+ you need to find that execution id. I tried using APIs for this, but the API to list that,
+
+78
+00:09:34,000 --> 00:09:40,000
+ it defaults to 15 requests per second, which is probably fine in a demo environment.
+
+79
+00:09:40,000 --> 00:09:43,000
+ But once you move this to production, that's not going to hold.
+
+80
+00:09:43,000 --> 00:09:51,000
+ So you need to be able to store that, the callback id per conversation, so you can easily list it as well.
+
+81
+00:09:51,000 --> 00:09:57,000
+ The callback API defaults to 6,000 requests per second, which is obviously not better.
+
+82
+00:09:57,000 --> 00:10:12,000
+ Timeouts and double texts, you need to decide what happens when nobody replies, and when a second message arrives mid-turn as well.
+
+83
+00:10:12,000 --> 00:10:16,000
+ And the last one isn't visible for me. Here we go.
+
+84
+00:10:16,000 --> 00:10:19,000
+ So we have the limits as well. Yes.
+
+85
+00:10:19,000 --> 00:10:27,000
+ So 30,000 operations and 100 megabytes of checkpoint data per execution is worth knowing as well.
+
+86
+00:10:27,000 --> 00:10:39,000
+ So they've just increased these limits on the service quite a lot to be able to enable a lot more different use cases.
+
+87
+00:10:39,000 --> 00:10:49,000
+ So there are a few questions I want you to ask yourself when you are deciding a system using durable execution to make sure that you're actually ready for it.
+
+88
+00:10:49,000 --> 00:10:53,000
+ And each one of these is something that I've walked through so far.
+
+89
+00:10:53,000 --> 00:10:58,000
+ So first off, do in-flight executions keep the version they started?
+
+90
+00:10:58,000 --> 00:11:01,000
+ And that's invoking a version or an alias.
+
+91
+00:11:01,000 --> 00:11:05,000
+ As I said, it's going to be pinned to a specific version.
+
+92
+00:11:05,000 --> 00:11:13,000
+ Is every model called, generated id, timestamp, uuids, and so on, are they in such a step?
+
+93
+00:11:13,000 --> 00:11:16,000
+ And that's the replay rule that I showed early on.
+
+94
+00:11:16,000 --> 00:11:22,000
+ Which of your steps have side effects and what stops them from running twice?
+
+95
+00:11:22,000 --> 00:11:28,000
+ Think about sending message or it could be doing a bank transfer for instance.
+
+96
+00:11:28,000 --> 00:11:32,000
+ Using the idempotency key and at most is important.
+
+97
+00:11:32,000 --> 00:11:38,000
+ And how does a replay find its callback without listing executions?
+
+98
+00:11:38,000 --> 00:11:43,000
+ So you need to store that callback id somewhere when you start waiting for it.
+
+99
+00:11:43,000 --> 00:11:47,000
+ And what happens when a callback never completes?
+
+100
+00:11:47,000 --> 00:11:49,000
+ Or if an execution fails entirely?
+
+101
+00:11:49,000 --> 00:11:55,000
+ Think about timeouts, heartbeats, and have something that is able to clean it up as well.
+
+102
+00:11:55,000 --> 00:12:02,000
+ So if you don't have answers to one of these, maybe that's work left to be due before you're able to actually launch it.
+
+103
+00:12:02,000 --> 00:12:06,000
+ If you want to try this, pick one flow that already waits.
+
+104
+00:12:06,000 --> 00:12:14,000
+ Something that you are building that could be a reminder system, an approval thing, or a follow-up of some sort.
+
+105
+00:12:14,000 --> 00:12:17,000
+ And build that using durable functions.
+
+106
+00:12:17,000 --> 00:12:25,000
+ I think we have a lot of stuff already that's either built around queues or state tables and so on.
+
+107
+00:12:25,000 --> 00:12:31,000
+ If you want to try this out, I have some code samples that you can try out on GitHub.
+
+108
+00:12:31,000 --> 00:12:39,000
+ With simple durable execution workflows that you can try both locally and you can deploy them as well.
+
+109
+00:12:39,000 --> 00:12:47,000
+ And if you're building durable functions, do check out the durable viz extension that you can run in your IDE.
+
+110
+00:12:47,000 --> 00:12:53,000
+ It allows you to visualize the workflows in a way that makes it easier to follow along as well.
+
+111
+00:12:53,000 --> 00:12:59,000
+ So, the customer who wrote "Can we reschedule?"
+
+112
+00:12:59,000 --> 00:13:05,000
+ It should never need to know how many Lambda invocations, retries, or channels were behind the answer.
+
+113
+00:13:05,000 --> 00:13:09,000
+ That's the thing that we as developers need to fix.
+
+114
+00:13:09,000 --> 00:13:13,000
+ The execution makes sure that we never send the same message twice.
+
+115
+00:13:13,000 --> 00:13:17,000
+ Agent storage makes sure that the customer never has to repeat themselves.
+
+116
+00:13:17,000 --> 00:13:23,000
+ And the execution history of Lambda Durable Functions can't tell you when every PI was wrong.
+
+117
+00:13:23,000 --> 00:13:27,000
+ So you have to build the checks that make that work.
+
+118
+00:13:27,000 --> 00:13:35,000
+ And with that, I want to thank you all for being in this session and for being here today at serverless days.
+
+119
+00:13:35,000 --> 00:13:37,000
+ Thank you so much.
+
+120
+00:13:37,000 --> 00:13:38,000
+ Thank you so much.
+
+121
+00:13:38,000 --> 00:13:39,000
+ Thank you so much.
+
+122
+00:13:39,000 --> 00:13:40,000
+ Thank you so much.
+
+123
+00:13:40,000 --> 00:13:41,000
+ Thank you.
+
+124
+00:13:41,000 --> 00:13:43,000
+ So this is - we're just going into a break.
+
+125
+00:13:43,000 --> 00:13:47,380
+ So this is - we're just going into a break.
+

@@ -1,0 +1,283 @@
+To do any of this, I can just iterate on my app locally as a normal web server developer would do.
+So what I'm going to do is I'm going to then say, why don't we deploy this to Lambda?
+So all I'm going to run is, let me just get this started, deploy, and click on VS when it tells me it needs to deploy.
+Hopefully authentication is going to behave.
+And you can see here the command is quite simple.
+So AWS Lambda Web would deploy a name, where the code is, and the timeout.
+That's it.
+This is nice and slowly, and we're going to be dying for the live demos here today.
+But you can see that one command.
+That is great for agents as well, because agents are just going to be able to build that as well.
+Really easy.
+So you can see behind the scenes here, it's going to do a number of tasks.
+It's actually going to create an S3 bucket where the code is stored.
+It is going to create an execution role.
+It is going to zip up your local package up to that S3 bucket.
+Then it's going to create a Lambda function that uses the code from that as well, and create a URL.
+Done.
+So that's literally live with particularly slow conference Wi-Fi doing my application.
+Now just to save a bit of time, I'm just going to do the global deploy, because that does take a minute.
+There's no point staring.
+Deploy global.
+So while that's running in the background, I need to do that as well.
+And I'll show you what that is.
+So we now have a URL endpoint that is available on the web.
+So that is going to load up.
+Hopefully with the Wi-Fi as well.
+Let me just go back to this code and hit OK.
+I didn't have to authenticate.
+So I just need to hit enter to do the deploy.
+Come on, come on.
+You can do it today.
+It's like watching the kettle boils.
+Watch it too much and it just doesn't do anything.
+Okay, I'll check back on that.
+So basically we have that Lambda function that is running in the cloud.
+So you can see I'm running it from us-east-1.
+I have an instance ID.
+So this is just a new ID I created for the instance to say what is happening.
+Now we can see here that this Lambda function environment has been running for 40-ish seconds.
+What I can do here is I can start to generate some CPU load.
+So this is literally just going and running a very wasteful hash function.
+I could have been doing Bitcoin mining, which may be a little more useful for my bank balance.
+But basically I'm using some CPU within this Lambda function.
+You can see the little graph going up.
+But what is happening is this Lambda process is running for just after a minute.
+But I'm only running 9 seconds of CPU.
+So there it is.
+I'm not being charged for the whole minute and now 10 seconds of the CPU time.
+I'm only going to be charged for that 9 seconds while my code is crunching and doing something.
+So we can see also the latency because this is running from Northern Virginia.
+It's about 110 milliseconds.
+And I have just one instance running in this account.
+So if we do E88, let's remember E88, and I'll refresh.
+Refresh and stuff is slow.
+We'll see what it connects to.
+But it may actually connect to either the same execution environment or another one of those yellow boxes where it has spun up a another environment.
+Behind the scenes, Lambda.
+Wow, this is nice and slow.
+I've really forgotten.
+No, it was E88.
+So we happen to have reconnected to the same execution environment, but maybe it would have connected to another one.
+Just seeing as the front end is going to connect to whatever is happening.
+So we've still got 104 milliseconds.
+So you can see, even though I refresh my Lambda function, you can see behind the scenes, that has still been running for two minutes.
+And you know, I've only generated nine seconds of CPU.
+Let's check for that global deployment.
+So, what is happening now for this global deployment?
+So, very simple from the command point is I just say it is a multi-region endpoint.
+I give it the region so that Northern Virginia and the EU-West one, I now want to have a more local European connection from an application.
+Maybe I'm going to have three across the globe, maybe I'm going to have one in AsiaPack.
+I could do it in 17 regions if I like, up to you.
+And all this is going to do is take that Lambda function code and configuration and just replicate that automatically to all those different regions.
+And that is going to be really easy.
+So, this deployment package is doing, it's preparing the S3 bucket.
+Again, this is taking a bit of time.
+Let's see what it is.
+Okay, we will come back to that once that has been deployed with the global URL endpoint.
+But this is great.
+This kind of demo, to be honest, is a bit nerdy and it's a bit sort of how Lambda functions are working behind the scenes, which is only part of the interesting story.
+When actually, one, if you really want to actually make sure that the computing service works, the only way that you can test it is to be able to run Doom in a web service.
+Anybody here old enough to have played Doom?
+Oh, there we go.
+People are warming up today.
+Excellent.
+So, Doom came out in 1993.
+It used to run on a 486 processor, which used to take up all of the CPU.
+I think our internet is ridiculously slow.
+Let's just try to refresh and see if anything comes over here.
+But anyway, the way that Doom actually works is it sends images to the front end.
+Now, when this was running on a single computer, that would be really easy because everything would be running locally.
+But I built this, I say I, with the help of Kira and Claude.
+I don't build stuff anymore in that same way, and I probably couldn't do this myself, managed to be able to get Doom to be able to take those images that were displayed locally and stream them across to the browser.
+This is running in a Lambda web function that is running remotely.
+I think the internet is so piece of stringish that it's not behaving particularly well.
+But anyway, I could actually play this Doom game.
+And so, it would run around, shoot all the zombies and do all this kind of thing.
+And basically, what it's doing is saving all the clicks.
+So, it's saving all those clicks, which I'm then serving in a database, because can you imagine if I then reconnected, or the timeout of a Lambda function happened, reconnected to that other system, and I want to be able to persist those keyboard presses and continue on the game.
+There's another cool thing over here.
+I can actually show a QR code.
+And so, actually, in fact, you could connect, but the Wi-Fi is not particularly great.
+So, you can actually connect to this QR code, and you could watch me playing that game.
+Because what's happening, all those keystrokes are being stored, and then it's going to be replayed on your connection to it, and you can follow me playing Doom.
+So, follow me playing Doom, but this is so long.
+If you can't, it's not even accepting the keypress.
+Oh, that's a neat of a Doom endeavor.
+I mean, seriously.
+Anyway, we're running around shooting.
+It's been fun to play Doom and be able to have people connect.
+So, let's go back and...
+Well, things are particularly slow.
+So, we have now the global endpoint, which is still being deployed.
+It does take about a minute.
+But basically, what comes back is it is going to then have a global URL.
+So, when you evolve your Lambda functions, you can have different URL endpoints.
+You can have up to 50 different ones.
+A few different kinds of configuration for them as well.
+Let's see.
+I've got 17 seconds.
+Maybe it's going to take a minute.
+I'm not sure if it's going to be that long.
+So, another thing I could have done, but I haven't done it just for the Wi-Fi, is to look at the concurrency of a Lambda function that would run.
+So, if I was running any of these demos, and what I was going to run for that was run a curl command that runs 300 requests to that URL endpoint, but 200 running at each time.
+I keep those requests open for a minute and a half.
+So, in a standard Lambda model, that would run up to 200 environments at a time, standard Lambda being the event functions.
+So, we'd have 200 execution environments all spun up, and that's just how it would work.
+When using web functions, well, actually, it's only going to use 59, it's actually going to use five environments, and it has 59 connections all running in one execution environment.
+So, you can see, running all of that, it is far more efficient in terms of the number of execution environments that are going to be running.
+And, yes, if you are paying per memory, that's in use, but it's only in memory for one execution environment.
+You're not paying memory used for up to 200 different environments.
+So, the example was, you know, it was running from a minute and a half, but across all of those 300 requests, it only used 4.75 seconds of CPU, and from the closest region, there was a reduction in latency.
+So, you can just sort of see some of the difference between the event functions and the web functions.
+Ah, there we go.
+So, we now have a global URL, which is literally the same app.
+As you saw, I didn't make any changes to the app.
+And we can see, once it connects over here, now that app is running out of EU West 1, and that latency is 326, which is massive.
+But I think that's latency from the browser.
+Well, that's a bomb of the inverse demo.
+Normally, what happens is the latency to US East 1 is about 110 milliseconds, and then when it's in a local region, it's about 10 milliseconds.
+Ah, it is dropping over here.
+Ah, we're down to 39.
+So, it is sort of happening.
+But the point is, you can see that when you're deploying a Lambda function to a more local region, and you have slightly more internet than a carrier pigeon, your latency is going to drop.
+And that's actually going to be super useful.
+And, of course, this is your Lambda compute doing that.
+Behind the scenes, you can use things like DynamoDB Global Tables, or, you know, D-SQL, some other kind of services that also have global endpoints that allow you to create these more global applications.
+So, that is Lambda Web Functions.
+So, the difference between the two, well, Event Functions, you then want to, you know, think about using, if you're using SQS as a trigger, batching, streaming, Kinesis, Kafka, S3, all those kind of things, great for Event Functions.
+When you do want one request environment, you want that isolation, you don't, you don't want, you want, you're running in a multi-tenant environment, for example, you want to ensure there's no sort of crossing of the streams.
+Event Functions is any runtime, Web Functions is no JS on ARM64 today, but we are, of course, looking at bringing more, different more runtimes.
+You know, the big model is slightly different.
+I hope things would be a little bit cheaper for Web Functions.
+Web Functions isn't going to be cheaper if it's going to be really sporadically done functions that are, you know, going to run request every five minutes and that kind of thing.
+But I did some internal modeling, and because that web server stays running, you know, it's not going to be completely free, but it's going to be about a dollar a month.
+So that's the kind of thing when it is a bit more expensive, we say you're going to be wasting money, and a Web Function that's, you know, the bad use case for this kind of billing model is still going to cost you only a dollar a month.
+So let's continue into the last little bit of labor is micro VMs.
+So this is a VM sandbox you control.
+Same firecracker, same VM isolation, got its own kernel.
+We stick a URL in front of it, and it's built from an ordinary Docker file.
+So it is just Docker.
+We upload your Docker file to S3, and I process from Lander, and then it's going to build your micro VM.
+But what's different from running a container or running an EC2 instance is when the Lander service creates that micro VM,
+it's going to run whatever code you specify and then create a snapshot.
+And so when it's going to then run again, when it's going to start and initialize, it's just going to initialize from the state of that snapshot.
+So all the stuff and the working and everything that you may have done in your initialization step, you can save that durably before that actually runs.
+And so you can run these micro VMs for up to eight hours, and they can stop and start.
+You only pay for when they're running.
+You can bring them down when you need to.
+And it's just a simple service.
+So eight hours continuously running.
+It could be a whole micro VM can run for eight hours, or it can be available for eight hours, and you stop and start it whenever you like.
+And you get to control the life cycle.
+So you choose when to launch it, when to suspend it, when to resume it, and all that kind of thing.
+So when you do suspend it within that eight hours, nothing gets lost, and then when you restart the micro VM automatically, or via a schedule or some kind of thing, it'll just pick up where it's left off.
+If you do need to run it for longer than eight hours, then you do need to then persist state to another kind of service, and people are using things like S3 files, or maybe it's just storing stuff in your database.
+So what it gives you, in terms of compute, you can select some different compute options, you know, from half a gig up to 32 gig of RAM.
+But the third one down is actually what is really cool, because you configure a base amount of memory and CPU, and then micro VMs allows you to automatically burst up to four times for that.
+So you're going to pay for the base while it's running, and then that burst will just charge you just for that burst when that happens.
+So again, you don't have to then size your micro VM for your peak throughput, just what you need to guarantee it, and then that burst functionality is still built in with a micro VM.
+Amazon Linux 2023, running on ARM64.
+We obviously are looking at Intel again as well.
+Lots of connectivity, way more than a normal lander event function or a lander web function, you know, from web sockets, GRPC, anything.
+It is just a micro VM process that you can connect into, and obviously you can connect it to a VPC as well for controlling the e-based traffic.
+So let's have a look at another demo, which may, again, go horribly wrong, which is the micro VM playground.
+Now, this is a cool way that, I think the screen is quite small, but the micro VM playground just shows some different kind of options that you can use a micro VM that's going to go up and running.
+So what we're going to do is a CI CD worker, so I'm going to click on the CI CD worker, and Carrie Pigeon is going to connect.
+I will click, and I will see what happens.
+So basically what is going to happen behind the scenes is when this does eventually connect to the service, is someone has created, a great colleague of mine called Anton has created a Docker file, which is a CI CD worker.
+So, anybody using, you know, GitHub Actions or GitLab or this kind of thing, when you are running those CI CD workers, you want to then, you know, spin up this environment.
+But the weird thing with those environments is each time you spin it up, you are going to have a container runtime, maybe you're going to use Ubuntu, Amazon Linux or whatever, and then you install Node, and then you install something else, and you, you know, download some files, you clone the repo, do all those kind of things.
+There's a whole bunch of steps.
+Using a micro VM, you can actually have most of that installed, but maybe you're just going to do a Git call for the latest release.
+So, really fast to set up, not behaving here on the Wi-Fi, because that's not even running.
+I'm blaming the Wi-Fi, maybe, I just learned in getting out, I'm blaming the Wi-Fi, but maybe it is my laptop as well, but who knows.
+Anyway, I'll just have to talk through it, and we'll do a refresh and see what's happening.
+But you can see a webhook is going to run at the start of this micro VM, and a CI CD process is going to run.
+So, it does a sort of, it actually clones a real repo, so this isn't just a simulation, it does some code, does some checking on the CI CD, has, you know, a whole bunch of tests, and that runs them.
+The micro VM starts up in under a second.
+So, that is super efficient if you want to be able to build this kind of environment.
+Again, for hosted runners and all these kind of things, super useful.
+Some of the other use cases as well, which I'll just have to talk through, is something like a game server.
+So, you know, anybody who's got kids who likes to play Minecraft, or even Fortnite, or things like that, Fortnite's a managed service, but you can imagine having a game server, how long does a game take to play?
+Normally, not longer than eight hours.
+You can run up this game server, multiple people can connect to it, as soon as the game is over, it just gets removed.
+And, of course, you could have, you know, a hundred games on your platform, a thousand games on your platform, they can also each be another game server.
+Under a second to start, all that network connectivity going in a shared environment, which everyone can connect to.
+We spoke about the CI runners.
+One thing I just wanted to add is that, because you can have multiple of these micro VMs, you don't need to have one CI runner that you create, and then, oh, this repo, this time, and some of our apps are known, some are Java, so I need to install everything.
+No, for literally every single app, or every part of an app, you can have a different micro VM that is spun up.
+It's just a Docker file, maybe a Java one for this app, a Node one for this app, everything is pre-installed and really good.
+Dev workspace is really good.
+You want to just have a URL endpoint you can connect to, write VS code, run Kira Web, run anything that can run in a web server, sort of completely isolated IDE in a sandbox.
+That's really fun to play with as well.
+And, of course, obviously, ancient sandboxes if you're using AR.
+You've got untrusted code, you've got, you know, you're, maybe it's doing a code review in a secure environment that you want to check, or maybe your AI agent is creating code.
+You don't want to run that in your normal laptop or your normal EC2 instances to detect.
+You want the secure isolation bubble to be able to run your agent sandbox in that, in a completely isolated way.
+And, of course, you know, this is a great way to do that as well.
+So, that is Lambda Micro VMs.
+And the last thing to look at is just Lambda managed instances.
+And this is basically we manage and run EC2 instances that are going to run in your accounts.
+We manage, patch them, launch them, terminate them, do everything that happen to sit in your account, but you can't even get to them.
+You can see them, you can manage the configuration and the networking, but you can't get into them.
+One of the benefits is using EC2 pricing, so if you've got savings, plans, and reserved instances, that is absolutely great.
+So, when Lambda deploys a function onto your managed compute, it's actually going to deploy them as container images.
+It doesn't use Firecracker because this is your own account, your own EC2 instances, and there's sort of a bit of trust boundary there as well.
+So, in terms of when you're going to use this, Lambda on demand event functions is going to be really great for those spiky kind of workloads when you don't know what's going to be coming.
+But managed instances, it takes a bit longer, it takes about two minutes to deploy a function, and so it's for that sort of high request, steady state, and it's going to be cheaper for you for, you know, really high running functions.
+And also, those Lambda functions can also run for up to 90 minutes.
+So, just a different way, a different sort of managed, but you have a bit more control of the computer Lambda can run.
+And of course, that means you can run GPU, you can run instances that are, you know, memory bound, or you want bits.
+Network instances, or big CPU instances, you know, a whole bunch of EC2, and it floats our GPU that is actually on the roadmap, so hopefully you'll be able to, you know, run Lambda on GPU instances as well.
+Two little other workarounds if you had to mess with that.
+If you're running out of S3 storage, you can now bring your S3 bucket, your own S3 bucket, which just connects to Lambda.
+And tenant isolation mode means you can have an isolated execution environment per tenant, so that's really easy to do.
+So, the whole idea of what I've been speaking about today is Lambda for more workloads.
+Running web functions natively, not having to pay for the wait, manage instances for that steady traffic, not having to split all those jobs into weird kind of things.
+You can use neural functions and untrusted code for microbeings.
+But behind the scenes, your current event functions, they don't change.
+Runs across multiple AZs, Patch4U, VPC Access for all three, CloudWatch, IAM, CDK, SAM.
+All those kind of things remain exactly the same, and the same concepts are used across all the environments.
+The last little bit is just anybody using AI coding.
+I joked about it earlier.
+Of course we are.
+So, just want to mention the AWS, the agent toolkit for AWS.
+And this is a bunch of skills and a hosted NCP server that we run in AWS that is just always up to date with everything that's going on in AWS.
+You can run all commands through that as well, so it could be a secure environment.
+You can have different identities for yourself and your agents.
+But if you're doing anything with AWS, I would suggest just adding this.
+They stay up to date.
+Web functions came out last week.
+On day one, we had the agent support for web functions, so I just knew everything about web functions.
+All of the work that our solutions architects, our technical account managers, our service teams do everything.
+All the little gotchas, the little great things, the little use cases and everything.
+It's all the literary knowledge of how to use AWS.
+It's built into this toolkit.
+And so that's super useful to be able to build.
+You can just, you know, you pick a job.
+You want to reconcilia.
+Something that needs to run past 15 minutes, well, it's going to pick the service.
+You want an express app, it's going to pick web functions.
+You can also ask other kind of things.
+I want to build an application.
+You know, this is the number of orders per minute.
+This is what I need.
+I want to add a potency.
+I want all this kind of thing.
+And it can actually build a SAM template, build a CDK template based on the architecture just from using the questions.
+So it's a discovery mechanism, understanding, asking questions about your account, building infrastructure, building SAM templates, everything to do with AWS.
+Lots of kind of things.
+I'm not going to go through at all.
+But yeah, the agent toolkit can do a huge amount.
+The Lambda roadmap is open source, a whole bunch of things we shipped, which we spoke about today.
+And things that are coming up, things like open telemetry support, you know, more timeouts, bigger package sizes.
+It's an active community.
+The product managers are on there.
+So if you do have information that you'd like to share or use cases of information, please, that would be super useful.
+Thank you so much for starting the morning with me in lovely Cardiff.
+This is the resource slide, which has the resources, links to all the parts of the different Lambda functions.
+And I super appreciate you spending.
+Thanks so much.
+Enjoy the networking and enjoy the talks coming up.
+Thank you.

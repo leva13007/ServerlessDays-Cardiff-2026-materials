@@ -1,0 +1,241 @@
+Remember, I talked about autonomy levels changing dynamically based upon the confidence scoring
+and the capability scoring of your AI agents.
+These are deterministic.
+They deterministically decide this agent needs to have its identity revoked or its autonomy
+level decreased.
+So it's not an agent non-deterministically deciding what our agents do and what their
+permissions are.
+You combine deterministic tools with this.
+So all of this is policy as code.
+You throw it into your repo with your agent, you run it, problem solved.
+That is basically making sure that these code items, these governance tools or technical
+controls move at the same speed as your development.
+And if you use a code code or Kira or whatever it may be, it can pre-make a lot of this stuff
+for you a lot faster than doing it yourself.
+Speaking of which, I've talked briefly about sandboxes before.
+I talked about, you know, when Amazon do it, we don't use general purpose compute.
+We don't develop on our laptops.
+We do it in a sandbox that is isolated.
+We experiment.
+We record everything.
+It's used as evidence.
+It's stored.
+And then we can do technical assessments and audits.
+That's a lot of building.
+So you build your AI agent and you build this huge harness around your AI agent in order
+to actually be able to get it to work.
+Who in the room has actually played with Mythos or Fable 5 out of curiosity as to how?
+A couple of hands up.
+Okay.
+Yeah.
+One of the comments I get from customers is going, oh, this Mythos is rubbish.
+It didn't do anything useful.
+Well, actually it does.
+But you've got to create a big harness around it in order to get useful information out of it.
+It's just the inference layer.
+There's no agents there.
+There are no tools there.
+You've got to build all that.
+And sorry, another sales plug.
+Amazon MedRock Agent Core provides a lot of the things that you'd normally have to build
+as part of your harness.
+But the ones that are really important, and they relate back to some of those threats we
+saw from a moment before, identity is managed, memory is managed, it's cryptographically encrypted
+so that memory poisoning can't occur, policy engines there will determine what the autonomy
+agent's going to be, run time, you can get like special microvibs.
+I think we had a workshop on it earlier today, where you can run dangerous code to see what
+it does, and let an agent go a bit hog wild within your sandbox to say, attack this thing until
+you get it, you know, set that goal really high.
+But it can't escape, so it's all good.
+Evaluations, using L&M's judges to say, well, you know, looking at the confidence scores
+and the capability scoring over that window of time, how much do we trust this thing?
+Is safety good enough?
+It's one of the other four dimensions of testing good enough.
+Gateways for inbound authorisation, observability, observability, observability, super important.
+And agent registry, can you manage, is it connected up to the asset register?
+Well, this is pre-built.
+You can build it yourself, all our competitors do the same thing.
+So, you know, there's, you know, just compare and contrast when you're thinking about what
+platform you're going to build your agents in.
+I briefly talked about early autonomy.
+I won't bang on about this too much because we've already kind of carried it on.
+But we think about four stages, development stage and pre-production and production.
+This should be nothing new to anyone who's ever developed any kind of application in any kind
+of organisation.
+But there are quality gates based pace at stage.
+I talked about, sorry, calibration, not capability.
+So confidence, calibration scores over a window of time.
+If that score is high enough, the amount of autonomy increases.
+The application has moved on to a different stage in the DevOps lifecycle.
+All of that is easily automated.
+All of that can be rigged back to your asset management or risk management system.
+They're just API calls.
+And sometimes you have to build it yourself.
+It's worth investing in.
+Sometimes some tools will actually give you some things out of the box you can try to use
+in this space.
+And we talked about verification and automated evidence.
+Evidence, especially for the EU AI Act in your transparency.
+What data did you use to train this thing?
+What testing did you do with it?
+Did the testing work?
+Can you watch this thing operationally?
+So not just when you were building it, but when you actually operationalise it.
+How do you know it's failing?
+How do you know what the effect is of switching from one model to another?
+Because models are interchangeable.
+What's the effect of your agent code changing?
+What's the effect of a tool changing in that trial?
+You need to be able to continuously be monitoring this and gathering evidence in order to be
+able to shore up your legal liability position, when inevitably somebody is going to challenge
+it.
+And in the AWS context, all these things, config, cloud trail, security hub, agent core observability,
+work together to produce evidence for all of these frameworks you see down at the bottom.
+Do you have to build all that?
+You could.
+Different cloud providers have different ways of doing this.
+The way we do it is that, and those of you who observe it will notice that there is a typo in there,
+is AWS Assurance, which basically automatically and continuously assesses your environment against
+all those frameworks, and custom frameworks if you want, based on your organisation's needs.
+Currently, for private media, see your account team if you want access to that.
+And finally, we get through to the whole picture.
+So we know that the majority of risks associated with AI applications are not new.
+Our security incident response, or cyber incident response team, still says, over 80% of cyber incidents
+are related to identity.
+In my role in the Army, every cyber incident I've worked on has been something to do with identity
+and poor identity protection by third-party developers using our development intra-ID and our mod cloud system.
+Every single incident.
+So whenever we're doing threat hunting, we're inevitably looking for developers and third parties
+who have had their laptops hacked while they're working on their mobile systems.
+So it's all identity.
+Identity and identity.
+You really need to really, really, really, really, really need to get identity authentication authorisations sorted out.
+And for those of you, and I'm happy to have an argument about this later,
+it is not OAuth OIDC.
+That is for JavaScript applications for your all-to-pretty websites.
+Agentic AI uses SPFY or other modern TLS standards for dynamic TLS certificate creation.
+So, putting it all together, we've got the identity, we've got some technical controls,
+we've got governance controls we need to implement.
+What we need to do is have a system put together, which hopefully one of you start-ups will build,
+says, whenever I fire up a new code repository and put some agent code in it,
+a strands agent in a container image,
+it's automatically going to register that with the asset and project management system,
+so somebody's paying for it and resources are being allocated.
+It's automatically going to set up and say,
+OK, I want to gather all these logs.
+CloudFormation, CloudTrail, et cetera, et cetera, application logs.
+Automatically, you should be able to do this all on the fly.
+You should be able to take all that information plus other context about your application,
+such as, is it processing PII, is it doing stuff that might involve people who are teenagers or children,
+and be able to come up with a risk assessment for your application to decide,
+am I going to deploy this automatically and let your pipeline run,
+or am I going to block your pipeline and get somebody to approve it first?
+Enforcement to control, as I kind of skipped ahead there,
+that's where you basically have the preventative, stop the pipeline working at all,
+or detective, just maybe think about, OK, we've detected a few things,
+they're not showstoppers, they're more informational, they're more risk.
+We'll let this pipeline run and complete deploying code.
+And then earning autonomy.
+Is the agent confidence score and calibration scoring over the window of time
+of sufficient quality that we can give this agent more autonomy,
+access to more tools, access to fix things without needing to tell us,
+things that are reversible, and things which are low impact at first,
+and then as we trust the agent more and the confidence scoring stays the same,
+can we give it more complex things, like sudo root and Linux systems, for example.
+That would be something that's extremely risky.
+And continuous monitoring closes this loop.
+As I said, I'm the world's worst salesman,
+but I'm quite a bit of agenting AI development now,
+and, OK, I use AWS because I get it for free,
+but it's pretty good.
+I've worked with Databricks, I've worked with Xur, I've worked with GCP,
+and they all have strengths and weaknesses,
+but when it comes to making less work for me
+and leveraging native services that just do the stuff,
+it certainly wins, in my opinion.
+Moving on.
+Key things to take away.
+So, hopefully, not hopefully, I know that we've covered a few points.
+You should all have a bit of an idea of, like, OK, right,
+covenants is important, I need to unblock this.
+Some of you may be thinking,
+oh, I'm going to build a cool new product and become a multimillionaire
+by building a governance orchestration agent.
+I will buy it off you, my customers will, if you do.
+But you should be able to say, OK, I can now, to help me get governance right for my application,
+I can use the scoping matrix, which is free and online, Amazon.com,
+to basically allow me to identify and communicate to other stakeholders
+what kind of app am I building,
+what controls and risks are associated with that kind of app.
+You can set up visibility.
+Any cloud provider will do this, but in the case of Amazon,
+it would be CloudTrail, CloudWatch,
+that will enable you to basically meet those transparency requirements of the UAI app,
+potentially, or other apps that may be relevant to your particular industry, for example.
+You should be able to centralise policy enforcement.
+We talked about AWS config.
+There are many other things as well.
+I won't drone on about it,
+but go to the AWS documentation or just Google it and say,
+Google, what authorisation control policies can I implement
+in an AWS environment or an Azure environment,
+and how can I use those and map those to particular frameworks?
+And implementing all these sort of available controls,
+as I said, we've got a product.
+It's not general availability yet,
+but the purpose of it is to automatically map controls continuously in real time
+about your environment to frameworks.
+So that you can go, click a button, say,
+generate an audit report and go and do it to the auditor or the regulator or whoever.
+I wouldn't do that totally autonomously.
+That's quite a high-risk thing to do.
+An expert should review the audit report
+and make sure the evidence is, in fact, not a hallucination.
+But AWS Assurance helps you automate all this stuff in one go,
+so that you don't have to hire 50 people
+and do a whole lot of work in order to be able to generate it.
+And the second thing I wanted to make sure you did is that you go away with an action item
+that is free and enables you to do some stuff to improve your AI security,
+to improve your AI governance.
+You can go and do an AI governance workshop that costs nothing.
+You talk to your account team or just go and look at AWS online and Google it and find it.
+Okay, where can I do an AI governance workshop?
+You can run it yourself.
+We can facilitate it for you.
+It costs you nothing apart from some time.
+You'll learn a bit about the guardrails, resource availability, governance tools.
+It's a toe-out-hands-of-workshops.
+There's not much time in your life.
+So you can take action on that straightaway.
+You can take action on well-architected foundations.
+We have this framework called Well-Architected in Amazon.
+What does good look like for all the other customers, etc.?
+That's a really popular question.
+And we make it scalable so you can do it yourself.
+Do a well-architected assessment of your workload.
+Do it now.
+Just do it.
+And if you really want a less scalable solution, you can get somebody like me to come along
+and actually have a deep dive on your workload.
+Not just the technology, but what your workload actually does.
+The legal environment it operates with it.
+Is there any PII in it?
+Could it be a high-risk or even an illegal workload under the EU AI Act?
+Let us help you out with that stuff.
+And we have another thing called the Security Health Improvement Programme.
+It's free.
+And basically, we want you to be successful in building your AI stuff.
+We want you to be successful in unleashing your developers to go and build as much AI as they like.
+But we want them to be able to do it safely within guardrails, within policies are predefined.
+And we want them to do it in an automated way so everyone scales and everyone's happy.
+And thinking about this, one thing to take away is that you want to govern from the first model invocation
+to the fully autonomous agent as a consequence of how you ship code,
+whether it's daily, hourly, or quarterly.
+Don't care.
+But, however you ship code, that's what needs to automatically trigger governance activities.
+And that's all I've got.
+Thank you.
+Thank you very much, Samuel.
+Fascinating talk.
+So, to round the day off, we've got two Leiden talks left.
+It's okay.

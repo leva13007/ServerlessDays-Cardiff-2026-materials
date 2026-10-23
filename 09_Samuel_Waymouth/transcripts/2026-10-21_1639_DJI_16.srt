@@ -1,0 +1,964 @@
+1
+00:00:00,000 --> 00:00:07,880
+ Remember, I talked about autonomy levels changing dynamically based upon the confidence scoring
+
+2
+00:00:07,880 --> 00:00:12,160
+ and the capability scoring of your AI agents.
+
+3
+00:00:12,840 --> 00:00:14,280
+ These are deterministic.
+
+4
+00:00:14,600 --> 00:00:19,860
+ They deterministically decide this agent needs to have its identity revoked or its autonomy
+
+5
+00:00:19,860 --> 00:00:20,860
+ level decreased.
+
+6
+00:00:21,880 --> 00:00:26,280
+ So it's not an agent non-deterministically deciding what our agents do and what their
+
+7
+00:00:26,280 --> 00:00:27,020
+ permissions are.
+
+8
+00:00:27,020 --> 00:00:29,560
+ You combine deterministic tools with this.
+
+9
+00:00:30,000 --> 00:00:32,320
+ So all of this is policy as code.
+
+10
+00:00:32,660 --> 00:00:36,240
+ You throw it into your repo with your agent, you run it, problem solved.
+
+11
+00:00:38,460 --> 00:00:46,100
+ That is basically making sure that these code items, these governance tools or technical
+
+12
+00:00:46,100 --> 00:00:48,600
+ controls move at the same speed as your development.
+
+13
+00:00:49,680 --> 00:00:55,320
+ And if you use a code code or Kira or whatever it may be, it can pre-make a lot of this stuff
+
+14
+00:00:55,320 --> 00:00:57,700
+ for you a lot faster than doing it yourself.
+
+15
+00:00:59,580 --> 00:01:03,940
+ Speaking of which, I've talked briefly about sandboxes before.
+
+16
+00:01:04,380 --> 00:01:09,360
+ I talked about, you know, when Amazon do it, we don't use general purpose compute.
+
+17
+00:01:09,500 --> 00:01:10,580
+ We don't develop on our laptops.
+
+18
+00:01:11,000 --> 00:01:13,500
+ We do it in a sandbox that is isolated.
+
+19
+00:01:13,820 --> 00:01:14,420
+ We experiment.
+
+20
+00:01:14,720 --> 00:01:15,660
+ We record everything.
+
+21
+00:01:16,040 --> 00:01:16,860
+ It's used as evidence.
+
+22
+00:01:17,040 --> 00:01:17,540
+ It's stored.
+
+23
+00:01:17,640 --> 00:01:19,860
+ And then we can do technical assessments and audits.
+
+24
+00:01:21,940 --> 00:01:22,820
+ That's a lot of building.
+
+25
+00:01:22,820 --> 00:01:28,720
+ So you build your AI agent and you build this huge harness around your AI agent in order
+
+26
+00:01:28,720 --> 00:01:29,780
+ to actually be able to get it to work.
+
+27
+00:01:30,580 --> 00:01:35,520
+ Who in the room has actually played with Mythos or Fable 5 out of curiosity as to how?
+
+28
+00:01:35,980 --> 00:01:36,780
+ A couple of hands up.
+
+29
+00:01:36,960 --> 00:01:37,100
+ Okay.
+
+30
+00:01:37,440 --> 00:01:37,560
+ Yeah.
+
+31
+00:01:39,940 --> 00:01:43,040
+ One of the comments I get from customers is going, oh, this Mythos is rubbish.
+
+32
+00:01:43,340 --> 00:01:44,260
+ It didn't do anything useful.
+
+33
+00:01:44,660 --> 00:01:45,820
+ Well, actually it does.
+
+34
+00:01:46,180 --> 00:01:49,960
+ But you've got to create a big harness around it in order to get useful information out of it.
+
+35
+00:01:50,140 --> 00:01:51,480
+ It's just the inference layer.
+
+36
+00:01:51,580 --> 00:01:52,600
+ There's no agents there.
+
+37
+00:01:52,680 --> 00:01:53,720
+ There are no tools there.
+
+38
+00:01:54,180 --> 00:01:55,040
+ You've got to build all that.
+
+39
+00:01:56,740 --> 00:01:58,600
+ And sorry, another sales plug.
+
+40
+00:01:59,720 --> 00:02:04,020
+ Amazon MedRock Agent Core provides a lot of the things that you'd normally have to build
+
+41
+00:02:04,020 --> 00:02:05,020
+ as part of your harness.
+
+42
+00:02:05,160 --> 00:02:08,580
+ But the ones that are really important, and they relate back to some of those threats we
+
+43
+00:02:08,580 --> 00:02:15,860
+ saw from a moment before, identity is managed, memory is managed, it's cryptographically encrypted
+
+44
+00:02:15,860 --> 00:02:21,040
+ so that memory poisoning can't occur, policy engines there will determine what the autonomy
+
+45
+00:02:21,040 --> 00:02:25,320
+ agent's going to be, run time, you can get like special microvibs.
+
+46
+00:02:25,320 --> 00:02:29,580
+ I think we had a workshop on it earlier today, where you can run dangerous code to see what
+
+47
+00:02:29,580 --> 00:02:35,740
+ it does, and let an agent go a bit hog wild within your sandbox to say, attack this thing until
+
+48
+00:02:35,740 --> 00:02:38,080
+ you get it, you know, set that goal really high.
+
+49
+00:02:38,600 --> 00:02:40,420
+ But it can't escape, so it's all good.
+
+50
+00:02:41,600 --> 00:02:46,040
+ Evaluations, using L&M's judges to say, well, you know, looking at the confidence scores
+
+51
+00:02:46,040 --> 00:02:50,080
+ and the capability scoring over that window of time, how much do we trust this thing?
+
+52
+00:02:50,160 --> 00:02:51,240
+ Is safety good enough?
+
+53
+00:02:51,300 --> 00:02:54,580
+ It's one of the other four dimensions of testing good enough.
+
+54
+00:02:54,960 --> 00:03:01,140
+ Gateways for inbound authorisation, observability, observability, observability, super important.
+
+55
+00:03:02,220 --> 00:03:06,060
+ And agent registry, can you manage, is it connected up to the asset register?
+
+56
+00:03:06,260 --> 00:03:07,100
+ Well, this is pre-built.
+
+57
+00:03:07,500 --> 00:03:10,300
+ You can build it yourself, all our competitors do the same thing.
+
+58
+00:03:10,560 --> 00:03:15,540
+ So, you know, there's, you know, just compare and contrast when you're thinking about what
+
+59
+00:03:15,540 --> 00:03:17,040
+ platform you're going to build your agents in.
+
+60
+00:03:17,880 --> 00:03:19,500
+ I briefly talked about early autonomy.
+
+61
+00:03:19,500 --> 00:03:22,500
+ I won't bang on about this too much because we've already kind of carried it on.
+
+62
+00:03:22,880 --> 00:03:29,220
+ But we think about four stages, development stage and pre-production and production.
+
+63
+00:03:29,400 --> 00:03:33,560
+ This should be nothing new to anyone who's ever developed any kind of application in any kind
+
+64
+00:03:33,560 --> 00:03:34,060
+ of organisation.
+
+65
+00:03:35,180 --> 00:03:38,360
+ But there are quality gates based pace at stage.
+
+66
+00:03:38,360 --> 00:03:41,360
+ I talked about, sorry, calibration, not capability.
+
+67
+00:03:41,360 --> 00:03:44,900
+ So confidence, calibration scores over a window of time.
+
+68
+00:03:45,360 --> 00:03:48,660
+ If that score is high enough, the amount of autonomy increases.
+
+69
+00:03:49,320 --> 00:03:53,000
+ The application has moved on to a different stage in the DevOps lifecycle.
+
+70
+00:03:53,700 --> 00:03:55,020
+ All of that is easily automated.
+
+71
+00:03:55,380 --> 00:03:58,840
+ All of that can be rigged back to your asset management or risk management system.
+
+72
+00:03:59,500 --> 00:04:00,900
+ They're just API calls.
+
+73
+00:04:02,060 --> 00:04:03,460
+ And sometimes you have to build it yourself.
+
+74
+00:04:04,080 --> 00:04:05,100
+ It's worth investing in.
+
+75
+00:04:05,520 --> 00:04:09,060
+ Sometimes some tools will actually give you some things out of the box you can try to use
+
+76
+00:04:09,060 --> 00:04:09,660
+ in this space.
+
+77
+00:04:12,600 --> 00:04:17,640
+ And we talked about verification and automated evidence.
+
+78
+00:04:17,960 --> 00:04:23,360
+ Evidence, especially for the EU AI Act in your transparency.
+
+79
+00:04:24,260 --> 00:04:26,340
+ What data did you use to train this thing?
+
+80
+00:04:26,760 --> 00:04:28,480
+ What testing did you do with it?
+
+81
+00:04:28,780 --> 00:04:29,980
+ Did the testing work?
+
+82
+00:04:31,020 --> 00:04:32,820
+ Can you watch this thing operationally?
+
+83
+00:04:32,880 --> 00:04:35,820
+ So not just when you were building it, but when you actually operationalise it.
+
+84
+00:04:36,380 --> 00:04:37,660
+ How do you know it's failing?
+
+85
+00:04:37,800 --> 00:04:41,040
+ How do you know what the effect is of switching from one model to another?
+
+86
+00:04:41,100 --> 00:04:42,360
+ Because models are interchangeable.
+
+87
+00:04:43,200 --> 00:04:45,480
+ What's the effect of your agent code changing?
+
+88
+00:04:45,600 --> 00:04:47,780
+ What's the effect of a tool changing in that trial?
+
+89
+00:04:48,680 --> 00:04:54,560
+ You need to be able to continuously be monitoring this and gathering evidence in order to be
+
+90
+00:04:54,560 --> 00:05:00,360
+ able to shore up your legal liability position, when inevitably somebody is going to challenge
+
+91
+00:05:00,360 --> 00:05:00,680
+ it.
+
+92
+00:05:01,680 --> 00:05:08,280
+ And in the AWS context, all these things, config, cloud trail, security hub, agent core observability,
+
+93
+00:05:08,640 --> 00:05:12,320
+ work together to produce evidence for all of these frameworks you see down at the bottom.
+
+94
+00:05:14,460 --> 00:05:15,900
+ Do you have to build all that?
+
+95
+00:05:16,840 --> 00:05:17,360
+ You could.
+
+96
+00:05:18,200 --> 00:05:20,500
+ Different cloud providers have different ways of doing this.
+
+97
+00:05:20,740 --> 00:05:26,200
+ The way we do it is that, and those of you who observe it will notice that there is a typo in there,
+
+98
+00:05:26,300 --> 00:05:33,200
+ is AWS Assurance, which basically automatically and continuously assesses your environment against
+
+99
+00:05:33,200 --> 00:05:38,400
+ all those frameworks, and custom frameworks if you want, based on your organisation's needs.
+
+100
+00:05:39,400 --> 00:05:43,000
+ Currently, for private media, see your account team if you want access to that.
+
+101
+00:05:46,080 --> 00:05:47,880
+ And finally, we get through to the whole picture.
+
+102
+00:05:49,240 --> 00:05:55,900
+ So we know that the majority of risks associated with AI applications are not new.
+
+103
+00:05:57,340 --> 00:06:04,380
+ Our security incident response, or cyber incident response team, still says, over 80% of cyber incidents
+
+104
+00:06:04,380 --> 00:06:05,880
+ are related to identity.
+
+105
+00:06:08,080 --> 00:06:15,060
+ In my role in the Army, every cyber incident I've worked on has been something to do with identity
+
+106
+00:06:15,060 --> 00:06:25,300
+ and poor identity protection by third-party developers using our development intra-ID and our mod cloud system.
+
+107
+00:06:25,500 --> 00:06:26,980
+ Every single incident.
+
+108
+00:06:28,240 --> 00:06:32,860
+ So whenever we're doing threat hunting, we're inevitably looking for developers and third parties
+
+109
+00:06:32,860 --> 00:06:36,580
+ who have had their laptops hacked while they're working on their mobile systems.
+
+110
+00:06:37,220 --> 00:06:38,340
+ So it's all identity.
+
+111
+00:06:38,620 --> 00:06:39,600
+ Identity and identity.
+
+112
+00:06:41,340 --> 00:06:47,740
+ You really need to really, really, really, really, really need to get identity authentication authorisations sorted out.
+
+113
+00:06:48,420 --> 00:06:51,040
+ And for those of you, and I'm happy to have an argument about this later,
+
+114
+00:06:51,440 --> 00:06:53,100
+ it is not OAuth OIDC.
+
+115
+00:06:53,260 --> 00:06:56,560
+ That is for JavaScript applications for your all-to-pretty websites.
+
+116
+00:06:57,120 --> 00:07:04,180
+ Agentic AI uses SPFY or other modern TLS standards for dynamic TLS certificate creation.
+
+117
+00:07:05,480 --> 00:07:11,100
+ So, putting it all together, we've got the identity, we've got some technical controls,
+
+118
+00:07:11,220 --> 00:07:13,240
+ we've got governance controls we need to implement.
+
+119
+00:07:13,820 --> 00:07:18,640
+ What we need to do is have a system put together, which hopefully one of you start-ups will build,
+
+120
+00:07:19,380 --> 00:07:25,020
+ says, whenever I fire up a new code repository and put some agent code in it,
+
+121
+00:07:25,160 --> 00:07:27,180
+ a strands agent in a container image,
+
+122
+00:07:27,600 --> 00:07:31,640
+ it's automatically going to register that with the asset and project management system,
+
+123
+00:07:31,740 --> 00:07:34,240
+ so somebody's paying for it and resources are being allocated.
+
+124
+00:07:34,660 --> 00:07:36,080
+ It's automatically going to set up and say,
+
+125
+00:07:36,080 --> 00:07:37,740
+ OK, I want to gather all these logs.
+
+126
+00:07:38,340 --> 00:07:41,480
+ CloudFormation, CloudTrail, et cetera, et cetera, application logs.
+
+127
+00:07:42,000 --> 00:07:44,060
+ Automatically, you should be able to do this all on the fly.
+
+128
+00:07:44,680 --> 00:07:48,820
+ You should be able to take all that information plus other context about your application,
+
+129
+00:07:49,340 --> 00:07:55,780
+ such as, is it processing PII, is it doing stuff that might involve people who are teenagers or children,
+
+130
+00:07:56,400 --> 00:08:01,080
+ and be able to come up with a risk assessment for your application to decide,
+
+131
+00:08:01,200 --> 00:08:03,880
+ am I going to deploy this automatically and let your pipeline run,
+
+132
+00:08:04,200 --> 00:08:07,180
+ or am I going to block your pipeline and get somebody to approve it first?
+
+133
+00:08:08,940 --> 00:08:10,940
+ Enforcement to control, as I kind of skipped ahead there,
+
+134
+00:08:11,000 --> 00:08:14,760
+ that's where you basically have the preventative, stop the pipeline working at all,
+
+135
+00:08:15,140 --> 00:08:19,360
+ or detective, just maybe think about, OK, we've detected a few things,
+
+136
+00:08:19,480 --> 00:08:22,080
+ they're not showstoppers, they're more informational, they're more risk.
+
+137
+00:08:22,440 --> 00:08:24,940
+ We'll let this pipeline run and complete deploying code.
+
+138
+00:08:25,620 --> 00:08:26,680
+ And then earning autonomy.
+
+139
+00:08:27,460 --> 00:08:33,000
+ Is the agent confidence score and calibration scoring over the window of time
+
+140
+00:08:33,000 --> 00:08:36,480
+ of sufficient quality that we can give this agent more autonomy,
+
+141
+00:08:36,800 --> 00:08:42,980
+ access to more tools, access to fix things without needing to tell us,
+
+142
+00:08:43,220 --> 00:08:47,280
+ things that are reversible, and things which are low impact at first,
+
+143
+00:08:47,400 --> 00:08:50,660
+ and then as we trust the agent more and the confidence scoring stays the same,
+
+144
+00:08:51,000 --> 00:08:55,800
+ can we give it more complex things, like sudo root and Linux systems, for example.
+
+145
+00:08:56,140 --> 00:08:58,220
+ That would be something that's extremely risky.
+
+146
+00:08:59,440 --> 00:09:01,400
+ And continuous monitoring closes this loop.
+
+147
+00:09:02,860 --> 00:09:04,780
+ As I said, I'm the world's worst salesman,
+
+148
+00:09:04,780 --> 00:09:08,420
+ but I'm quite a bit of agenting AI development now,
+
+149
+00:09:08,620 --> 00:09:12,080
+ and, OK, I use AWS because I get it for free,
+
+150
+00:09:12,680 --> 00:09:15,040
+ but it's pretty good.
+
+151
+00:09:15,640 --> 00:09:18,300
+ I've worked with Databricks, I've worked with Xur, I've worked with GCP,
+
+152
+00:09:18,960 --> 00:09:20,600
+ and they all have strengths and weaknesses,
+
+153
+00:09:21,160 --> 00:09:25,840
+ but when it comes to making less work for me
+
+154
+00:09:25,840 --> 00:09:31,460
+ and leveraging native services that just do the stuff,
+
+155
+00:09:32,600 --> 00:09:34,640
+ it certainly wins, in my opinion.
+
+156
+00:09:36,380 --> 00:09:37,180
+ Moving on.
+
+157
+00:09:37,460 --> 00:09:38,380
+ Key things to take away.
+
+158
+00:09:38,580 --> 00:09:44,380
+ So, hopefully, not hopefully, I know that we've covered a few points.
+
+159
+00:09:45,440 --> 00:09:47,740
+ You should all have a bit of an idea of, like, OK, right,
+
+160
+00:09:47,820 --> 00:09:49,800
+ covenants is important, I need to unblock this.
+
+161
+00:09:50,480 --> 00:09:51,480
+ Some of you may be thinking,
+
+162
+00:09:51,700 --> 00:09:54,600
+ oh, I'm going to build a cool new product and become a multimillionaire
+
+163
+00:09:54,600 --> 00:09:57,040
+ by building a governance orchestration agent.
+
+164
+00:09:57,320 --> 00:09:59,800
+ I will buy it off you, my customers will, if you do.
+
+165
+00:10:00,880 --> 00:10:06,540
+ But you should be able to say, OK, I can now, to help me get governance right for my application,
+
+166
+00:10:06,680 --> 00:10:10,380
+ I can use the scoping matrix, which is free and online, Amazon.com,
+
+167
+00:10:11,060 --> 00:10:15,100
+ to basically allow me to identify and communicate to other stakeholders
+
+168
+00:10:15,100 --> 00:10:16,720
+ what kind of app am I building,
+
+169
+00:10:17,420 --> 00:10:20,520
+ what controls and risks are associated with that kind of app.
+
+170
+00:10:22,420 --> 00:10:23,580
+ You can set up visibility.
+
+171
+00:10:24,960 --> 00:10:27,020
+ Any cloud provider will do this, but in the case of Amazon,
+
+172
+00:10:27,140 --> 00:10:28,620
+ it would be CloudTrail, CloudWatch,
+
+173
+00:10:29,220 --> 00:10:33,480
+ that will enable you to basically meet those transparency requirements of the UAI app,
+
+174
+00:10:33,560 --> 00:10:38,160
+ potentially, or other apps that may be relevant to your particular industry, for example.
+
+175
+00:10:39,740 --> 00:10:41,640
+ You should be able to centralise policy enforcement.
+
+176
+00:10:41,780 --> 00:10:43,020
+ We talked about AWS config.
+
+177
+00:10:43,160 --> 00:10:44,480
+ There are many other things as well.
+
+178
+00:10:45,060 --> 00:10:46,460
+ I won't drone on about it,
+
+179
+00:10:46,520 --> 00:10:50,500
+ but go to the AWS documentation or just Google it and say,
+
+180
+00:10:50,620 --> 00:10:54,800
+ Google, what authorisation control policies can I implement
+
+181
+00:10:54,800 --> 00:10:57,260
+ in an AWS environment or an Azure environment,
+
+182
+00:10:57,400 --> 00:11:01,200
+ and how can I use those and map those to particular frameworks?
+
+183
+00:11:03,200 --> 00:11:05,920
+ And implementing all these sort of available controls,
+
+184
+00:11:05,920 --> 00:11:09,120
+ as I said, we've got a product.
+
+185
+00:11:09,240 --> 00:11:10,660
+ It's not general availability yet,
+
+186
+00:11:10,980 --> 00:11:16,820
+ but the purpose of it is to automatically map controls continuously in real time
+
+187
+00:11:16,820 --> 00:11:19,380
+ about your environment to frameworks.
+
+188
+00:11:20,040 --> 00:11:21,860
+ So that you can go, click a button, say,
+
+189
+00:11:21,960 --> 00:11:25,860
+ generate an audit report and go and do it to the auditor or the regulator or whoever.
+
+190
+00:11:26,600 --> 00:11:28,880
+ I wouldn't do that totally autonomously.
+
+191
+00:11:29,020 --> 00:11:30,640
+ That's quite a high-risk thing to do.
+
+192
+00:11:31,200 --> 00:11:33,320
+ An expert should review the audit report
+
+193
+00:11:33,320 --> 00:11:36,480
+ and make sure the evidence is, in fact, not a hallucination.
+
+194
+00:11:37,680 --> 00:11:42,020
+ But AWS Assurance helps you automate all this stuff in one go,
+
+195
+00:11:42,260 --> 00:11:45,220
+ so that you don't have to hire 50 people
+
+196
+00:11:45,220 --> 00:11:47,400
+ and do a whole lot of work in order to be able to generate it.
+
+197
+00:11:48,940 --> 00:11:52,520
+ And the second thing I wanted to make sure you did is that you go away with an action item
+
+198
+00:11:52,520 --> 00:11:59,300
+ that is free and enables you to do some stuff to improve your AI security,
+
+199
+00:11:59,460 --> 00:12:00,860
+ to improve your AI governance.
+
+200
+00:12:02,140 --> 00:12:05,400
+ You can go and do an AI governance workshop that costs nothing.
+
+201
+00:12:06,260 --> 00:12:10,900
+ You talk to your account team or just go and look at AWS online and Google it and find it.
+
+202
+00:12:10,960 --> 00:12:12,580
+ Okay, where can I do an AI governance workshop?
+
+203
+00:12:12,700 --> 00:12:13,500
+ You can run it yourself.
+
+204
+00:12:13,940 --> 00:12:15,200
+ We can facilitate it for you.
+
+205
+00:12:15,440 --> 00:12:17,340
+ It costs you nothing apart from some time.
+
+206
+00:12:17,820 --> 00:12:22,620
+ You'll learn a bit about the guardrails, resource availability, governance tools.
+
+207
+00:12:23,260 --> 00:12:24,540
+ It's a toe-out-hands-of-workshops.
+
+208
+00:12:24,620 --> 00:12:25,760
+ There's not much time in your life.
+
+209
+00:12:27,280 --> 00:12:28,660
+ So you can take action on that straightaway.
+
+210
+00:12:28,720 --> 00:12:30,720
+ You can take action on well-architected foundations.
+
+211
+00:12:31,780 --> 00:12:33,740
+ We have this framework called Well-Architected in Amazon.
+
+212
+00:12:34,800 --> 00:12:37,520
+ What does good look like for all the other customers, etc.?
+
+213
+00:12:37,520 --> 00:12:38,900
+ That's a really popular question.
+
+214
+00:12:39,620 --> 00:12:43,080
+ And we make it scalable so you can do it yourself.
+
+215
+00:12:43,220 --> 00:12:45,580
+ Do a well-architected assessment of your workload.
+
+216
+00:12:46,480 --> 00:12:47,220
+ Do it now.
+
+217
+00:12:47,820 --> 00:12:48,400
+ Just do it.
+
+218
+00:12:49,040 --> 00:12:54,380
+ And if you really want a less scalable solution, you can get somebody like me to come along
+
+219
+00:12:54,380 --> 00:12:56,160
+ and actually have a deep dive on your workload.
+
+220
+00:12:57,040 --> 00:13:01,780
+ Not just the technology, but what your workload actually does.
+
+221
+00:13:02,400 --> 00:13:04,380
+ The legal environment it operates with it.
+
+222
+00:13:04,980 --> 00:13:06,260
+ Is there any PII in it?
+
+223
+00:13:06,900 --> 00:13:11,620
+ Could it be a high-risk or even an illegal workload under the EU AI Act?
+
+224
+00:13:11,980 --> 00:13:13,600
+ Let us help you out with that stuff.
+
+225
+00:13:14,260 --> 00:13:17,360
+ And we have another thing called the Security Health Improvement Programme.
+
+226
+00:13:17,360 --> 00:13:17,960
+ It's free.
+
+227
+00:13:18,640 --> 00:13:22,060
+ And basically, we want you to be successful in building your AI stuff.
+
+228
+00:13:22,160 --> 00:13:27,940
+ We want you to be successful in unleashing your developers to go and build as much AI as they like.
+
+229
+00:13:29,080 --> 00:13:33,440
+ But we want them to be able to do it safely within guardrails, within policies are predefined.
+
+230
+00:13:33,800 --> 00:13:37,280
+ And we want them to do it in an automated way so everyone scales and everyone's happy.
+
+231
+00:13:38,080 --> 00:13:44,600
+ And thinking about this, one thing to take away is that you want to govern from the first model invocation
+
+232
+00:13:44,600 --> 00:13:51,700
+ to the fully autonomous agent as a consequence of how you ship code,
+
+233
+00:13:52,360 --> 00:13:54,840
+ whether it's daily, hourly, or quarterly.
+
+234
+00:13:55,100 --> 00:13:55,600
+ Don't care.
+
+235
+00:13:56,300 --> 00:14:02,160
+ But, however you ship code, that's what needs to automatically trigger governance activities.
+
+236
+00:14:02,840 --> 00:14:03,460
+ And that's all I've got.
+
+237
+00:14:03,540 --> 00:14:03,960
+ Thank you.
+
+238
+00:14:07,860 --> 00:14:09,020
+ Thank you very much, Samuel.
+
+239
+00:14:10,100 --> 00:14:10,880
+ Fascinating talk.
+
+240
+00:14:11,440 --> 00:14:14,780
+ So, to round the day off, we've got two Leiden talks left.
+
+241
+00:14:14,780 --> 00:14:15,680
+ It's okay.
+

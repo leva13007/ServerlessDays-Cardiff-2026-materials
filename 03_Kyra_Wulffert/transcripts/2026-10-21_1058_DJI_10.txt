@@ -1,0 +1,35 @@
+These multi-agent solutions, they also have that strategy of running back a particular agent and not the whole fleet, depending on what the problem was.
+So it's, again, a little bit more complex.
+Some common anti-patterns, and I think this applies to any project, is that sometimes, because everyone is super excited about the technology, we get like, oh, we want to be an agent for this, but this is something so wide and broad and vague that it will never get into something meaningful.
+So that's very important to fix one use case, like, okay, this is the use case we want to start with, start with small, work on that, define your KPIs, get to the dose so that you can see, okay, I can achieve this, we can maintain this, we can deploy this, and then you can extend to something more complex or ambitious.
+Yeah, that's like, one of the first issues we have seen, second one is over-engineering, not everything is an agent, sometimes we just need an LLM call and that's it, or a few tools.
+So, again, like, start simple, and get more complexity as you see that it is needed.
+Human in the loop is very important, so when you don't have a human in the loop, then you don't know what they are achieving.
+It's very important to get the SME reviewers, get that continuous flow we were mentioning before.
+And versioning as well, so if you have, like, approaches like a string somewhere, you don't know, and then you don't track it, and the same with the tools and so on, it's very, very difficult to control and obtain the solution.
+And those were mostly like technical issues and challenges, but one of the biggest challenges, because we have so many personas now on these projects.
+So we have the executives worried about ROI, the product managers, worried about how can we get an option of this solution.
+The engineers very keen to have it, like, deploying in a faster way.
+Data scientists with another matrix in mind, and so on, so everyone has their own agenda.
+So it's very important from the beginning to identify what are the roles, the responsibility, who is all there, accountable, consulted, or informed about something.
+And also what are the KPIs of each of these particular roles, so that you have that alignment from the beginning, you can report on those KPIs.
+And like, everyone is happy because like, there is a consensus.
+This is like, one of the main reasons why many projects are not getting into production, because it's told, "Ah, I want this else," and the people didn't know about that, and so on.
+So, this is very important.
+And then going back to those principles we were mentioning before, they are still like very, very valid and very applicable.
+And if you do the analogy with like Formula 1, the principle of flow is like that lap moment, where you are just like doing all the tactics that are important to like, get very fast, and like with good quality, with good speed.
+And then we are just like, and select our little challenges, changes in the code.
+Then the RAIS piece will be like the feedback, where you have like a strategy for the RAIS.
+And then the learning, the continuous learning will be like a season vision, like what are we aiming to.
+We are still applying the same principles, but now in the context of these more complex solutions, with so many, many moving parts, and a faster world in technology as well.
+So, this is me for today, so thank you very much.
+We have written a book with a couple of colleagues from our experience on the field.
+It's available online, open for everyone.
+So, I'll be here if you have any questions, just let me know.
+Or you can also contact me on LinkedIn.
+Thank you very much.
+Thank you very much, everybody.
+Thank you, Kira.
+Thank you.
+And that's the end of the first session.
+Thank you, Julian, as well.

@@ -1,0 +1,488 @@
+1
+00:00:00,000 --> 00:00:11,000
+ So just change things up a little bit, just invite to the stage, Jim from Medtech.
+
+2
+00:00:11,000 --> 00:00:13,000
+ Hopefully you'll be able to.
+
+3
+00:00:30,000 --> 00:00:48,000
+ Thank you very much, Jim, for standing in today.
+
+4
+00:00:48,000 --> 00:00:54,000
+ It's our second standing of the day because of illness, that's our year.
+
+5
+00:00:54,000 --> 00:00:57,000
+ So Jim, over to you.
+
+6
+00:01:00,000 --> 00:01:03,000
+ My microphone's on.
+
+7
+00:01:03,000 --> 00:01:09,000
+ As you said, second standing of the day, standing in for Sam and also standing in for the previous presenter.
+
+8
+00:01:09,000 --> 00:01:11,000
+ So I'm doing right.
+
+9
+00:01:11,000 --> 00:01:14,000
+ Medtech, I'm the head of technology.
+
+10
+00:01:14,000 --> 00:01:18,000
+ We look after public sector development processes.
+
+11
+00:01:18,000 --> 00:01:24,000
+ We do the full end-to-end from policy design to managed service and everything in between.
+
+12
+00:01:24,000 --> 00:01:26,000
+ But as I said, I'm the head of tech.
+
+13
+00:01:26,000 --> 00:01:29,000
+ The engineers, cloud engineers, architects, et cetera.
+
+14
+00:01:29,000 --> 00:01:31,000
+ So the full set.
+
+15
+00:01:31,000 --> 00:01:44,000
+ I'm here to talk about what we've been doing with agents and how we're helping our teams to become more AI first, I guess.
+
+16
+00:01:44,000 --> 00:01:47,000
+ We've been playing with ideas and concepts.
+
+17
+00:01:47,000 --> 00:01:59,000
+ We've been trying to make it easier for people to pick up AI so that they don't have to do the hard work and learn how to do context engineering and prompt engineering and all the things that make this hard to do.
+
+18
+00:01:59,000 --> 00:02:04,000
+ We've been doing that by building skills and agents for each job family.
+
+19
+00:02:04,000 --> 00:02:14,000
+ So as you can see here, we've got a huge catalogue of skills that we've verified and built and tested with ideas and dummy projects.
+
+20
+00:02:14,000 --> 00:02:19,000
+ We're starting to roll them out into customer projects now and starting to see a real impact of those.
+
+21
+00:02:19,000 --> 00:02:32,000
+ We've been working with all of the different job families, focusing on the areas that cost the most, some definition of cost, and that's starting to see real improvements in speed.
+
+22
+00:02:37,000 --> 00:02:47,000
+ Of the 16 job families that we've been working with as an engineer, I find it hard to say that actually we're the least interesting part of that process.
+
+23
+00:02:47,000 --> 00:02:50,000
+ We're kind of predictable.
+
+24
+00:02:50,000 --> 00:02:56,000
+ Actually, a lot of the other job families are now becoming the constraint in that system.
+
+25
+00:02:56,000 --> 00:03:05,000
+ I've realized over the last year or two that actually engineering has only ever been the constraint because we're quite expensive to scale as people.
+
+26
+00:03:05,000 --> 00:03:15,000
+ As code is becoming quick to produce, I'm not going to say free to produce, but as it's becoming quick and free to produce, we're moving that constraint elsewhere.
+
+27
+00:03:15,000 --> 00:03:28,000
+ And so as code is not a bottleneck anymore, the constraints now shift into the idea generation and the idea testing and the development, deployment and testing environment.
+
+28
+00:03:28,000 --> 00:03:33,000
+ So engineering is where all of the hype and the investment has gone.
+
+29
+00:03:33,000 --> 00:03:37,000
+ We've been seeing tools. We're all using those tools every day, at least I hope you're starting to.
+
+30
+00:03:37,000 --> 00:03:46,000
+ And that agentic workflow that we're all getting used to as engineers is really changing what we do and how we do it.
+
+31
+00:03:46,000 --> 00:03:55,000
+ But everyone else in that system is now becoming that bottleneck and it's pushing that process out and across that system.
+
+32
+00:03:55,000 --> 00:04:03,000
+ And we're seeing that actually slowing things down and we're getting frustration built into that system.
+
+33
+00:04:03,000 --> 00:04:07,000
+ So an example of this, this is a real case.
+
+34
+00:04:07,000 --> 00:04:13,000
+ A member of my team was asked to join sessions to try and analyze what was happening.
+
+35
+00:04:13,000 --> 00:04:17,000
+ It was a delivery team on a real project.
+
+36
+00:04:17,000 --> 00:04:31,000
+ They had a round of user research and that user research was, I think it was about a 50 page document of transcripts and insights and hypotheses and all of the good stuff that comes out of user research.
+
+37
+00:04:31,000 --> 00:04:43,000
+ The developer team estimated it was going to take about two weeks for them to produce the clickable prototypes to start taking that to the next round of user testing and going to test each of those hypotheses.
+
+38
+00:04:43,000 --> 00:04:57,000
+ Within a couple of hours, Lee had generated 10 clickable prototypes using the prototyping design skill that we put together and delivered it to the team and they took it through to the next round of testing.
+
+39
+00:04:57,000 --> 00:05:07,000
+ It was a real demonstration to that team that they were a long way off being up to speed with where the developers were on that project.
+
+40
+00:05:07,000 --> 00:05:17,000
+ And as a set of product and user researchers and designers, they had that light bulb moment of actually we probably do need to start engaging with this process.
+
+41
+00:05:17,000 --> 00:05:23,000
+ And that's why Lee was there on that from my team to start pushing that way of working and start talking.
+
+42
+00:05:29,000 --> 00:05:39,000
+ One of the issues that we've seen as part of this is how close engineers are to using these tools when they're doing their day job.
+
+43
+00:05:39,000 --> 00:05:49,000
+ You pick up your ticket, you check out the repo that you're working on, you go to VS Code and the agent's there in the tool that you've worked with for years and years and years.
+
+44
+00:05:49,000 --> 00:05:52,000
+ It's there for the present, all you do is just start working.
+
+45
+00:05:52,000 --> 00:05:58,000
+ And when I say agent, I don't mean auto quickly with LLMs, I mean actual agent workflows.
+
+46
+00:05:58,000 --> 00:06:06,000
+ Generally, we've been testing with Claude, but we've also made sure it works with Kira and Copilot and all of the others as well.
+
+47
+00:06:06,000 --> 00:06:10,000
+ But yeah, it's there, it's front and present.
+
+48
+00:06:10,000 --> 00:06:14,000
+ When you open up your development environment, it's there already for you to use.
+
+49
+00:06:14,000 --> 00:06:18,000
+ And one of the problems that we've seen for other job families is that it isn't there.
+
+50
+00:06:18,000 --> 00:06:29,000
+ They're used to opening up a Word doc or going to a Teams meeting and getting a transcript from it or a recording of an interview that they've done or a Miro board.
+
+51
+00:06:29,000 --> 00:06:40,000
+ And while there are some AI components in there, actually they're generic AI components and they don't really help them to do their job because they don't know what the job is that they do.
+
+52
+00:06:40,000 --> 00:06:55,000
+ And so there's a real disadvantage to not being part of that agentic workflow that because we as engineers have had that investment, we don't realise that they don't get that playground to look around with.
+
+53
+00:06:55,000 --> 00:07:02,000
+ So what we've been working with is creating a natural language way of interacting with our ways of working.
+
+54
+00:07:02,000 --> 00:07:09,000
+ We're building that into the tools that people use and we're starting to measure that process.
+
+55
+00:07:09,000 --> 00:07:20,000
+ So you can see here I've got Claude co-work there and that is enabling the designers to start using our agent.
+
+56
+00:07:20,000 --> 00:07:27,000
+ The agent is aware of all of our ways of working and all of the skills and you can describe what you're trying to do in natural language.
+
+57
+00:07:27,000 --> 00:07:32,000
+ And you don't have to learn that prompt engineering, you don't have to understand what a skill is.
+
+58
+00:07:32,000 --> 00:07:37,000
+ Just in the background it will go off, find that and start plugging into that process.
+
+59
+00:07:37,000 --> 00:07:42,000
+ All of those skills are verified, they've all been tested by the team that are developing them.
+
+60
+00:07:42,000 --> 00:07:49,000
+ There's a governance layer, there's an instrumented sort of set of recapturing with telemetry and the metrics around it as well.
+
+61
+00:07:49,000 --> 00:07:54,000
+ All of that's being stored so that we can see who's using what skills and when.
+
+62
+00:07:54,000 --> 00:07:59,000
+ We can record what the skills are doing or what they're looking at but we record that they've been used.
+
+63
+00:07:59,000 --> 00:08:02,000
+ And that's important so that we can see that uptake.
+
+64
+00:08:02,000 --> 00:08:07,000
+ We're starting to introduce it into those tools that they use.
+
+65
+00:08:07,000 --> 00:08:12,000
+ We're creating MCPs to cool our system so that things like Miro with the agents that are in there
+
+66
+00:08:12,000 --> 00:08:17,000
+ could start taking advantage of the skills that we're using as well.
+
+67
+00:08:17,000 --> 00:08:21,000
+ So starting to integrate it into those, that's kind of what we're working on now.
+
+68
+00:08:21,000 --> 00:08:25,000
+ And then as it says, how we're instrumenting.
+
+69
+00:08:25,000 --> 00:08:30,000
+ Generic agents are great, they're hugely useful.
+
+70
+00:08:30,000 --> 00:08:35,000
+ Much of this presentation was written using a generic agent.
+
+71
+00:08:35,000 --> 00:08:37,000
+ I had some skills to help me as well.
+
+72
+00:08:37,000 --> 00:08:46,000
+ And actually the other side of it is everyone probably has a playbook or a team charter or something that defines how you as a team work.
+
+73
+00:08:46,000 --> 00:08:56,000
+ But very few people read those every day and go back to them and study them and try and build them into the way that they work.
+
+74
+00:08:56,000 --> 00:09:04,000
+ Which, I don't know for you, but that's caused us some issues with inconsistency and sort of deviation and drift.
+
+75
+00:09:04,000 --> 00:09:07,000
+ But actually this is a huge advantage to us.
+
+76
+00:09:07,000 --> 00:09:15,000
+ We can now take those generic agents, give them specific knowledge of our ways of working through skills and through specific agents.
+
+77
+00:09:15,000 --> 00:09:23,000
+ And it means that those agents are amplifying what we do but they're also doing it in line with our ways of working.
+
+78
+00:09:23,000 --> 00:09:32,000
+ It doesn't mean the ways of working is correct, but at least we are using it and testing it and becoming more reproducible and more recurrent.
+
+79
+00:09:32,000 --> 00:09:37,000
+ And so that we can study change and get better at what we do each time.
+
+80
+00:09:37,000 --> 00:09:43,000
+ Governance, as you've just heard, is fundamental to this process.
+
+81
+00:09:43,000 --> 00:09:58,000
+ One of the things that we've agreed up front is that we need to store metadata about the agent, the skill, where it's been tested on, how it's been tested, what are the bounds of what it can do.
+
+82
+00:09:58,000 --> 00:10:02,000
+ An agent will very confidently assert that it can help you with a job.
+
+83
+00:10:02,000 --> 00:10:08,000
+ But if you haven't tested it and you don't know what it's good at doing with that skill, you have no idea what it's actually going to do.
+
+84
+00:10:08,000 --> 00:10:17,000
+ So we need to make sure that there's a human in the loop at the right point taking part of that action and delivering that change.
+
+85
+00:10:17,000 --> 00:10:24,000
+ So that sign-off is important and knowing where it does that.
+
+86
+00:10:24,000 --> 00:10:27,000
+ So three things you can do tomorrow.
+
+87
+00:10:27,000 --> 00:10:29,000
+ Find a constraint in your system.
+
+88
+00:10:29,000 --> 00:10:30,000
+ Probably isn't coding.
+
+89
+00:10:30,000 --> 00:10:34,000
+ Probably isn't software engineers or cloud engineers or architects.
+
+90
+00:10:34,000 --> 00:10:37,000
+ Most of those have already got the tools that they need.
+
+91
+00:10:37,000 --> 00:10:42,000
+ You just need to work out how you make that fit your way of working.
+
+92
+00:10:42,000 --> 00:10:45,000
+ Put the agents where the people work.
+
+93
+00:10:45,000 --> 00:10:50,000
+ Make sure that they've got access to the agents in the tools that they use every day now.
+
+94
+00:10:50,000 --> 00:10:52,000
+ Don't make them move to a different tool.
+
+95
+00:10:52,000 --> 00:10:55,000
+ Or if you do, don't make them use a terminal.
+
+96
+00:10:55,000 --> 00:11:00,000
+ Trying to put a terminal in front of a product lead is really hard to sell.
+
+97
+00:11:00,000 --> 00:11:02,000
+ I tried.
+
+98
+00:11:02,000 --> 00:11:04,000
+ My partner's on.
+
+99
+00:11:04,000 --> 00:11:06,000
+ She wasn't happy.
+
+100
+00:11:06,000 --> 00:11:10,000
+ And then for every skill that you share, make sure that it's been verified.
+
+101
+00:11:10,000 --> 00:11:15,000
+ Make sure you've recorded how you verified it and what you tested it across.
+
+102
+00:11:15,000 --> 00:11:20,000
+ Running the Anthropic skill creator is great.
+
+103
+00:11:20,000 --> 00:11:24,000
+ The eval loop will cost you all of your tokens for that day.
+
+104
+00:11:24,000 --> 00:11:28,000
+ But actually it does produce some good output and it does do some good testing.
+
+105
+00:11:28,000 --> 00:11:34,000
+ I often say don't run eval loop and then regret it later.
+
+106
+00:11:34,000 --> 00:11:35,000
+ Yeah.
+
+107
+00:11:35,000 --> 00:11:36,000
+ I've included a link there.
+
+108
+00:11:36,000 --> 00:11:40,000
+ There's a QR code if you're willing to take a photo of the QR code.
+
+109
+00:11:40,000 --> 00:11:41,000
+ Test for you.
+
+110
+00:11:41,000 --> 00:11:47,000
+ For our AI risk assessment framework that we take our customers through.
+
+111
+00:11:47,000 --> 00:11:48,000
+ Yeah.
+
+112
+00:11:48,000 --> 00:11:53,000
+ Not quite what Sam was going to be presenting, but hopefully interesting anyway.
+
+113
+00:11:53,000 --> 00:12:02,000
+ Feel free to contact me on LinkedIn or add my email at matec.
+
+114
+00:12:02,000 --> 00:12:02,000
+ Jim.stamp@matec.
+
+115
+00:12:02,000 --> 00:12:03,000
+ Yeah.
+
+116
+00:12:03,000 --> 00:12:04,000
+ Thank you very much, Jim.
+
+117
+00:12:04,000 --> 00:12:05,000
+ Thanks for putting that together last minute.
+
+118
+00:12:05,000 --> 00:12:06,000
+ Also, thank you very much for jumping into the slot.
+
+119
+00:12:06,000 --> 00:12:07,000
+ Thank you very much.
+
+120
+00:12:07,000 --> 00:12:08,000
+ Thank you very much, Jim.
+
+121
+00:12:08,000 --> 00:12:09,000
+ Thanks for putting that together last minute.
+
+122
+00:12:09,000 --> 00:12:11,000
+ Also, thank you very much for jumping into the slot.
+

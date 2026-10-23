@@ -1,0 +1,122 @@
+So just change things up a little bit, just invite to the stage, Jim from Medtech.
+Hopefully you'll be able to.
+Thank you very much, Jim, for standing in today.
+It's our second standing of the day because of illness, that's our year.
+So Jim, over to you.
+My microphone's on.
+As you said, second standing of the day, standing in for Sam and also standing in for the previous presenter.
+So I'm doing right.
+Medtech, I'm the head of technology.
+We look after public sector development processes.
+We do the full end-to-end from policy design to managed service and everything in between.
+But as I said, I'm the head of tech.
+The engineers, cloud engineers, architects, et cetera.
+So the full set.
+I'm here to talk about what we've been doing with agents and how we're helping our teams to become more AI first, I guess.
+We've been playing with ideas and concepts.
+We've been trying to make it easier for people to pick up AI so that they don't have to do the hard work and learn how to do context engineering and prompt engineering and all the things that make this hard to do.
+We've been doing that by building skills and agents for each job family.
+So as you can see here, we've got a huge catalogue of skills that we've verified and built and tested with ideas and dummy projects.
+We're starting to roll them out into customer projects now and starting to see a real impact of those.
+We've been working with all of the different job families, focusing on the areas that cost the most, some definition of cost, and that's starting to see real improvements in speed.
+Of the 16 job families that we've been working with as an engineer, I find it hard to say that actually we're the least interesting part of that process.
+We're kind of predictable.
+Actually, a lot of the other job families are now becoming the constraint in that system.
+I've realized over the last year or two that actually engineering has only ever been the constraint because we're quite expensive to scale as people.
+As code is becoming quick to produce, I'm not going to say free to produce, but as it's becoming quick and free to produce, we're moving that constraint elsewhere.
+And so as code is not a bottleneck anymore, the constraints now shift into the idea generation and the idea testing and the development, deployment and testing environment.
+So engineering is where all of the hype and the investment has gone.
+We've been seeing tools. We're all using those tools every day, at least I hope you're starting to.
+And that agentic workflow that we're all getting used to as engineers is really changing what we do and how we do it.
+But everyone else in that system is now becoming that bottleneck and it's pushing that process out and across that system.
+And we're seeing that actually slowing things down and we're getting frustration built into that system.
+So an example of this, this is a real case.
+A member of my team was asked to join sessions to try and analyze what was happening.
+It was a delivery team on a real project.
+They had a round of user research and that user research was, I think it was about a 50 page document of transcripts and insights and hypotheses and all of the good stuff that comes out of user research.
+The developer team estimated it was going to take about two weeks for them to produce the clickable prototypes to start taking that to the next round of user testing and going to test each of those hypotheses.
+Within a couple of hours, Lee had generated 10 clickable prototypes using the prototyping design skill that we put together and delivered it to the team and they took it through to the next round of testing.
+It was a real demonstration to that team that they were a long way off being up to speed with where the developers were on that project.
+And as a set of product and user researchers and designers, they had that light bulb moment of actually we probably do need to start engaging with this process.
+And that's why Lee was there on that from my team to start pushing that way of working and start talking.
+One of the issues that we've seen as part of this is how close engineers are to using these tools when they're doing their day job.
+You pick up your ticket, you check out the repo that you're working on, you go to VS Code and the agent's there in the tool that you've worked with for years and years and years.
+It's there for the present, all you do is just start working.
+And when I say agent, I don't mean auto quickly with LLMs, I mean actual agent workflows.
+Generally, we've been testing with Claude, but we've also made sure it works with Kira and Copilot and all of the others as well.
+But yeah, it's there, it's front and present.
+When you open up your development environment, it's there already for you to use.
+And one of the problems that we've seen for other job families is that it isn't there.
+They're used to opening up a Word doc or going to a Teams meeting and getting a transcript from it or a recording of an interview that they've done or a Miro board.
+And while there are some AI components in there, actually they're generic AI components and they don't really help them to do their job because they don't know what the job is that they do.
+And so there's a real disadvantage to not being part of that agentic workflow that because we as engineers have had that investment, we don't realise that they don't get that playground to look around with.
+So what we've been working with is creating a natural language way of interacting with our ways of working.
+We're building that into the tools that people use and we're starting to measure that process.
+So you can see here I've got Claude co-work there and that is enabling the designers to start using our agent.
+The agent is aware of all of our ways of working and all of the skills and you can describe what you're trying to do in natural language.
+And you don't have to learn that prompt engineering, you don't have to understand what a skill is.
+Just in the background it will go off, find that and start plugging into that process.
+All of those skills are verified, they've all been tested by the team that are developing them.
+There's a governance layer, there's an instrumented sort of set of recapturing with telemetry and the metrics around it as well.
+All of that's being stored so that we can see who's using what skills and when.
+We can record what the skills are doing or what they're looking at but we record that they've been used.
+And that's important so that we can see that uptake.
+We're starting to introduce it into those tools that they use.
+We're creating MCPs to cool our system so that things like Miro with the agents that are in there
+could start taking advantage of the skills that we're using as well.
+So starting to integrate it into those, that's kind of what we're working on now.
+And then as it says, how we're instrumenting.
+Generic agents are great, they're hugely useful.
+Much of this presentation was written using a generic agent.
+I had some skills to help me as well.
+And actually the other side of it is everyone probably has a playbook or a team charter or something that defines how you as a team work.
+But very few people read those every day and go back to them and study them and try and build them into the way that they work.
+Which, I don't know for you, but that's caused us some issues with inconsistency and sort of deviation and drift.
+But actually this is a huge advantage to us.
+We can now take those generic agents, give them specific knowledge of our ways of working through skills and through specific agents.
+And it means that those agents are amplifying what we do but they're also doing it in line with our ways of working.
+It doesn't mean the ways of working is correct, but at least we are using it and testing it and becoming more reproducible and more recurrent.
+And so that we can study change and get better at what we do each time.
+Governance, as you've just heard, is fundamental to this process.
+One of the things that we've agreed up front is that we need to store metadata about the agent, the skill, where it's been tested on, how it's been tested, what are the bounds of what it can do.
+An agent will very confidently assert that it can help you with a job.
+But if you haven't tested it and you don't know what it's good at doing with that skill, you have no idea what it's actually going to do.
+So we need to make sure that there's a human in the loop at the right point taking part of that action and delivering that change.
+So that sign-off is important and knowing where it does that.
+So three things you can do tomorrow.
+Find a constraint in your system.
+Probably isn't coding.
+Probably isn't software engineers or cloud engineers or architects.
+Most of those have already got the tools that they need.
+You just need to work out how you make that fit your way of working.
+Put the agents where the people work.
+Make sure that they've got access to the agents in the tools that they use every day now.
+Don't make them move to a different tool.
+Or if you do, don't make them use a terminal.
+Trying to put a terminal in front of a product lead is really hard to sell.
+I tried.
+My partner's on.
+She wasn't happy.
+And then for every skill that you share, make sure that it's been verified.
+Make sure you've recorded how you verified it and what you tested it across.
+Running the Anthropic skill creator is great.
+The eval loop will cost you all of your tokens for that day.
+But actually it does produce some good output and it does do some good testing.
+I often say don't run eval loop and then regret it later.
+Yeah.
+I've included a link there.
+There's a QR code if you're willing to take a photo of the QR code.
+Test for you.
+For our AI risk assessment framework that we take our customers through.
+Yeah.
+Not quite what Sam was going to be presenting, but hopefully interesting anyway.
+Feel free to contact me on LinkedIn or add my email at matec.
+Jim.stamp@matec.
+Yeah.
+Thank you very much, Jim.
+Thanks for putting that together last minute.
+Also, thank you very much for jumping into the slot.
+Thank you very much.
+Thank you very much, Jim.
+Thanks for putting that together last minute.
+Also, thank you very much for jumping into the slot.

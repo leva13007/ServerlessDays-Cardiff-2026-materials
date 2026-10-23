@@ -1,0 +1,338 @@
+everyone hope you enjoyed the break we're about to get started with our late
+morning sessions so hands up in terms of how many people here have I been heard
+of regularly used the likes of Codex, ClaudeCode, Kiro, those types of coding
+systems so as expected it's like it's most of you and so these types of tools
+tend to be quite pervasive in the market today so it tends to be like the
+de facto standard in terms of using coding systems to write code but the
+reality is in terms of trying to speed up how to deliver new features into
+production writing code is only a small part of the software delivery lifecycle
+so that's why I'm delighted to welcome our next speaker to give us more sort of
+customer examples real-life stories of how organizations today are using AI to
+actually speed up all of the software delivery cycle so please put your hands
+together for Grace Creedy, solutions engineer for cloud and AI
+at Microsoft
+can you hear me? oh yeah we're in okay so everyone's had coffee hopefully everyone's nice and awake now
+did you know AI is going to make every developer 10 times more productive
+and who feels like they're 10 times more productive at writing code out of
+interest
+let's see how close we are a few people I would say genuinely I can create a lot more
+code than I ever used to be able to because I also use coding systems I build proof concepts
+customers and you know for things that are we know the boilerplate stuff the templates
+things that are sort of simple and easy to do or actually for me the big thing is problem solving
+it's I've got this idea where do I begin
+like what the approaches I could take and the tools are impressive and I
+think we can say now more than ever what they can do compared to even just a year ago
+and I don't know if people remember using kind of your code assistance even 18 months ago
+interesting outcomes depended kind of how much experience you had but it wasn't always great
+so they are good they can explain errors they can create tests they can help developers understand
+unfamiliar code bases all that stuff that we know but question how many people have seen their code
+into production 10 times faster okay even five times faster exactly and so this is what I want to
+talk about today um what if we've been optimizing the wrong part of the problem and lots of conversations
+about this the biggest part of my job before I changed my new team recently was working with banks
+and it was okay how do we get developers to write as much code as possible how do we get these features
+out clicker you know what developers need these tools and all of the focus are on developers
+who is not in a developer role just to get a feel of the room okay you've probably felt a bit left out
+right you've probably been told you need to use ai without really being told what for and actually not
+really being considered as a priority you know it's hard to get their hands on kind of you know coding ai
+licenses which we all know actually not that many people are getting access to outside of the developer
+world so yeah i'm rose royodi i am a csa at microsoft who focuses on basically understanding
+where is the developer friction when it comes to azure adoption but i did also used to work at aws so this
+talk isn't about any specific technology it's about just concepts so hopefully regardless of where you're operating
+there'll be something that you'll be able to take away from this
+so we do know already that developers do more than write code we know that actually around a third of
+their time is spent actually writing the code and the rest of it is doing everything else that they
+need to understand you know what's been asked for choosing the architecture finding the correct
+documentation something that we're all told is going to be fixed by rag systems how's that going for
+everyone um getting access and permissions and who here works at a company where you have an automated
+kind of uh developer platform where you can just self-serve and get access to what you need when you
+want to deploy something yeah that's what i thought now i remember having these conversations five six
+years ago you know shout out to dvla i know they were one first i see do this really well but actually
+most customers aren't there yet so we've got all of these things you know they actually get in the infrastructure
+even just in access to a sandbox particularly if there's anything to do ai there then you've got
+the security and compliance and then at some point obviously we need to deploy and operate all of this
+um and so we can see that actually of all these 10 boxes the coding part is one of those steps
+um
+just make sure i'm not missing my key bits um so when we talk about developer friction
+we we have a lovely big beautifully worded explanation in our lovely pack that we send out
+in my team but i'm going to simplify it down when i say developer friction and i don't just mean software developers
+i mean anybody who needs to write and deploy or do anything that gets something into the cloud or
+into some sort of production system such a cloud engineer your sre your devops it's anyone that's
+involved in that process so friction is anything that introduces unnecessary delay unnecessary effort
+uncertainty or a dependency between the developer and the outcome they're trying to achieve
+and so one of the key ones here is uncertainty um you ask access and somebody says yeah should be fine
+on the platform team nothing here's technically failed we're actually very often not talking about
+there's a problem with the service the feature doesn't work well of course does happen sometimes
+we release things that aren't quite working as they should that's generally not the friction that we're
+coming up against it's all of the other things that sit around it
+okay me and my clicker aren't getting on so we're going to go old school with this
+so i'm just going to use a bit of terminology just to kind of set the scenes and we're going to use
+these then as i illustrate examples this again is something that we kind of came up with so that
+we can start to categorize the different frictions as they came through so when we talk about drag we're
+talking about things that take longer than it should this could be for example getting access to an
+environment getting access to documentation another one is false so this is when the correct path is
+unclear that could be because the ai has told you something that actually you don't think is correct
+um i argue with ai i feel like every day because it tells me this is what you should do
+and i'm like i think that's wrong but now i don't know and i'm questioning my logic because i've got
+four approaches so who knows um but sometimes it's our own internal kind of documentation it's the
+custody it's the you know public facing documentation that us cloud providers put out which you know may
+or may not be helpful less so it feels like with the ai stuff anyways um the next one then is heat
+so this is where you actually the experience of doing this is eroding trust um i am open about this
+when i first moved from aws to microsoft i couldn't for the life of me work out why deploying azure
+function was so hard and i remember going to my team and being like am i stupid have i missed something
+here and they were like oh no everyone knows this is like really not easy to do and i was like okay
+are we gonna fix that at some point anyways pending to be confirmed still hasn't happened but
+actually that made it something i didn't want to play around with again and this is something that we know does
+happen we've seen a lot of this with ai we've released tools out to the market all the cloud
+providers all the sash providers have and they don't work maybe they don't configure correctly
+what they're promised to do doesn't happen you lose trust you don't really want to continue down that
+path you think okay let me look at what what other options i have and the final one is just a wall
+developers just cannot continue they can't get access to the environment they can't get past the
+security board whatever it might be the feature doesn't work we can't get a connection set up
+and so this can come from lots of places it can be confusing documentation it can be a broken pipeline
+it can be the dreaded security reviews which having just worked in finance for a long time i know are an
+absolute pain it can be you know an approval queue and so i want to be clear that developer friction
+is much broader than just broken tooling and ai coding assistants that don't work um you know the
+documentation is really a key example you find three different ways to deploy something one article is
+recent one sample is actually two years old and then you know your art the community answer recommends
+something different you know outside overflow i do occasions to read stuff on there and then your ai
+coding assistant just comes up with something completely different and you're not really sure where to go
+so if we think about these drag and fault are the everyday ones they're the ones that we sort of
+tend to think of the most heat is the one that makes people leave and this is really relevant you
+know in the cloud space when particularly your sort of startups your digi natives your legacy customers
+are now moving into the cloud it's normally the top reason that we hear why people went one way or the
+other when it's not purely kind of a dictated decision is actually they just it just was too hard to use
+um so keep these labels in mind they're going to keep coming back to them as we go through the talk
+oh it's working again okay so let's look at this little kind of line across the screen here we've
+got our you know before ai these are all the things that we know we need to do simplified that 10 boxes
+earlier understand what's happening make the design do the build test deploy operate and as i talked about
+a little while ago we introduced ai and we handed all of the tools really to the builders the software
+developers and we have absolutely shortened that box we can get code written a lot quicker but if we
+actually look at the entire line it's only shifted a tiny amount because we've actually only really
+split up one part of the process so a faster step doesn't automatically create a faster system and i'm
+not a car person but i do sit in a lot of traffic so let's just imagine your developers have been given
+a lamborghini but stuck on the m25 we're not getting any faster we may have given them a faster tool but
+everything around them hasn't changed and that's really the analogy of what we want to think about
+so you know ai is really good at certain things it's very good when it comes to things like
+drafting specifications you know suggesting architectures generating tests thank god
+as julian said it earlier nobody likes writing tests and we'll talk about that a little bit later
+even preparing call requests and i don't want to go too much for side tangent but one of the other
+blockers we know is that we write loads of code and then we just get blocked to happen to review all
+the pr's and then we just get blocked at the next step anyway so again we've got this constant cycle
+even when it's more developer centric but obviously there are limitations because we know that what's
+now happening is that we have got this bottleneck where the code coming out isn't going anywhere and we're just
+pushing the the sort of emphasis further down the line and suddenly they don't have the tools to know what they need to do
+you know developers are still spending hours sometimes weeks sometimes even months getting
+access to their environments and so it doesn't really matter that they've written more code if
+they can't actually do anything with that
+so let's look at this as an example and we've talked already i've seen a few talks around kind
+of like the human in the loop this is so important with ai i have argued with many many ctos and you know
+the chief kind of engineers at some of the top banks in the uk about this humans are definitely
+still needed to be in the loop i will happily die on the hill the ai is not yet smart enough to replace
+end-to-end processes it just isn't i mean literally chat gpt gave me the wrong directions just this morning
+why i didn't use google maps who knows but i just want some general guidance and i did that one thing
+that we all do where i go i will quickly summarize it and it was wrong because actually it was using
+outdated information and that's me trying to get to mns this morning at eight o'clock not me trying to
+write something to put into production so we can imagine this problem just scales and gross
+so let's think about adding a ticket you know for the ticket to production so i want to add some
+asynchronous image processing into application and so great we have the kind of understand the
+repository and guidance that can be really really really sped up and we can actually use ai really
+efficiently here we do still need a human though to review the architecture because we know that ai
+is good but not always right and so we still have that kind of human in the loop
+the next bit then actually implementing and doing the infrastructure and the test again great use to
+bring ai back in we know it can do things a lot quicker you know nobody wants to be writing terraform
+modules from scratch anymore we know that this is the sort of thing it can be helpful for
+we do still want humans in the loop to validate and kind of raise this request and so we haven't
+removed the developer but we have kind of moved them from typing and doing manual stuff to deciding
+and still being really important in that decision making process and so all the things we're going to
+talk about today are very cloud neutral as i said earlier i didn't want this to be you know as specific
+because i know that everyone here comes from sort of different cloud backgrounds and so this isn't you
+know a one set of tooling over another and as we work through those examples hopefully that becomes
+useful so these are five different places i'm seeing customers start and i say start because
+most of them are in the journey we talked about earlier everything's still in the developer coding world
+to put ai to remove friction and actually none of them are writing code and these can be some of the
+quickest wings and i'm going to dive through each one of these in more detail and give you some examples
+um but just remember that terminology we used earlier of drag fog heat and wall and you'll notice that
+these kind of are mapped as we go through which one it tries to remove and you'll notice that drag comes
+up a lot and i think this is one of the best places that we can really save time and be smart when we
+apply ai to the stlc like correctly so what are they we've got automated design reviews we've got
+environments on demand we wish we can dream and generated tests which again most of us are starting
+to do but i think they're not really kind of a an enforcing or it's kind of something that's it's very
+ad hoc how it's done and operational visibility i have seen only a few customers really tackle this and the
+ones that have made great changes and repetitive engineering work so let's talk about automating
+design reviews so um the board meets on thursdays your proposal waits for its slot it's finally read
+most of the meetings tend to be about whether you use the approved module whether you've used the right
+patterns and actually that's something that a document could have answered in advance so i'm not by any
+means saying we don't have bold reviews just to be clear what i'm saying is we don't spend an hour
+talking about things and actually that is something ai is quite good at is what's been proposed here
+a match to the recommendations and the documentation that we gave them because that's surely what they
+use to make the design so therefore we should have a quick entry point what you have instead are some
+aroused reports recommendations that are brought to the meeting that could be quickly scanned to say
+check check check check or here are the anti-passes or here are the problems and here are the mitigations
+already we're freeing up a lot of back and forth because often what i see in customers is they go in
+and out of these design review meetings and have a bit of time and then they go back with the next
+change and these things can drag on and drag on so actually the proposal checks against the pattern
+before anyone opens it and then every deviation arrives with the rules what it breaks and then the human
+starts at the exceptions to the problem not all the basics there is however still a human gate here
+and you're going to see this in all of them and the gate stays on at that final review we still need
+people to have that judgment call and so nothing here takes that away so we think about this as an
+example and how to measure it and the measurement bit's really key because this return on investment
+things like you know the next second buzzword to ai itself um it's the time from proposal to decision
+that you then want to measure with this have you been able to speed up the amount of time it took
+from when that was proposed to when a decision was made that you could move forward and then how much of
+that review is actually spent on the genuine trade-offs if that share rises the review got even better
+before the meeting even if it stayed the same length and that's the type of thing that we want to look
+at is anyone doing anything like this today where they have an automated element of lookup before going
+to design reviews no so definitely maybe one to take away and think about one of my customers started
+doing this probably about a year ago not with the design review originally although they brought that in
+what they wanted to do is just actually provide an agent a simple agent to help with architecture patterns
+because they were really trying to scale up and rather than an architect starting from the beginning
+they wanted to be able to plug in these are the requirements this is what being asked for
+can you give me some recommended patterns that would make sense that are in line with all of our
+you know understanding of how we do things already so that we can try and move through this process a lot quicker
+really small thing and you're going to notice that as i talk through the rest of them
+i'm not going to suggest these massive multi-agent workflows with loads of twists and turns
+actually normally the most time spent are things that are fairly obvious fairly simple but actually
+tend to be the kind of last thought that we get to
+so the next one environments on demand a bugbear for so many people so you raise a ticket for a test
+environment that matches production maybe wait days maybe wait weeks it depends nothing's actually
+broken but as a developer you just can't continue you're at this fall stage and then also the drug
+bit comes in because often it's not clear how to raise it or there's different processes the
+documentation is out of date and so you end up context switching you pause about while you go do
+another piece of work we all know from the numbers context switching you just i think it's 20 minutes
+it takes on our fridge to get back into the full flow of what you're doing now we're losing potentially
+hours in a week because we're sort of having to just swap between stuff i asked earlier hardly anyone
+works somewhere where there is a fully self-service deployment platform which means that most of you are
+probably raising a ticket of some description chasing it up hoping that somebody's actually picking that
+up at some point and then having to go back and so you've got developers constantly having to flip
+between projects just because they can't move forward on what they're trying to do so where this could
+change is actually we put a request in in plain language of what you need for that environment
+the request is then made and composed of the infrastructure modules that the platform team have
+already approved you know as a general consensus who's working for people that are using infrastructure
+as code for most of the platform deployments so that was you know a good three quarters of the room
+so what we know is you do have the infrastructure as code you have the patterns you actually do have what
+you need to be able to get these in quicker what you don't have is an entire development platform
+and most companies sort of pause the building then when ai came and knocked us all on the side of the head
+because this became the new exciting thing and the i used having all development platform conversations
+before gen ai kind of jumped down suddenly this became kind of a secondary thing but actually we
+can move away from needing to build up these big harnesses and have this whole kind of pipeline that
+stitches everything together because we can get agents to be able to do something like decision making
+so we get our environment that's using pre-existing modules policy and guardrail obviously run
+automatically and then we can have kind of tear down scheduled we still have a human in the loop here
+you'll notice this again you want to check them it's good to again have that recommendations but
+to actually be able to just have a look over it does that make sense is this compliant yes
+and then great now we can actually move on and we can get that environment in
+so the gate here sits at those guardrails you still need people that understand the policy that own
+policy they've not you know they've just stopped hands checking every single request that comes
+through i think this is really important particularly when we've got and there's a sliding scale there
+for the sort of leaders in the room that are thinking absolutely not allowing an agent to build
+environments don't be ridiculous i'm not saying that you would allow them to build your really secure
+environments places where you've got a lot of compliance and controls anyone that works in public
+sector government anyone that works in those kind of regulated industries but there are probably
+environments that are absolutely fine once you've built up confidence and trust and i want to just
+pause on this one with all of these things i'm not suggesting from day one that you build this give
+the ai agent full kind of access and go okay thank you that's nice what you do is you build an agent you
+get it to do this before anything is done you get a human to check it and you build up confidence
+you tweak it you build up you have your confidence threshold as you reach a point more actually you're
+pretty confident now that you're in a good place and this is something that is lower risk but is a
+high yield there's a lot of these requests that come through now you're in a position to move that to
+be more fully automated you keep building that confidence with more complex use cases but you never
+just run out the door and do this on day one so how do we measure this time to work in environment you
+know how many environments are still and also another one how many environments are still running that
+nobody owns i have got multiple subscriptions that i should put some policies in and to tear stuff down
+because they're test environments and no one really wants them but you know that's me one person if we
+imagine how many people at microsoft like me are probably really bad actually scheduling teardowns of
+environments there's a lot of stuff running around that's kind of just sitting there so these are two
+really easy to measure metrics that show meaningful time this would also then remove that wall and the
+wall is a really key one as we said earlier wall can't be fixed by reading some new documentation or
+asking a person there is a blocker and in this case it's purely the environment
+okay so next one we talked about this earlier generated tests um i'm not going to ask if you like to write
+and test no one likes writing tests i hate them um and i think the reason i had a really interesting
+debate a few months ago with a team that i was doing a hackathon with some of the team were qa and
+testing and some of them were developers now the qa and testers were adamant that they could probably
+write the code and test it themselves the developers were also adamant they could do all of the writing of the code and testing it themselves
+i'm a little bit on the qa testers front here and that is because they are different mindsets
+when you're a tester your favorite passion in life is breaking people's stuff you love it when you
+find something that was wrong we are all guilty of writing code putting some test cases in what we're
+not as good at doing is thinking not just of the edge cases but actually trying to prove ourselves wrong
+you know it reminds me when i was at uni and i was sort of studying psychology and they said you know
+the best hypothesis is when you set out to prove that you're wrong and we're not very good at doing
+that because we tend to test the things that work the other issue is that when the deadlines move and
+things get brought forward and we're in a rush we tend to go with we tend to avoid the test cases that
+actually would cause problems and so a generated sweep the passes proves nothing if it didn't try the hard
+path and this is one of the quick wins that we get here this is not just about writing tests we generally
+are using ai to write tests what very few people have done is automated that into their ai sdlc and
+actually focused on the hard paths and then built that into a constant ongoing process so that it's
+always there so what changes now is the changes proposed case tests are generated including all of
+the failure paths as standard and this is something that automatically gets generated
+developer reviews the coverage then not the syntax so it's actually not looking at the syntax but like
+is this covering everything that i think it needs to the human is still in the loop it needs that
+knowledge to be able to make this decision and then gaps are sent back as a prompt not as a ticket so
+actually you can iterate with this well actually no this hasn't been covered or this hasn't been
+considered one of the things that ai is quite good at and i'll talk about things it's not good as you'll hear but one
+things it's good at is telling you what you've not thought about i don't know if anyone does this one of my
+favorite things to do give it a piece of work i've done and tell it to rip it apart and i give it
+different personas i'll be like imagine this is somebody in finance or this is a chief architect or
+security or devops what have i not asked what have i not thought about where are the gaps where's the
+bits that aren't working because if i'm writing it from an architect perspective and hand it to another
+architect i'm pretty confident they're going to go yeah that was great i know when i hand that to a security
+engineer they're going to be like that was cute go back and do it again so actually this is a great
+thing that we can do with ai is kind of have that iterative conversation so what we're measuring
+here we are measuring the coverage so the coverage of the failure paths and also the change failure
+rate not the number of tests generated but actually have we been able to improve that number
+okay one of the other ones then this is definitely one of my favorites
+is operational visibility so this is something that comes up a lot so you know the alert fires
+we've got five different dashboards the wrong book lives in someone's head and they're on holiday
+we'll say in thailand it's cold here and it sounds like a nice place to be right now
+where do you go from here um this is something that i was working on a couple of banks with just
+before i moved into my new team we have all the data agreed we have in theory all of the data available
+what we don't have is the time and sometimes the knowledge particularly of this is systems you're
+not in and out of to stitch that data together really quickly and succinctly so one of the best
+use cases i've seen with this in the last few months was a lot of the banks i was working with were really
+focusing on building knowledge management systems using things like graph patterns etc to kind of
+make relationships between data so that they could quickly find out what is actually going on inside
+of this environment and what has gone wrong and so what changes when we actually can put ai involved
+in some of this is the signals detected and then logs traces and recent changes are all correlated
+the reality is although these are conflicts when you're manually sort of going through them there's
+often patterns there's often the same problems that come up and these systems can be learning over
+time they can be understanding well what happened in the last couple of months what are the issues that
+we're seeing and so it already has a head start on you just going in there and sort of hoping that you
+understand what's been going on in this environment the next bit's key i'm not suggesting it goes and fixes
+everything because that is a whole different conversation around trust and guardrails and
+confidence what it can do though is give you the likely proposed issues with the evidence pointing
+you to all the right logs all of the bits that are needed to make that decision how we got to that
+point if we just take that as an example if you had to go in a troubleshoot environment right now manually
+we'll assume it might take a couple of hours minimum just to find everything you need to get started
+then you start cross-referencing you start correlating it that could be shortened down to a kind of five
+minute window just as a starting point that doesn't mean that you just go okay that was the problem
+you then kind of read through it you're going to validate it but already if we imagine that over
+the course of the year and that happened a hundred times and we've saved five hours each time
+this isn't something that's really exciting and flashy but it's really meaningful
+the engineer then can confirm or kind of reject what happens there
+um what do we measure here so time to restore services and how often the first proposed cause
+was correct and that's how we build the confidence how often did it get it right
+i've seen some other similar patterns and i was talking to a few people about one and when i was
+working with one of the big banks about sort of six months ago they were all excited showing me
+something they built and you know what it was really bloody smart and i've told everyone else about
+it so that everyone else can build it simple concept they use kubernetes for everything
+therefore they have infrastructure's code for everything they put all of that into a graph
+style database they put an llm on top and spend a bit of time refining the agent started off as a
+simple chat interface if i make this change what are all of the downstream repercussions well all of
+the different things that we change in my environment where does it touch they had all that data
+it was all sitting there they knew how everything all the relationships worked what they didn't have
+was time so it started off as a simple thing here's a proposed change what would the impact be and then they just
+went into their CI/CD pipelines developing the process of changes okay run an analysis is it something
+that we would do what would the impact be small little things like that again these aren't things
+that are anything to do with developers but actually that is a really small thing that can have quite
+a big impact and from there they then started to build out to lots of their other cloud services more
+than just terraform and more than just their kubernetes
+okay so um final one quickly then is obviously repetitive engineering work so
+this is another one where you know what's the friction so dependency bumps boilerplate
+config change logs release notes each one of them is five minutes but actually these really do delay
+and they're never really anyone's priority because they're really boring but they do accumulate and
+become a security problem so this one's simple okay routine work is detected it gets batched into
+renewable changes so you can kind of put them together in groups evidence attached you know kind of what
+breaks um you know what's changed what's broken etc and again we still have human in the loop but human
+looks at these in a batch which is much better as well from the context switching perspective because we're
+just already in the mind frame of knowing what we're looking at and then not one by one it's a really
+simple thing to measure here hours returned per team per week and whether the batch is small enough
+that anyone actually reads it and this one's really key this is kind of in the world of the pr reviews biggest comparison

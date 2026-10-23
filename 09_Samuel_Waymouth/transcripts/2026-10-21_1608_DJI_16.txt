@@ -1,0 +1,335 @@
+Some of the early talks we had today were talking about how we could use AI to deliver things quicker and I think we're slowly moving towards an age of things like autonomous agents moving at machine speed and that obviously then brings up the challenge of well how do you secure them, how do you wrap governance around that and how do you make sure that you can govern these agents, you can govern AI without actually slowing down progress.
+So now I'd like to welcome on stage Samuel Weymouth is the security specialist solution architect at AWS to tell us more about this topic.
+Oh it's working, yay! So what shall we talk about? Organisations are very keen to move as quickly as they can to start implementing authentic AI all over the place in their organisation. When I think about how we use it in Amazon, we're particularly
+keen on automating, well basically the stuff I'm going to talk today because to a certain extent governance sucks and I'll emphasise this, I'm building a workshop so I can have an all expenses paid trip to reinvent which is in Las Vegas, our yearly conference on PQC for IoT and in order to get the code, the sample code for that project live on the internet so customers can pick it up, I have to raise two different tickets, do three different security assessments with different tools, all which give different
+different answers, remediate all that stuff, identify all the false positives, actually I've been at it for two days just to get a bit of code put out there that runs for a two hour workshop.
+So even we are victims of governance at Amazon to many of you aspire to work at Amazon one day, what they don't tell you is that despite all the cool, sexy technology we do, we're actually an organisation that runs entirely on tickets and queues. A ticket is a way to invoke a human to do something and if that human gets bored of that, they automate it. So Samuel Weymouth, I am a security and compliance specialist, I work for our strategic industry, it's our top 200 customers and I specifically look after energy and
+utilities. But I have two jobs in another life, I am Sergeant Samuel Weymouth, Royal Signals and I work for the Defence Cyber and Electromagnetic Force as part of our cyber defence for the UK, helping to keep you all safe and the king as well obviously.
+Moving on.
+Moving on.
+Quick bit of audience participation, who is in their first five years of their IT career or perhaps is still a student and they're thinking about, okay a few hands popping up. Okay, who's a 30 year veteran like me? Okay, quite a few of you too. So for all of your 30 year veterans you'll know to answer to these things. For people who are starting out, confidence risk
+and compliance, I like to give them a little bit of identity first so we all know what we're talking about. Governance is a system of direction and control or as I like to say, who's paying for all this stuff because they make decisions about where it goes live or not.
+What else we've got? Risk. What could go wrong? How much it matters? That's very much about, okay, how much money are we going to lose or how much impact will it have on our customers or our country should this go wrong? And what are we going to do about those things? And lastly, compliance.
+What are we going to do somewhere has to be reported up to? It could be a regulator in the royal signals, ultimately it's the king, to actually justify what we did and why we did it and why it went wrong or didn't go wrong and what we're going to do about it going forward. But particularly, you know, a lot of regulations, GDPR, etc. DORA for financial services will emphasise a lot about what you're reporting upwards.
+So these are all things that they are not sexy. For anyone who's put their hands up for the 30 plus years, we've all had to put up with the stuff our entire careers. If you're starting out in IT, it's not a fun about like, oh, I'm going to work for a big company and make AI stuff. Yeah, you get to do that too.
+But these things really matter. Regardless of your organisation being public sector, a start-up, a large bank, they really, really matter. And if you want your project to succeed, you're going to have to make the people who own these systems happy. Because if you don't make them happy, they will block your project. And that is what we are trying to avoid when we're trying to roll out AI across our whole organisation.
+A couple other things. Lots of people want to talk about AI security in particular, and throw thousands of buzzwords in there. Guardrails, autonomy, worrying things, fair uncertainty and doubt. Amazon and myself and a couple of colleagues have been working on this sort of three-point model, mental model, to make it simple.
+There are just three things. There's inference. That's the model you use. And you've got a choice of models. Build your own, use one off the shelf. Configure, fine-tune one. It doesn't really matter.
+You don't have a hell of a lot of control over how these models work. It's input and output. It gives you back a confidence score. And your control, from a governance perspective, is largely the service terms and conditions that the vendor supplies you.
+Claude, for example, is recording your props. Not a lot of you have read that fine print, but it is. Last 30 days worth, to make sure you're not abusing the model. Most of them do.
+So, you know, is that a problem with GDPR and PII? Maybe. Depends. But you need to think about that. That's what this talk is about. Agents. This is, people talk about agents, it's all sorts of different things, but agents are code. That's the code you write to do reasoning, to do multiple calls to multiple models, to call different tool sets, to be able to get information to enrich context, to make more calls to more models.
+So that code is just like any other piece of code your organization writes. It's got nothing to do with AI. It sits in a repository. It's got to be scanned, just like my code for re:Invent that's been dragging on for two days now.
+And lastly, tools. These are the things, MPCP servers, stuff like that, and A2A, all these sort of protocols that have been banded around. But the important point about this, there are only three components of an identity AI system at a high level.
+And the interfaces between these components are where you put security controls, be it network controls, because even though it's AI, firewalls are still pretty good at blocking network traffic. They're amazing like that.
+Authorization and authentication, that still works the same way. That's not new. You put that at any one of those levels.
+Guardrails, more for agents and inference, but also for tools, basically to say, okay, yes to PII, no to PII, yes to abuse, no to abuse, safety things like that.
+And tools themselves. Tools like if I say that, okay, in my organization I use ServiceNow, it's going to be a tool that my agent is going to talk to.
+Well, ServiceNow has its own authorization policy as its own MCP server, so does SAP, and other tools like that.
+So, thinking about it in those three terms helps simplify, you know, which bit of the AI triad are we talking about, and what interface is it using, and what controls are we going to put on the interface?
+That's the mental model that sort of strings the whole talk together.
+Now, not to forget, I said there are a bunch of people you need to appease if you are going to make your project a success.
+These are some of the things that these people control, often with specific tools and specific silos, or it's a startup that might all be done by one person.
+Asset management, risk register, what could go wrong, what are you going to do about it?
+A project register, well, no project starts in a vacuum, it's going to be paid for by somebody.
+Well, it's a policy library, this might be a wiki page, or it might be a bunch of word documents sitting in SharePoint saying these are the standards this organization believes in, whether it's a charity or an oil company, whatever it is you're working for.
+Then find the evidence store, can we show an auditor, we can prove that we did what we said we did, and we've got evidence to show it.
+Quick show of hands, or yell from the audience, there's one system I've deliberately left out of this, this is for the veterans.
+Who wants to have a go, what system up there is missing from a large enterprise environment?
+It begins with C, that's the only clue I'll give you.
+Any takers? Come on, be brave.
+Alright, change management.
+For you at university and student people, change management is a great evil thing, but it's very, very necessary to be in a regulated environment, because you can't change anything without a test plan and a rollback plan and a few other plans.
+And it's generally manual.
+These are all things that cause governance to slow down the adoption of agentic AI.
+Because agentic AI and agentic threats work at agentic speed.
+An attacker using an agentic tool is attacking you very quickly.
+They will find an exploitable vulnerability in an internet exposed system very quickly and exploited within a few minutes now.
+That's no good if your change management works at a 30 day window to be able to patch that system.
+So what do we do about that?
+This is a, who works for a startup building something interesting and new?
+Who's going to say to it?
+Many hands.
+No startups.
+All public sector.
+No?
+Okay.
+If you were a startup and you were thinking about what's the cool AI tool that I could build that's going to make loads of enterprise customers really happy.
+It's building a tool that orchestrates all of these systems together in one fell swoop, treating them all as NTPs.
+So that when I put my code into my DevOps pipeline or my GitHub repo or wherever it is, it automatically updates the asset register and risk register.
+It does an assessment.
+It makes sure the project's up to date.
+It checks any policy libraries to make sure we're implementing the controls my organization requires.
+Water regulator requires and updating the evidence store.
+If you could build that with Agentec AI, all my customers would buy it before Christmas.
+Everyone.
+That's every big oil company because that's what's blocking them.
+They want to unleash their developers and let them build with AI, but they want all that stuff done first at the same speed.
+So that's key to our listing.
+How does that look?
+Governance tends to be something that happens after the fact, maybe quarterly or monthly or whenever change management actually occurs in an organization.
+Scanning repos, pipeline's deploying artifacts, registers being updated by hand, these are all pretty typical things.
+I've worked for a bank that I might name, but they're too large to fail in the UK market.
+And every one of those systems are separate.
+Every one of them had its own owner.
+Everyone was asylum.
+They're kind of a small empire, if I was to be completely honest.
+So governance is not a promise in that situation.
+It's a promise rather than a precondition.
+It's something that can't actually be achieved.
+So we need to shift it, well, left and right.
+The pipeline gate, the governance becomes something that's automatic every time you put a merge request in for a feature branch to put into your main code.
+Can we automate governance to work instantly across doing appendices, doing a code scan, doing a container scan, generating all the evidences of that,
+putting the evidence somewhere, raising tickets, closing tickets, all that sort of good stuff, stuff that I'd like it to do.
+Most importantly, making a risk assessment so we can say, are we going to let the development pipeline autonomously deploy this AI program?
+Or are we going to make it go through some human in the loop decision making before we roll it out?
+Very important if you want to talk about things like the EU AI Act and stuff like that.
+So why is this important?
+AI governance is a blocker for a lot of organisations.
+88% of enterprises use AI somewhere.
+Quite often, if you're, well, we'll be coming up to it in a minute, a scoping matrix.
+Well, a scoping matrix already looked at where you say, okay, some systems are bought off the shelf, like SAP as a good example.
+That's AI built in, our service now has it as well.
+These are ones that have got it built in.
+So you're probably using it already in a large organisation.
+But only 13% of organisations, at least according to Garton, are to report any significant transformational value.
+I just described to you the pain points of deploying a sample repo in Amazon.
+It's a pain, it still is.
+So this is the gap between adoption and actually getting value out of it.
+88% of AI agent pilots never reach production.
+It's a Forrester IDC quote.
+And the bottleneck is governance and operational readiness.
+It's got nothing to do with the quality of the model, or your training, or your agent code, or how much testing you did.
+It's all to do with the governance blocking.
+80% of AI projects are able to deliver value, twice the rate of all AI projects.
+Having had a lot of experience in the public sector, and still being in the public sector,
+that's a right target for IT systems that fail over many years and fast speeds.
+Just ask the NHS and IBM about that.
+42% of organisations abandoned most AI initiatives in 2025, and it's up from 70% the year before.
+So the point, adoption is near universal, but what's not happening is governance.
+How are we automated governance?
+Because as I said at the very beginning, governance kind of sucks.
+It's not sexy, it's not fun, we just want to write code and have it in time.
+So the why slide, the AI threat model, what's new and different about AI?
+All sorts of things.
+Prompt injection is a real problem.
+Untrusted input becoming part of that prompt, and getting the inference layer to do things we don't want it to do.
+But remember, there's a control between the agent and the inference layer.
+We can put filters in there like guardrails to try and help prevent that.
+It's important to note that each one of these things, if you look back to that three object model we talked about at the very beginning for AI,
+every one of these problems has a technical control somewhere that you can put in one of those interfaces that will help stop or, I'll say reduce, the risk.
+It will not eliminate all risk.
+So tool misuse, that's a problem.
+Memory and data poisoning, sensitive data disclosure.
+The more important one may be cascading a multi-agent failure where one agent takes the output of another agent and just trusts it,
+and then tries to run more inference somewhere else.
+We'll make more decisions, we'll do more reasoning.
+And also supply chain risk is now included in this as well, because we have things like, we have models where you know what the weights are,
+and then we have models where it's all hidden from you.
+As working with large oil industry people, they are very cautious about putting their operational technology data into the hands of a model
+that they don't fully understand, or even into the arms of a product that uses models,
+but those models are not being transparently talked about as well.
+So every threat is said max to prevent and addictive control.
+Oh, I'll skip ahead a slide here, but I briefly talked about it.
+You know, how do you frame this in a way, or how do you start this risk assessment process?
+And one way to do that is to use a framework like this one, the generative AI scoping matrix, free for Amazon,
+to help you define when you are communicating with all these government stakeholders, well, what have I actually built?
+Am I sort of in zones one and two, where I'm kind of just a consumer of AI services, either as part of an enterprise product,
+or am I just using PartyRock or CheckGBT?
+Or am I actually building stuff, so that's scopes three through to five?
+Now, depending on what scope that you're going to be working in, what your application does,
+that will determine how much governance compliance you're going to need, how much legal review you're going to need.
+Risk management, what controls you're going to need to put in place, even what resilience levels you're going to have to put in place.
+You know, how often does your solution actually need to work correctly?
+Is it nine times out of 10 for the customer?
+Or does it need to work 99 times out of 100?
+You determine that, and you make a risk assessment based on that.
+So, the good news is, a lot of this, well, this framework already exists, so you don't need to invent this by yourself.
+And we're already getting emerging from, now over a year old, standards such as ISO 40 2001, which helps you put a framework together to risk assess applications,
+and AI applications in particular, and understand how your AI application can be measured in order to determine what you're going to do in terms of your risk position.
+Energetic AI, a little bit different than just plain old generative AI or other types of AI.
+We focus really heavily on the scoping matrix about the level of autonomy.
+Now, when AWS are doing testing of our agents, we put them in a sandbox.
+And touch wood, this is why we haven't appeared in the news with our models escaping and causing damage anywhere.
+We put them in a sandbox they really can't escape out of, no general purpose compute, no running things on laptops.
+It goes in a, what they call a virtual private cloud, and it cannot escape.
+It can do as much testing and as much damage as it likes within a sandbox, and it cannot escape.
+And we can validate what happens when the agent goes wrong, which is just as important as doing unit testing to make sure it's working correctly.
+And autonomy is a very important part of that because everything starts as, we use four tiers within AWS, everything starts with no agency.
+And as confidence scores increase in value, as we fine tune it, then we take a window of confidence scores, arbitrarily I'll say 50.
+Can we meet a certain threshold such as nine times out of 10 across 50 consecutive events?
+Then we say, okay, now this agent could be promoted automatically using a simple policy change to a prescribed agency where human impact or human might be in the loop, but only in things where the agent maybe comes across some new situation such as, when we think about autonomy, we also think about like, how repeatable is the change the agent's about to do?
+How reversible is that change it's about to do?
+And we can grant it the rights to do those changes to a system or a behaviour based upon the likelihood of it going wrong, but also the ability of us to wind it back should it go wrong.
+And it goes all the way up to scope four where the agent is operating fully autonomously.
+And if, remember I said about that arbitrary window of 50 confidence scores?
+So if it drops below the acceptable average, then the policy has changed and the agent loses all its autonomy instantly, automatically, no human intervention required, it automatically gets devoted back to human in the loop.
+Human in the loop doesn't work, by the way, because if you think about how humans behave, if I meet Amazon, as I said, runs all tickets, if I get too many tickets in my queue, I'll just say yes to everything because I want them to go away so I can do something more interesting.
+That's how human in the loop fails, so autonomy and graduated autonomy is the winner in this case.
+And there we go.
+Nothing would be complete without talking about the law.
+I have an LLP so I know what I'm talking about in this regard.
+There is no one.
+There is no one.
+All regulations or standards.
+So here are your applications down the bottom.
+You're building an application A, B and C. They're wonderful.
+They're going to look great on your CV when you apply to new jobs elsewhere.
+What do you need to consider in this bigger picture context?
+You need to consider the non-negotiable rules.
+EU AI Act, that's pretty much non-negotiable if you're planning on making a service available in the European Union and it has AI, and it has any form of AI, not just generative AI.
+GDPR, we will love data privacy.
+And compliance standards have already exist.
+Most organisations will be looking at some form of ISO 27001 because they want to be trusted by other organisations.
+In those order processes, etc.
+There will be security and risk management frameworks.
+A few of those are available now.
+Remember I said you don't have to start from scratch.
+The stuff is now emerged and is available to you and it's free in other cases.
+There is threat mitigation guidance.
+So not only do you have a standard, you have things that can happen to go wrong and what you're going to do about it.
+So a lot of your risk management is kind of ready to go for you.
+There's responsible AI, the ethics and codes of conduct.
+This varies by organisation.
+AWS adopts the one that's from the OECD group, which is basically what the EU AI Act is based on as well.
+Things like illegal workloads, for example, unless you happen to be a government agency such as mass surveillance, things like that.
+Various ethics and codes of conduct are around about those sorts of things.
+And generative AI specific threat mitigation and security frameworks.
+So we have the OWASP LLM cyber security and OWASP top 10 for LLM.
+These basically give you instant frameworks that you can use to help assess your applications and the processes by which you manage AI governance in your organisation, whatever it be.
+EU AI Act.
+I only bring this up because it's our favourite piece of AI regulation.
+And it's a bit of a moving target.
+August 2nd, just being, was supposed to be the deadline for high risk applications to be fully enforced.
+This varies.
+So there are still fairly significant requirements on transparency, documentation, other things like that, that need to be put in place now.
+But there is a bit of a hiatus on high risk.
+And high risk is anything that, for example, if I was building an application that was going to help the local Cardiff City Council allocate social housing to people who may have a disability.
+If that was the case, then that is an example of an application that has direct legal impact on somebody's life.
+Therefore it is high risk.
+That's an example.
+And illegal ones are anyone that's using, well, basically processing gender information, trade union membership, any particular characteristic under GDPR, or biometric information as well.
+So, be careful.
+Right.
+Other things that are coming into play.
+So, we talked about the broad picture of the contents legally.
+What are organisations doing about this?
+Now, this actually comes from our financial services group.
+What we're seeing happening with our FSI customers is that they are making this sort of three tier, or three lines of defence, when it comes to the organisational controls around AI management.
+So, tier one, own the risk.
+Ownership, ownership, and ownership are fully important here.
+Again, working at that large bank that cannot be named, but it's too big to fail, we had loads of systems in our data centres that were unowned and could not be shipped to another data centre because no one knew what they were and could turn them off.
+That doesn't happen in the cloud anymore because everyone's paying for everything, and you can't hide it.
+So, ownership is enforced.
+Overseer risk, teams that monitor and challenge.
+So, the first one is like builders, data scientists, maybe people like yourselves.
+Teams that monitor and challenge, GRC, risk management.
+There's other teams I told you that if you want your project to go live, you cannot afford to piss these people off.
+Alright?
+They will make you dead in the water.
+And if that doesn't work, then the regulator will.
+And then finally, assure the risks.
+So, it depends on assurance.
+The big four audit companies, whoever it may be, NCC for CREST-based pen testing, who actually test their environment and do an external report that says,
+"I, the trusted individual organisation, did a report and I confirm that these people know what they're doing."
+So, these are the kind of things that, you know, you need to think about putting these things in place and thinking about these governance controls.
+It's not just about like, "Oh, I'm going to put a guardrail in."
+You know, it's a technical control.
+It's not an organisational or a contractual control.
+And they are all required for AI governance to work properly.
+So, now we can actually get down to three things you can do to go away and do.
+this stuff all by yourself.
+One, visibility.
+What is AI doing?
+Who did what when?
+Why?
+Preferably.
+But usually you only get the who and the what and when.
+Controls.
+Agent governance and human in the loop.
+We talked about human in the loop as kind of useless in many real-world scenarios because it's not fast enough.
+But looking at automated energetic governance.
+Candle and things like sandboxes and stuff like that.
+And then continuous governance.
+To shift things right and get governance where it needs to be so it's no longer a blocker.
+It needs to be continuous and it's basically running itself.
+You don't want to have to have teams of people dedicated to keeping it alive, which is how it tends to work today.
+So, moving on from that, these are your foundations.
+And the core principle, if you get these three things right, you're getting governance as an enabler, not as pain in your butt.
+So, AWS config.
+Now, I should have pointed out, this is the only time I'm going to drone on about an AWS service because this is an educational talk.
+And I'm the world's worst salesperson.
+So, I'm not going to sit there going, this service does this and this service does that.
+If you want to know what our services do, just go to Google and go, Google, what does the service do?
+AI mode.
+And it will tell you.
+Similar to, if you want technical support from Amazon, just go and ask AI.
+Our customer support people have had a, well, a huge percentage drop in tickets since that happened.
+And if you gave me a technical problem to solve, I'd just ask AI and then hand it back to you.
+That's how we work.
+It's more efficient.
+So, key thing here, you cannot track what you cannot see.
+And as I said in the brief example I talked about before, at that large bank, there were
+lots of things that were unowned because the contractor that built it had left two years
+previously.
+And then the SSL certificates expired, which led to all the payments not working for a particular
+sub-branch in Northern Ireland, which meant nobody got their mortgage payments done for
+Christmas, way back in about 2013.
+You can look that up in historical records if you're interested.
+So inventory, continuous comprehensive inventory of AI infrastructure, but all the other infrastructure
+as well.
+Change tracking, change management, the thing that's missing from that previous slide that
+I asked you about, it is required by many organisations.
+And multi-account aggregation, can I look at all the stuff across, not just one AWS account,
+or just Azure, or just GCP.
+Can I do it for everything?
+Can I do it for my on-premises infrastructure?
+And this is where AWS config wins, because it is very good at continuously checking the state
+of things that were deployed to make sure the state has not changed without the necessary
+improvements.
+So it's one time I'm going to bang on about a particular service.
+It's very good at doing this.
+It's very good at doing it at scale.
+If your cloud provider doesn't have a service like this, then ask their account team, why
+not?
+And it's also reassuringly well priced.
+I won't say expensive.
+But it's about visibility first.
+Now, what else can we do to automate this governance pipeline?
+As I said, there's a gap in the market for somebody to build an orchestration AI that
+will manage governance at speed, and make it easier for the people who run the governance
+solution to do other things, like more thinking, rather than dogmatically following policies.
+So policy is code.
+The great thing about computers is that they are dogmatic and they will follow policy if
+you encode it.
+So in your pipeline to deliver your new wonder AI project, you can put in place lots of things,
+lots of controls that are added to that code repository and travel with it, and they're
+approved automatically by different services.
+such as, in the case of Amazon, there are various policies around identity and authorisation,
+security control policies and resource control policies.
+I won't talk about what they are, you can look that up on the internet.
+But the whole point being is they are an interpretation of the organisational policies.
+What type of crypto?
+What type of data?
+What type of users?
+Where is it allowed to go?
+What country is allowed to be processed in?
+What countries are allowed to see that data?
+Config rules and conformance packs, these basically do it at scale.
+So that config tool I talked about in the previous slide.
+You can now say, okay, I want to set up a config pack that implements ISO 42001 or implements
+one of those frameworks that I talked about earlier.
+It's ready to go.
+Just do it.
+You don't need to invent anything to do that.
+You just turn it on.
+Well, you pay for it.
+Let me turn it on.
+It's easier than building it and then turning it on and supporting it yourself.
+CloudFormation guard hooks, proactive should leave validation.
+So every time you roll out an infrastructure change, it can be dynamically assessed.
+And that assessment can be dynamically put into your risk management framework automatically.
+That's unblocking you.
+And see the policies.
+These are used in terms of your risk management framework.
+That's unblocking you.
+And see the policies.

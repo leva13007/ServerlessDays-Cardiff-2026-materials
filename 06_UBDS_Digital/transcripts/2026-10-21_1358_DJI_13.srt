@@ -1,0 +1,1220 @@
+1
+00:00:00,000 --> 00:00:07,000
+ We do have some bad news, which is Ian Massigan, who's the head of Applied AI at Anthropic.
+
+2
+00:00:07,000 --> 00:00:12,000
+ Unfortunately, he developed COVID symptoms yesterday and has been too sick to travel.
+
+3
+00:00:12,000 --> 00:00:16,000
+ The only good news is that means we're now back on schedule.
+
+4
+00:00:16,000 --> 00:00:23,000
+ So in terms of FinTech panel before lunch, we heard a lot of talk around things like sovereignty
+
+5
+00:00:23,000 --> 00:00:29,000
+ and some of those concerns in terms of US Cloud Act and data sovereignty and where data gets shipped to
+
+6
+00:00:29,000 --> 00:00:32,000
+ and what controls you can put in place.
+
+7
+00:00:32,000 --> 00:00:38,000
+ So with that, I'm delighted to announce our next speakers to tell us more around digital sovereignty
+
+8
+00:00:38,000 --> 00:00:40,000
+ from theory to implementation.
+
+9
+00:00:40,000 --> 00:00:46,000
+ So please put your hands together for Matt Johnson and Sharmayna Kanda from UBDS.
+
+10
+00:00:51,000 --> 00:00:52,000
+ Thanks, Matt.
+
+11
+00:00:52,000 --> 00:00:54,000
+ So great to be here again.
+
+12
+00:00:54,000 --> 00:00:58,000
+ This is my probably 15th year presenting.
+
+13
+00:00:58,000 --> 00:01:00,000
+ This is Sharmayna's first time as well.
+
+14
+00:01:00,000 --> 00:01:02,000
+ So hopefully we'll give you -- I've got the easy part.
+
+15
+00:01:02,000 --> 00:01:07,000
+ I'm doing the sort of high-level overview and then Sharmayna's going to go into a bit more detail
+
+16
+00:01:07,000 --> 00:01:11,000
+ around European sovereign cloud and so on.
+
+17
+00:01:11,000 --> 00:01:14,000
+ So just start with a very quick show of hands.
+
+18
+00:01:14,000 --> 00:01:18,000
+ How many people here are familiar with the concept of digital sovereignty?
+
+19
+00:01:18,000 --> 00:01:20,000
+ Am I going to come forward out of the glare of the lights?
+
+20
+00:01:20,000 --> 00:01:21,000
+ Okay, cool.
+
+21
+00:01:21,000 --> 00:01:22,000
+ Not bad.
+
+22
+00:01:22,000 --> 00:01:23,000
+ So that's good.
+
+23
+00:01:23,000 --> 00:01:26,000
+ How many of you are actively worried about it in your day-to-day role?
+
+24
+00:01:26,000 --> 00:01:27,000
+ Okay, less.
+
+25
+00:01:27,000 --> 00:01:28,000
+ Fair enough.
+
+26
+00:01:28,000 --> 00:01:29,000
+ Okay.
+
+27
+00:01:29,000 --> 00:01:30,000
+ So this talk isn't going to preach to you.
+
+28
+00:01:30,000 --> 00:01:33,000
+ It's not going to look at whether it's right or wrong.
+
+29
+00:01:33,000 --> 00:01:36,000
+ It's going to give you some practical concerns related to sovereignty.
+
+30
+00:01:36,000 --> 00:01:41,000
+ And it's going to ask the question, could your services still operate if access to a cloud
+
+31
+00:01:41,000 --> 00:01:46,000
+ or an underlying technological service or environment changed?
+
+32
+00:01:46,000 --> 00:01:47,000
+ Okay.
+
+33
+00:01:47,000 --> 00:01:50,000
+ So let's start with some examples.
+
+34
+00:01:50,000 --> 00:01:54,000
+ Four ways access can fail.
+
+35
+00:01:54,000 --> 00:01:59,000
+ And four real-world events that's happened in the last few years that show the West.
+
+36
+00:01:59,000 --> 00:02:01,000
+ This isn't just theory anymore.
+
+37
+00:02:01,000 --> 00:02:04,000
+ So the first I'm sure everyone is familiar with is Ukraine.
+
+38
+00:02:04,000 --> 00:02:11,000
+ So back in 2022 until about 11 days before the invasion, Ukraine had a whole bunch of laws
+
+39
+00:02:11,000 --> 00:02:16,000
+ that said they weren't allowed to move their data outside of their borders.
+
+40
+00:02:16,000 --> 00:02:19,000
+ And then they changed that just before the Russian invasion.
+
+41
+00:02:19,000 --> 00:02:24,000
+ And a few of us, AWS and Microsoft and a bunch of other tech providers,
+
+42
+00:02:24,000 --> 00:02:30,000
+ spent a few months helping them move some of their critical data out of region into the cloud.
+
+43
+00:02:30,000 --> 00:02:35,000
+ And this gave them some protection because it's very difficult to see on the image there.
+
+44
+00:02:35,000 --> 00:02:40,000
+ But if you see that red star, that is where a bomb landed.
+
+45
+00:02:40,000 --> 00:02:45,000
+ The little blue dot just above it is their main data center that had all the government records in.
+
+46
+00:02:45,000 --> 00:02:49,000
+ So it's 80 meters away from losing all their systems of record.
+
+47
+00:02:49,000 --> 00:02:52,000
+ Fast forward to March this year.
+
+48
+00:02:52,000 --> 00:02:57,000
+ I'm not sure if anyone here has been operating AWS services in the Middle East.
+
+49
+00:02:57,000 --> 00:02:59,000
+ If so, you've probably had a rough six months.
+
+50
+00:02:59,000 --> 00:03:08,000
+ Again, with the war in Iran, or the conflict in Iran, what we found is that there's been a whole bunch of problems.
+
+51
+00:03:08,000 --> 00:03:10,000
+ Facilities have been hit.
+
+52
+00:03:10,000 --> 00:03:12,000
+ It's the first time that a hyperscale provider has been hit in this way.
+
+53
+00:03:12,000 --> 00:03:17,000
+ And it's caused one region effectively to be rendered offline and the other is lost in full availability zone.
+
+54
+00:03:17,000 --> 00:03:21,000
+ And so it's no longer just logical.
+
+55
+00:03:21,000 --> 00:03:25,000
+ We've got the threat of drones breaking through the atmosphere and physically destroying data centers.
+
+56
+00:03:25,000 --> 00:03:30,000
+ It's not just cyber attacks anymore.
+
+57
+00:03:30,000 --> 00:03:35,000
+ And then this is probably the one that really got me thinking about sovereignty in detail.
+
+58
+00:03:35,000 --> 00:03:36,000
+ Called Fable.
+
+59
+00:03:36,000 --> 00:03:48,000
+ So tomorrow after June, US issued an emergency export control directive and told Anthropic to stop making that model available to anyone outside of the US,
+
+60
+00:03:48,000 --> 00:03:52,000
+ including non-US citizens working for Anthropic.
+
+61
+00:03:52,000 --> 00:03:54,000
+ That lasted probably about 12 days.
+
+62
+00:03:54,000 --> 00:03:56,000
+ It was lifted in stages and so on.
+
+63
+00:03:56,000 --> 00:04:02,000
+ But it's probably the first time since the 90s when, for those of us old enough to remember, PGP was restricted with export controls.
+
+64
+00:04:02,000 --> 00:04:10,000
+ It's been that long since we had a problem where the US government, or our government in general, has restricted broad access to a technology that people were using.
+
+65
+00:04:10,000 --> 00:04:15,000
+ Now whether that impacted many people or not is open to debate, but you can also abstract that forward.
+
+66
+00:04:15,000 --> 00:04:20,000
+ What happens if they turn off EntraID or they've restricted TLS in AWS?
+
+67
+00:04:20,000 --> 00:04:23,000
+ So again, those concerns there.
+
+68
+00:04:23,000 --> 00:04:26,000
+ And then, guess what?
+
+69
+00:04:26,000 --> 00:04:29,000
+ So this is as if we never learn, as we've been here before.
+
+70
+00:04:29,000 --> 00:04:32,000
+ Yandex, literally just two weeks ago now.
+
+71
+00:04:32,000 --> 00:04:38,000
+ Ukraine responded by hitting a bunch of Yandex, so Russia data centers.
+
+72
+00:04:38,000 --> 00:04:40,000
+ They're equivalent of Google.
+
+73
+00:04:40,000 --> 00:04:50,000
+ Causing major problems to Russia's in-house or domestically ability to handle both searches and cloud provision and so on.
+
+74
+00:04:50,000 --> 00:04:59,000
+ And actually, those of you who run web services probably noticed that the amount of bot traffic and malicious traffic dropped significantly for a few minutes as a result of that.
+
+75
+00:04:59,000 --> 00:05:05,000
+ But again, it's the fact that sovereignty isn't an argument for one particular geography.
+
+76
+00:05:05,000 --> 00:05:10,000
+ And so I suppose what we're saying is that in-country is not a resilient strategy.
+
+77
+00:05:10,000 --> 00:05:15,000
+ Some people say it was, and a lot of people when they talk about sovereignty think it needs to be inside borders.
+
+78
+00:05:15,000 --> 00:05:16,000
+ That's not what we're saying.
+
+79
+00:05:16,000 --> 00:05:21,000
+ These incidents show that where it runs and who can determine whether it keeps running are distinct things.
+
+80
+00:05:21,000 --> 00:05:26,000
+ And so, yeah, people think about in-country as owned infrastructure.
+
+81
+00:05:26,000 --> 00:05:29,000
+ There's a derogatory term that people have used, tin huggers.
+
+82
+00:05:29,000 --> 00:05:30,000
+ I want to see my servers.
+
+83
+00:05:30,000 --> 00:05:31,000
+ I want to hug them.
+
+84
+00:05:31,000 --> 00:05:37,000
+ That's great until somebody drops a bomb on them and then you're back to using pen and paper.
+
+85
+00:05:37,000 --> 00:05:40,000
+ Domestic cloud is the next option.
+
+86
+00:05:40,000 --> 00:05:46,000
+ And this is how many people have had the argument that we can only use it if we've got a region in country X.
+
+87
+00:05:46,000 --> 00:05:51,000
+ You know, I remember the argument back in 2016, 2017 when AWS launched the London region for the first time.
+
+88
+00:05:51,000 --> 00:05:56,000
+ It opened up a whole bunch of public sector workloads to be able to use that region they hadn't before.
+
+89
+00:05:56,000 --> 00:05:59,000
+ To use AWS they hadn't been able to use before.
+
+90
+00:05:59,000 --> 00:06:05,000
+ But as we've seen in the golfers, as we've seen in Russia, just having that domestic cloud capability is no good if you can take that out.
+
+91
+00:06:07,000 --> 00:06:11,000
+ And then the third area is around what we call imported technology.
+
+92
+00:06:11,000 --> 00:06:16,000
+ What happens when you're using technology that is under the control of another jurisdiction?
+
+93
+00:06:16,000 --> 00:06:22,000
+ So, again, it's a sign of the times when geopolitics needs to become part of the IT resilient strategy.
+
+94
+00:06:22,000 --> 00:06:31,000
+ And so the most important architectural lesson to take from this is to design for the threat model, not the label on the cloud itself.
+
+95
+00:06:32,000 --> 00:06:36,000
+ And it's worth pointing out that multi-region resilience is not sovereign resilience.
+
+96
+00:06:36,000 --> 00:06:40,000
+ The design boundaries are different, the failover routines are different.
+
+97
+00:06:40,000 --> 00:06:42,000
+ It's really key to call on out.
+
+98
+00:06:42,000 --> 00:06:44,000
+ And Charmin will cover this in a bit more detail.
+
+99
+00:06:44,000 --> 00:06:48,000
+ But as we all know, AWS regions have strong core isolation.
+
+100
+00:06:48,000 --> 00:06:51,000
+ What happens in one region should not affect another region.
+
+101
+00:06:51,000 --> 00:06:55,000
+ And I think this has been proven multiple times.
+
+102
+00:06:55,000 --> 00:06:59,000
+ What happened in Bahrain didn't affect what happened in London or Ireland.
+
+103
+00:07:00,000 --> 00:07:05,000
+ What you'll find is there is still the common dependency boundary.
+
+104
+00:07:05,000 --> 00:07:08,000
+ So this still has a sort of a sovereign risk.
+
+105
+00:07:09,000 --> 00:07:16,000
+ AWS runs as a global partition, but that global partition is led out of US East 1, so North Virginia, which is in the US.
+
+106
+00:07:16,000 --> 00:07:21,000
+ The impacts there cause impacts to a bunch of services that are global or partition services.
+
+107
+00:07:21,000 --> 00:07:30,000
+ And if an impact from a technical perspective can have that issue, then a geopolitical impact could also have that impact as well.
+
+108
+00:07:30,000 --> 00:07:35,000
+ So again, multi-region resilience and sovereign failover are different things.
+
+109
+00:07:35,000 --> 00:07:36,000
+ They're different fault boundaries.
+
+110
+00:07:36,000 --> 00:07:40,000
+ And the key thing is to identify which fault boundary matters most for your service.
+
+111
+00:07:40,000 --> 00:07:47,000
+ And I'm not saying that you need complete technological independence.
+
+112
+00:07:47,000 --> 00:07:51,000
+ So that's neither realistic, probably not desirable for most people's workloads.
+
+113
+00:07:51,000 --> 00:07:54,000
+ You know, just doing multi-cloud is really challenging.
+
+114
+00:07:54,000 --> 00:07:59,000
+ Trying to do that while thinking about all the complexities of sovereignty is also an issue.
+
+115
+00:07:59,000 --> 00:08:04,000
+ What we're looking for is what credible options remain if your circumstances change.
+
+116
+00:08:04,000 --> 00:08:08,000
+ Let's take a really bad hypothetical example.
+
+117
+00:08:08,000 --> 00:08:10,000
+ What happens if you lost entry ID?
+
+118
+00:08:11,000 --> 00:08:13,000
+ Yeah, that would keep me up at night.
+
+119
+00:08:13,000 --> 00:08:16,000
+ It doesn't mean you have to fix it because the chances that happen are very low.
+
+120
+00:08:16,000 --> 00:08:19,000
+ But you should at least start thinking where are your critical dependencies.
+
+121
+00:08:19,000 --> 00:08:21,000
+ And we'll cover that a bit later on as well.
+
+122
+00:08:22,000 --> 00:08:27,000
+ So one way to look at it, and this is the way we've been working at UBDS as well,
+
+123
+00:08:27,000 --> 00:08:30,000
+ is looking at what we call the eight dimensions of dependency.
+
+124
+00:08:30,000 --> 00:08:35,000
+ So by that, what are the different aspects you can almost do a risk assessment on
+
+125
+00:08:35,000 --> 00:08:37,000
+ in terms of is this going to impact me?
+
+126
+00:08:37,000 --> 00:08:38,000
+ Is this a problem?
+
+127
+00:08:38,000 --> 00:08:40,000
+ So you obviously have the technology itself.
+
+128
+00:08:40,000 --> 00:08:45,000
+ So, you know, where the technology is hosted, how it works, who owns it, that sort of thing.
+
+129
+00:08:45,000 --> 00:08:49,000
+ Where the data sits, how the data moves, who controls it, is encrypted.
+
+130
+00:08:49,000 --> 00:08:51,000
+ The operations often overlooked.
+
+131
+00:08:51,000 --> 00:08:56,000
+ You know, both for yourself, where your operators sit, but also your service providers.
+
+132
+00:08:56,000 --> 00:08:58,000
+ Is it a follow-the-sun model?
+
+133
+00:08:58,000 --> 00:09:00,000
+ Do they work in jurisdictions you understand?
+
+134
+00:09:00,000 --> 00:09:02,000
+ Security is a key one.
+
+135
+00:09:02,000 --> 00:09:05,000
+ We've already talked about identity, but also things like key management,
+
+136
+00:09:05,000 --> 00:09:08,000
+ things like encryption, things like data transfer.
+
+137
+00:09:08,000 --> 00:09:11,000
+ People is another dimension that's often overlooked.
+
+138
+00:09:11,000 --> 00:09:15,000
+ Sovereign technology requires people not just to be able to operate it,
+
+139
+00:09:15,000 --> 00:09:18,000
+ but to understand it and have those people available to move.
+
+140
+00:09:18,000 --> 00:09:22,000
+ If you're dependent on a third-party provider, and you've outsourced all your knowledge,
+
+141
+00:09:22,000 --> 00:09:24,000
+ then that's a bad thing.
+
+142
+00:09:24,000 --> 00:09:26,000
+ Commercial and contracts are quite closely tied together.
+
+143
+00:09:26,000 --> 00:09:30,000
+ So what you contractually allow to do, and what can you commercially afford to do?
+
+144
+00:09:30,000 --> 00:09:32,000
+ Often two separate things.
+
+145
+00:09:32,000 --> 00:09:36,000
+ And the last one, I think this is the one that's become most relevant recently,
+
+146
+00:09:36,000 --> 00:09:37,000
+ is the jurisdiction.
+
+147
+00:09:37,000 --> 00:09:40,000
+ How do we know that we can continue to operate services
+
+148
+00:09:40,000 --> 00:09:46,000
+ if another government, if another jurisdiction, decides they have problems with that?
+
+149
+00:09:46,000 --> 00:09:52,000
+ So really the unit of analysis is your critical service and its combined dependencies.
+
+150
+00:09:54,000 --> 00:09:58,000
+ And of course, moving the code is hopefully the easy part.
+
+151
+00:09:58,000 --> 00:10:05,000
+ A service, a runnable service or a runnable workload is not the same as a fully recoverable service.
+
+152
+00:10:05,000 --> 00:10:11,000
+ So you can package an application up as a container, and hopefully you can run it in pretty much any environment.
+
+153
+00:10:11,000 --> 00:10:17,000
+ But again, as Sharmin is going to cover, how that service can be operated, all the things that wrap around it.
+
+154
+00:10:17,000 --> 00:10:24,000
+ Whether that's data, DNS, identity, keys, CICD pipelines, deployment, operation support, and so on.
+
+155
+00:10:24,000 --> 00:10:28,000
+ And I think one of the key things there is a plan isn't an option until you've exercised it.
+
+156
+00:10:28,000 --> 00:10:31,000
+ This is so often spoken about in terms of backups.
+
+157
+00:10:31,000 --> 00:10:34,000
+ You know, a backup isn't a backup until you've proved you can restore it.
+
+158
+00:10:35,000 --> 00:10:37,000
+ Same thing with a disaster recovery or resilience plan.
+
+159
+00:10:37,000 --> 00:10:40,000
+ A plan's not there until you've had the option to exercise it.
+
+160
+00:10:42,000 --> 00:10:45,000
+ And again, sovereignty should be proportional to criticality.
+
+161
+00:10:46,000 --> 00:10:50,000
+ What we're not suggesting is go out and make everything completely cloud-agnostic.
+
+162
+00:10:50,000 --> 00:10:53,000
+ You know, lots of people have tried this in the past and invariably failed.
+
+163
+00:10:53,000 --> 00:10:57,000
+ It's about understanding what are your key things you need to think about.
+
+164
+00:10:57,000 --> 00:10:59,000
+ Where are your critical dependencies and how would you deal with them?
+
+165
+00:11:00,000 --> 00:11:02,000
+ So first, identify which services really matter.
+
+166
+00:11:02,000 --> 00:11:06,000
+ You've probably got a list of 100, 200, 300, even thousands of services.
+
+167
+00:11:07,000 --> 00:11:12,000
+ My guess is the ones that are truly critical to your business or operation are probably a dozen or so, maybe less than that.
+
+168
+00:11:13,000 --> 00:11:14,000
+ So start thinking about those.
+
+169
+00:11:14,000 --> 00:11:16,000
+ It doesn't mean you have to move them, you just need to understand them.
+
+170
+00:11:17,000 --> 00:11:19,000
+ What if we lose access to those?
+
+171
+00:11:19,000 --> 00:11:25,000
+ If that was to go offline, either because of a technical issue, a legal issue, a jurisdictional issue, what would you do?
+
+172
+00:11:25,000 --> 00:11:26,000
+ How would you deal with that?
+
+173
+00:11:27,000 --> 00:11:29,000
+ And so understand where those potential threats are.
+
+174
+00:11:29,000 --> 00:11:32,000
+ Is it that the hardware provider might not be available?
+
+175
+00:11:32,000 --> 00:11:34,000
+ Is it that someone turns the network off?
+
+176
+00:11:35,000 --> 00:11:37,000
+ And critically, can we operate this elsewhere?
+
+177
+00:11:37,000 --> 00:11:41,000
+ Can we take that workload somehow and then move it somewhere to run?
+
+178
+00:11:42,000 --> 00:11:45,000
+ Now that is going to be challenging for a lot of people, especially if you've got cloud-native.
+
+179
+00:11:46,000 --> 00:11:52,000
+ Again, this isn't a pitch to go away and undo all the stuff that Julia was talking around, around service workloads and Lambda web functions.
+
+180
+00:11:53,000 --> 00:11:54,000
+ I'm looking forward to playing with those myself.
+
+181
+00:11:55,000 --> 00:12:02,000
+ What I'm saying is that be aware of those decisions you're making and be conscious of those decisions and think about what would happen if you needed to change that.
+
+182
+00:12:03,000 --> 00:12:13,000
+ So my last slide, and then I'm going to hand over to Sharmin, is effectively what we're talking about now is what changes with the European Sovereign Cloud.
+
+183
+00:12:14,000 --> 00:12:16,000
+ Just a very quick show of hands, I've mentioned it a few times.
+
+184
+00:12:16,000 --> 00:12:18,000
+ Who are familiar with European Sovereign Cloud?
+
+185
+00:12:19,000 --> 00:12:23,000
+ Okay, well Sharmin will cover it briefly, so I won't say too much about it.
+
+186
+00:12:24,000 --> 00:12:29,000
+ What I will say is that it doesn't eliminate all of the risks.
+
+187
+00:12:30,000 --> 00:12:36,000
+ So we can have a great debate afterwards about whether it is truly sovereign, whether the US have any control over it.
+
+188
+00:12:37,000 --> 00:12:38,000
+ You know, we can get into great arguments.
+
+189
+00:12:39,000 --> 00:12:43,000
+ I used to work at AWS, I've got an opinion, people who work at AWS have an opinion, that's all fine.
+
+190
+00:12:44,000 --> 00:12:48,000
+ It's not about that, but this is potentially the closest thing you're ever going to get to what I would call a single vendor multi-pack.
+
+191
+00:12:49,000 --> 00:12:51,000
+ And I nick that from somebody else, but it's a great term.
+
+192
+00:12:52,000 --> 00:13:02,000
+ In this, you can use all of the same tooling, you can use all of the same approaches, but you effectively have almost complete partitional resilience, which is quite unusual.
+
+193
+00:13:03,000 --> 00:13:07,000
+ So with that, I'm going to hand over to Sharmin, who's going to look a bit more in detail about European Sovereign Clash.
+
+194
+00:13:10,000 --> 00:13:17,000
+ So we've had a look at what the digital sovereignty means, and why it matters.
+
+195
+00:13:18,000 --> 00:13:21,000
+ So now I'm going to look at what that means, and what that changes technically.
+
+196
+00:13:22,000 --> 00:13:30,000
+ So on the left, we've got London with the commercial AWS cloud, and we've got the European Sovereign Cloud in Bradenburg, Germany.
+
+197
+00:13:31,000 --> 00:13:33,000
+ But this isn't about geography.
+
+198
+00:13:34,000 --> 00:13:35,000
+ These aren't two regions.
+
+199
+00:13:36,000 --> 00:13:41,000
+ These are two different partitions with its own identity, own control plates, and own service endpoints.
+
+200
+00:13:42,000 --> 00:13:47,000
+ The separation gives operational independence, but that also comes with its complexities.
+
+201
+00:13:47,000 --> 00:13:55,000
+ We can't assume that everything's going to work as it would normally across two regions, because these are separate partitions.
+
+202
+00:13:56,000 --> 00:14:02,000
+ And the quick question would then be what needs to exist within these two different partitions.
+
+203
+00:14:03,000 --> 00:14:09,000
+ And within ESC, that would need to also be a question where we actually ask, as well, what needs to exist.
+
+204
+00:14:10,000 --> 00:14:13,000
+ So we're going to look at how we're going to achieve that.
+
+205
+00:14:18,000 --> 00:14:28,000
+ So we've got here a typical commercial workload with its users, applications, database, and object storage, and the supported services around that.
+
+206
+00:14:29,000 --> 00:14:33,000
+ And we also need to look at how do we actually maintain these data.
+
+207
+00:14:34,000 --> 00:14:38,000
+ Is it that we're going to transfer it, or are we going to create them or copy them over?
+
+208
+00:14:39,000 --> 00:14:43,000
+ But then, at the same time, it depends on what the customer wants to use it for.
+
+209
+00:14:44,000 --> 00:14:49,000
+ Is it going to be a backup, is it a pilot live, or a warm, standby, active environment?
+
+210
+00:14:50,000 --> 00:14:53,000
+ Or is it just an application simply running in ESC?
+
+211
+00:14:58,000 --> 00:15:06,000
+ And here we've also got the ESC workload, with the users, and the object storage, and the databases as well, and all the tooling needed.
+
+212
+00:15:07,000 --> 00:15:15,000
+ But these all come with their own independent KBS keys, as well as their own identity and own users.
+
+213
+00:15:16,000 --> 00:15:22,000
+ So we can see that these are two different environments, but they all need to be created independently as well.
+
+214
+00:15:25,000 --> 00:15:30,000
+ So now we're going to look at what the things that we might need to recreate, or what we might need to copy.
+
+215
+00:15:31,000 --> 00:15:38,000
+ So we've got data, for example, we might want to transfer it, using a backup, export, or control to transfer.
+
+216
+00:15:39,000 --> 00:15:44,000
+ Application artifacts, such as container images and packages, that can also be transferred over.
+
+217
+00:15:45,000 --> 00:15:49,000
+ As well as infrastructure as code, where might this code actually sit?
+
+218
+00:15:50,000 --> 00:16:03,000
+ And then we also have things that might need to be created independently, such as IAM roles, policies, users, as well as KMS keys, policies, and logging and monitoring.
+
+219
+00:16:08,000 --> 00:16:13,000
+ So the fact that these are two partitions, how might we connect these two partitions?
+
+220
+00:16:14,000 --> 00:16:16,000
+ So that is something we're now going to look into.
+
+221
+00:16:18,000 --> 00:16:30,000
+ So we have your commercial cloud, and where data is involved, we might have to use a HTTPS service, which will then create that secure connection.
+
+222
+00:16:31,000 --> 00:16:40,000
+ We might actually use a VPN, where there's network connectivity level that might need some secure, sorry, let me take a moment.
+
+223
+00:16:41,000 --> 00:16:45,000
+ We might have, where there's network connectivity level, we might use a VPN.
+
+224
+00:16:46,000 --> 00:16:55,000
+ And we would also need to consider these two connections would need to be connected securely, and this would require separate credentials.
+
+225
+00:16:56,000 --> 00:17:09,000
+ So these are the things you will need to consider, and as you can see, we have an example of an S3 endpoint in the commercial cloud, and we also have an S3 endpoint within the ESE cloud.
+
+226
+00:17:13,000 --> 00:17:23,000
+ So now I'm going to show you a demo, and this is just to show that we've got two of the two environments, the commercial cloud as well as the ESE cloud.
+
+227
+00:17:24,000 --> 00:17:27,000
+ So we're going to show you a couple of different things, and we're going to show you a couple of different things.
+
+228
+00:17:27,000 --> 00:17:28,000
+ So we're going to show you a couple of different things.
+
+229
+00:17:28,000 --> 00:17:29,000
+ So we're going to show you a couple of different things.
+
+230
+00:17:29,000 --> 00:17:30,000
+ So we're going to show you a couple of different things.
+
+231
+00:17:30,000 --> 00:17:31,000
+ So we're going to show you a couple of different things.
+
+232
+00:17:31,000 --> 00:17:32,000
+ So we're going to show you a couple of different things.
+
+233
+00:17:32,000 --> 00:17:33,000
+ So we're going to show you a couple of different things.
+
+234
+00:17:33,000 --> 00:17:34,000
+ So we're going to show you a couple of different things.
+
+235
+00:17:34,000 --> 00:17:35,000
+ So we're going to show you a couple of different things.
+
+236
+00:17:35,000 --> 00:17:36,000
+ So we're going to show you a couple of different things.
+
+237
+00:17:36,000 --> 00:17:37,000
+ So we're going to show you a couple of different things.
+
+238
+00:17:37,000 --> 00:17:38,000
+ So we're going to show you a couple of different things.
+
+239
+00:17:38,000 --> 00:17:39,000
+ So we're going to show you a couple of different things.
+
+240
+00:17:39,000 --> 00:17:46,000
+ So we'll retrieve pre-created ESE credentials from the commercial region, which we've actually set up beforehand.
+
+241
+00:17:46,000 --> 00:17:51,000
+ And then we'll then transfer the new records from commercial into ESE over HTTPS.
+
+242
+00:17:51,000 --> 00:18:04,000
+ And just to verify the integrity, we'll actually be looking at that as well.
+
+243
+00:18:04,000 --> 00:18:08,000
+ So before we look at the application, I just want to highlight something important about ESE.
+
+244
+00:18:08,000 --> 00:18:15,000
+ We can see that the URLs for the commercial as well as the URL for ESE are completely different.
+
+245
+00:18:15,000 --> 00:18:18,000
+ These are two partitions which have their own identities.
+
+246
+00:18:18,000 --> 00:18:28,000
+ And then we're going to look at the application.
+
+247
+00:18:28,000 --> 00:18:33,000
+ So here we've got the commercial cloud with its three customer records.
+
+248
+00:18:33,000 --> 00:18:39,000
+ And we're just showing that this has no dependency on the sovereign cloud.
+
+249
+00:18:39,000 --> 00:18:42,000
+ And we can see here that it's also got the three records.
+
+250
+00:18:42,000 --> 00:18:46,000
+ And these records are being pulled from their own independent S3 buckets.
+
+251
+00:18:46,000 --> 00:18:56,000
+ So now we're going to upload a new JSON file into the commercial bucket.
+
+252
+00:18:56,000 --> 00:19:02,000
+ And we will then see how that actually has no dependency on the ESE bucket.
+
+253
+00:19:02,000 --> 00:19:06,000
+ So currently we're uploading that file.
+
+254
+00:19:06,000 --> 00:19:12,000
+ And then we're going to refresh the records.
+
+255
+00:19:12,000 --> 00:19:18,000
+ So just refreshing the records, we can now see that there are four customer records.
+
+256
+00:19:18,000 --> 00:19:20,000
+ And this is within the commercial cloud.
+
+257
+00:19:20,000 --> 00:19:30,000
+ And as we mentioned previously that we are also using a transfer role that was set up in ESE.
+
+258
+00:19:30,000 --> 00:19:36,000
+ And it is then also making reference back to the commercial cloud to make sure that that connection is there.
+
+259
+00:19:36,000 --> 00:19:46,000
+ So now we're going to run the Python script to actually perform the transfer.
+
+260
+00:19:46,000 --> 00:19:56,000
+ And as you can see we can actually see that that runs successfully and now the four records will now appear in ESE.
+
+261
+00:19:56,000 --> 00:20:06,000
+ And as we can see that there are now four records and this has been updated within the ESE bucket without the reliance on the commercial bucket.
+
+262
+00:20:06,000 --> 00:20:16,000
+ And we can also have a look at the integrity of that using the key MS keys within the ESE region, within the ESE partition.
+
+263
+00:20:16,000 --> 00:20:20,000
+ So there's no dependency to the commercial cloud.
+
+264
+00:20:20,000 --> 00:20:25,000
+ And again, we can also focus on the cloud watch logs.
+
+265
+00:20:25,000 --> 00:20:29,000
+ So we wouldn't have to keep going back and forth to the commercial cloud.
+
+266
+00:20:30,000 --> 00:20:34,000
+ So we can see that that is the actual application performing the successful transfer.
+
+267
+00:20:38,000 --> 00:20:43,000
+ But then it also raises questions, what happens if the commercial cloud goes down, which I'm now going to demonstrate.
+
+268
+00:20:45,000 --> 00:20:49,000
+ I'm going to put the commercial cloud into an inactive state, which we can see here.
+
+269
+00:20:50,000 --> 00:20:55,000
+ And once we refresh the application, we can see it's no longer active.
+
+270
+00:20:56,000 --> 00:21:00,000
+ But looking back at the ESE application, it's still running.
+
+271
+00:21:00,000 --> 00:21:03,000
+ So this has no dependency to the commercial cloud.
+
+272
+00:21:06,000 --> 00:21:13,000
+ And just to show that that is actually the case, we're going to put the application in commercial back online.
+
+273
+00:21:15,000 --> 00:21:18,000
+ Refresh the page and we can see it's back online.
+
+274
+00:21:19,000 --> 00:21:22,000
+ So these are two independent applications.
+
+275
+00:21:23,000 --> 00:21:32,000
+ But at the same time, this is just scratching the surface and it does create and it does make us consider other questions.
+
+276
+00:21:33,000 --> 00:21:37,000
+ So the things that we do need to consider are things like DNS and failover.
+
+277
+00:21:38,000 --> 00:21:40,000
+ Is this going to be hosted within commercial?
+
+278
+00:21:40,000 --> 00:21:46,000
+ Is this going to be hosted within ESC or is this going to be by an independent provider?
+
+279
+00:21:47,000 --> 00:21:52,000
+ We also need to consider infrastructure as codes and the deployment pipelines.
+
+280
+00:21:53,000 --> 00:21:54,000
+ Where is the code actually going to sit?
+
+281
+00:21:55,000 --> 00:22:04,000
+ And in terms of identity and access, who are going to manage the users and across the partitions, how is this going to be achievable?
+
+282
+00:22:05,000 --> 00:22:09,000
+ And there are other things such as monitoring and audit.
+
+283
+00:22:10,000 --> 00:22:17,000
+ How do we respect the sovereignty boundary with actually having a look at all the visibility across the two partitions?
+
+284
+00:22:18,000 --> 00:22:21,000
+ And we have keys and credentials as well as cost.
+
+285
+00:22:21,000 --> 00:22:31,000
+ So the right architecture will actually depend on what the customer's requirements are and what they would need to achieve their objectives.
+
+286
+00:22:32,000 --> 00:22:35,000
+ So what are the next steps?
+
+287
+00:22:36,000 --> 00:22:38,000
+ I'll go with the hand over back to Matt.
+
+288
+00:22:39,000 --> 00:22:46,000
+ And so I think what we discovered there is that that's just scratching the surface as Charmin mentioned.
+
+289
+00:22:47,000 --> 00:22:58,000
+ There is so much stuff to consider, especially when some of the patterns you're used to around multi-region things like cross-region, BBC peering and so on and direct connect, don't really work between different regions.
+
+290
+00:22:59,000 --> 00:23:05,000
+ So you need to do these sort of, I suppose, these more agnostic connections, whether it's VPN or TLS or whatever it might be.
+
+291
+00:23:06,000 --> 00:23:11,000
+ And that's where all those things that Charmin was talking about, our DNS and the key management and so on comes in.
+
+292
+00:23:12,000 --> 00:23:14,000
+ So QR code up there.
+
+293
+00:23:15,000 --> 00:23:16,000
+ If you want to scan it, it's fine.
+
+294
+00:23:16,000 --> 00:23:17,000
+ If you don't, security, I get it.
+
+295
+00:23:18,000 --> 00:23:19,000
+ That's the URL it goes to those.
+
+296
+00:23:19,000 --> 00:23:20,000
+ You can check it out.
+
+297
+00:23:20,000 --> 00:23:25,000
+ If you need any help on that or you want any discussions around this or conversations, then I'm more than happy to help.
+
+298
+00:23:26,000 --> 00:23:28,000
+ And with that, again, thank you.
+
+299
+00:23:29,000 --> 00:23:31,000
+ A big thank you to Charmin for her first ever presentation.
+
+300
+00:23:32,000 --> 00:23:33,000
+ Mine was to 12 people.
+
+301
+00:23:33,000 --> 00:23:34,000
+ Hers was to 250 of you.
+
+302
+00:23:35,000 --> 00:23:36,000
+ So I think that's a fairly brave move.
+
+303
+00:23:37,000 --> 00:23:38,000
+ So thank you and enjoy the rest of the conference.
+
+304
+00:23:39,000 --> 00:23:40,000
+ Thank you so much.
+
+305
+00:23:54,000 --> 00:23:57,000
+ So a huge thank you there to Matt and Charmin.
+

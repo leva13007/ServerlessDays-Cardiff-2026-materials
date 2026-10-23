@@ -1,0 +1,1352 @@
+1
+00:00:00,000 --> 00:00:03,680
+ everyone hope you enjoyed the break we're about to get started with our late
+
+2
+00:00:03,680 --> 00:00:10,480
+ morning sessions so hands up in terms of how many people here have I been heard
+
+3
+00:00:10,480 --> 00:00:16,200
+ of regularly used the likes of Codex, ClaudeCode, Kiro, those types of coding
+
+4
+00:00:16,200 --> 00:00:21,880
+ systems so as expected it's like it's most of you and so these types of tools
+
+5
+00:00:21,880 --> 00:00:24,760
+ tend to be quite pervasive in the market today so it tends to be like the
+
+6
+00:00:24,760 --> 00:00:30,280
+ de facto standard in terms of using coding systems to write code but the
+
+7
+00:00:30,280 --> 00:00:34,060
+ reality is in terms of trying to speed up how to deliver new features into
+
+8
+00:00:34,060 --> 00:00:38,860
+ production writing code is only a small part of the software delivery lifecycle
+
+9
+00:00:38,860 --> 00:00:43,180
+ so that's why I'm delighted to welcome our next speaker to give us more sort of
+
+10
+00:00:43,180 --> 00:00:48,820
+ customer examples real-life stories of how organizations today are using AI to
+
+11
+00:00:48,820 --> 00:00:53,320
+ actually speed up all of the software delivery cycle so please put your hands
+
+12
+00:00:53,320 --> 00:00:58,840
+ together for Grace Creedy, solutions engineer for cloud and AI
+
+13
+00:00:58,840 --> 00:01:04,360
+ at Microsoft
+
+14
+00:01:04,360 --> 00:01:18,360
+ can you hear me? oh yeah we're in okay so everyone's had coffee hopefully everyone's nice and awake now
+
+15
+00:01:18,360 --> 00:01:23,880
+ did you know AI is going to make every developer 10 times more productive
+
+16
+00:01:23,880 --> 00:01:29,400
+ and who feels like they're 10 times more productive at writing code out of
+
+17
+00:01:29,400 --> 00:01:29,400
+ interest
+
+18
+00:01:29,400 --> 00:01:34,920
+ let's see how close we are a few people I would say genuinely I can create a lot more
+
+19
+00:01:34,920 --> 00:01:40,040
+ code than I ever used to be able to because I also use coding systems I build proof concepts
+
+20
+00:01:40,040 --> 00:01:45,400
+ customers and you know for things that are we know the boilerplate stuff the templates
+
+21
+00:01:45,400 --> 00:01:48,920
+ things that are sort of simple and easy to do or actually for me the big thing is problem solving
+
+22
+00:01:48,920 --> 00:01:50,920
+ it's I've got this idea where do I begin
+
+23
+00:01:50,920 --> 00:01:56,440
+ like what the approaches I could take and the tools are impressive and I
+
+24
+00:01:56,440 --> 00:02:00,440
+ think we can say now more than ever what they can do compared to even just a year ago
+
+25
+00:02:00,440 --> 00:02:05,080
+ and I don't know if people remember using kind of your code assistance even 18 months ago
+
+26
+00:02:06,760 --> 00:02:10,600
+ interesting outcomes depended kind of how much experience you had but it wasn't always great
+
+27
+00:02:12,440 --> 00:02:16,600
+ so they are good they can explain errors they can create tests they can help developers understand
+
+28
+00:02:16,600 --> 00:02:23,960
+ unfamiliar code bases all that stuff that we know but question how many people have seen their code
+
+29
+00:02:23,960 --> 00:02:35,160
+ into production 10 times faster okay even five times faster exactly and so this is what I want to
+
+30
+00:02:35,160 --> 00:02:41,800
+ talk about today um what if we've been optimizing the wrong part of the problem and lots of conversations
+
+31
+00:02:41,800 --> 00:02:47,240
+ about this the biggest part of my job before I changed my new team recently was working with banks
+
+32
+00:02:47,240 --> 00:02:51,400
+ and it was okay how do we get developers to write as much code as possible how do we get these features
+
+33
+00:02:51,400 --> 00:02:56,200
+ out clicker you know what developers need these tools and all of the focus are on developers
+
+34
+00:02:56,840 --> 00:03:03,480
+ who is not in a developer role just to get a feel of the room okay you've probably felt a bit left out
+
+35
+00:03:03,480 --> 00:03:09,400
+ right you've probably been told you need to use ai without really being told what for and actually not
+
+36
+00:03:09,400 --> 00:03:14,600
+ really being considered as a priority you know it's hard to get their hands on kind of you know coding ai
+
+37
+00:03:14,600 --> 00:03:19,480
+ licenses which we all know actually not that many people are getting access to outside of the developer
+
+38
+00:03:19,480 --> 00:03:26,840
+ world so yeah i'm rose royodi i am a csa at microsoft who focuses on basically understanding
+
+39
+00:03:26,840 --> 00:03:33,160
+ where is the developer friction when it comes to azure adoption but i did also used to work at aws so this
+
+40
+00:03:33,160 --> 00:03:38,840
+ talk isn't about any specific technology it's about just concepts so hopefully regardless of where you're operating
+
+41
+00:03:38,840 --> 00:03:41,880
+ there'll be something that you'll be able to take away from this
+
+42
+00:03:44,040 --> 00:03:51,080
+ so we do know already that developers do more than write code we know that actually around a third of
+
+43
+00:03:51,080 --> 00:03:55,240
+ their time is spent actually writing the code and the rest of it is doing everything else that they
+
+44
+00:03:55,240 --> 00:04:00,280
+ need to understand you know what's been asked for choosing the architecture finding the correct
+
+45
+00:04:00,280 --> 00:04:05,400
+ documentation something that we're all told is going to be fixed by rag systems how's that going for
+
+46
+00:04:05,400 --> 00:04:12,360
+ everyone um getting access and permissions and who here works at a company where you have an automated
+
+47
+00:04:12,360 --> 00:04:16,840
+ kind of uh developer platform where you can just self-serve and get access to what you need when you
+
+48
+00:04:16,840 --> 00:04:22,360
+ want to deploy something yeah that's what i thought now i remember having these conversations five six
+
+49
+00:04:22,360 --> 00:04:27,960
+ years ago you know shout out to dvla i know they were one first i see do this really well but actually
+
+50
+00:04:27,960 --> 00:04:32,920
+ most customers aren't there yet so we've got all of these things you know they actually get in the infrastructure
+
+51
+00:04:32,920 --> 00:04:38,760
+ even just in access to a sandbox particularly if there's anything to do ai there then you've got
+
+52
+00:04:38,760 --> 00:04:43,800
+ the security and compliance and then at some point obviously we need to deploy and operate all of this
+
+53
+00:04:43,800 --> 00:04:49,880
+ um and so we can see that actually of all these 10 boxes the coding part is one of those steps
+
+54
+00:04:49,880 --> 00:04:55,160
+ um
+
+55
+00:04:55,160 --> 00:05:00,840
+ just make sure i'm not missing my key bits um so when we talk about developer friction
+
+56
+00:05:00,840 --> 00:05:06,120
+ we we have a lovely big beautifully worded explanation in our lovely pack that we send out
+
+57
+00:05:06,120 --> 00:05:11,960
+ in my team but i'm going to simplify it down when i say developer friction and i don't just mean software developers
+
+58
+00:05:11,960 --> 00:05:16,680
+ i mean anybody who needs to write and deploy or do anything that gets something into the cloud or
+
+59
+00:05:16,680 --> 00:05:21,720
+ into some sort of production system such a cloud engineer your sre your devops it's anyone that's
+
+60
+00:05:21,720 --> 00:05:29,800
+ involved in that process so friction is anything that introduces unnecessary delay unnecessary effort
+
+61
+00:05:29,800 --> 00:05:34,840
+ uncertainty or a dependency between the developer and the outcome they're trying to achieve
+
+62
+00:05:35,880 --> 00:05:42,440
+ and so one of the key ones here is uncertainty um you ask access and somebody says yeah should be fine
+
+63
+00:05:42,440 --> 00:05:49,640
+ on the platform team nothing here's technically failed we're actually very often not talking about
+
+64
+00:05:49,640 --> 00:05:53,480
+ there's a problem with the service the feature doesn't work well of course does happen sometimes
+
+65
+00:05:53,480 --> 00:05:58,280
+ we release things that aren't quite working as they should that's generally not the friction that we're
+
+66
+00:05:58,280 --> 00:06:01,080
+ coming up against it's all of the other things that sit around it
+
+67
+00:06:06,920 --> 00:06:09,960
+ okay me and my clicker aren't getting on so we're going to go old school with this
+
+68
+00:06:14,120 --> 00:06:17,880
+ so i'm just going to use a bit of terminology just to kind of set the scenes and we're going to use
+
+69
+00:06:17,880 --> 00:06:22,200
+ these then as i illustrate examples this again is something that we kind of came up with so that
+
+70
+00:06:22,200 --> 00:06:27,640
+ we can start to categorize the different frictions as they came through so when we talk about drag we're
+
+71
+00:06:27,640 --> 00:06:32,200
+ talking about things that take longer than it should this could be for example getting access to an
+
+72
+00:06:32,200 --> 00:06:37,720
+ environment getting access to documentation another one is false so this is when the correct path is
+
+73
+00:06:37,720 --> 00:06:44,040
+ unclear that could be because the ai has told you something that actually you don't think is correct
+
+74
+00:06:44,040 --> 00:06:48,760
+ um i argue with ai i feel like every day because it tells me this is what you should do
+
+75
+00:06:49,400 --> 00:06:54,040
+ and i'm like i think that's wrong but now i don't know and i'm questioning my logic because i've got
+
+76
+00:06:54,040 --> 00:06:59,880
+ four approaches so who knows um but sometimes it's our own internal kind of documentation it's the
+
+77
+00:06:59,880 --> 00:07:04,200
+ custody it's the you know public facing documentation that us cloud providers put out which you know may
+
+78
+00:07:04,200 --> 00:07:11,320
+ or may not be helpful less so it feels like with the ai stuff anyways um the next one then is heat
+
+79
+00:07:11,320 --> 00:07:17,720
+ so this is where you actually the experience of doing this is eroding trust um i am open about this
+
+80
+00:07:17,720 --> 00:07:24,040
+ when i first moved from aws to microsoft i couldn't for the life of me work out why deploying azure
+
+81
+00:07:24,040 --> 00:07:31,560
+ function was so hard and i remember going to my team and being like am i stupid have i missed something
+
+82
+00:07:31,560 --> 00:07:35,880
+ here and they were like oh no everyone knows this is like really not easy to do and i was like okay
+
+83
+00:07:36,600 --> 00:07:42,200
+ are we gonna fix that at some point anyways pending to be confirmed still hasn't happened but
+
+84
+00:07:42,200 --> 00:07:46,440
+ actually that made it something i didn't want to play around with again and this is something that we know does
+
+85
+00:07:46,440 --> 00:07:50,920
+ happen we've seen a lot of this with ai we've released tools out to the market all the cloud
+
+86
+00:07:50,920 --> 00:07:56,040
+ providers all the sash providers have and they don't work maybe they don't configure correctly
+
+87
+00:07:56,040 --> 00:08:00,440
+ what they're promised to do doesn't happen you lose trust you don't really want to continue down that
+
+88
+00:08:00,440 --> 00:08:05,960
+ path you think okay let me look at what what other options i have and the final one is just a wall
+
+89
+00:08:05,960 --> 00:08:10,520
+ developers just cannot continue they can't get access to the environment they can't get past the
+
+90
+00:08:10,520 --> 00:08:15,320
+ security board whatever it might be the feature doesn't work we can't get a connection set up
+
+91
+00:08:16,280 --> 00:08:22,120
+ and so this can come from lots of places it can be confusing documentation it can be a broken pipeline
+
+92
+00:08:22,120 --> 00:08:27,000
+ it can be the dreaded security reviews which having just worked in finance for a long time i know are an
+
+93
+00:08:27,000 --> 00:08:33,720
+ absolute pain it can be you know an approval queue and so i want to be clear that developer friction
+
+94
+00:08:33,720 --> 00:08:39,480
+ is much broader than just broken tooling and ai coding assistants that don't work um you know the
+
+95
+00:08:39,480 --> 00:08:45,240
+ documentation is really a key example you find three different ways to deploy something one article is
+
+96
+00:08:45,240 --> 00:08:50,600
+ recent one sample is actually two years old and then you know your art the community answer recommends
+
+97
+00:08:50,600 --> 00:08:55,720
+ something different you know outside overflow i do occasions to read stuff on there and then your ai
+
+98
+00:08:55,720 --> 00:09:00,680
+ coding assistant just comes up with something completely different and you're not really sure where to go
+
+99
+00:09:01,720 --> 00:09:07,080
+ so if we think about these drag and fault are the everyday ones they're the ones that we sort of
+
+100
+00:09:07,080 --> 00:09:12,440
+ tend to think of the most heat is the one that makes people leave and this is really relevant you
+
+101
+00:09:12,440 --> 00:09:17,880
+ know in the cloud space when particularly your sort of startups your digi natives your legacy customers
+
+102
+00:09:17,880 --> 00:09:22,600
+ are now moving into the cloud it's normally the top reason that we hear why people went one way or the
+
+103
+00:09:22,600 --> 00:09:27,640
+ other when it's not purely kind of a dictated decision is actually they just it just was too hard to use
+
+104
+00:09:28,840 --> 00:09:33,640
+ um so keep these labels in mind they're going to keep coming back to them as we go through the talk
+
+105
+00:09:34,600 --> 00:09:40,840
+ oh it's working again okay so let's look at this little kind of line across the screen here we've
+
+106
+00:09:40,840 --> 00:09:46,520
+ got our you know before ai these are all the things that we know we need to do simplified that 10 boxes
+
+107
+00:09:46,520 --> 00:09:53,880
+ earlier understand what's happening make the design do the build test deploy operate and as i talked about
+
+108
+00:09:53,880 --> 00:09:59,560
+ a little while ago we introduced ai and we handed all of the tools really to the builders the software
+
+109
+00:09:59,560 --> 00:10:06,760
+ developers and we have absolutely shortened that box we can get code written a lot quicker but if we
+
+110
+00:10:06,760 --> 00:10:11,800
+ actually look at the entire line it's only shifted a tiny amount because we've actually only really
+
+111
+00:10:11,800 --> 00:10:19,560
+ split up one part of the process so a faster step doesn't automatically create a faster system and i'm
+
+112
+00:10:19,560 --> 00:10:24,840
+ not a car person but i do sit in a lot of traffic so let's just imagine your developers have been given
+
+113
+00:10:24,840 --> 00:10:31,400
+ a lamborghini but stuck on the m25 we're not getting any faster we may have given them a faster tool but
+
+114
+00:10:31,400 --> 00:10:36,120
+ everything around them hasn't changed and that's really the analogy of what we want to think about
+
+115
+00:10:38,280 --> 00:10:43,320
+ so you know ai is really good at certain things it's very good when it comes to things like
+
+116
+00:10:43,320 --> 00:10:48,680
+ drafting specifications you know suggesting architectures generating tests thank god
+
+117
+00:10:48,680 --> 00:10:52,760
+ as julian said it earlier nobody likes writing tests and we'll talk about that a little bit later
+
+118
+00:10:54,840 --> 00:11:00,200
+ even preparing call requests and i don't want to go too much for side tangent but one of the other
+
+119
+00:11:00,200 --> 00:11:05,720
+ blockers we know is that we write loads of code and then we just get blocked to happen to review all
+
+120
+00:11:05,720 --> 00:11:10,600
+ the pr's and then we just get blocked at the next step anyway so again we've got this constant cycle
+
+121
+00:11:10,600 --> 00:11:17,240
+ even when it's more developer centric but obviously there are limitations because we know that what's
+
+122
+00:11:17,240 --> 00:11:23,080
+ now happening is that we have got this bottleneck where the code coming out isn't going anywhere and we're just
+
+123
+00:11:23,080 --> 00:11:29,000
+ pushing the the sort of emphasis further down the line and suddenly they don't have the tools to know what they need to do
+
+124
+00:11:29,000 --> 00:11:34,040
+ you know developers are still spending hours sometimes weeks sometimes even months getting
+
+125
+00:11:34,040 --> 00:11:37,880
+ access to their environments and so it doesn't really matter that they've written more code if
+
+126
+00:11:37,880 --> 00:11:39,400
+ they can't actually do anything with that
+
+127
+00:11:41,800 --> 00:11:45,640
+ so let's look at this as an example and we've talked already i've seen a few talks around kind
+
+128
+00:11:45,640 --> 00:11:51,880
+ of like the human in the loop this is so important with ai i have argued with many many ctos and you know
+
+129
+00:11:51,880 --> 00:11:57,080
+ the chief kind of engineers at some of the top banks in the uk about this humans are definitely
+
+130
+00:11:57,080 --> 00:12:02,360
+ still needed to be in the loop i will happily die on the hill the ai is not yet smart enough to replace
+
+131
+00:12:02,360 --> 00:12:08,600
+ end-to-end processes it just isn't i mean literally chat gpt gave me the wrong directions just this morning
+
+132
+00:12:08,600 --> 00:12:13,640
+ why i didn't use google maps who knows but i just want some general guidance and i did that one thing
+
+133
+00:12:13,640 --> 00:12:17,960
+ that we all do where i go i will quickly summarize it and it was wrong because actually it was using
+
+134
+00:12:17,960 --> 00:12:23,480
+ outdated information and that's me trying to get to mns this morning at eight o'clock not me trying to
+
+135
+00:12:23,480 --> 00:12:27,400
+ write something to put into production so we can imagine this problem just scales and gross
+
+136
+00:12:28,680 --> 00:12:32,440
+ so let's think about adding a ticket you know for the ticket to production so i want to add some
+
+137
+00:12:32,440 --> 00:12:37,880
+ asynchronous image processing into application and so great we have the kind of understand the
+
+138
+00:12:37,880 --> 00:12:42,280
+ repository and guidance that can be really really really sped up and we can actually use ai really
+
+139
+00:12:42,280 --> 00:12:47,960
+ efficiently here we do still need a human though to review the architecture because we know that ai
+
+140
+00:12:47,960 --> 00:12:51,560
+ is good but not always right and so we still have that kind of human in the loop
+
+141
+00:12:52,440 --> 00:12:57,160
+ the next bit then actually implementing and doing the infrastructure and the test again great use to
+
+142
+00:12:57,160 --> 00:13:01,880
+ bring ai back in we know it can do things a lot quicker you know nobody wants to be writing terraform
+
+143
+00:13:01,880 --> 00:13:05,240
+ modules from scratch anymore we know that this is the sort of thing it can be helpful for
+
+144
+00:13:06,040 --> 00:13:11,400
+ we do still want humans in the loop to validate and kind of raise this request and so we haven't
+
+145
+00:13:11,400 --> 00:13:17,320
+ removed the developer but we have kind of moved them from typing and doing manual stuff to deciding
+
+146
+00:13:17,320 --> 00:13:21,880
+ and still being really important in that decision making process and so all the things we're going to
+
+147
+00:13:21,880 --> 00:13:26,120
+ talk about today are very cloud neutral as i said earlier i didn't want this to be you know as specific
+
+148
+00:13:26,120 --> 00:13:30,760
+ because i know that everyone here comes from sort of different cloud backgrounds and so this isn't you
+
+149
+00:13:30,760 --> 00:13:34,840
+ know a one set of tooling over another and as we work through those examples hopefully that becomes
+
+150
+00:13:34,840 --> 00:13:43,160
+ useful so these are five different places i'm seeing customers start and i say start because
+
+151
+00:13:43,160 --> 00:13:46,920
+ most of them are in the journey we talked about earlier everything's still in the developer coding world
+
+152
+00:13:47,720 --> 00:13:52,600
+ to put ai to remove friction and actually none of them are writing code and these can be some of the
+
+153
+00:13:52,600 --> 00:13:57,640
+ quickest wings and i'm going to dive through each one of these in more detail and give you some examples
+
+154
+00:13:57,640 --> 00:14:03,720
+ um but just remember that terminology we used earlier of drag fog heat and wall and you'll notice that
+
+155
+00:14:03,720 --> 00:14:10,600
+ these kind of are mapped as we go through which one it tries to remove and you'll notice that drag comes
+
+156
+00:14:10,600 --> 00:14:16,760
+ up a lot and i think this is one of the best places that we can really save time and be smart when we
+
+157
+00:14:16,760 --> 00:14:23,880
+ apply ai to the stlc like correctly so what are they we've got automated design reviews we've got
+
+158
+00:14:23,880 --> 00:14:29,640
+ environments on demand we wish we can dream and generated tests which again most of us are starting
+
+159
+00:14:29,640 --> 00:14:35,800
+ to do but i think they're not really kind of a an enforcing or it's kind of something that's it's very
+
+160
+00:14:35,800 --> 00:14:42,120
+ ad hoc how it's done and operational visibility i have seen only a few customers really tackle this and the
+
+161
+00:14:42,120 --> 00:14:49,240
+ ones that have made great changes and repetitive engineering work so let's talk about automating
+
+162
+00:14:49,240 --> 00:14:56,840
+ design reviews so um the board meets on thursdays your proposal waits for its slot it's finally read
+
+163
+00:14:56,840 --> 00:15:02,840
+ most of the meetings tend to be about whether you use the approved module whether you've used the right
+
+164
+00:15:02,840 --> 00:15:08,840
+ patterns and actually that's something that a document could have answered in advance so i'm not by any
+
+165
+00:15:08,840 --> 00:15:15,240
+ means saying we don't have bold reviews just to be clear what i'm saying is we don't spend an hour
+
+166
+00:15:15,240 --> 00:15:20,840
+ talking about things and actually that is something ai is quite good at is what's been proposed here
+
+167
+00:15:20,840 --> 00:15:25,880
+ a match to the recommendations and the documentation that we gave them because that's surely what they
+
+168
+00:15:25,880 --> 00:15:31,720
+ use to make the design so therefore we should have a quick entry point what you have instead are some
+
+169
+00:15:31,720 --> 00:15:36,520
+ aroused reports recommendations that are brought to the meeting that could be quickly scanned to say
+
+170
+00:15:37,080 --> 00:15:42,200
+ check check check check or here are the anti-passes or here are the problems and here are the mitigations
+
+171
+00:15:42,840 --> 00:15:47,320
+ already we're freeing up a lot of back and forth because often what i see in customers is they go in
+
+172
+00:15:47,320 --> 00:15:51,560
+ and out of these design review meetings and have a bit of time and then they go back with the next
+
+173
+00:15:51,560 --> 00:15:56,760
+ change and these things can drag on and drag on so actually the proposal checks against the pattern
+
+174
+00:15:56,760 --> 00:16:02,520
+ before anyone opens it and then every deviation arrives with the rules what it breaks and then the human
+
+175
+00:16:02,520 --> 00:16:08,840
+ starts at the exceptions to the problem not all the basics there is however still a human gate here
+
+176
+00:16:08,840 --> 00:16:13,480
+ and you're going to see this in all of them and the gate stays on at that final review we still need
+
+177
+00:16:13,480 --> 00:16:19,880
+ people to have that judgment call and so nothing here takes that away so we think about this as an
+
+178
+00:16:19,880 --> 00:16:23,720
+ example and how to measure it and the measurement bit's really key because this return on investment
+
+179
+00:16:23,720 --> 00:16:30,200
+ things like you know the next second buzzword to ai itself um it's the time from proposal to decision
+
+180
+00:16:30,200 --> 00:16:34,840
+ that you then want to measure with this have you been able to speed up the amount of time it took
+
+181
+00:16:34,840 --> 00:16:39,880
+ from when that was proposed to when a decision was made that you could move forward and then how much of
+
+182
+00:16:39,880 --> 00:16:45,880
+ that review is actually spent on the genuine trade-offs if that share rises the review got even better
+
+183
+00:16:45,880 --> 00:16:49,800
+ before the meeting even if it stayed the same length and that's the type of thing that we want to look
+
+184
+00:16:49,800 --> 00:16:55,080
+ at is anyone doing anything like this today where they have an automated element of lookup before going
+
+185
+00:16:55,080 --> 00:17:01,480
+ to design reviews no so definitely maybe one to take away and think about one of my customers started
+
+186
+00:17:01,480 --> 00:17:06,680
+ doing this probably about a year ago not with the design review originally although they brought that in
+
+187
+00:17:06,680 --> 00:17:13,400
+ what they wanted to do is just actually provide an agent a simple agent to help with architecture patterns
+
+188
+00:17:13,400 --> 00:17:17,960
+ because they were really trying to scale up and rather than an architect starting from the beginning
+
+189
+00:17:17,960 --> 00:17:21,800
+ they wanted to be able to plug in these are the requirements this is what being asked for
+
+190
+00:17:21,800 --> 00:17:26,280
+ can you give me some recommended patterns that would make sense that are in line with all of our
+
+191
+00:17:26,280 --> 00:17:30,840
+ you know understanding of how we do things already so that we can try and move through this process a lot quicker
+
+192
+00:17:31,400 --> 00:17:35,160
+ really small thing and you're going to notice that as i talk through the rest of them
+
+193
+00:17:35,160 --> 00:17:39,880
+ i'm not going to suggest these massive multi-agent workflows with loads of twists and turns
+
+194
+00:17:40,600 --> 00:17:45,880
+ actually normally the most time spent are things that are fairly obvious fairly simple but actually
+
+195
+00:17:45,880 --> 00:17:47,960
+ tend to be the kind of last thought that we get to
+
+196
+00:17:51,880 --> 00:18:00,440
+ so the next one environments on demand a bugbear for so many people so you raise a ticket for a test
+
+197
+00:18:00,440 --> 00:18:08,920
+ environment that matches production maybe wait days maybe wait weeks it depends nothing's actually
+
+198
+00:18:08,920 --> 00:18:15,080
+ broken but as a developer you just can't continue you're at this fall stage and then also the drug
+
+199
+00:18:15,080 --> 00:18:19,320
+ bit comes in because often it's not clear how to raise it or there's different processes the
+
+200
+00:18:19,320 --> 00:18:25,000
+ documentation is out of date and so you end up context switching you pause about while you go do
+
+201
+00:18:25,000 --> 00:18:29,640
+ another piece of work we all know from the numbers context switching you just i think it's 20 minutes
+
+202
+00:18:29,640 --> 00:18:34,360
+ it takes on our fridge to get back into the full flow of what you're doing now we're losing potentially
+
+203
+00:18:34,360 --> 00:18:39,480
+ hours in a week because we're sort of having to just swap between stuff i asked earlier hardly anyone
+
+204
+00:18:39,480 --> 00:18:43,800
+ works somewhere where there is a fully self-service deployment platform which means that most of you are
+
+205
+00:18:43,800 --> 00:18:49,160
+ probably raising a ticket of some description chasing it up hoping that somebody's actually picking that
+
+206
+00:18:49,160 --> 00:18:53,720
+ up at some point and then having to go back and so you've got developers constantly having to flip
+
+207
+00:18:53,720 --> 00:18:59,560
+ between projects just because they can't move forward on what they're trying to do so where this could
+
+208
+00:18:59,560 --> 00:19:04,760
+ change is actually we put a request in in plain language of what you need for that environment
+
+209
+00:19:05,640 --> 00:19:10,280
+ the request is then made and composed of the infrastructure modules that the platform team have
+
+210
+00:19:10,280 --> 00:19:15,480
+ already approved you know as a general consensus who's working for people that are using infrastructure
+
+211
+00:19:15,480 --> 00:19:21,240
+ as code for most of the platform deployments so that was you know a good three quarters of the room
+
+212
+00:19:21,240 --> 00:19:26,680
+ so what we know is you do have the infrastructure as code you have the patterns you actually do have what
+
+213
+00:19:26,680 --> 00:19:32,200
+ you need to be able to get these in quicker what you don't have is an entire development platform
+
+214
+00:19:32,200 --> 00:19:37,640
+ and most companies sort of pause the building then when ai came and knocked us all on the side of the head
+
+215
+00:19:37,640 --> 00:19:42,280
+ because this became the new exciting thing and the i used having all development platform conversations
+
+216
+00:19:42,280 --> 00:19:48,120
+ before gen ai kind of jumped down suddenly this became kind of a secondary thing but actually we
+
+217
+00:19:48,120 --> 00:19:52,280
+ can move away from needing to build up these big harnesses and have this whole kind of pipeline that
+
+218
+00:19:52,280 --> 00:19:56,440
+ stitches everything together because we can get agents to be able to do something like decision making
+
+219
+00:19:57,800 --> 00:20:02,520
+ so we get our environment that's using pre-existing modules policy and guardrail obviously run
+
+220
+00:20:02,520 --> 00:20:07,640
+ automatically and then we can have kind of tear down scheduled we still have a human in the loop here
+
+221
+00:20:07,640 --> 00:20:13,000
+ you'll notice this again you want to check them it's good to again have that recommendations but
+
+222
+00:20:13,000 --> 00:20:16,840
+ to actually be able to just have a look over it does that make sense is this compliant yes
+
+223
+00:20:17,400 --> 00:20:20,520
+ and then great now we can actually move on and we can get that environment in
+
+224
+00:20:21,560 --> 00:20:25,880
+ so the gate here sits at those guardrails you still need people that understand the policy that own
+
+225
+00:20:25,880 --> 00:20:30,680
+ policy they've not you know they've just stopped hands checking every single request that comes
+
+226
+00:20:30,680 --> 00:20:35,880
+ through i think this is really important particularly when we've got and there's a sliding scale there
+
+227
+00:20:35,880 --> 00:20:40,120
+ for the sort of leaders in the room that are thinking absolutely not allowing an agent to build
+
+228
+00:20:40,120 --> 00:20:45,960
+ environments don't be ridiculous i'm not saying that you would allow them to build your really secure
+
+229
+00:20:45,960 --> 00:20:50,360
+ environments places where you've got a lot of compliance and controls anyone that works in public
+
+230
+00:20:50,360 --> 00:20:55,080
+ sector government anyone that works in those kind of regulated industries but there are probably
+
+231
+00:20:55,080 --> 00:21:00,360
+ environments that are absolutely fine once you've built up confidence and trust and i want to just
+
+232
+00:21:00,360 --> 00:21:04,440
+ pause on this one with all of these things i'm not suggesting from day one that you build this give
+
+233
+00:21:04,440 --> 00:21:11,000
+ the ai agent full kind of access and go okay thank you that's nice what you do is you build an agent you
+
+234
+00:21:11,000 --> 00:21:15,640
+ get it to do this before anything is done you get a human to check it and you build up confidence
+
+235
+00:21:15,640 --> 00:21:20,440
+ you tweak it you build up you have your confidence threshold as you reach a point more actually you're
+
+236
+00:21:20,440 --> 00:21:25,640
+ pretty confident now that you're in a good place and this is something that is lower risk but is a
+
+237
+00:21:25,640 --> 00:21:30,120
+ high yield there's a lot of these requests that come through now you're in a position to move that to
+
+238
+00:21:30,120 --> 00:21:35,160
+ be more fully automated you keep building that confidence with more complex use cases but you never
+
+239
+00:21:35,160 --> 00:21:42,760
+ just run out the door and do this on day one so how do we measure this time to work in environment you
+
+240
+00:21:42,760 --> 00:21:48,520
+ know how many environments are still and also another one how many environments are still running that
+
+241
+00:21:48,520 --> 00:21:56,120
+ nobody owns i have got multiple subscriptions that i should put some policies in and to tear stuff down
+
+242
+00:21:56,760 --> 00:22:01,720
+ because they're test environments and no one really wants them but you know that's me one person if we
+
+243
+00:22:01,720 --> 00:22:06,440
+ imagine how many people at microsoft like me are probably really bad actually scheduling teardowns of
+
+244
+00:22:06,440 --> 00:22:10,920
+ environments there's a lot of stuff running around that's kind of just sitting there so these are two
+
+245
+00:22:10,920 --> 00:22:16,680
+ really easy to measure metrics that show meaningful time this would also then remove that wall and the
+
+246
+00:22:16,680 --> 00:22:22,200
+ wall is a really key one as we said earlier wall can't be fixed by reading some new documentation or
+
+247
+00:22:22,200 --> 00:22:26,520
+ asking a person there is a blocker and in this case it's purely the environment
+
+248
+00:22:29,000 --> 00:22:34,920
+ okay so next one we talked about this earlier generated tests um i'm not going to ask if you like to write
+
+249
+00:22:34,920 --> 00:22:41,560
+ and test no one likes writing tests i hate them um and i think the reason i had a really interesting
+
+250
+00:22:41,560 --> 00:22:46,680
+ debate a few months ago with a team that i was doing a hackathon with some of the team were qa and
+
+251
+00:22:46,680 --> 00:22:52,040
+ testing and some of them were developers now the qa and testers were adamant that they could probably
+
+252
+00:22:52,040 --> 00:22:58,840
+ write the code and test it themselves the developers were also adamant they could do all of the writing of the code and testing it themselves
+
+253
+00:22:59,560 --> 00:23:05,320
+ i'm a little bit on the qa testers front here and that is because they are different mindsets
+
+254
+00:23:05,880 --> 00:23:12,280
+ when you're a tester your favorite passion in life is breaking people's stuff you love it when you
+
+255
+00:23:12,280 --> 00:23:19,160
+ find something that was wrong we are all guilty of writing code putting some test cases in what we're
+
+256
+00:23:19,160 --> 00:23:24,920
+ not as good at doing is thinking not just of the edge cases but actually trying to prove ourselves wrong
+
+257
+00:23:24,920 --> 00:23:28,840
+ you know it reminds me when i was at uni and i was sort of studying psychology and they said you know
+
+258
+00:23:28,840 --> 00:23:33,160
+ the best hypothesis is when you set out to prove that you're wrong and we're not very good at doing
+
+259
+00:23:33,160 --> 00:23:38,200
+ that because we tend to test the things that work the other issue is that when the deadlines move and
+
+260
+00:23:38,200 --> 00:23:43,640
+ things get brought forward and we're in a rush we tend to go with we tend to avoid the test cases that
+
+261
+00:23:43,640 --> 00:23:52,280
+ actually would cause problems and so a generated sweep the passes proves nothing if it didn't try the hard
+
+262
+00:23:52,280 --> 00:23:57,480
+ path and this is one of the quick wins that we get here this is not just about writing tests we generally
+
+263
+00:23:57,480 --> 00:24:04,440
+ are using ai to write tests what very few people have done is automated that into their ai sdlc and
+
+264
+00:24:04,440 --> 00:24:09,800
+ actually focused on the hard paths and then built that into a constant ongoing process so that it's
+
+265
+00:24:09,800 --> 00:24:18,280
+ always there so what changes now is the changes proposed case tests are generated including all of
+
+266
+00:24:18,280 --> 00:24:22,280
+ the failure paths as standard and this is something that automatically gets generated
+
+267
+00:24:23,080 --> 00:24:28,120
+ developer reviews the coverage then not the syntax so it's actually not looking at the syntax but like
+
+268
+00:24:28,120 --> 00:24:32,520
+ is this covering everything that i think it needs to the human is still in the loop it needs that
+
+269
+00:24:32,520 --> 00:24:38,840
+ knowledge to be able to make this decision and then gaps are sent back as a prompt not as a ticket so
+
+270
+00:24:38,840 --> 00:24:43,640
+ actually you can iterate with this well actually no this hasn't been covered or this hasn't been
+
+271
+00:24:43,640 --> 00:24:49,640
+ considered one of the things that ai is quite good at and i'll talk about things it's not good as you'll hear but one
+
+272
+00:24:49,640 --> 00:24:55,480
+ things it's good at is telling you what you've not thought about i don't know if anyone does this one of my
+
+273
+00:24:55,480 --> 00:25:00,680
+ favorite things to do give it a piece of work i've done and tell it to rip it apart and i give it
+
+274
+00:25:00,680 --> 00:25:05,320
+ different personas i'll be like imagine this is somebody in finance or this is a chief architect or
+
+275
+00:25:05,320 --> 00:25:11,080
+ security or devops what have i not asked what have i not thought about where are the gaps where's the
+
+276
+00:25:11,080 --> 00:25:15,640
+ bits that aren't working because if i'm writing it from an architect perspective and hand it to another
+
+277
+00:25:15,640 --> 00:25:20,680
+ architect i'm pretty confident they're going to go yeah that was great i know when i hand that to a security
+
+278
+00:25:20,680 --> 00:25:26,040
+ engineer they're going to be like that was cute go back and do it again so actually this is a great
+
+279
+00:25:26,040 --> 00:25:31,560
+ thing that we can do with ai is kind of have that iterative conversation so what we're measuring
+
+280
+00:25:31,560 --> 00:25:38,200
+ here we are measuring the coverage so the coverage of the failure paths and also the change failure
+
+281
+00:25:38,200 --> 00:25:43,560
+ rate not the number of tests generated but actually have we been able to improve that number
+
+282
+00:25:47,800 --> 00:25:51,080
+ okay one of the other ones then this is definitely one of my favorites
+
+283
+00:25:53,560 --> 00:26:01,640
+ is operational visibility so this is something that comes up a lot so you know the alert fires
+
+284
+00:26:01,640 --> 00:26:05,880
+ we've got five different dashboards the wrong book lives in someone's head and they're on holiday
+
+285
+00:26:05,880 --> 00:26:09,320
+ we'll say in thailand it's cold here and it sounds like a nice place to be right now
+
+286
+00:26:10,440 --> 00:26:15,000
+ where do you go from here um this is something that i was working on a couple of banks with just
+
+287
+00:26:15,000 --> 00:26:22,920
+ before i moved into my new team we have all the data agreed we have in theory all of the data available
+
+288
+00:26:23,560 --> 00:26:28,920
+ what we don't have is the time and sometimes the knowledge particularly of this is systems you're
+
+289
+00:26:28,920 --> 00:26:34,280
+ not in and out of to stitch that data together really quickly and succinctly so one of the best
+
+290
+00:26:34,280 --> 00:26:38,920
+ use cases i've seen with this in the last few months was a lot of the banks i was working with were really
+
+291
+00:26:38,920 --> 00:26:44,920
+ focusing on building knowledge management systems using things like graph patterns etc to kind of
+
+292
+00:26:44,920 --> 00:26:50,680
+ make relationships between data so that they could quickly find out what is actually going on inside
+
+293
+00:26:50,680 --> 00:26:56,360
+ of this environment and what has gone wrong and so what changes when we actually can put ai involved
+
+294
+00:26:56,360 --> 00:27:03,000
+ in some of this is the signals detected and then logs traces and recent changes are all correlated
+
+295
+00:27:03,800 --> 00:27:08,920
+ the reality is although these are conflicts when you're manually sort of going through them there's
+
+296
+00:27:08,920 --> 00:27:13,640
+ often patterns there's often the same problems that come up and these systems can be learning over
+
+297
+00:27:13,640 --> 00:27:17,960
+ time they can be understanding well what happened in the last couple of months what are the issues that
+
+298
+00:27:17,960 --> 00:27:23,000
+ we're seeing and so it already has a head start on you just going in there and sort of hoping that you
+
+299
+00:27:23,000 --> 00:27:29,000
+ understand what's been going on in this environment the next bit's key i'm not suggesting it goes and fixes
+
+300
+00:27:29,000 --> 00:27:33,400
+ everything because that is a whole different conversation around trust and guardrails and
+
+301
+00:27:33,400 --> 00:27:39,000
+ confidence what it can do though is give you the likely proposed issues with the evidence pointing
+
+302
+00:27:39,000 --> 00:27:43,320
+ you to all the right logs all of the bits that are needed to make that decision how we got to that
+
+303
+00:27:43,320 --> 00:27:49,560
+ point if we just take that as an example if you had to go in a troubleshoot environment right now manually
+
+304
+00:27:49,560 --> 00:27:54,600
+ we'll assume it might take a couple of hours minimum just to find everything you need to get started
+
+305
+00:27:54,600 --> 00:27:59,800
+ then you start cross-referencing you start correlating it that could be shortened down to a kind of five
+
+306
+00:27:59,800 --> 00:28:05,000
+ minute window just as a starting point that doesn't mean that you just go okay that was the problem
+
+307
+00:28:05,000 --> 00:28:09,480
+ you then kind of read through it you're going to validate it but already if we imagine that over
+
+308
+00:28:09,480 --> 00:28:13,240
+ the course of the year and that happened a hundred times and we've saved five hours each time
+
+309
+00:28:13,880 --> 00:28:17,160
+ this isn't something that's really exciting and flashy but it's really meaningful
+
+310
+00:28:18,120 --> 00:28:21,560
+ the engineer then can confirm or kind of reject what happens there
+
+311
+00:28:22,600 --> 00:28:29,480
+ um what do we measure here so time to restore services and how often the first proposed cause
+
+312
+00:28:29,480 --> 00:28:33,960
+ was correct and that's how we build the confidence how often did it get it right
+
+313
+00:28:34,680 --> 00:28:38,920
+ i've seen some other similar patterns and i was talking to a few people about one and when i was
+
+314
+00:28:38,920 --> 00:28:44,040
+ working with one of the big banks about sort of six months ago they were all excited showing me
+
+315
+00:28:44,040 --> 00:28:47,560
+ something they built and you know what it was really bloody smart and i've told everyone else about
+
+316
+00:28:47,560 --> 00:28:51,720
+ it so that everyone else can build it simple concept they use kubernetes for everything
+
+317
+00:28:51,720 --> 00:28:55,880
+ therefore they have infrastructure's code for everything they put all of that into a graph
+
+318
+00:28:55,880 --> 00:29:01,080
+ style database they put an llm on top and spend a bit of time refining the agent started off as a
+
+319
+00:29:01,080 --> 00:29:06,920
+ simple chat interface if i make this change what are all of the downstream repercussions well all of
+
+320
+00:29:06,920 --> 00:29:11,560
+ the different things that we change in my environment where does it touch they had all that data
+
+321
+00:29:11,560 --> 00:29:15,800
+ it was all sitting there they knew how everything all the relationships worked what they didn't have
+
+322
+00:29:15,800 --> 00:29:21,000
+ was time so it started off as a simple thing here's a proposed change what would the impact be and then they just
+
+323
+00:29:21,720 --> 00:29:27,080
+ went into their CI/CD pipelines developing the process of changes okay run an analysis is it something
+
+324
+00:29:27,080 --> 00:29:31,720
+ that we would do what would the impact be small little things like that again these aren't things
+
+325
+00:29:31,720 --> 00:29:36,120
+ that are anything to do with developers but actually that is a really small thing that can have quite
+
+326
+00:29:36,120 --> 00:29:41,000
+ a big impact and from there they then started to build out to lots of their other cloud services more
+
+327
+00:29:41,000 --> 00:29:47,640
+ than just terraform and more than just their kubernetes
+
+328
+00:29:48,120 --> 00:29:53,160
+ okay so um final one quickly then is obviously repetitive engineering work so
+
+329
+00:29:54,040 --> 00:29:58,280
+ this is another one where you know what's the friction so dependency bumps boilerplate
+
+330
+00:29:58,280 --> 00:30:03,960
+ config change logs release notes each one of them is five minutes but actually these really do delay
+
+331
+00:30:04,760 --> 00:30:09,320
+ and they're never really anyone's priority because they're really boring but they do accumulate and
+
+332
+00:30:09,320 --> 00:30:15,240
+ become a security problem so this one's simple okay routine work is detected it gets batched into
+
+333
+00:30:15,240 --> 00:30:21,160
+ renewable changes so you can kind of put them together in groups evidence attached you know kind of what
+
+334
+00:30:21,160 --> 00:30:27,400
+ breaks um you know what's changed what's broken etc and again we still have human in the loop but human
+
+335
+00:30:27,400 --> 00:30:31,560
+ looks at these in a batch which is much better as well from the context switching perspective because we're
+
+336
+00:30:31,560 --> 00:30:37,480
+ just already in the mind frame of knowing what we're looking at and then not one by one it's a really
+
+337
+00:30:37,480 --> 00:30:43,080
+ simple thing to measure here hours returned per team per week and whether the batch is small enough
+
+338
+00:30:43,080 --> 00:30:49,580
+ that anyone actually reads it and this one's really key this is kind of in the world of the pr reviews biggest comparison
+

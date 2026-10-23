@@ -1,0 +1,1132 @@
+1
+00:00:00,000 --> 00:00:04,620
+ To do any of this, I can just iterate on my app locally as a normal web server developer would do.
+
+2
+00:00:05,920 --> 00:00:10,560
+ So what I'm going to do is I'm going to then say, why don't we deploy this to Lambda?
+
+3
+00:00:10,700 --> 00:00:20,520
+ So all I'm going to run is, let me just get this started, deploy, and click on VS when it tells me it needs to deploy.
+
+4
+00:00:20,680 --> 00:00:22,400
+ Hopefully authentication is going to behave.
+
+5
+00:00:22,880 --> 00:00:24,640
+ And you can see here the command is quite simple.
+
+6
+00:00:24,640 --> 00:00:29,720
+ So AWS Lambda Web would deploy a name, where the code is, and the timeout.
+
+7
+00:00:30,180 --> 00:00:30,700
+ That's it.
+
+8
+00:00:31,520 --> 00:00:35,080
+ This is nice and slowly, and we're going to be dying for the live demos here today.
+
+9
+00:00:37,140 --> 00:00:39,100
+ But you can see that one command.
+
+10
+00:00:39,340 --> 00:00:43,900
+ That is great for agents as well, because agents are just going to be able to build that as well.
+
+11
+00:00:44,880 --> 00:00:45,520
+ Really easy.
+
+12
+00:00:45,620 --> 00:00:48,800
+ So you can see behind the scenes here, it's going to do a number of tasks.
+
+13
+00:00:48,800 --> 00:00:51,380
+ It's actually going to create an S3 bucket where the code is stored.
+
+14
+00:00:51,760 --> 00:00:53,480
+ It is going to create an execution role.
+
+15
+00:00:53,860 --> 00:00:57,900
+ It is going to zip up your local package up to that S3 bucket.
+
+16
+00:00:58,260 --> 00:01:02,440
+ Then it's going to create a Lambda function that uses the code from that as well, and create a URL.
+
+17
+00:01:03,120 --> 00:01:03,280
+ Done.
+
+18
+00:01:03,420 --> 00:01:07,700
+ So that's literally live with particularly slow conference Wi-Fi doing my application.
+
+19
+00:01:08,200 --> 00:01:13,840
+ Now just to save a bit of time, I'm just going to do the global deploy, because that does take a minute.
+
+20
+00:01:13,840 --> 00:01:15,140
+ There's no point staring.
+
+21
+00:01:17,060 --> 00:01:18,060
+ Deploy global.
+
+22
+00:01:18,660 --> 00:01:21,500
+ So while that's running in the background, I need to do that as well.
+
+23
+00:01:22,600 --> 00:01:24,620
+ And I'll show you what that is.
+
+24
+00:01:25,020 --> 00:01:29,980
+ So we now have a URL endpoint that is available on the web.
+
+25
+00:01:30,600 --> 00:01:32,200
+ So that is going to load up.
+
+26
+00:01:33,280 --> 00:01:34,780
+ Hopefully with the Wi-Fi as well.
+
+27
+00:01:34,860 --> 00:01:36,960
+ Let me just go back to this code and hit OK.
+
+28
+00:01:40,060 --> 00:01:41,740
+ I didn't have to authenticate.
+
+29
+00:01:46,120 --> 00:01:48,300
+ So I just need to hit enter to do the deploy.
+
+30
+00:01:50,300 --> 00:01:51,140
+ Come on, come on.
+
+31
+00:01:51,200 --> 00:01:51,820
+ You can do it today.
+
+32
+00:01:54,280 --> 00:01:55,600
+ It's like watching the kettle boils.
+
+33
+00:01:55,960 --> 00:01:57,520
+ Watch it too much and it just doesn't do anything.
+
+34
+00:01:58,180 --> 00:01:59,080
+ Okay, I'll check back on that.
+
+35
+00:01:59,420 --> 00:02:01,920
+ So basically we have that Lambda function that is running in the cloud.
+
+36
+00:02:02,040 --> 00:02:04,020
+ So you can see I'm running it from us-east-1.
+
+37
+00:02:04,580 --> 00:02:06,680
+ I have an instance ID.
+
+38
+00:02:06,880 --> 00:02:10,540
+ So this is just a new ID I created for the instance to say what is happening.
+
+39
+00:02:11,100 --> 00:02:16,080
+ Now we can see here that this Lambda function environment has been running for 40-ish seconds.
+
+40
+00:02:17,180 --> 00:02:20,680
+ What I can do here is I can start to generate some CPU load.
+
+41
+00:02:20,780 --> 00:02:24,500
+ So this is literally just going and running a very wasteful hash function.
+
+42
+00:02:24,660 --> 00:02:27,900
+ I could have been doing Bitcoin mining, which may be a little more useful for my bank balance.
+
+43
+00:02:28,340 --> 00:02:31,500
+ But basically I'm using some CPU within this Lambda function.
+
+44
+00:02:31,640 --> 00:02:33,040
+ You can see the little graph going up.
+
+45
+00:02:33,560 --> 00:02:37,300
+ But what is happening is this Lambda process is running for just after a minute.
+
+46
+00:02:37,300 --> 00:02:40,360
+ But I'm only running 9 seconds of CPU.
+
+47
+00:02:41,120 --> 00:02:41,860
+ So there it is.
+
+48
+00:02:41,960 --> 00:02:46,040
+ I'm not being charged for the whole minute and now 10 seconds of the CPU time.
+
+49
+00:02:46,120 --> 00:02:49,940
+ I'm only going to be charged for that 9 seconds while my code is crunching and doing something.
+
+50
+00:02:50,920 --> 00:02:54,200
+ So we can see also the latency because this is running from Northern Virginia.
+
+51
+00:02:54,420 --> 00:02:55,660
+ It's about 110 milliseconds.
+
+52
+00:02:56,360 --> 00:02:58,440
+ And I have just one instance running in this account.
+
+53
+00:02:58,540 --> 00:03:02,020
+ So if we do E88, let's remember E88, and I'll refresh.
+
+54
+00:03:04,340 --> 00:03:05,540
+ Refresh and stuff is slow.
+
+55
+00:03:05,540 --> 00:03:06,760
+ We'll see what it connects to.
+
+56
+00:03:06,840 --> 00:03:12,940
+ But it may actually connect to either the same execution environment or another one of those yellow boxes where it has spun up a another environment.
+
+57
+00:03:13,660 --> 00:03:15,380
+ Behind the scenes, Lambda.
+
+58
+00:03:16,720 --> 00:03:17,980
+ Wow, this is nice and slow.
+
+59
+00:03:18,320 --> 00:03:19,020
+ I've really forgotten.
+
+60
+00:03:19,260 --> 00:03:20,040
+ No, it was E88.
+
+61
+00:03:20,200 --> 00:03:25,160
+ So we happen to have reconnected to the same execution environment, but maybe it would have connected to another one.
+
+62
+00:03:25,220 --> 00:03:28,480
+ Just seeing as the front end is going to connect to whatever is happening.
+
+63
+00:03:28,960 --> 00:03:30,500
+ So we've still got 104 milliseconds.
+
+64
+00:03:30,740 --> 00:03:35,440
+ So you can see, even though I refresh my Lambda function, you can see behind the scenes, that has still been running for two minutes.
+
+65
+00:03:35,940 --> 00:03:38,540
+ And you know, I've only generated nine seconds of CPU.
+
+66
+00:03:39,640 --> 00:03:42,280
+ Let's check for that global deployment.
+
+67
+00:03:44,060 --> 00:03:46,720
+ So, what is happening now for this global deployment?
+
+68
+00:03:46,980 --> 00:03:52,320
+ So, very simple from the command point is I just say it is a multi-region endpoint.
+
+69
+00:03:53,060 --> 00:04:00,920
+ I give it the region so that Northern Virginia and the EU-West one, I now want to have a more local European connection from an application.
+
+70
+00:04:01,580 --> 00:04:04,480
+ Maybe I'm going to have three across the globe, maybe I'm going to have one in AsiaPack.
+
+71
+00:04:04,680 --> 00:04:08,080
+ I could do it in 17 regions if I like, up to you.
+
+72
+00:04:08,580 --> 00:04:15,520
+ And all this is going to do is take that Lambda function code and configuration and just replicate that automatically to all those different regions.
+
+73
+00:04:15,980 --> 00:04:17,940
+ And that is going to be really easy.
+
+74
+00:04:18,580 --> 00:04:21,800
+ So, this deployment package is doing, it's preparing the S3 bucket.
+
+75
+00:04:22,900 --> 00:04:25,060
+ Again, this is taking a bit of time.
+
+76
+00:04:25,740 --> 00:04:27,120
+ Let's see what it is.
+
+77
+00:04:29,440 --> 00:04:33,100
+ Okay, we will come back to that once that has been deployed with the global URL endpoint.
+
+78
+00:04:34,160 --> 00:04:34,960
+ But this is great.
+
+79
+00:04:34,960 --> 00:04:44,360
+ This kind of demo, to be honest, is a bit nerdy and it's a bit sort of how Lambda functions are working behind the scenes, which is only part of the interesting story.
+
+80
+00:04:45,020 --> 00:04:56,480
+ When actually, one, if you really want to actually make sure that the computing service works, the only way that you can test it is to be able to run Doom in a web service.
+
+81
+00:04:56,880 --> 00:04:58,680
+ Anybody here old enough to have played Doom?
+
+82
+00:04:59,580 --> 00:05:00,440
+ Oh, there we go.
+
+83
+00:05:00,520 --> 00:05:01,600
+ People are warming up today.
+
+84
+00:05:02,800 --> 00:05:03,160
+ Excellent.
+
+85
+00:05:03,500 --> 00:05:06,100
+ So, Doom came out in 1993.
+
+86
+00:05:06,980 --> 00:05:12,380
+ It used to run on a 486 processor, which used to take up all of the CPU.
+
+87
+00:05:14,080 --> 00:05:16,480
+ I think our internet is ridiculously slow.
+
+88
+00:05:16,780 --> 00:05:20,760
+ Let's just try to refresh and see if anything comes over here.
+
+89
+00:05:21,380 --> 00:05:27,060
+ But anyway, the way that Doom actually works is it sends images to the front end.
+
+90
+00:05:27,200 --> 00:05:32,700
+ Now, when this was running on a single computer, that would be really easy because everything would be running locally.
+
+91
+00:05:33,320 --> 00:05:37,340
+ But I built this, I say I, with the help of Kira and Claude.
+
+92
+00:05:37,840 --> 00:05:48,620
+ I don't build stuff anymore in that same way, and I probably couldn't do this myself, managed to be able to get Doom to be able to take those images that were displayed locally and stream them across to the browser.
+
+93
+00:05:49,160 --> 00:05:52,460
+ This is running in a Lambda web function that is running remotely.
+
+94
+00:05:53,460 --> 00:05:57,460
+ I think the internet is so piece of stringish that it's not behaving particularly well.
+
+95
+00:05:57,800 --> 00:06:00,140
+ But anyway, I could actually play this Doom game.
+
+96
+00:06:01,040 --> 00:06:04,780
+ And so, it would run around, shoot all the zombies and do all this kind of thing.
+
+97
+00:06:05,160 --> 00:06:07,660
+ And basically, what it's doing is saving all the clicks.
+
+98
+00:06:08,040 --> 00:06:26,540
+ So, it's saving all those clicks, which I'm then serving in a database, because can you imagine if I then reconnected, or the timeout of a Lambda function happened, reconnected to that other system, and I want to be able to persist those keyboard presses and continue on the game.
+
+99
+00:06:26,860 --> 00:06:28,300
+ There's another cool thing over here.
+
+100
+00:06:28,440 --> 00:06:31,360
+ I can actually show a QR code.
+
+101
+00:06:31,700 --> 00:06:34,560
+ And so, actually, in fact, you could connect, but the Wi-Fi is not particularly great.
+
+102
+00:06:34,560 --> 00:06:38,160
+ So, you can actually connect to this QR code, and you could watch me playing that game.
+
+103
+00:06:38,260 --> 00:06:45,020
+ Because what's happening, all those keystrokes are being stored, and then it's going to be replayed on your connection to it, and you can follow me playing Doom.
+
+104
+00:06:45,380 --> 00:06:47,540
+ So, follow me playing Doom, but this is so long.
+
+105
+00:06:47,640 --> 00:06:50,700
+ If you can't, it's not even accepting the keypress.
+
+106
+00:06:50,820 --> 00:06:52,720
+ Oh, that's a neat of a Doom endeavor.
+
+107
+00:06:52,920 --> 00:06:53,420
+ I mean, seriously.
+
+108
+00:06:53,880 --> 00:06:55,780
+ Anyway, we're running around shooting.
+
+109
+00:06:56,360 --> 00:06:59,260
+ It's been fun to play Doom and be able to have people connect.
+
+110
+00:07:00,000 --> 00:07:02,260
+ So, let's go back and...
+
+111
+00:07:04,560 --> 00:07:05,820
+ Well, things are particularly slow.
+
+112
+00:07:05,940 --> 00:07:09,560
+ So, we have now the global endpoint, which is still being deployed.
+
+113
+00:07:09,740 --> 00:07:11,840
+ It does take about a minute.
+
+114
+00:07:12,220 --> 00:07:15,840
+ But basically, what comes back is it is going to then have a global URL.
+
+115
+00:07:16,080 --> 00:07:19,660
+ So, when you evolve your Lambda functions, you can have different URL endpoints.
+
+116
+00:07:19,820 --> 00:07:21,420
+ You can have up to 50 different ones.
+
+117
+00:07:21,860 --> 00:07:24,220
+ A few different kinds of configuration for them as well.
+
+118
+00:07:25,040 --> 00:07:25,460
+ Let's see.
+
+119
+00:07:26,560 --> 00:07:27,760
+ I've got 17 seconds.
+
+120
+00:07:27,980 --> 00:07:28,940
+ Maybe it's going to take a minute.
+
+121
+00:07:28,940 --> 00:07:30,440
+ I'm not sure if it's going to be that long.
+
+122
+00:07:31,880 --> 00:07:40,440
+ So, another thing I could have done, but I haven't done it just for the Wi-Fi, is to look at the concurrency of a Lambda function that would run.
+
+123
+00:07:40,840 --> 00:07:51,680
+ So, if I was running any of these demos, and what I was going to run for that was run a curl command that runs 300 requests to that URL endpoint, but 200 running at each time.
+
+124
+00:07:51,840 --> 00:07:54,220
+ I keep those requests open for a minute and a half.
+
+125
+00:07:54,600 --> 00:08:02,000
+ So, in a standard Lambda model, that would run up to 200 environments at a time, standard Lambda being the event functions.
+
+126
+00:08:02,360 --> 00:08:06,660
+ So, we'd have 200 execution environments all spun up, and that's just how it would work.
+
+127
+00:08:06,980 --> 00:08:16,620
+ When using web functions, well, actually, it's only going to use 59, it's actually going to use five environments, and it has 59 connections all running in one execution environment.
+
+128
+00:08:17,200 --> 00:08:23,460
+ So, you can see, running all of that, it is far more efficient in terms of the number of execution environments that are going to be running.
+
+129
+00:08:23,920 --> 00:08:29,240
+ And, yes, if you are paying per memory, that's in use, but it's only in memory for one execution environment.
+
+130
+00:08:29,360 --> 00:08:32,120
+ You're not paying memory used for up to 200 different environments.
+
+131
+00:08:32,980 --> 00:08:44,340
+ So, the example was, you know, it was running from a minute and a half, but across all of those 300 requests, it only used 4.75 seconds of CPU, and from the closest region, there was a reduction in latency.
+
+132
+00:08:44,760 --> 00:08:48,560
+ So, you can just sort of see some of the difference between the event functions and the web functions.
+
+133
+00:08:49,700 --> 00:08:50,380
+ Ah, there we go.
+
+134
+00:08:50,520 --> 00:08:54,940
+ So, we now have a global URL, which is literally the same app.
+
+135
+00:08:55,040 --> 00:08:57,260
+ As you saw, I didn't make any changes to the app.
+
+136
+00:08:57,760 --> 00:09:06,780
+ And we can see, once it connects over here, now that app is running out of EU West 1, and that latency is 326, which is massive.
+
+137
+00:09:06,920 --> 00:09:10,840
+ But I think that's latency from the browser.
+
+138
+00:09:11,960 --> 00:09:13,780
+ Well, that's a bomb of the inverse demo.
+
+139
+00:09:13,940 --> 00:09:20,640
+ Normally, what happens is the latency to US East 1 is about 110 milliseconds, and then when it's in a local region, it's about 10 milliseconds.
+
+140
+00:09:20,840 --> 00:09:21,620
+ Ah, it is dropping over here.
+
+141
+00:09:21,620 --> 00:09:22,620
+ Ah, we're down to 39.
+
+142
+00:09:23,200 --> 00:09:24,000
+ So, it is sort of happening.
+
+143
+00:09:24,080 --> 00:09:33,100
+ But the point is, you can see that when you're deploying a Lambda function to a more local region, and you have slightly more internet than a carrier pigeon, your latency is going to drop.
+
+144
+00:09:33,340 --> 00:09:34,840
+ And that's actually going to be super useful.
+
+145
+00:09:35,280 --> 00:09:37,380
+ And, of course, this is your Lambda compute doing that.
+
+146
+00:09:37,660 --> 00:09:48,200
+ Behind the scenes, you can use things like DynamoDB Global Tables, or, you know, D-SQL, some other kind of services that also have global endpoints that allow you to create these more global applications.
+
+147
+00:09:49,360 --> 00:09:53,920
+ So, that is Lambda Web Functions.
+
+148
+00:09:55,240 --> 00:10:08,000
+ So, the difference between the two, well, Event Functions, you then want to, you know, think about using, if you're using SQS as a trigger, batching, streaming, Kinesis, Kafka, S3, all those kind of things, great for Event Functions.
+
+149
+00:10:08,160 --> 00:10:17,220
+ When you do want one request environment, you want that isolation, you don't, you don't want, you want, you're running in a multi-tenant environment, for example, you want to ensure there's no sort of crossing of the streams.
+
+150
+00:10:18,040 --> 00:10:26,940
+ Event Functions is any runtime, Web Functions is no JS on ARM64 today, but we are, of course, looking at bringing more, different more runtimes.
+
+151
+00:10:27,480 --> 00:10:29,380
+ You know, the big model is slightly different.
+
+152
+00:10:29,940 --> 00:10:32,340
+ I hope things would be a little bit cheaper for Web Functions.
+
+153
+00:10:32,700 --> 00:10:41,620
+ Web Functions isn't going to be cheaper if it's going to be really sporadically done functions that are, you know, going to run request every five minutes and that kind of thing.
+
+154
+00:10:41,700 --> 00:10:50,480
+ But I did some internal modeling, and because that web server stays running, you know, it's not going to be completely free, but it's going to be about a dollar a month.
+
+155
+00:10:50,820 --> 00:11:00,620
+ So that's the kind of thing when it is a bit more expensive, we say you're going to be wasting money, and a Web Function that's, you know, the bad use case for this kind of billing model is still going to cost you only a dollar a month.
+
+156
+00:11:01,920 --> 00:11:05,780
+ So let's continue into the last little bit of labor is micro VMs.
+
+157
+00:11:05,780 --> 00:11:07,860
+ So this is a VM sandbox you control.
+
+158
+00:11:08,480 --> 00:11:11,620
+ Same firecracker, same VM isolation, got its own kernel.
+
+159
+00:11:12,220 --> 00:11:15,680
+ We stick a URL in front of it, and it's built from an ordinary Docker file.
+
+160
+00:11:15,820 --> 00:11:16,500
+ So it is just Docker.
+
+161
+00:11:16,580 --> 00:11:21,000
+ We upload your Docker file to S3, and I process from Lander, and then it's going to build your micro VM.
+
+162
+00:11:21,840 --> 00:11:31,900
+ But what's different from running a container or running an EC2 instance is when the Lander service creates that micro VM,
+
+163
+00:11:32,320 --> 00:11:35,620
+ it's going to run whatever code you specify and then create a snapshot.
+
+164
+00:11:36,600 --> 00:11:44,280
+ And so when it's going to then run again, when it's going to start and initialize, it's just going to initialize from the state of that snapshot.
+
+165
+00:11:44,780 --> 00:11:51,360
+ So all the stuff and the working and everything that you may have done in your initialization step, you can save that durably before that actually runs.
+
+166
+00:11:51,800 --> 00:11:55,980
+ And so you can run these micro VMs for up to eight hours, and they can stop and start.
+
+167
+00:11:55,980 --> 00:11:57,280
+ You only pay for when they're running.
+
+168
+00:11:57,720 --> 00:11:59,320
+ You can bring them down when you need to.
+
+169
+00:12:00,140 --> 00:12:02,700
+ And it's just a simple service.
+
+170
+00:12:03,060 --> 00:12:04,860
+ So eight hours continuously running.
+
+171
+00:12:05,000 --> 00:12:10,980
+ It could be a whole micro VM can run for eight hours, or it can be available for eight hours, and you stop and start it whenever you like.
+
+172
+00:12:11,040 --> 00:12:12,440
+ And you get to control the life cycle.
+
+173
+00:12:12,580 --> 00:12:17,040
+ So you choose when to launch it, when to suspend it, when to resume it, and all that kind of thing.
+
+174
+00:12:17,260 --> 00:12:27,820
+ So when you do suspend it within that eight hours, nothing gets lost, and then when you restart the micro VM automatically, or via a schedule or some kind of thing, it'll just pick up where it's left off.
+
+175
+00:12:28,640 --> 00:12:37,480
+ If you do need to run it for longer than eight hours, then you do need to then persist state to another kind of service, and people are using things like S3 files, or maybe it's just storing stuff in your database.
+
+176
+00:12:39,240 --> 00:12:45,500
+ So what it gives you, in terms of compute, you can select some different compute options, you know, from half a gig up to 32 gig of RAM.
+
+177
+00:12:46,000 --> 00:12:55,580
+ But the third one down is actually what is really cool, because you configure a base amount of memory and CPU, and then micro VMs allows you to automatically burst up to four times for that.
+
+178
+00:12:55,840 --> 00:13:02,300
+ So you're going to pay for the base while it's running, and then that burst will just charge you just for that burst when that happens.
+
+179
+00:13:02,440 --> 00:13:11,660
+ So again, you don't have to then size your micro VM for your peak throughput, just what you need to guarantee it, and then that burst functionality is still built in with a micro VM.
+
+180
+00:13:12,900 --> 00:13:15,200
+ Amazon Linux 2023, running on ARM64.
+
+181
+00:13:15,600 --> 00:13:18,520
+ We obviously are looking at Intel again as well.
+
+182
+00:13:18,880 --> 00:13:26,020
+ Lots of connectivity, way more than a normal lander event function or a lander web function, you know, from web sockets, GRPC, anything.
+
+183
+00:13:26,200 --> 00:13:34,180
+ It is just a micro VM process that you can connect into, and obviously you can connect it to a VPC as well for controlling the e-based traffic.
+
+184
+00:13:35,260 --> 00:13:42,640
+ So let's have a look at another demo, which may, again, go horribly wrong, which is the micro VM playground.
+
+185
+00:13:42,640 --> 00:13:53,220
+ Now, this is a cool way that, I think the screen is quite small, but the micro VM playground just shows some different kind of options that you can use a micro VM that's going to go up and running.
+
+186
+00:13:53,360 --> 00:14:00,960
+ So what we're going to do is a CI CD worker, so I'm going to click on the CI CD worker, and Carrie Pigeon is going to connect.
+
+187
+00:14:02,860 --> 00:14:04,340
+ I will click, and I will see what happens.
+
+188
+00:14:04,340 --> 00:14:15,920
+ So basically what is going to happen behind the scenes is when this does eventually connect to the service, is someone has created, a great colleague of mine called Anton has created a Docker file, which is a CI CD worker.
+
+189
+00:14:16,500 --> 00:14:25,840
+ So, anybody using, you know, GitHub Actions or GitLab or this kind of thing, when you are running those CI CD workers, you want to then, you know, spin up this environment.
+
+190
+00:14:26,760 --> 00:14:41,280
+ But the weird thing with those environments is each time you spin it up, you are going to have a container runtime, maybe you're going to use Ubuntu, Amazon Linux or whatever, and then you install Node, and then you install something else, and you, you know, download some files, you clone the repo, do all those kind of things.
+
+191
+00:14:41,280 --> 00:14:42,280
+ There's a whole bunch of steps.
+
+192
+00:14:42,640 --> 00:14:48,760
+ Using a micro VM, you can actually have most of that installed, but maybe you're just going to do a Git call for the latest release.
+
+193
+00:14:49,560 --> 00:14:55,820
+ So, really fast to set up, not behaving here on the Wi-Fi, because that's not even running.
+
+194
+00:14:57,020 --> 00:15:04,800
+ I'm blaming the Wi-Fi, maybe, I just learned in getting out, I'm blaming the Wi-Fi, but maybe it is my laptop as well, but who knows.
+
+195
+00:15:06,340 --> 00:15:08,920
+ Anyway, I'll just have to talk through it, and we'll do a refresh and see what's happening.
+
+196
+00:15:09,040 --> 00:15:15,040
+ But you can see a webhook is going to run at the start of this micro VM, and a CI CD process is going to run.
+
+197
+00:15:15,140 --> 00:15:24,200
+ So, it does a sort of, it actually clones a real repo, so this isn't just a simulation, it does some code, does some checking on the CI CD, has, you know, a whole bunch of tests, and that runs them.
+
+198
+00:15:24,420 --> 00:15:26,840
+ The micro VM starts up in under a second.
+
+199
+00:15:27,200 --> 00:15:30,400
+ So, that is super efficient if you want to be able to build this kind of environment.
+
+200
+00:15:31,020 --> 00:15:34,200
+ Again, for hosted runners and all these kind of things, super useful.
+
+201
+00:15:34,580 --> 00:15:39,520
+ Some of the other use cases as well, which I'll just have to talk through, is something like a game server.
+
+202
+00:15:39,740 --> 00:15:51,320
+ So, you know, anybody who's got kids who likes to play Minecraft, or even Fortnite, or things like that, Fortnite's a managed service, but you can imagine having a game server, how long does a game take to play?
+
+203
+00:15:51,580 --> 00:15:52,960
+ Normally, not longer than eight hours.
+
+204
+00:15:53,100 --> 00:15:59,520
+ You can run up this game server, multiple people can connect to it, as soon as the game is over, it just gets removed.
+
+205
+00:16:00,620 --> 00:16:07,200
+ And, of course, you could have, you know, a hundred games on your platform, a thousand games on your platform, they can also each be another game server.
+
+206
+00:16:07,660 --> 00:16:12,420
+ Under a second to start, all that network connectivity going in a shared environment, which everyone can connect to.
+
+207
+00:16:12,680 --> 00:16:14,960
+ We spoke about the CI runners.
+
+208
+00:16:15,780 --> 00:16:27,760
+ One thing I just wanted to add is that, because you can have multiple of these micro VMs, you don't need to have one CI runner that you create, and then, oh, this repo, this time, and some of our apps are known, some are Java, so I need to install everything.
+
+209
+00:16:27,960 --> 00:16:32,960
+ No, for literally every single app, or every part of an app, you can have a different micro VM that is spun up.
+
+210
+00:16:33,260 --> 00:16:38,560
+ It's just a Docker file, maybe a Java one for this app, a Node one for this app, everything is pre-installed and really good.
+
+211
+00:16:39,740 --> 00:16:40,920
+ Dev workspace is really good.
+
+212
+00:16:40,920 --> 00:16:51,480
+ You want to just have a URL endpoint you can connect to, write VS code, run Kira Web, run anything that can run in a web server, sort of completely isolated IDE in a sandbox.
+
+213
+00:16:52,440 --> 00:16:54,240
+ That's really fun to play with as well.
+
+214
+00:16:54,620 --> 00:16:57,380
+ And, of course, obviously, ancient sandboxes if you're using AR.
+
+215
+00:16:57,760 --> 00:17:07,620
+ You've got untrusted code, you've got, you know, you're, maybe it's doing a code review in a secure environment that you want to check, or maybe your AI agent is creating code.
+
+216
+00:17:07,620 --> 00:17:11,680
+ You don't want to run that in your normal laptop or your normal EC2 instances to detect.
+
+217
+00:17:11,980 --> 00:17:17,700
+ You want the secure isolation bubble to be able to run your agent sandbox in that, in a completely isolated way.
+
+218
+00:17:18,040 --> 00:17:20,480
+ And, of course, you know, this is a great way to do that as well.
+
+219
+00:17:21,620 --> 00:17:23,340
+ So, that is Lambda Micro VMs.
+
+220
+00:17:23,620 --> 00:17:26,500
+ And the last thing to look at is just Lambda managed instances.
+
+221
+00:17:26,960 --> 00:17:31,480
+ And this is basically we manage and run EC2 instances that are going to run in your accounts.
+
+222
+00:17:31,480 --> 00:17:38,240
+ We manage, patch them, launch them, terminate them, do everything that happen to sit in your account, but you can't even get to them.
+
+223
+00:17:38,240 --> 00:17:42,340
+ You can see them, you can manage the configuration and the networking, but you can't get into them.
+
+224
+00:17:42,340 --> 00:17:48,380
+ One of the benefits is using EC2 pricing, so if you've got savings, plans, and reserved instances, that is absolutely great.
+
+225
+00:17:48,760 --> 00:17:54,600
+ So, when Lambda deploys a function onto your managed compute, it's actually going to deploy them as container images.
+
+226
+00:17:55,060 --> 00:18:01,100
+ It doesn't use Firecracker because this is your own account, your own EC2 instances, and there's sort of a bit of trust boundary there as well.
+
+227
+00:18:02,040 --> 00:18:09,120
+ So, in terms of when you're going to use this, Lambda on demand event functions is going to be really great for those spiky kind of workloads when you don't know what's going to be coming.
+
+228
+00:18:09,120 --> 00:18:22,180
+ But managed instances, it takes a bit longer, it takes about two minutes to deploy a function, and so it's for that sort of high request, steady state, and it's going to be cheaper for you for, you know, really high running functions.
+
+229
+00:18:22,480 --> 00:18:25,960
+ And also, those Lambda functions can also run for up to 90 minutes.
+
+230
+00:18:26,280 --> 00:18:32,220
+ So, just a different way, a different sort of managed, but you have a bit more control of the computer Lambda can run.
+
+231
+00:18:32,540 --> 00:18:39,100
+ And of course, that means you can run GPU, you can run instances that are, you know, memory bound, or you want bits.
+
+232
+00:18:39,260 --> 00:18:48,280
+ Network instances, or big CPU instances, you know, a whole bunch of EC2, and it floats our GPU that is actually on the roadmap, so hopefully you'll be able to, you know, run Lambda on GPU instances as well.
+
+233
+00:18:49,940 --> 00:18:52,080
+ Two little other workarounds if you had to mess with that.
+
+234
+00:18:52,200 --> 00:18:56,540
+ If you're running out of S3 storage, you can now bring your S3 bucket, your own S3 bucket, which just connects to Lambda.
+
+235
+00:18:57,000 --> 00:19:02,600
+ And tenant isolation mode means you can have an isolated execution environment per tenant, so that's really easy to do.
+
+236
+00:19:03,120 --> 00:19:06,880
+ So, the whole idea of what I've been speaking about today is Lambda for more workloads.
+
+237
+00:19:07,500 --> 00:19:14,940
+ Running web functions natively, not having to pay for the wait, manage instances for that steady traffic, not having to split all those jobs into weird kind of things.
+
+238
+00:19:15,040 --> 00:19:18,900
+ You can use neural functions and untrusted code for microbeings.
+
+239
+00:19:19,300 --> 00:19:22,660
+ But behind the scenes, your current event functions, they don't change.
+
+240
+00:19:23,040 --> 00:19:29,500
+ Runs across multiple AZs, Patch4U, VPC Access for all three, CloudWatch, IAM, CDK, SAM.
+
+241
+00:19:29,720 --> 00:19:34,800
+ All those kind of things remain exactly the same, and the same concepts are used across all the environments.
+
+242
+00:19:35,820 --> 00:19:39,140
+ The last little bit is just anybody using AI coding.
+
+243
+00:19:39,560 --> 00:19:40,480
+ I joked about it earlier.
+
+244
+00:19:40,840 --> 00:19:41,460
+ Of course we are.
+
+245
+00:19:42,240 --> 00:19:46,140
+ So, just want to mention the AWS, the agent toolkit for AWS.
+
+246
+00:19:46,140 --> 00:19:54,580
+ And this is a bunch of skills and a hosted NCP server that we run in AWS that is just always up to date with everything that's going on in AWS.
+
+247
+00:19:54,960 --> 00:19:58,020
+ You can run all commands through that as well, so it could be a secure environment.
+
+248
+00:19:58,440 --> 00:20:01,180
+ You can have different identities for yourself and your agents.
+
+249
+00:20:01,680 --> 00:20:05,480
+ But if you're doing anything with AWS, I would suggest just adding this.
+
+250
+00:20:05,540 --> 00:20:06,220
+ They stay up to date.
+
+251
+00:20:06,660 --> 00:20:08,080
+ Web functions came out last week.
+
+252
+00:20:08,600 --> 00:20:12,560
+ On day one, we had the agent support for web functions, so I just knew everything about web functions.
+
+253
+00:20:13,100 --> 00:20:17,980
+ All of the work that our solutions architects, our technical account managers, our service teams do everything.
+
+254
+00:20:17,980 --> 00:20:21,500
+ All the little gotchas, the little great things, the little use cases and everything.
+
+255
+00:20:21,680 --> 00:20:24,340
+ It's all the literary knowledge of how to use AWS.
+
+256
+00:20:24,500 --> 00:20:25,480
+ It's built into this toolkit.
+
+257
+00:20:26,280 --> 00:20:27,960
+ And so that's super useful to be able to build.
+
+258
+00:20:28,860 --> 00:20:31,420
+ You can just, you know, you pick a job.
+
+259
+00:20:31,480 --> 00:20:32,100
+ You want to reconcilia.
+
+260
+00:20:32,160 --> 00:20:34,940
+ Something that needs to run past 15 minutes, well, it's going to pick the service.
+
+261
+00:20:35,040 --> 00:20:36,880
+ You want an express app, it's going to pick web functions.
+
+262
+00:20:37,940 --> 00:20:39,460
+ You can also ask other kind of things.
+
+263
+00:20:39,520 --> 00:20:40,440
+ I want to build an application.
+
+264
+00:20:40,720 --> 00:20:42,580
+ You know, this is the number of orders per minute.
+
+265
+00:20:42,700 --> 00:20:43,400
+ This is what I need.
+
+266
+00:20:43,440 --> 00:20:44,260
+ I want to add a potency.
+
+267
+00:20:44,260 --> 00:20:45,160
+ I want all this kind of thing.
+
+268
+00:20:45,160 --> 00:20:51,040
+ And it can actually build a SAM template, build a CDK template based on the architecture just from using the questions.
+
+269
+00:20:51,040 --> 00:21:00,100
+ So it's a discovery mechanism, understanding, asking questions about your account, building infrastructure, building SAM templates, everything to do with AWS.
+
+270
+00:21:00,100 --> 00:21:01,260
+ Lots of kind of things.
+
+271
+00:21:01,260 --> 00:21:02,800
+ I'm not going to go through at all.
+
+272
+00:21:02,800 --> 00:21:05,260
+ But yeah, the agent toolkit can do a huge amount.
+
+273
+00:21:06,260 --> 00:21:09,600
+ The Lambda roadmap is open source, a whole bunch of things we shipped, which we spoke about today.
+
+274
+00:21:10,060 --> 00:21:15,460
+ And things that are coming up, things like open telemetry support, you know, more timeouts, bigger package sizes.
+
+275
+00:21:15,820 --> 00:21:16,700
+ It's an active community.
+
+276
+00:21:16,820 --> 00:21:17,920
+ The product managers are on there.
+
+277
+00:21:17,980 --> 00:21:23,740
+ So if you do have information that you'd like to share or use cases of information, please, that would be super useful.
+
+278
+00:21:24,600 --> 00:21:28,280
+ Thank you so much for starting the morning with me in lovely Cardiff.
+
+279
+00:21:28,280 --> 00:21:32,900
+ This is the resource slide, which has the resources, links to all the parts of the different Lambda functions.
+
+280
+00:21:33,420 --> 00:21:35,000
+ And I super appreciate you spending.
+
+281
+00:21:35,260 --> 00:21:35,840
+ Thanks so much.
+
+282
+00:21:35,920 --> 00:21:38,420
+ Enjoy the networking and enjoy the talks coming up.
+
+283
+00:21:38,500 --> 00:21:38,760
+ Thank you.
+

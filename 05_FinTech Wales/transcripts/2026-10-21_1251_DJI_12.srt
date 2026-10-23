@@ -1,0 +1,576 @@
+1
+00:00:00,000 --> 00:00:03,560
+ because that really highlights the supply chain risks
+
+2
+00:00:03,560 --> 00:00:05,360
+ that our customers face,
+
+3
+00:00:05,360 --> 00:00:08,100
+ and actually a large area where AI can really help them.
+
+4
+00:00:09,060 --> 00:00:11,920
+ But in all seriousness, I mean, I think, you know,
+
+5
+00:00:11,920 --> 00:00:13,660
+ we use a lot of microservices architecture
+
+6
+00:00:13,660 --> 00:00:15,700
+ in terms of our platform.
+
+7
+00:00:15,700 --> 00:00:18,720
+ Most of our customers can see a public cloud instance
+
+8
+00:00:18,720 --> 00:00:22,200
+ of our system, but, you know,
+
+9
+00:00:22,200 --> 00:00:24,160
+ there's a very big part of the market right now
+
+10
+00:00:24,160 --> 00:00:26,400
+ pushing for private cloud and on-prem.
+
+11
+00:00:26,400 --> 00:00:28,600
+ I think the future is gonna look a lot more
+
+12
+00:00:28,600 --> 00:00:32,360
+ sort of multimodal in terms of how AI
+
+13
+00:00:32,360 --> 00:00:33,980
+ is going to be deployed.
+
+14
+00:00:33,980 --> 00:00:37,060
+ So, by all means, cloud infrastructure is really
+
+15
+00:00:37,060 --> 00:00:39,940
+ a fact of life and important and great.
+
+16
+00:00:39,940 --> 00:00:41,960
+ But I think we shouldn't be assuming
+
+17
+00:00:41,960 --> 00:00:43,520
+ that that is the only model.
+
+18
+00:00:43,520 --> 00:00:45,280
+ And certainly, you know, when it comes to some
+
+19
+00:00:45,280 --> 00:00:47,480
+ of the partnerships we have with people like NVIDIA
+
+20
+00:00:47,480 --> 00:00:50,280
+ or some of the startups working with the
+
+21
+00:00:50,280 --> 00:00:54,000
+ Isambard Superpeer in Bristol, you know,
+
+22
+00:00:54,000 --> 00:00:56,120
+ we're able to do things that we simply can't do
+
+23
+00:00:56,120 --> 00:00:57,200
+ on cloud infrastructure.
+
+24
+00:00:57,200 --> 00:01:00,200
+ So, cloud is, you know, the most important thing,
+
+25
+00:01:00,200 --> 00:01:01,960
+ of course, but it's not everything.
+
+26
+00:01:01,960 --> 00:01:03,460
+ And I think if you're working with a vendor
+
+27
+00:01:03,460 --> 00:01:08,200
+ who's cloud only, you're missing a big part of the magic
+
+28
+00:01:08,200 --> 00:01:09,560
+ and the ability to deliver things like
+
+29
+00:01:09,560 --> 00:01:12,040
+ sovereign AI systems.
+
+30
+00:01:12,040 --> 00:01:13,040
+ Yeah, absolutely.
+
+31
+00:01:13,040 --> 00:01:14,380
+ Oliver, anything to add?
+
+32
+00:01:14,380 --> 00:01:17,300
+ Yeah, I agree with Charles, actually, on this one.
+
+33
+00:01:17,300 --> 00:01:19,600
+ I think we've definitely got the flexibility.
+
+34
+00:01:19,600 --> 00:01:21,040
+ We've increased our flexibility.
+
+35
+00:01:21,040 --> 00:01:25,200
+ But certainly on some areas, like we work a lot in defense,
+
+36
+00:01:25,200 --> 00:01:31,800
+ the need to protect a lot of very key information has meant we've got to go
+
+37
+00:01:31,800 --> 00:01:35,800
+ on that multi-modal, you know, publisher for the time being.
+
+38
+00:01:35,800 --> 00:01:36,560
+ Fab.
+
+39
+00:01:36,560 --> 00:01:37,560
+ Okay.
+
+40
+00:01:37,560 --> 00:01:38,560
+ Any questions from the audience?
+
+41
+00:01:38,560 --> 00:01:42,820
+ So, Jim is going to do a run round with the microphone.
+
+42
+00:01:42,820 --> 00:01:44,820
+ Put your hand up if there is any.
+
+43
+00:01:44,820 --> 00:01:45,820
+ Appreciate you going.
+
+44
+00:01:45,820 --> 00:01:46,820
+ You'll be shy.
+
+45
+00:01:46,820 --> 00:01:51,820
+ I'll start us off then, I've got a question.
+
+46
+00:01:51,820 --> 00:01:55,820
+ So, you can't look at the news.
+
+47
+00:01:55,820 --> 00:01:58,820
+ Every other story is, you know, concerns AI these days.
+
+48
+00:01:58,820 --> 00:02:02,820
+ And we're probably still very much on the hype cycle.
+
+49
+00:02:02,820 --> 00:02:07,820
+ So, I wondered if the panel had any examples where they thought
+
+50
+00:02:07,820 --> 00:02:10,820
+ AI usage is overhyped.
+
+51
+00:02:10,820 --> 00:02:21,820
+ So, for me, it's not the AI itself that's overhyped.
+
+52
+00:02:21,820 --> 00:02:23,820
+ It's that people don't understand AI.
+
+53
+00:02:23,820 --> 00:02:28,820
+ And there's a great image I saw on LinkedIn, unfortunately,
+
+54
+00:02:28,820 --> 00:02:32,820
+ which basically is, like, the majority of the world haven't even used AI
+
+55
+00:02:32,820 --> 00:02:35,820
+ to do an equivalent to a Google search.
+
+56
+00:02:35,820 --> 00:02:39,820
+ Those that have used AI basically use it as a glorified Google search.
+
+57
+00:02:39,820 --> 00:02:42,820
+ And there's, like, two teeny little dots at the bottom of companies
+
+58
+00:02:42,820 --> 00:02:47,820
+ that are actually, like, you guys, actually using AI properly.
+
+59
+00:02:47,820 --> 00:02:51,820
+ And then there's not even a whole dot of which probably most people
+
+60
+00:02:51,820 --> 00:02:54,820
+ in this room actually live in, which is people who are really trying
+
+61
+00:02:54,820 --> 00:02:57,820
+ to do some cool shit with AI.
+
+62
+00:02:57,820 --> 00:03:02,820
+ And so, for me, the other angle isn't that it's AI is overhyped.
+
+63
+00:03:02,820 --> 00:03:05,820
+ It's that the use cases are a bit sloppy at the moment.
+
+64
+00:03:05,820 --> 00:03:08,820
+ But the opportunity hasn't even yet been touched upon.
+
+65
+00:03:08,820 --> 00:03:12,820
+ I mean, we spoke about it before.
+
+66
+00:03:12,820 --> 00:03:16,820
+ For me, the AI and the social media at the moment is just completely,
+
+67
+00:03:16,820 --> 00:03:20,820
+ I don't know, you know, putting little ears on people's faces and so on.
+
+68
+00:03:20,820 --> 00:03:23,820
+ AI is super powerful.
+
+69
+00:03:23,820 --> 00:03:24,820
+ It's also super consuming.
+
+70
+00:03:24,820 --> 00:03:27,820
+ We all know all these big guys are lending each other money around.
+
+71
+00:03:27,820 --> 00:03:31,820
+ And not a lot of people aren't making any in the hyperscalers.
+
+72
+00:03:31,820 --> 00:03:37,820
+ And I just think AI and social media is something that we're dedicating with,
+
+73
+00:03:37,820 --> 00:03:41,820
+ you know, take people in data centers and make them realize what it's using
+
+74
+00:03:41,820 --> 00:03:44,820
+ to put the little ears on the face, basically.
+
+75
+00:03:44,820 --> 00:03:45,820
+ I don't know.
+
+76
+00:03:45,820 --> 00:03:50,820
+ I watched a video yesterday which was a deepfake of Lewis Hamilton and Charles Leclerc
+
+77
+00:03:50,820 --> 00:03:53,820
+ were disco dancing together on the track of the spot.
+
+78
+00:03:53,820 --> 00:03:54,820
+ It was amazing.
+
+79
+00:03:54,820 --> 00:03:57,820
+ I think I was very happy with the CO2 that was burnt to produce that.
+
+80
+00:03:57,820 --> 00:03:58,820
+ It was pretty.
+
+81
+00:03:58,820 --> 00:03:59,820
+ I just wish they did it in real life.
+
+82
+00:03:59,820 --> 00:04:00,820
+ That would be so cool.
+
+83
+00:04:00,820 --> 00:04:05,820
+ For me, the most over-hide thing is really around sort of token.
+
+84
+00:04:05,820 --> 00:04:08,820
+ Token, what's the one I'm looking for?
+
+85
+00:04:08,820 --> 00:04:10,820
+ Kind of the obsession about tokens.
+
+86
+00:04:10,820 --> 00:04:14,820
+ I think token obsession is a really big problem.
+
+87
+00:04:14,820 --> 00:04:20,820
+ The label token to a lot of our customers doesn't mean anything.
+
+88
+00:04:20,820 --> 00:04:22,820
+ They feel that they're buying chips to go to the casino.
+
+89
+00:04:22,820 --> 00:04:26,820
+ And they feel that somehow they're getting screwed but they don't quite understand how.
+
+90
+00:04:26,820 --> 00:04:28,820
+ And I think that actually reflects reality.
+
+91
+00:04:28,820 --> 00:04:30,820
+ Nobody really understands what a token is.
+
+92
+00:04:30,820 --> 00:04:33,820
+ You can only retrospectively analyze how it's calculated.
+
+93
+00:04:33,820 --> 00:04:37,820
+ There's so many problems with tokens as a pricing mechanism.
+
+94
+00:04:37,820 --> 00:04:42,820
+ And the biggest problem for CFOs who get the bill is it's like,
+
+95
+00:04:42,820 --> 00:04:45,820
+ what the fuck have I just spent all this money on?
+
+96
+00:04:45,820 --> 00:04:47,820
+ What's the value back to my organization?
+
+97
+00:04:47,820 --> 00:04:50,820
+ So we've done something very different in our business.
+
+98
+00:04:50,820 --> 00:04:53,820
+ Where we have customers using consumption pricing.
+
+99
+00:04:53,820 --> 00:04:57,820
+ We're charging them by the hour saved and the hour of human time equivalent.
+
+100
+00:04:57,820 --> 00:05:04,820
+ And that means that if you're paying for tokens and you're asking the AI to dig 10 holes and fill them in again.
+
+101
+00:05:04,820 --> 00:05:08,820
+ You're paying for all of that work which was completely unnecessary.
+
+102
+00:05:08,820 --> 00:05:14,820
+ Whereas if you're paying for the time that is being done.
+
+103
+00:05:14,820 --> 00:05:18,820
+ You really think about every task in terms of its human equivalence.
+
+104
+00:05:18,820 --> 00:05:19,820
+ And you're asking yourself the question.
+
+105
+00:05:19,820 --> 00:05:21,820
+ Would I have asked a human to have done this?
+
+106
+00:05:21,820 --> 00:05:29,820
+ And so when we bill our customers and give them a bill for 150 hours of human time saved.
+
+107
+00:05:29,820 --> 00:05:31,820
+ We charge less than minimum wage.
+
+108
+00:05:31,820 --> 00:05:35,820
+ So there's always an implicit ROI built into that.
+
+109
+00:05:35,820 --> 00:05:40,820
+ And I think the whole question about pricing for AI is going to evolve over the coming years.
+
+110
+00:05:40,820 --> 00:05:47,820
+ But my bet is that we're going to start to move to a model which is much more intuitive for us as humans to understand.
+
+111
+00:05:47,820 --> 00:05:54,820
+ Like our time equivalent as opposed to something which is a made up metric like tokens.
+
+112
+00:05:54,820 --> 00:05:58,820
+ It's overhyped but just over annoying.
+
+113
+00:05:58,820 --> 00:06:01,820
+ I detest the email slot from AI.
+
+114
+00:06:01,820 --> 00:06:04,820
+ So much so I banned it in our business.
+
+115
+00:06:04,820 --> 00:06:10,820
+ Because what someone would write a two word answer now becomes all paragraphs I'm going to read through.
+
+116
+00:06:10,820 --> 00:06:13,820
+ So it's just stop using it.
+
+117
+00:06:13,820 --> 00:06:14,820
+ It drives me absolutely bonkers.
+
+118
+00:06:14,820 --> 00:06:18,820
+ So yeah, we've just banned it completely.
+
+119
+00:06:18,820 --> 00:06:19,820
+ Stop.
+
+120
+00:06:19,820 --> 00:06:20,820
+ Okay.
+
+121
+00:06:20,820 --> 00:06:22,820
+ So I think it is lunchtime.
+
+122
+00:06:22,820 --> 00:06:24,820
+ So I just want to end with one very quick question.
+
+123
+00:06:24,820 --> 00:06:26,820
+ And you can be as biased as you like.
+
+124
+00:06:26,820 --> 00:06:33,820
+ So what's one AI tool or technology that developers should be looking at today?
+
+125
+00:06:33,820 --> 00:06:36,820
+ That's really easy for me.
+
+126
+00:06:36,820 --> 00:06:37,820
+ It's onteric.
+
+127
+00:06:37,820 --> 00:06:41,820
+ You can find us at onteric.com.
+
+128
+00:06:41,820 --> 00:06:50,820
+ For me, I would urge people to look at the type safe models as well because they are part of an answer basically.
+
+129
+00:06:51,820 --> 00:06:54,820
+ Well, I guess I'll copy Jen here.
+
+130
+00:06:54,820 --> 00:06:55,820
+ EA Global AI.
+
+131
+00:06:55,820 --> 00:07:01,820
+ And I've got a handful of gift cards here for anyone who wants to grab me as I'm walking out.
+
+132
+00:07:01,820 --> 00:07:06,820
+ You can get eight hours of your life back and you can pass them on to a colleague.
+
+133
+00:07:06,820 --> 00:07:10,820
+ And for me, 3.IS is phenomenal.
+
+134
+00:07:10,820 --> 00:07:11,820
+ We're loving it.
+
+135
+00:07:11,820 --> 00:07:12,820
+ Brilliant.
+
+136
+00:07:12,820 --> 00:07:13,820
+ Lovely.
+
+137
+00:07:13,820 --> 00:07:15,820
+ Well, hopefully that's given you something to do away with.
+
+138
+00:07:15,820 --> 00:07:19,820
+ And do come and chat to them during lunch because I know you've all got a lot more to say.
+
+139
+00:07:19,820 --> 00:07:23,820
+ But for now, can you please join me in thanking the amazing panellists?
+
+140
+00:07:23,820 --> 00:07:30,820
+ Thank you very much here, our panel.
+
+141
+00:07:30,820 --> 00:07:31,820
+ It is that time of day.
+
+142
+00:07:31,820 --> 00:07:32,820
+ Lunch time, everybody.
+
+143
+00:07:32,820 --> 00:07:35,820
+ If you could go and grab some lunch in the room.
+
+144
+00:07:35,820 --> 00:07:36,820
+ Thank you very much here, our panel.
+

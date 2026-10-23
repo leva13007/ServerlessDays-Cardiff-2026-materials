@@ -1,0 +1,167 @@
+So welcome back everyone, we're there with the final stretch, we have a few great talks
+now standing between ourselves and either home or the bar, so hopefully you'll enjoy our last sessions.
+So I think a lot of things we've heard about today have all been, you know, new services,
+things you can deliver using things like Agenda AI, and that's often simple if you're in a greenfield
+environment, but it can be quite difficult where most organizations, they're also carrying the sort
+of debts of legacy systems. So a big challenge is, you know, how do you transform and build
+new digital services or net new digital capability on top of legacy. And that's why I'm delighted to
+welcome our next speaker, talking about how they've been transforming through legacy
+at the DVLA. Please bring your hands together for Tom Brewer, CTO of DVLA.
+So as Matt says, my name is Tom Brewer, I'm the Chief Technology Officer for the DVLA, and I'm going to
+talk a little bit today about how we have set ourselves out to transform through the constraints
+of legacy technology. So I'm going to start with a bit of a prelude of what is the DVLA, a little bit of
+background information. So anybody here from the public sector? I'm assuming there's a reasonable
+amount. There we go, plenty more. Anybody here work with legacy technology? There we go, yeah,
+a bit of a ball ache, right? One of those things. So DVLA, who are we? Well, we're the
+driver and vehicle licensing agency. So here are some stats to talk about the scale at which we operate.
+We cater for 48 million vehicles, 53 million driving licenses. We touch pretty much every
+household in the UK. We collect my own £10 billion worth of tax for the Exchequer every year. We raise
+over 150 million in funding through sale of personalised plates. We send quite a lot of letters. We have
+roughly 120 or so million going out every year. We have 12 million deliveries in. Loads of those are
+driving licenses being set back. Huge amount of paper. You can imagine the efficiencies in the organisation
+through a shift towards digital. Some other things. We issue 12 million driving licenses.
+We issue 18.5 million registration documents for vehicles. Of the driving licenses that we issue,
+750,000 of them require a medical decision to ensure that those people who have got medical conditions
+are fit to drive. So what that means in terms of our digital footprint. We cater for 6.24 billion
+digital interactions every year. Those are digital transactions that customers carry out directly
+with us. And digital inquiries where external stakeholders request our data. We have licensed
+four and a half million people through our voice recognition software. Some people
+phone up for help with their vehicle taxation. Our digital take up in terms of the services that we
+provide is over 85 percent. And we've got nearly half a million people using our chatbots. So again,
+talking about scale, we are pretty big when it comes to the UK public sector and the general citizen
+population. So a little bit about our digital strategy. I'm not going to labour this really. But we've broken it
+down into five key areas. So we want to build out an account proposition for our customers,
+which is a single area for our customers to access all the DVLA services. I'll come back to that later.
+We have a driver's suite of technology that was predicated on a significant legacy ecosystem.
+We have the same free vehicle services landscape. Again, the majority of it being legacy technology.
+We want to transform both of those areas to ensure that we're on the latest technology platforms and the
+services that we provide to our customers are slick, efficient and can be changed rapidly and the
+technology doesn't get in the way of any of that. We are a data rich organisation. We want to ensure
+that we've got both a data platform suitable for internal use, so future trend forecasting, reporting,
+analytics and so on and so forth, but also the ability to provide information easily to those external
+stakeholders who want to inquire on our data. Then it goes, so it's obvious to say then, all of our
+infrastructure will be cloud first. That is our strategy and that's where we want to get towards.
+So the challenge for us, how can we transform ageing in very complex legacy technology,
+whilst actually building out enhanced services for the future.
+So we started with the concept, right? So this is our vision. Nothing really groundbreaking. There's
+shattering in there really. It's a customer account provision where our customers can access all of
+the DLA services, whether their driver licensing, vehicle licensing, contact center, any support channels,
+they require manage their demographic details, potentially also include the ability to also
+deliver other organisation services. So we're talking with colleagues at the DVSA, for example,
+to see whether or not we can put DVSA MOT services or booking a driving test through the account as well.
+So it's a single stop for customers to be able to access all of the services that mean something to them.
+Like I say, nothing else's shattering in here. Amazon introduced a customer account in 1995.
+However, in the public sector, this is the thing to do, right? So even now you go across government,
+you go to gov.uk, go to access a government service. It's a one-in-one, you access the smash stream,
+you go through the transaction, you get an application reference number at the end and that's your offer. Thank you very much.
+With this idea, obviously, we can persist the interactions we've had with our customer,
+we can build on our knowledge of the customer and then we can enhance the services as a result.
+So, the starting point. We came up with this a while ago. So I'm going to look back to the dark days of
+COVID where the DVLA technology was under control of the chief architect, an AWS hero,
+whose identity like Batman or the stick from Top Gear may never be fun again, but it basically set us out
+with a starting point. So we asked ourselves, how do we get where we need to be? We knew that we had
+these legacy drivers and vehicles estates. So the drivers one, very heavily mainframe oriented,
+we had a system of record that stores all of the driver licensing details, built-in technologies,
+natural and adidas. I'm sure half of you probably won third of them. We had a suite of online driver
+licensing services that our customers use, built-in very own versions of Java and Oracle. We had bespoke
+ETLs, extract, transform load transactions, and we have a load of batch operations holding them all
+together. Much the same in vehicle space, except the system of record was built in a 4GL modeling
+language called Consumer Associates Gen, and was backed by Oracle. Outside of that exact same problem
+statement. So what did we do? Well, we decided to target drivers first. So like legacy drivers at stake,
+so as we talked about, predicated on mainframe, had some old Java and Oracle in there as well,
+some nasty file transfer, and a little bit of cloud. So as we're looking at that diagram,
+all the box on the left hand side is mainframe tech, got a little bit of cloud up in the top right,
+and then we've got old, deteriorated legacy technology that can't be changed easily in the box on the bottom right.
+All of the stakeholders outside the boxes are external organizations, and who interact with us via
+very outdated mechanisms. So again, like I say, this is back in 2020. So what did we do?
+Well, we looked at first and foremost swapping out the drivers websites that our customers saw.
+So we built a suite of strategic legacy adapters. We took the opportunity whilst we were doing those to
+clean out the business logic within that core system record. We rewrote all of those services in such a way
+that we could then offer them up through the customer account. So what that first bit of transformation did
+was build that first implementation of the customer account that we were talking about. So if you remember
+the central mind map that I showed earlier, this was the building block for it. So we put a couple of key
+principles in place, it would be a single point of entry. It would be built off the gov.uk one login,
+so we would actually know that we would be able to identify all of our users. We know exactly who they were,
+that would mean that we could persist services to them. All built in modern technology, and we were
+able now to join that service offering. So it starts to open the door to, well, actually, if somebody is
+really wearing their driving license, actually, would they want to tax their car at the same time and pay
+once rather than doing the same with transactions and start getting an idea of customer behavior and all the rest of it.
+And just that first phase of transformation and rewriting legacy allowed us to do two things.
+It enhances customer services and decommission a stack of old, very difficult to support software.
+Second stage for us was we changed all of the ways that the external stakeholders communicated with us.
+So we moved them all off from total file-based transfer systems into a more modern FTP-based structure,
+wherever we could. And then finally, we are now in the stage where we are moving to be able to migrate
+the system of record from the mainframe into AWS cloud. The savings for that will be huge on an annual basis.
+Those will run into the millions. Not only that, as a part of this, we managed to reduce our code-based
+footprint by about 25%. We've rewritten all of the peripheral mainframe native processes and practices,
+we've put them into cloud native technology and tooling that we understand fully. We've removed all of our
+reliance on manual tests and manual deployment and all of that nasty stuff that comes along with legacy
+technology. All of it now is in modern development processes and practices. So what we will have is a
+supportable, well-documented system that's fit for the future. So this is going live in the next few months.
+It'll be the culmination of about six years worth of transformational effort. And just to show very
+briefly what this has actually meant to the organisation. This is just a very quick look of one of the
+services. So I mentioned earlier that we've rewritten all of our driver services. Well, this is a driver
+medical service. So if you have a medical condition, you have to let the DVLA know because it could have a
+potential impact on your ability to drive or to have a license. So we rewrote a website that allowed our
+customers to do this. So they could search for conditions, medical conditions online, and then they
+could submit those medical conditions directly to us. So we've written this, we've included more conditions,
+and we've plugged it directly into Microsoft Dynamics, which is our casework system in the back end.
+So what we've done is we've supported the submission of this licensing condition into Dynamics and using
+deterministic logic in the back end. We've automated a load of the decision making, and we've got to a
+point where we can now suggest to a clerk the correct licensing decision. So rather than our clerks have
+to go back through all of the information and then come to the decision themselves, it'll be presented to them.
+They sound to check it, then they sign it off. We're not yet at the point where we could fully automate
+this decision making process or use AI to replace it, but we're inching ever closer.
+So what this means is for the customer in looking at it through the lens of the customer account,
+this is what Ricky, Ricky's our pal who's submitted a medical condition, left-hand screenshot shows his
+home page of his customer account, he's got some personal details in there, by the license details,
+but on the bottom right there's a button called your submissions. Click on that, his submission shows
+the status of his current application. So one of the issues that we've seen previously is the sheer
+volume of contacts we've had through our contact centre with people chasing status of application.
+Because of the granularity allowed by the new systems that we've built, we've been able now to provide
+ready updates to all submissions for all of our customers who are chasing medical decisions through
+the customer account, which has driven our contact centre volumes down immeasurably.
+So what that actually means for the organisation is a couple of, like what I think, pretty effective
+charts. So just off the back of that driver's medical service, we released that in April of this year.
+The graph on the left-hand side is our digital take-up, so prior to releasing this it was at 16%, as of today it's up and over 30%, and that's in under six months.
+The graph on the right shows the backlog of our customers who are awaiting medical licensing decisions.
+So where it has been paper-based in the past, where they've had to send paper in, and we've had to send it off to GPs, and then get it back, and then clerks have to do all the work to assess, and then work out the licensing decision, that together with a backlog and a hangover from Covid, and a number of other things, the volumes of these submissions that we were getting, the backlog was going up, you can see at the very peak was when we deployed the new
+new transform services, and the backlog figures are dropping significantly. So not only is this a better service to our customers, it's about a much more efficient operation, but we've also been able to remove a large chunk of legacy from the estate as well.
+So a couple of other things we've enabled as part of that transformation, so we're now working with the gov.uk teams, you can now see your customer accounts, your driving vehicles accounts through the gov.uk app, so it's read-only at the moment, but we're going to be adding transactions like being able to tax your vehicle through the app at some point soon.
+You can see a digital version of your driving license through the gov.uk wallet, so that is an ISO certified digital version of the driving license credential that at some point in the future we hope will get parity with the phone card driving license and enable a whole suite of new transactions by digital driving license online.
+So as you can see, whilst we started with the base of pure legacy, over five or six years we've gotten to a position now where we've almost fully transformed that driver's ecosystem.
+It hasn't always gone to fun, but for the most part it's enabled us to get a significant step closer to our strategic aims.
+So I'm just moving on to vehicles, so our idea was vehicles, right, we've got legacy vehicles as a state, we're not going to cover it in a huge amount of detail, very similar to the driver's state in terms of main topography, slightly different technology stack, we thought, right, okay, cool, we've got the vehicles target architecture, we've all followed the same steps, you know, five or six years, 20, 30 plus, we're in the same place, we've all of our services transformed, we've got no more legacy, this is great, we've got sequences worked out and data.
+We've got everything, we've got patterns of work, what could go wrong, right?
+No, there we go, sorry, there we go, we're back.
+Yeah, so like Mike Tyson famously said, everybody's got a plan until they get punched in the face.
+This was our punch in the face.
+So anybody here about electric vehicles, heard of the EVED policy that's coming in?
+So EVED is a central government policy that DVOA is going to be delivering, it's a move towards a pence per mile taxation model rather than an emissions-based model.
+So this policy has got to be delivered by 2028.
+A large amount of the work means changing our legacy systems.
+So all of a sudden, what that meant for us was, well, all of our best state plans to transform away from our vehicles' estate following the same plans as before, had not entirely gone out the window, but certainly needed some change.
+So we spent a lot of time looking at it and thinking, you know, what can we do?
+Does this mean we're going to have to invest all of our time now in building up yet more technical debt in our legacy platforms?
+Or can we rework our approach and see this as an opportunity rather than a hindrance?
+So we've, we chose the latter, we chose not to do all of this work in legacy.
+We accepted that we were still going to be constrained by legacy and there would be some change in there.
+But actually we identified the areas where we could build up new strategic pieces of our vehicles' estate.
+The tax calculator, for example, that had previously only looked at emissions-based taxation.
+We'd wanted to rewrite it anyway, but now we had the opportunity to extend that for multiple different types of tax calculation.
+We have taken the opportunity to design a new fleet system.
+So for all of the large corporate fleet entities who would need to tax vehicles en masse, they will have a new service, which will be purely transformational for the corporate sector.
+We could future-proof it for telematics, so smart connected vehicles coming in.
+The information that comes from connected vehicles like odometer readings and position and mileage and all the other great stuff that comes from it was something that we were looking at, but we couldn't really have a target output for it.
+But actually future-proofing it for telematics when you align it with a paper-mile taxation model, the two become very, very powerful.
+So we started to look at it through that lens as well.
+So all of these new things we could start building, building out and looking at as a part of the EVED delivery.
+But at the same time, we could start to prototype our new vehicle system of registers.
+So we just changed the sequencing somewhat.
+So what that means now in terms of transformation, once we've delivered EVED and those first initial parts of transformation, the proof of concept,
+it means then that we can move on to transformation more fully in the second phase, but with a load of strategic components that we couldn't have had otherwise.
+So even though the plan wasn't exactly as we wanted it to be rather, the response to change, even though we did have the constraints of legacy technology, being able to look at what our plan was,
+realise that actually that our plan wasn't going to be workable anymore because of external impacts that were out of our control, but actually taking those as an opportunity and a way to reassess what we wanted to do, redesign our sequencing and then implement that, has actually resulted in many different things.
+in what will probably be a better outcome for both of the DLA as an organisation and for the customers that we are delivering these services for.
+And that is it from me. Thank you very much for listening.
+So yeah, thank you very much there to Tom Brewer. It's like a fascinating,

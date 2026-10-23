@@ -1,0 +1,200 @@
+1
+00:00:00,000 --> 00:00:03,940
+ I get from developers is yeah the PR reviews are now so much bigger than they used to be
+
+2
+00:00:03,940 --> 00:00:08,040
+ they're actually reading them to become more mature so this is another thing we want to measure
+
+3
+00:00:08,040 --> 00:00:13,000
+ is the output of that something that actually is read because if it's not you've just wasted
+
+4
+00:00:13,000 --> 00:00:18,060
+ time building an AI agent that's giving you a load of information and so yeah simple one but
+
+5
+00:00:18,060 --> 00:00:25,140
+ one that can also be really useful so one final kind of point before I just rack up shortly is
+
+6
+00:00:25,140 --> 00:00:29,640
+ this bit's really key the next question I normally get after these kind of things when I do a lot of
+
+7
+00:00:29,640 --> 00:00:36,600
+ AI stuff is well which model do I use honestly there isn't that much difference with this type of work
+
+8
+00:00:36,600 --> 00:00:41,920
+ we're not doing anything that's particularly high spec what matters really really important here is
+
+9
+00:00:41,920 --> 00:00:48,580
+ context and constraints think about all the examples I just gave you those are built on the idea that
+
+10
+00:00:48,580 --> 00:00:52,880
+ people already know how to do those jobs there's documentation there's data there's concepts as
+
+11
+00:00:52,880 --> 00:00:59,840
+ ideas that context fed into an LLM with an agent orchestrator is really the bit that absolutely
+
+12
+00:00:59,840 --> 00:01:05,780
+ matters that's tedious to get set up I'm not going to lie that's the bit that people get a bit frustrated
+
+13
+00:01:05,780 --> 00:01:10,320
+ with they need access to all the data they need to kind of put all of this into some sort of practice
+
+14
+00:01:10,320 --> 00:01:16,720
+ system but actually without it you're asking a really intelligent stranger to join the engineering team
+
+15
+00:01:16,720 --> 00:01:21,020
+ every morning and solve a problem but they're new they don't actually know what they're talking about
+
+16
+00:01:21,020 --> 00:01:25,880
+ and that's a problem with an AI agent you know right now if you open up GPT and ask it a question
+
+17
+00:01:25,880 --> 00:01:30,620
+ about your workplace it's going to look at the internet because that's its only source of
+
+18
+00:01:30,620 --> 00:01:34,780
+ knowledge it's a smart smart machine it just isn't that smart but it knows all of that
+
+19
+00:01:34,780 --> 00:01:39,000
+ so what this is one thing that I don't need to get caught on and you know happy to again share
+
+20
+00:01:39,000 --> 00:01:45,660
+ these slides afterwards but the context that matters in practice example code bases architecture patterns
+
+21
+00:01:45,660 --> 00:01:53,380
+ documentations standards environments policies and also previous decisions this bit's so key
+
+22
+00:01:53,380 --> 00:01:57,440
+ these systems are really good at self-learning and knowing what you've done already and also
+
+23
+00:01:57,440 --> 00:02:03,840
+ being able to therefore base decisions on that so just to kind of wrap this up then we've got this
+
+24
+00:02:03,840 --> 00:02:10,320
+ kind of move of where AI is actually being used so AI should support the lower layers you know it's your
+
+25
+00:02:10,320 --> 00:02:16,480
+ syntax it's your implementation but as we move up a little bit in system design we actually allow our
+
+26
+00:02:16,480 --> 00:02:21,360
+ you know our people to focus on the judgment and the outcomes and really get into those areas where
+
+27
+00:02:21,360 --> 00:02:27,440
+ they're going to have you know the most impact I just think about this question and you know AI generates
+
+28
+00:02:27,440 --> 00:02:34,880
+ twice as much code but creates twice as much review and debugging work have we actually become
+
+29
+00:02:34,880 --> 00:02:43,760
+ any more productive and I'd say no I think most people in agreement with this so just three things
+
+30
+00:02:43,760 --> 00:02:49,920
+ then to think on look beyond the coding please go back time box kind of one of your week you know
+
+31
+00:02:49,920 --> 00:02:55,040
+ like thinking about what is it outside of coding that's actually the friction create a friction
+
+32
+00:02:55,040 --> 00:02:58,880
+ backlog create a friction kind of where your problems are and then just pick one of them
+
+33
+00:02:58,880 --> 00:03:03,360
+ once a month once every two months and say as a team how could we optimize this what's one small
+
+34
+00:03:03,360 --> 00:03:08,240
+ change that we could do just looking at the examples we talked about today each one of those
+
+35
+00:03:08,240 --> 00:03:13,200
+ I would argue have really measurable impact but actually just not that big of a change in the
+
+36
+00:03:13,200 --> 00:03:18,240
+ grand scheme of the types of AI workloads that we tend to talk about another key one please don't
+
+37
+00:03:18,240 --> 00:03:23,360
+ automate friction if you already have friction and you remove that step from the process let's see
+
+38
+00:03:23,360 --> 00:03:28,720
+ what the process looks like I see a lot of people building automations to replicate things that already
+
+39
+00:03:28,720 --> 00:03:34,720
+ don't work and that already have friction in them let's automate sending a ticket why don't we not send
+
+40
+00:03:34,720 --> 00:03:39,440
+ the ticket and automate creating the environment just as an example and that's a small one but we can
+
+41
+00:03:39,440 --> 00:03:46,720
+ imagine that repeating and this one's really really key please measure outcomes and not AI usage somebody
+
+42
+00:03:46,720 --> 00:03:52,000
+ you know writing tons of lines of code of AI that's not proven anything you've just written and you've
+
+43
+00:03:52,000 --> 00:03:57,520
+ used AI a lot you know actually was there an output was there an improvement in any of these metrics
+
+44
+00:03:57,520 --> 00:04:03,760
+ that we talked about so just to leave you on this one we don't need you know 10 times more developers
+
+45
+00:04:03,760 --> 00:04:08,160
+ we don't need 10 times more anyone we need the developers we have right now but we do need
+
+46
+00:04:08,160 --> 00:04:13,680
+ developer environments that have 10 times less friction if we want to get to that optimization number that
+
+47
+00:04:13,680 --> 00:04:19,040
+ we're all talking about you know take these five examples as a checklist back to your teams you
+
+48
+00:04:19,040 --> 00:04:23,440
+ know I'll be around for the rest of the day come ask me questions but hopefully that's given you some
+
+49
+00:04:23,440 --> 00:04:26,560
+ food for thought thank you for your time today and enjoy the rest of your day
+
+50
+00:04:33,360 --> 00:04:36,320
+ thank you very much grace um because we're very
+

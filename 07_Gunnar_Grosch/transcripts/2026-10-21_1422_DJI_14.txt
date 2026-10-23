@@ -1,0 +1,274 @@
+and general instability around the world.
+I think the topic of digital sovereignty
+is going to become more and more important.
+So now we're going to move to a slightly different topic.
+So if you remember, back to the morning keynote from Julian,
+he was talking around all the different flavors
+of Lambda functions that are available,
+having gone from the original, what's now called event
+functions, through to web functions that
+was only launched a week or two ago.
+One of the things we touched on was Lambda drawable functions.
+essentially a way of creating a long-running,
+stable, fault-tolerant workflow using Familial and Decode.
+And now for our next door, we're going to dive deeper into
+how to actually use durable functions
+with a specific use case of building a conversational agent.
+So our next speaker has traveled all the way from Stockholm
+to speak to us today.
+He's an AWS serverless hero.
+He's formerly a principal developer advocate at AWS.
+And now he's developer applicator, SIDGE.
+So please, put your hands together for Gunnar Grosje.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Alright. There we go. That was a final break that you all needed, I think.
+So hi everyone, my name is Jonnar Grosch, I am a developer advocate at Cinch, I'm also an AWS serverless hero.
+And this talk is about agents, and especially agents that have to wait.
+And the example all the way through is about a conversation.
+The patterns that we're going to look at, they fit any type of agent loop.
+One that waits for a person, for an approval, for a webhook, or any type of long-running job.
+So, we're going to look through this, and it's fairly technical.
+We're going to see some code, and we'll get into how durable execution replays.
+So, let's just start off with a message.
+A message that's very easy to send.
+So, I think you've all received messages like this.
+an appointment reminder from in this case a clinic it's just one outbound sms nothing really hard
+about this part and the architecture to do something like this is super simple on service
+we have an aws lambda function calling some sort of messaging api and the customer in the end gets
+that sms and yes that's the singe logo for the messaging i work for singe so i obviously have
+to put that in but this could be Twilio, it could be any type of messaging API that you're using for
+this. Everything in this talk is about what happens on the AWS side of this diagram. Request in,
+response out, and this is where most of the conversation of AI demos usually stop. But then,
+what happens when the customer wants to write back so we have sent a reminder but i as a customer
+want to reply back there i want to rescape so now all of a sudden we're in a conversation
+the patient they expect the next next message to know which appointment they talk about
+they might answer with the follow-up tomorrow or next week even they might call instead so the
+The system has to remember what was said, wait for the next message, without actually
+knowing when that message is going to come, and it has to be able to resume safely.
+And if anything goes wrong in between, it should be able to fix that as well.
+So if we get it wrong, the customer or the patient might show up at the wrong time.
+clinic well they're going to lose their slot and the customer is going to stop trusting these types
+of messages so a lot of the agent demos they're able to answer that first message but this is
+about the second one and the third and the phone call after that so there are a few things that
+makes this a bit harder than it actually looks so first off it's human time a lambda function well
+it can run for up to 15 minutes, but as I said, the patient might reply tomorrow or next week.
+So obviously we can't just do it in one invocation of a lambda function.
+Second, it's compounding. And this was discussed earlier today as well.
+If every step inside an agent workflow succeeds say 85% of the time, have 10 of those in row,
+well then you have success rate of 20 percent in the end every time a retry redo's work that's
+already finished you roll those dices once again and third when it comes to conversations what we
+have channels the might start with an sms like we saw but next the customer might want to continue
+with whatsapp or they might want to pick up the phone and actually call someone rich i know it's
+It's weird in 2026, but people do actually still call.
+That's one conversation from the customer perspective.
+And the usual fix for this is to spread one conversation
+a lot of infrastructure.
+So we use cues.
+We might use DynamoDB tables, the store state,
+and so on and so on.
+So we have to fix all of that.
+So the answer for that is usually clear.
+We create some sort of event-driven architecture for this to be able to do it.
+But those things can easily fail.
+So let's say we have a webhook that puts a message onto some sort of queue.
+We have a processor that works out the reply, and then a sender of some sort that delivers it.
+And then we store all of that conversation state in a Dynamite TV table somewhere.
+But now if we follow the numbers, the reply goes out, well, the processor might crash before it records that turn, and the message comes back for a retry, and nothing recorded says that the customer already got an answer.
+If you send it again, well, the customer will get that message twice.
+And think about that as something else.
+Let's think of a bank transfer.
+Well, we don't want to transfer money twice, of course.
+But if you don't do it again, the customer might never get the message, and they might never answer.
+So what then is if this type of conversation, instead of being sticked together by a bunch of different services,
+could stay as sequential code, with the runtime in itself recording each step?
+And Julian talked about this this morning as well.
+that is AWS Lambda Durable Functions where the runtime takes care of time and
+failure for us and the actual conversation stays as ordinary code. So
+the model here when it comes to Durable Functions is execute, checkpoint, suspend
+or fail, replay and resume. So each Durable operation records its own
+result and when the function suspends waiting for a customer or when it fails
+the runtime is then able to later invoke again and it starts from the top.
+Completed operations, they don't run again. They return a saved result from the
+previous one and execution continues from the first operation that hasn't
+already completed. So you then write all of this, that workflow, as sequential code
+and the runtime is then able to turn that into a recoverable process. And that
+means that the invocation that we previously built things around when it
+comes to AWS Lambda isn't longer the unit that we have to think of. So a durable
+execution can span a bunch of different lambda function invocations. Between them, nothing
+runs. So the execution is still alive, it's suspended, and the runtime knows exactly where
+it stopped within that execution. And that's the shape of a conversation, and that's why
+this is such a good fit. The customer expects the system to remember the last message, no
+matter how many invocations it took to get there. Compute is going to stop while
+it's suspended. You do pay for your operations and for the checkpoint data
+that you write and you keep. So it isn't entirely for you to wait but you're not
+paying for a function just sitting idle. So the glue version of the initial
+architecture diagram just looks like this. So now we have two different
+Lambda functions instead. The webhook is the same as the function before. The
+customer's message arrives through the messaging API and the webhook either
+starts a new execution of our Lambda durable function or it then continues one
+that's already been waiting. So everything else is one function. We have
+what I call the coordinator. It is going to call Bedrock to create whatever
+reply. It is then going to send that reply out to the customer through the messaging API.
+The things I talked about before, like queues, state tables, and so on, we don't need them
+with this type of solution. So which turn we're on in the conversation? The back and forth between
+the customer and the agent, what we've sent so far and what we're waiting for, all of that lives
+within that durable execution now so this is one agent it has one prompt it has one model
+one set of permissions so to coordinate to them this is what it looks like in code this is a bit
+simplified just to be able to fit it on the slide but read it from top to bottom we wait for the
+customer we get the agent's answer and we send the reply and then we loop over and over and there are
+two operations that carry this entire conversation. One is wait for callback.
+That means that we're suspending this durable execution until something
+outside, that's going to be that webhook that we saw, completes the callback when
+the customer replies. The other one is step. That's where we run work, calling
+bedrock for instance. We create whatever message we want to send and then we
+checkpoint it. The model call and then the send, where we actually send out the
+message. And if you look at the names of this, we call them names like reply1,
+answer1, sendreply1. Each turn gets its own name. So the next turn is going to be
+reply2, answer2, sendreply2. The runtime is then able to use this to match the
+same result to code on Veef. And you saw probably Julian's slide earlier
+comparing step functions to durable functions and I agree with what he showed
+there. It's great to use step functions when most of the work is calling other
+AWS services or perhaps you have workflows that other teams needs to see
+But since all of this is application logic, using durable functions is a great fit for these types of applications.
+So we're doing replays, running this over and over again in loops.
+And there are a few rules around this, but there's one that's super important to remember.
+On replay, the handler is going to run all of that code again from the top.
+So complete the operations, they're going to return the same result.
+anything outside of one of these operations is going to run again so on
+the left here we have the agent call in this case it's going to run every time
+we invoke this lambda function so we are going to get a different draft created
+by bedrock and we are going to send this message every time on the right you can
+see that both of these are put inside steps it means that the draft is going
+be generated once and it's going to be saved. It's not going to run that same thing again.
+And the send, once again, also just happens once and it is recorded. So the rule here is that
+things like model calls, generated IDs, timestamps, anything that has a side effect,
+you put those inside of a step, one of these operations. And you should treat the operations
+names as a contract. So rename one while executions are running, the replay isn't
+going to line up. One more thing to think about as well is that inside a step
+doesn't mean exactly once. The default can run a step again if the function dies
+mid-step. So at most once won't rerun it. But then you don't know if it's finished.
+so neither mode here is exactly once and that's important to remember so for the
+message for instance we need to generate an item potency key so in and we do
+that in its own step so that way we can make sure that we're only sending this
+message once all right so there we go the message still comes through the web
+like we saw before. And the coordinator that we have, it's the one that's driving the conversation.
+But we are now able to take that architecture we had before, and we can make it multi-agent.
+And there are a few reasons why this can actually be helpful for us. So if we have one agent,
+like before, where we had one model, we have one prompt, one set of permissions, it means that
+that agent can do things that we perhaps don't want it to do, but instead we can create what
+we call specialists. So we use that coordinator as a way to route to specialist agents within
+our conversation flow. And each of these specialists can have their own AWS Lambda function, meaning
+that they have their own set of IAM permissions, a specific role. And each of these can have
+specific prompt, allowing them to do specific things. So, for us, this could be a booking
+agent, it could be a rescheduling agent, it could be a canceled agent. Think of any specific
+use case where you can break it down into these different things that the agent is allowed
+to do. So, in this case, we are now able to have specific permission for each of these
+agents, so only the booking one, for instance, can write access to the booking
+system. And we are then using this to invoke checkpoints for each of these
+specialists and the results coming out. If the specialist call will have side
+effects, you can give each of these calls its own step so a retry doesn't do that
+booking twice. And what happens then if we have type of work that takes longer to
+run than 15 minutes that a Lambda function can? Well, we can do that as well with
+durable functions. We just need to call some other service. So let's say that we
+have a specialist that has work that takes 60 minutes. That could be generating a
+report, maybe it's a batch of documents that needs to be processed, maybe it's
+just a long agent task of some sort. A single durable step can run for that long
+because it can only run for 15 minutes. So we run it somewhere else, somewhere
+that's built for long-running work. That could be a container task on Fargate for
+instance. It could be an EC2 instance, it could be a batch job. And we just wait for
+that to finish using wait for callback. The submitter is going to start the task and it
+hands it that callback ID. And once the coordinator suspends, nothing is going to run within that
+durable function. It is just running or an initiated durable execution and then it waits
+for that callback. The task is going to send heartbeats over and over again. So if it dies,
+the heartbeat timeout will fail that callback and it can do that in minutes
+instead of waiting for the entire hour and when it's done it's going to complete
+the callback and it will then remember what happened it will resume the
+coordinator and it will do the next step in this case it might be to then send a
+text message to the customer saying that this is the results of that report or
+a job that we did. So remember that shape. The coordinator suspends. Something outside
+completes the callback, and here it is an hour of machine work, but it can also be something
+else. We'll look at an example in just a bit. If it's under 15 minutes, a regular lambda
+function invokes enough. All right, so let's give the coordinator its specialists. This
+is the architecture we had, and then for each specialist, we're simply adding a lambda
+function for each. And many times we've looked at a lambda function invoking another lambda
+function as an anti-pattern, but in this case we have specific operation in durable functions
+that allows us to invoke lambda functions. And the way it works, when it's then waiting
+for that invoke, means that it is no longer an anti-pattern.
+Alright, so let's look at how we can actually visualize this, because I'm a visual camera guy, I like code, I like writing durable function code as well, but sometimes when these workflows grow, it's hard to actually get a grasp of what they look like, and that's where step functions usually shine, because you create a workflow and you can see what it actually looks like.
+So, this is a gap in durable functions as of now, so I created a simple tool called "Durable Viz" that allows you to run it within your IDE and you can simply by looking at the durable function code, you can then visualize it like this as a workflow.
+And what we're seeing here is the handler for our multi-agent coordinator, the one we just looked at, but it's simplified just a bit.
+But it's the greeting, it is the loop, it's waiting for each reply, it's routing, the early exit when the customer is done, and then the specialist invoke, and finally the send.
+If we just look at the normal term, wait for reply, route, the specialist invoke, send, and then around the loop again.
+So to me, this helps to understand how durable functions actually work when you look at it just like a step functions workflow, because that's basically what it is.
+And this is every path that the code can take in this case.
+It shows us what the code is doing.
+The execution history, on the other hand, it shows the path that a real conversation, a real execution actually took.
+And that's something that you can see in the AWS console when you go into a durable function.
+So I'm going to show you what that looks like.
+So let's look at execution history through a conversation.
+So the first message starts the execution in our durable execution.
+So route 1 is the routing model's decision, checkpointed.
+Handle one, we are now calling one of the specialists, it is invoked as a separate Lambda function, and then send reply, the reply, the message that gets sent once.
+And then the customer answers, Thursday morning, that's going to be reply two, now we're in the loop, in that loop.
+The callback, the webhook completed with their message, and then handle two, the second specialist term, and the confirmation.
+And then at the bottom, reply 3, suspend.
+The phone is quiet, nothing is running for the customer right now.
+And that's one path through the map on the previous slide where we saw the workflow.
+So let's just look at some of the things that I learned out of building these kind of workflows.
+I've had this specific agent running and we've had customers actually using it
+and sending messages back and forth.
+And the durable side of things, it never failed.
+The checkpoints, the callbacks, all the resumes just worked.
+What did fail many times was the model.
+Sometimes the reply was confidently wrong,
+a time that didn't exist, a booking it never made.
+Infrastructure reports success, but the customer gets the wrong answer.
+Durable execution isn't gonna fix that part of things.
+So we need to do a few things to make sure
+that it actually replies correctly.
+It is non-deterministic as we heard earlier today as well.
+So what we can do is add a gate before the send.
+So the specialist returns the structured result
+and you check it against the booking system
+before you actually send the message.
+Then you send it.
+And recoverable can still be wrong.
+The workflow comes back, but the answer doesn't get any better.
+And second, choose a model per specialist.
+So when we break it down into multiple agents like this, with multiple specialists,
+we can then set models based on what they actually need to do.
+Some models can be fast, cheap models.
+Some can be more reasoning-type models that give you a better answer in return.
+And the execution history, it told me that the workflow
+succeeded, the one we saw before, but it doesn't tell me if the answer
+that it actually gave was true.
+So, I want to show you, this is kind of a
+path to the side of things, but something that I've been using for a while
+now that helps a lot when building these types of systems.
+I'm using a system for prompts that's called
+kind of like a framework for prompts. It has five sections.
+And this, what we're seeing on the screen right now, is the change specialist.
+It's shortened to fit on the screen. But it's following these five steps.
+So first off, the role, who the agent is and what it knows.
+Instructions is the actual task for the specialist. It's a sentence or two.
+Steps, those are the steps that it should take to be able to do the work.
+when there's more than one single decision.
+An expectation is exactly what comes back from the agent,
+which is what makes the gate on the previous slide possible.
+And then narrowing, what it must never do.
+Never list options, never change a confirmation number,
+never add details that aren't in the product.
+And this isn't going to make the model deterministic,
+but it makes it deterministic-ish.
+The same kind of message is going to get the same kind of answer most of the time.
+But most of the time is why that gate that I showed before

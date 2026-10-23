@@ -1,0 +1,50 @@
+I get from developers is yeah the PR reviews are now so much bigger than they used to be
+they're actually reading them to become more mature so this is another thing we want to measure
+is the output of that something that actually is read because if it's not you've just wasted
+time building an AI agent that's giving you a load of information and so yeah simple one but
+one that can also be really useful so one final kind of point before I just rack up shortly is
+this bit's really key the next question I normally get after these kind of things when I do a lot of
+AI stuff is well which model do I use honestly there isn't that much difference with this type of work
+we're not doing anything that's particularly high spec what matters really really important here is
+context and constraints think about all the examples I just gave you those are built on the idea that
+people already know how to do those jobs there's documentation there's data there's concepts as
+ideas that context fed into an LLM with an agent orchestrator is really the bit that absolutely
+matters that's tedious to get set up I'm not going to lie that's the bit that people get a bit frustrated
+with they need access to all the data they need to kind of put all of this into some sort of practice
+system but actually without it you're asking a really intelligent stranger to join the engineering team
+every morning and solve a problem but they're new they don't actually know what they're talking about
+and that's a problem with an AI agent you know right now if you open up GPT and ask it a question
+about your workplace it's going to look at the internet because that's its only source of
+knowledge it's a smart smart machine it just isn't that smart but it knows all of that
+so what this is one thing that I don't need to get caught on and you know happy to again share
+these slides afterwards but the context that matters in practice example code bases architecture patterns
+documentations standards environments policies and also previous decisions this bit's so key
+these systems are really good at self-learning and knowing what you've done already and also
+being able to therefore base decisions on that so just to kind of wrap this up then we've got this
+kind of move of where AI is actually being used so AI should support the lower layers you know it's your
+syntax it's your implementation but as we move up a little bit in system design we actually allow our
+you know our people to focus on the judgment and the outcomes and really get into those areas where
+they're going to have you know the most impact I just think about this question and you know AI generates
+twice as much code but creates twice as much review and debugging work have we actually become
+any more productive and I'd say no I think most people in agreement with this so just three things
+then to think on look beyond the coding please go back time box kind of one of your week you know
+like thinking about what is it outside of coding that's actually the friction create a friction
+backlog create a friction kind of where your problems are and then just pick one of them
+once a month once every two months and say as a team how could we optimize this what's one small
+change that we could do just looking at the examples we talked about today each one of those
+I would argue have really measurable impact but actually just not that big of a change in the
+grand scheme of the types of AI workloads that we tend to talk about another key one please don't
+automate friction if you already have friction and you remove that step from the process let's see
+what the process looks like I see a lot of people building automations to replicate things that already
+don't work and that already have friction in them let's automate sending a ticket why don't we not send
+the ticket and automate creating the environment just as an example and that's a small one but we can
+imagine that repeating and this one's really really key please measure outcomes and not AI usage somebody
+you know writing tons of lines of code of AI that's not proven anything you've just written and you've
+used AI a lot you know actually was there an output was there an improvement in any of these metrics
+that we talked about so just to leave you on this one we don't need you know 10 times more developers
+we don't need 10 times more anyone we need the developers we have right now but we do need
+developer environments that have 10 times less friction if we want to get to that optimization number that
+we're all talking about you know take these five examples as a checklist back to your teams you
+know I'll be around for the rest of the day come ask me questions but hopefully that's given you some
+food for thought thank you for your time today and enjoy the rest of your day
+thank you very much grace um because we're very

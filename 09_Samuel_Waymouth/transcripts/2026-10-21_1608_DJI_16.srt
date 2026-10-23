@@ -1,0 +1,1340 @@
+1
+00:00:00,000 --> 00:00:26,960
+ Some of the early talks we had today were talking about how we could use AI to deliver things quicker and I think we're slowly moving towards an age of things like autonomous agents moving at machine speed and that obviously then brings up the challenge of well how do you secure them, how do you wrap governance around that and how do you make sure that you can govern these agents, you can govern AI without actually slowing down progress.
+
+2
+00:00:28,960 --> 00:00:39,300
+ So now I'd like to welcome on stage Samuel Weymouth is the security specialist solution architect at AWS to tell us more about this topic.
+
+3
+00:00:58,960 --> 00:01:28,940
+ Oh it's working, yay! So what shall we talk about? Organisations are very keen to move as quickly as they can to start implementing authentic AI all over the place in their organisation. When I think about how we use it in Amazon, we're particularly
+
+4
+00:01:28,940 --> 00:01:58,920
+ keen on automating, well basically the stuff I'm going to talk today because to a certain extent governance sucks and I'll emphasise this, I'm building a workshop so I can have an all expenses paid trip to reinvent which is in Las Vegas, our yearly conference on PQC for IoT and in order to get the code, the sample code for that project live on the internet so customers can pick it up, I have to raise two different tickets, do three different security assessments with different tools, all which give different
+
+5
+00:01:58,920 --> 00:02:08,920
+ different answers, remediate all that stuff, identify all the false positives, actually I've been at it for two days just to get a bit of code put out there that runs for a two hour workshop.
+
+6
+00:02:08,920 --> 00:02:38,900
+ So even we are victims of governance at Amazon to many of you aspire to work at Amazon one day, what they don't tell you is that despite all the cool, sexy technology we do, we're actually an organisation that runs entirely on tickets and queues. A ticket is a way to invoke a human to do something and if that human gets bored of that, they automate it. So Samuel Weymouth, I am a security and compliance specialist, I work for our strategic industry, it's our top 200 customers and I specifically look after energy and
+
+7
+00:02:38,920 --> 00:03:00,920
+ utilities. But I have two jobs in another life, I am Sergeant Samuel Weymouth, Royal Signals and I work for the Defence Cyber and Electromagnetic Force as part of our cyber defence for the UK, helping to keep you all safe and the king as well obviously.
+
+8
+00:03:00,920 --> 00:03:02,920
+ Moving on.
+
+9
+00:03:02,920 --> 00:03:03,920
+ Moving on.
+
+10
+00:03:03,920 --> 00:03:30,900
+ Quick bit of audience participation, who is in their first five years of their IT career or perhaps is still a student and they're thinking about, okay a few hands popping up. Okay, who's a 30 year veteran like me? Okay, quite a few of you too. So for all of your 30 year veterans you'll know to answer to these things. For people who are starting out, confidence risk
+
+11
+00:03:30,900 --> 00:03:45,900
+ and compliance, I like to give them a little bit of identity first so we all know what we're talking about. Governance is a system of direction and control or as I like to say, who's paying for all this stuff because they make decisions about where it goes live or not.
+
+12
+00:03:45,900 --> 00:04:00,880
+ What else we've got? Risk. What could go wrong? How much it matters? That's very much about, okay, how much money are we going to lose or how much impact will it have on our customers or our country should this go wrong? And what are we going to do about those things? And lastly, compliance.
+
+13
+00:04:00,880 --> 00:04:21,880
+ What are we going to do somewhere has to be reported up to? It could be a regulator in the royal signals, ultimately it's the king, to actually justify what we did and why we did it and why it went wrong or didn't go wrong and what we're going to do about it going forward. But particularly, you know, a lot of regulations, GDPR, etc. DORA for financial services will emphasise a lot about what you're reporting upwards.
+
+14
+00:04:21,880 --> 00:04:37,880
+ So these are all things that they are not sexy. For anyone who's put their hands up for the 30 plus years, we've all had to put up with the stuff our entire careers. If you're starting out in IT, it's not a fun about like, oh, I'm going to work for a big company and make AI stuff. Yeah, you get to do that too.
+
+15
+00:04:37,880 --> 00:05:01,880
+ But these things really matter. Regardless of your organisation being public sector, a start-up, a large bank, they really, really matter. And if you want your project to succeed, you're going to have to make the people who own these systems happy. Because if you don't make them happy, they will block your project. And that is what we are trying to avoid when we're trying to roll out AI across our whole organisation.
+
+16
+00:05:01,880 --> 00:05:23,880
+ A couple other things. Lots of people want to talk about AI security in particular, and throw thousands of buzzwords in there. Guardrails, autonomy, worrying things, fair uncertainty and doubt. Amazon and myself and a couple of colleagues have been working on this sort of three-point model, mental model, to make it simple.
+
+17
+00:05:23,880 --> 00:05:34,880
+ There are just three things. There's inference. That's the model you use. And you've got a choice of models. Build your own, use one off the shelf. Configure, fine-tune one. It doesn't really matter.
+
+18
+00:05:34,880 --> 00:05:48,880
+ You don't have a hell of a lot of control over how these models work. It's input and output. It gives you back a confidence score. And your control, from a governance perspective, is largely the service terms and conditions that the vendor supplies you.
+
+19
+00:05:48,880 --> 00:05:59,880
+ Claude, for example, is recording your props. Not a lot of you have read that fine print, but it is. Last 30 days worth, to make sure you're not abusing the model. Most of them do.
+
+20
+00:05:59,880 --> 00:06:26,880
+ So, you know, is that a problem with GDPR and PII? Maybe. Depends. But you need to think about that. That's what this talk is about. Agents. This is, people talk about agents, it's all sorts of different things, but agents are code. That's the code you write to do reasoning, to do multiple calls to multiple models, to call different tool sets, to be able to get information to enrich context, to make more calls to more models.
+
+21
+00:06:26,880 --> 00:06:39,880
+ So that code is just like any other piece of code your organization writes. It's got nothing to do with AI. It sits in a repository. It's got to be scanned, just like my code for re:Invent that's been dragging on for two days now.
+
+22
+00:06:39,880 --> 00:06:52,880
+ And lastly, tools. These are the things, MPCP servers, stuff like that, and A2A, all these sort of protocols that have been banded around. But the important point about this, there are only three components of an identity AI system at a high level.
+
+23
+00:06:52,880 --> 00:07:05,880
+ And the interfaces between these components are where you put security controls, be it network controls, because even though it's AI, firewalls are still pretty good at blocking network traffic. They're amazing like that.
+
+24
+00:07:05,880 --> 00:07:12,880
+ Authorization and authentication, that still works the same way. That's not new. You put that at any one of those levels.
+
+25
+00:07:12,880 --> 00:07:22,880
+ Guardrails, more for agents and inference, but also for tools, basically to say, okay, yes to PII, no to PII, yes to abuse, no to abuse, safety things like that.
+
+26
+00:07:22,880 --> 00:07:32,880
+ And tools themselves. Tools like if I say that, okay, in my organization I use ServiceNow, it's going to be a tool that my agent is going to talk to.
+
+27
+00:07:32,880 --> 00:07:38,880
+ Well, ServiceNow has its own authorization policy as its own MCP server, so does SAP, and other tools like that.
+
+28
+00:07:38,880 --> 00:07:50,880
+ So, thinking about it in those three terms helps simplify, you know, which bit of the AI triad are we talking about, and what interface is it using, and what controls are we going to put on the interface?
+
+29
+00:07:50,880 --> 00:07:55,880
+ That's the mental model that sort of strings the whole talk together.
+
+30
+00:07:55,880 --> 00:08:01,880
+ Now, not to forget, I said there are a bunch of people you need to appease if you are going to make your project a success.
+
+31
+00:08:01,880 --> 00:08:11,880
+ These are some of the things that these people control, often with specific tools and specific silos, or it's a startup that might all be done by one person.
+
+32
+00:08:11,880 --> 00:08:15,880
+ Asset management, risk register, what could go wrong, what are you going to do about it?
+
+33
+00:08:15,880 --> 00:08:20,880
+ A project register, well, no project starts in a vacuum, it's going to be paid for by somebody.
+
+34
+00:08:20,880 --> 00:08:34,880
+ Well, it's a policy library, this might be a wiki page, or it might be a bunch of word documents sitting in SharePoint saying these are the standards this organization believes in, whether it's a charity or an oil company, whatever it is you're working for.
+
+35
+00:08:34,880 --> 00:08:43,880
+ Then find the evidence store, can we show an auditor, we can prove that we did what we said we did, and we've got evidence to show it.
+
+36
+00:08:43,880 --> 00:08:50,880
+ Quick show of hands, or yell from the audience, there's one system I've deliberately left out of this, this is for the veterans.
+
+37
+00:08:50,880 --> 00:08:56,880
+ Who wants to have a go, what system up there is missing from a large enterprise environment?
+
+38
+00:08:56,880 --> 00:09:00,880
+ It begins with C, that's the only clue I'll give you.
+
+39
+00:09:00,880 --> 00:09:03,880
+ Any takers? Come on, be brave.
+
+40
+00:09:03,880 --> 00:09:06,880
+ Alright, change management.
+
+41
+00:09:06,880 --> 00:09:19,880
+ For you at university and student people, change management is a great evil thing, but it's very, very necessary to be in a regulated environment, because you can't change anything without a test plan and a rollback plan and a few other plans.
+
+42
+00:09:19,880 --> 00:09:21,880
+ And it's generally manual.
+
+43
+00:09:21,880 --> 00:09:28,880
+ These are all things that cause governance to slow down the adoption of agentic AI.
+
+44
+00:09:28,880 --> 00:09:32,880
+ Because agentic AI and agentic threats work at agentic speed.
+
+45
+00:09:32,880 --> 00:09:36,880
+ An attacker using an agentic tool is attacking you very quickly.
+
+46
+00:09:36,880 --> 00:09:43,880
+ They will find an exploitable vulnerability in an internet exposed system very quickly and exploited within a few minutes now.
+
+47
+00:09:43,880 --> 00:09:48,880
+ That's no good if your change management works at a 30 day window to be able to patch that system.
+
+48
+00:09:48,880 --> 00:09:51,880
+ So what do we do about that?
+
+49
+00:09:51,880 --> 00:09:55,880
+ This is a, who works for a startup building something interesting and new?
+
+50
+00:09:55,880 --> 00:09:57,880
+ Who's going to say to it?
+
+51
+00:09:57,880 --> 00:09:58,880
+ Many hands.
+
+52
+00:09:58,880 --> 00:09:59,880
+ No startups.
+
+53
+00:09:59,880 --> 00:10:00,880
+ All public sector.
+
+54
+00:10:00,880 --> 00:10:01,880
+ No?
+
+55
+00:10:01,880 --> 00:10:02,880
+ Okay.
+
+56
+00:10:02,880 --> 00:10:15,880
+ If you were a startup and you were thinking about what's the cool AI tool that I could build that's going to make loads of enterprise customers really happy.
+
+57
+00:10:15,880 --> 00:10:22,880
+ It's building a tool that orchestrates all of these systems together in one fell swoop, treating them all as NTPs.
+
+58
+00:10:22,880 --> 00:10:30,880
+ So that when I put my code into my DevOps pipeline or my GitHub repo or wherever it is, it automatically updates the asset register and risk register.
+
+59
+00:10:30,880 --> 00:10:31,880
+ It does an assessment.
+
+60
+00:10:31,880 --> 00:10:33,880
+ It makes sure the project's up to date.
+
+61
+00:10:33,880 --> 00:10:38,880
+ It checks any policy libraries to make sure we're implementing the controls my organization requires.
+
+62
+00:10:38,880 --> 00:10:41,880
+ Water regulator requires and updating the evidence store.
+
+63
+00:10:41,880 --> 00:10:46,880
+ If you could build that with Agentec AI, all my customers would buy it before Christmas.
+
+64
+00:10:46,880 --> 00:10:47,880
+ Everyone.
+
+65
+00:10:47,880 --> 00:10:50,880
+ That's every big oil company because that's what's blocking them.
+
+66
+00:10:50,880 --> 00:10:58,880
+ They want to unleash their developers and let them build with AI, but they want all that stuff done first at the same speed.
+
+67
+00:10:58,880 --> 00:11:00,880
+ So that's key to our listing.
+
+68
+00:11:00,880 --> 00:11:04,880
+ How does that look?
+
+69
+00:11:04,880 --> 00:11:14,880
+ Governance tends to be something that happens after the fact, maybe quarterly or monthly or whenever change management actually occurs in an organization.
+
+70
+00:11:14,880 --> 00:11:21,880
+ Scanning repos, pipeline's deploying artifacts, registers being updated by hand, these are all pretty typical things.
+
+71
+00:11:21,880 --> 00:11:28,880
+ I've worked for a bank that I might name, but they're too large to fail in the UK market.
+
+72
+00:11:28,880 --> 00:11:30,880
+ And every one of those systems are separate.
+
+73
+00:11:30,880 --> 00:11:31,880
+ Every one of them had its own owner.
+
+74
+00:11:31,880 --> 00:11:32,880
+ Everyone was asylum.
+
+75
+00:11:32,880 --> 00:11:36,880
+ They're kind of a small empire, if I was to be completely honest.
+
+76
+00:11:36,880 --> 00:11:39,880
+ So governance is not a promise in that situation.
+
+77
+00:11:39,880 --> 00:11:45,880
+ It's a promise rather than a precondition.
+
+78
+00:11:45,880 --> 00:11:48,880
+ It's something that can't actually be achieved.
+
+79
+00:11:48,880 --> 00:11:51,880
+ So we need to shift it, well, left and right.
+
+80
+00:11:51,880 --> 00:12:00,880
+ The pipeline gate, the governance becomes something that's automatic every time you put a merge request in for a feature branch to put into your main code.
+
+81
+00:12:00,880 --> 00:12:08,880
+ Can we automate governance to work instantly across doing appendices, doing a code scan, doing a container scan, generating all the evidences of that,
+
+82
+00:12:08,880 --> 00:12:14,880
+ putting the evidence somewhere, raising tickets, closing tickets, all that sort of good stuff, stuff that I'd like it to do.
+
+83
+00:12:14,880 --> 00:12:23,880
+ Most importantly, making a risk assessment so we can say, are we going to let the development pipeline autonomously deploy this AI program?
+
+84
+00:12:23,880 --> 00:12:29,880
+ Or are we going to make it go through some human in the loop decision making before we roll it out?
+
+85
+00:12:29,880 --> 00:12:34,880
+ Very important if you want to talk about things like the EU AI Act and stuff like that.
+
+86
+00:12:34,880 --> 00:12:37,880
+ So why is this important?
+
+87
+00:12:37,880 --> 00:12:43,880
+ AI governance is a blocker for a lot of organisations.
+
+88
+00:12:43,880 --> 00:12:46,880
+ 88% of enterprises use AI somewhere.
+
+89
+00:12:46,880 --> 00:12:51,880
+ Quite often, if you're, well, we'll be coming up to it in a minute, a scoping matrix.
+
+90
+00:12:51,880 --> 00:12:58,880
+ Well, a scoping matrix already looked at where you say, okay, some systems are bought off the shelf, like SAP as a good example.
+
+91
+00:12:58,880 --> 00:13:00,880
+ That's AI built in, our service now has it as well.
+
+92
+00:13:00,880 --> 00:13:02,880
+ These are ones that have got it built in.
+
+93
+00:13:02,880 --> 00:13:05,880
+ So you're probably using it already in a large organisation.
+
+94
+00:13:05,880 --> 00:13:12,880
+ But only 13% of organisations, at least according to Garton, are to report any significant transformational value.
+
+95
+00:13:12,880 --> 00:13:16,880
+ I just described to you the pain points of deploying a sample repo in Amazon.
+
+96
+00:13:16,880 --> 00:13:18,880
+ It's a pain, it still is.
+
+97
+00:13:18,880 --> 00:13:23,880
+ So this is the gap between adoption and actually getting value out of it.
+
+98
+00:13:23,880 --> 00:13:26,880
+ 88% of AI agent pilots never reach production.
+
+99
+00:13:26,880 --> 00:13:28,880
+ It's a Forrester IDC quote.
+
+100
+00:13:28,880 --> 00:13:31,880
+ And the bottleneck is governance and operational readiness.
+
+101
+00:13:31,880 --> 00:13:38,880
+ It's got nothing to do with the quality of the model, or your training, or your agent code, or how much testing you did.
+
+102
+00:13:38,880 --> 00:13:40,880
+ It's all to do with the governance blocking.
+
+103
+00:13:40,880 --> 00:13:46,880
+ 80% of AI projects are able to deliver value, twice the rate of all AI projects.
+
+104
+00:13:46,880 --> 00:13:50,880
+ Having had a lot of experience in the public sector, and still being in the public sector,
+
+105
+00:13:50,880 --> 00:13:56,880
+ that's a right target for IT systems that fail over many years and fast speeds.
+
+106
+00:13:56,880 --> 00:13:59,880
+ Just ask the NHS and IBM about that.
+
+107
+00:13:59,880 --> 00:14:06,880
+ 42% of organisations abandoned most AI initiatives in 2025, and it's up from 70% the year before.
+
+108
+00:14:06,880 --> 00:14:12,880
+ So the point, adoption is near universal, but what's not happening is governance.
+
+109
+00:14:12,880 --> 00:14:14,880
+ How are we automated governance?
+
+110
+00:14:14,880 --> 00:14:16,880
+ Because as I said at the very beginning, governance kind of sucks.
+
+111
+00:14:16,880 --> 00:14:20,880
+ It's not sexy, it's not fun, we just want to write code and have it in time.
+
+112
+00:14:20,880 --> 00:14:26,880
+ So the why slide, the AI threat model, what's new and different about AI?
+
+113
+00:14:26,880 --> 00:14:28,880
+ All sorts of things.
+
+114
+00:14:28,880 --> 00:14:30,880
+ Prompt injection is a real problem.
+
+115
+00:14:30,880 --> 00:14:36,880
+ Untrusted input becoming part of that prompt, and getting the inference layer to do things we don't want it to do.
+
+116
+00:14:36,880 --> 00:14:40,880
+ But remember, there's a control between the agent and the inference layer.
+
+117
+00:14:40,880 --> 00:14:43,880
+ We can put filters in there like guardrails to try and help prevent that.
+
+118
+00:14:43,880 --> 00:14:49,880
+ It's important to note that each one of these things, if you look back to that three object model we talked about at the very beginning for AI,
+
+119
+00:14:49,880 --> 00:14:58,880
+ every one of these problems has a technical control somewhere that you can put in one of those interfaces that will help stop or, I'll say reduce, the risk.
+
+120
+00:14:58,880 --> 00:15:00,880
+ It will not eliminate all risk.
+
+121
+00:15:00,880 --> 00:15:02,880
+ So tool misuse, that's a problem.
+
+122
+00:15:02,880 --> 00:15:05,880
+ Memory and data poisoning, sensitive data disclosure.
+
+123
+00:15:05,880 --> 00:15:13,880
+ The more important one may be cascading a multi-agent failure where one agent takes the output of another agent and just trusts it,
+
+124
+00:15:13,880 --> 00:15:16,880
+ and then tries to run more inference somewhere else.
+
+125
+00:15:16,880 --> 00:15:19,880
+ We'll make more decisions, we'll do more reasoning.
+
+126
+00:15:19,880 --> 00:15:25,880
+ And also supply chain risk is now included in this as well, because we have things like, we have models where you know what the weights are,
+
+127
+00:15:25,880 --> 00:15:28,880
+ and then we have models where it's all hidden from you.
+
+128
+00:15:28,880 --> 00:15:39,880
+ As working with large oil industry people, they are very cautious about putting their operational technology data into the hands of a model
+
+129
+00:15:39,880 --> 00:15:44,880
+ that they don't fully understand, or even into the arms of a product that uses models,
+
+130
+00:15:44,880 --> 00:15:48,880
+ but those models are not being transparently talked about as well.
+
+131
+00:15:48,880 --> 00:15:52,880
+ So every threat is said max to prevent and addictive control.
+
+132
+00:15:52,880 --> 00:15:57,880
+ Oh, I'll skip ahead a slide here, but I briefly talked about it.
+
+133
+00:15:57,880 --> 00:16:03,880
+ You know, how do you frame this in a way, or how do you start this risk assessment process?
+
+134
+00:16:03,880 --> 00:16:11,880
+ And one way to do that is to use a framework like this one, the generative AI scoping matrix, free for Amazon,
+
+135
+00:16:11,880 --> 00:16:17,880
+ to help you define when you are communicating with all these government stakeholders, well, what have I actually built?
+
+136
+00:16:17,880 --> 00:16:25,880
+ Am I sort of in zones one and two, where I'm kind of just a consumer of AI services, either as part of an enterprise product,
+
+137
+00:16:25,880 --> 00:16:29,880
+ or am I just using PartyRock or CheckGBT?
+
+138
+00:16:29,880 --> 00:16:32,880
+ Or am I actually building stuff, so that's scopes three through to five?
+
+139
+00:16:32,880 --> 00:16:37,880
+ Now, depending on what scope that you're going to be working in, what your application does,
+
+140
+00:16:37,880 --> 00:16:43,880
+ that will determine how much governance compliance you're going to need, how much legal review you're going to need.
+
+141
+00:16:43,880 --> 00:16:48,880
+ Risk management, what controls you're going to need to put in place, even what resilience levels you're going to have to put in place.
+
+142
+00:16:48,880 --> 00:16:53,880
+ You know, how often does your solution actually need to work correctly?
+
+143
+00:16:53,880 --> 00:16:56,880
+ Is it nine times out of 10 for the customer?
+
+144
+00:16:56,880 --> 00:16:58,880
+ Or does it need to work 99 times out of 100?
+
+145
+00:16:58,880 --> 00:17:03,880
+ You determine that, and you make a risk assessment based on that.
+
+146
+00:17:03,880 --> 00:17:11,880
+ So, the good news is, a lot of this, well, this framework already exists, so you don't need to invent this by yourself.
+
+147
+00:17:11,880 --> 00:17:21,880
+ And we're already getting emerging from, now over a year old, standards such as ISO 40 2001, which helps you put a framework together to risk assess applications,
+
+148
+00:17:21,880 --> 00:17:32,880
+ and AI applications in particular, and understand how your AI application can be measured in order to determine what you're going to do in terms of your risk position.
+
+149
+00:17:32,880 --> 00:17:40,880
+ Energetic AI, a little bit different than just plain old generative AI or other types of AI.
+
+150
+00:17:40,880 --> 00:17:45,880
+ We focus really heavily on the scoping matrix about the level of autonomy.
+
+151
+00:17:45,880 --> 00:17:52,880
+ Now, when AWS are doing testing of our agents, we put them in a sandbox.
+
+152
+00:17:52,880 --> 00:17:59,880
+ And touch wood, this is why we haven't appeared in the news with our models escaping and causing damage anywhere.
+
+153
+00:17:59,880 --> 00:18:05,880
+ We put them in a sandbox they really can't escape out of, no general purpose compute, no running things on laptops.
+
+154
+00:18:05,880 --> 00:18:10,880
+ It goes in a, what they call a virtual private cloud, and it cannot escape.
+
+155
+00:18:10,880 --> 00:18:15,880
+ It can do as much testing and as much damage as it likes within a sandbox, and it cannot escape.
+
+156
+00:18:15,880 --> 00:18:22,880
+ And we can validate what happens when the agent goes wrong, which is just as important as doing unit testing to make sure it's working correctly.
+
+157
+00:18:22,880 --> 00:18:32,880
+ And autonomy is a very important part of that because everything starts as, we use four tiers within AWS, everything starts with no agency.
+
+158
+00:18:32,880 --> 00:18:41,880
+ And as confidence scores increase in value, as we fine tune it, then we take a window of confidence scores, arbitrarily I'll say 50.
+
+159
+00:18:41,880 --> 00:18:48,880
+ Can we meet a certain threshold such as nine times out of 10 across 50 consecutive events?
+
+160
+00:18:48,880 --> 00:19:12,880
+ Then we say, okay, now this agent could be promoted automatically using a simple policy change to a prescribed agency where human impact or human might be in the loop, but only in things where the agent maybe comes across some new situation such as, when we think about autonomy, we also think about like, how repeatable is the change the agent's about to do?
+
+161
+00:19:12,880 --> 00:19:15,880
+ How reversible is that change it's about to do?
+
+162
+00:19:15,880 --> 00:19:25,880
+ And we can grant it the rights to do those changes to a system or a behaviour based upon the likelihood of it going wrong, but also the ability of us to wind it back should it go wrong.
+
+163
+00:19:25,880 --> 00:19:30,880
+ And it goes all the way up to scope four where the agent is operating fully autonomously.
+
+164
+00:19:30,880 --> 00:19:34,880
+ And if, remember I said about that arbitrary window of 50 confidence scores?
+
+165
+00:19:34,880 --> 00:19:47,880
+ So if it drops below the acceptable average, then the policy has changed and the agent loses all its autonomy instantly, automatically, no human intervention required, it automatically gets devoted back to human in the loop.
+
+166
+00:19:47,880 --> 00:20:00,880
+ Human in the loop doesn't work, by the way, because if you think about how humans behave, if I meet Amazon, as I said, runs all tickets, if I get too many tickets in my queue, I'll just say yes to everything because I want them to go away so I can do something more interesting.
+
+167
+00:20:00,880 --> 00:20:10,880
+ That's how human in the loop fails, so autonomy and graduated autonomy is the winner in this case.
+
+168
+00:20:10,880 --> 00:20:14,880
+ And there we go.
+
+169
+00:20:14,880 --> 00:20:17,880
+ Nothing would be complete without talking about the law.
+
+170
+00:20:17,880 --> 00:20:21,880
+ I have an LLP so I know what I'm talking about in this regard.
+
+171
+00:20:21,880 --> 00:20:22,880
+ There is no one.
+
+172
+00:20:22,880 --> 00:20:22,880
+ There is no one.
+
+173
+00:20:22,880 --> 00:20:23,880
+ All regulations or standards.
+
+174
+00:20:23,880 --> 00:20:25,880
+ So here are your applications down the bottom.
+
+175
+00:20:25,880 --> 00:20:28,880
+ You're building an application A, B and C. They're wonderful.
+
+176
+00:20:28,880 --> 00:20:32,880
+ They're going to look great on your CV when you apply to new jobs elsewhere.
+
+177
+00:20:32,880 --> 00:20:36,880
+ What do you need to consider in this bigger picture context?
+
+178
+00:20:36,880 --> 00:20:40,880
+ You need to consider the non-negotiable rules.
+
+179
+00:20:40,880 --> 00:20:51,880
+ EU AI Act, that's pretty much non-negotiable if you're planning on making a service available in the European Union and it has AI, and it has any form of AI, not just generative AI.
+
+180
+00:20:51,880 --> 00:20:53,880
+ GDPR, we will love data privacy.
+
+181
+00:20:53,880 --> 00:20:58,880
+ And compliance standards have already exist.
+
+182
+00:20:58,880 --> 00:21:06,880
+ Most organisations will be looking at some form of ISO 27001 because they want to be trusted by other organisations.
+
+183
+00:21:06,880 --> 00:21:08,880
+ In those order processes, etc.
+
+184
+00:21:08,880 --> 00:21:11,880
+ There will be security and risk management frameworks.
+
+185
+00:21:11,880 --> 00:21:12,880
+ A few of those are available now.
+
+186
+00:21:12,880 --> 00:21:14,880
+ Remember I said you don't have to start from scratch.
+
+187
+00:21:14,880 --> 00:21:18,880
+ The stuff is now emerged and is available to you and it's free in other cases.
+
+188
+00:21:18,880 --> 00:21:21,880
+ There is threat mitigation guidance.
+
+189
+00:21:21,880 --> 00:21:26,880
+ So not only do you have a standard, you have things that can happen to go wrong and what you're going to do about it.
+
+190
+00:21:26,880 --> 00:21:30,880
+ So a lot of your risk management is kind of ready to go for you.
+
+191
+00:21:30,880 --> 00:21:35,880
+ There's responsible AI, the ethics and codes of conduct.
+
+192
+00:21:35,880 --> 00:21:37,880
+ This varies by organisation.
+
+193
+00:21:37,880 --> 00:21:48,880
+ AWS adopts the one that's from the OECD group, which is basically what the EU AI Act is based on as well.
+
+194
+00:21:48,880 --> 00:21:59,880
+ Things like illegal workloads, for example, unless you happen to be a government agency such as mass surveillance, things like that.
+
+195
+00:21:59,880 --> 00:22:03,880
+ Various ethics and codes of conduct are around about those sorts of things.
+
+196
+00:22:03,880 --> 00:22:08,880
+ And generative AI specific threat mitigation and security frameworks.
+
+197
+00:22:08,880 --> 00:22:14,880
+ So we have the OWASP LLM cyber security and OWASP top 10 for LLM.
+
+198
+00:22:14,880 --> 00:22:24,880
+ These basically give you instant frameworks that you can use to help assess your applications and the processes by which you manage AI governance in your organisation, whatever it be.
+
+199
+00:22:24,880 --> 00:22:29,880
+ EU AI Act.
+
+200
+00:22:29,880 --> 00:22:35,880
+ I only bring this up because it's our favourite piece of AI regulation.
+
+201
+00:22:35,880 --> 00:22:37,880
+ And it's a bit of a moving target.
+
+202
+00:22:37,880 --> 00:22:45,880
+ August 2nd, just being, was supposed to be the deadline for high risk applications to be fully enforced.
+
+203
+00:22:45,880 --> 00:22:46,880
+ This varies.
+
+204
+00:22:46,880 --> 00:22:58,880
+ So there are still fairly significant requirements on transparency, documentation, other things like that, that need to be put in place now.
+
+205
+00:22:58,880 --> 00:23:00,880
+ But there is a bit of a hiatus on high risk.
+
+206
+00:23:00,880 --> 00:23:12,880
+ And high risk is anything that, for example, if I was building an application that was going to help the local Cardiff City Council allocate social housing to people who may have a disability.
+
+207
+00:23:12,880 --> 00:23:20,880
+ If that was the case, then that is an example of an application that has direct legal impact on somebody's life.
+
+208
+00:23:20,880 --> 00:23:22,880
+ Therefore it is high risk.
+
+209
+00:23:22,880 --> 00:23:24,880
+ That's an example.
+
+210
+00:23:24,880 --> 00:23:37,880
+ And illegal ones are anyone that's using, well, basically processing gender information, trade union membership, any particular characteristic under GDPR, or biometric information as well.
+
+211
+00:23:37,880 --> 00:23:38,880
+ So, be careful.
+
+212
+00:23:38,880 --> 00:23:39,880
+ Right.
+
+213
+00:23:39,880 --> 00:23:44,880
+ Other things that are coming into play.
+
+214
+00:23:44,880 --> 00:23:49,880
+ So, we talked about the broad picture of the contents legally.
+
+215
+00:23:49,880 --> 00:23:51,880
+ What are organisations doing about this?
+
+216
+00:23:51,880 --> 00:23:54,880
+ Now, this actually comes from our financial services group.
+
+217
+00:23:54,880 --> 00:24:06,880
+ What we're seeing happening with our FSI customers is that they are making this sort of three tier, or three lines of defence, when it comes to the organisational controls around AI management.
+
+218
+00:24:06,880 --> 00:24:08,880
+ So, tier one, own the risk.
+
+219
+00:24:08,880 --> 00:24:11,880
+ Ownership, ownership, and ownership are fully important here.
+
+220
+00:24:11,880 --> 00:24:24,880
+ Again, working at that large bank that cannot be named, but it's too big to fail, we had loads of systems in our data centres that were unowned and could not be shipped to another data centre because no one knew what they were and could turn them off.
+
+221
+00:24:24,880 --> 00:24:30,880
+ That doesn't happen in the cloud anymore because everyone's paying for everything, and you can't hide it.
+
+222
+00:24:30,880 --> 00:24:33,880
+ So, ownership is enforced.
+
+223
+00:24:33,880 --> 00:24:36,880
+ Overseer risk, teams that monitor and challenge.
+
+224
+00:24:36,880 --> 00:24:40,880
+ So, the first one is like builders, data scientists, maybe people like yourselves.
+
+225
+00:24:40,880 --> 00:24:43,880
+ Teams that monitor and challenge, GRC, risk management.
+
+226
+00:24:43,880 --> 00:24:49,880
+ There's other teams I told you that if you want your project to go live, you cannot afford to piss these people off.
+
+227
+00:24:49,880 --> 00:24:50,880
+ Alright?
+
+228
+00:24:50,880 --> 00:24:52,880
+ They will make you dead in the water.
+
+229
+00:24:52,880 --> 00:24:55,880
+ And if that doesn't work, then the regulator will.
+
+230
+00:24:55,880 --> 00:24:56,880
+ And then finally, assure the risks.
+
+231
+00:24:56,880 --> 00:24:58,880
+ So, it depends on assurance.
+
+232
+00:24:58,880 --> 00:25:06,880
+ The big four audit companies, whoever it may be, NCC for CREST-based pen testing, who actually test their environment and do an external report that says,
+
+233
+00:25:06,880 --> 00:25:12,880
+ "I, the trusted individual organisation, did a report and I confirm that these people know what they're doing."
+
+234
+00:25:12,880 --> 00:25:22,880
+ So, these are the kind of things that, you know, you need to think about putting these things in place and thinking about these governance controls.
+
+235
+00:25:22,880 --> 00:25:25,880
+ It's not just about like, "Oh, I'm going to put a guardrail in."
+
+236
+00:25:25,880 --> 00:25:27,880
+ You know, it's a technical control.
+
+237
+00:25:27,880 --> 00:25:30,880
+ It's not an organisational or a contractual control.
+
+238
+00:25:30,880 --> 00:25:34,880
+ And they are all required for AI governance to work properly.
+
+239
+00:25:34,880 --> 00:25:40,880
+ So, now we can actually get down to three things you can do to go away and do.
+
+240
+00:25:40,880 --> 00:25:42,880
+ this stuff all by yourself.
+
+241
+00:25:42,880 --> 00:25:43,880
+ One, visibility.
+
+242
+00:25:43,880 --> 00:25:44,880
+ What is AI doing?
+
+243
+00:25:44,880 --> 00:25:46,880
+ Who did what when?
+
+244
+00:25:46,880 --> 00:25:47,880
+ Why?
+
+245
+00:25:47,880 --> 00:25:48,880
+ Preferably.
+
+246
+00:25:48,880 --> 00:25:51,880
+ But usually you only get the who and the what and when.
+
+247
+00:25:51,880 --> 00:25:52,880
+ Controls.
+
+248
+00:25:52,880 --> 00:25:54,880
+ Agent governance and human in the loop.
+
+249
+00:25:54,880 --> 00:25:59,880
+ We talked about human in the loop as kind of useless in many real-world scenarios because it's not fast enough.
+
+250
+00:25:59,880 --> 00:26:02,880
+ But looking at automated energetic governance.
+
+251
+00:26:02,880 --> 00:26:05,880
+ Candle and things like sandboxes and stuff like that.
+
+252
+00:26:05,880 --> 00:26:07,880
+ And then continuous governance.
+
+253
+00:26:07,880 --> 00:26:12,880
+ To shift things right and get governance where it needs to be so it's no longer a blocker.
+
+254
+00:26:12,880 --> 00:26:15,880
+ It needs to be continuous and it's basically running itself.
+
+255
+00:26:15,880 --> 00:26:21,880
+ You don't want to have to have teams of people dedicated to keeping it alive, which is how it tends to work today.
+
+256
+00:26:21,880 --> 00:26:26,880
+ So, moving on from that, these are your foundations.
+
+257
+00:26:26,880 --> 00:26:34,880
+ And the core principle, if you get these three things right, you're getting governance as an enabler, not as pain in your butt.
+
+258
+00:26:34,880 --> 00:26:35,880
+ So, AWS config.
+
+259
+00:26:35,880 --> 00:26:44,880
+ Now, I should have pointed out, this is the only time I'm going to drone on about an AWS service because this is an educational talk.
+
+260
+00:26:44,880 --> 00:26:46,880
+ And I'm the world's worst salesperson.
+
+261
+00:26:46,880 --> 00:26:50,880
+ So, I'm not going to sit there going, this service does this and this service does that.
+
+262
+00:26:50,880 --> 00:26:57,880
+ If you want to know what our services do, just go to Google and go, Google, what does the service do?
+
+263
+00:26:57,880 --> 00:26:58,880
+ AI mode.
+
+264
+00:26:58,880 --> 00:26:59,880
+ And it will tell you.
+
+265
+00:26:59,880 --> 00:27:03,880
+ Similar to, if you want technical support from Amazon, just go and ask AI.
+
+266
+00:27:03,880 --> 00:27:09,880
+ Our customer support people have had a, well, a huge percentage drop in tickets since that happened.
+
+267
+00:27:09,880 --> 00:27:15,880
+ And if you gave me a technical problem to solve, I'd just ask AI and then hand it back to you.
+
+268
+00:27:15,880 --> 00:27:16,880
+ That's how we work.
+
+269
+00:27:16,880 --> 00:27:17,880
+ It's more efficient.
+
+270
+00:27:17,880 --> 00:27:22,880
+ So, key thing here, you cannot track what you cannot see.
+
+271
+00:27:22,880 --> 00:27:28,880
+ And as I said in the brief example I talked about before, at that large bank, there were
+
+272
+00:27:28,880 --> 00:27:33,880
+ lots of things that were unowned because the contractor that built it had left two years
+
+273
+00:27:33,880 --> 00:27:34,880
+ previously.
+
+274
+00:27:34,880 --> 00:27:39,880
+ And then the SSL certificates expired, which led to all the payments not working for a particular
+
+275
+00:27:39,880 --> 00:27:42,880
+ sub-branch in Northern Ireland, which meant nobody got their mortgage payments done for
+
+276
+00:27:42,880 --> 00:27:45,880
+ Christmas, way back in about 2013.
+
+277
+00:27:45,880 --> 00:27:48,880
+ You can look that up in historical records if you're interested.
+
+278
+00:27:48,880 --> 00:27:54,880
+ So inventory, continuous comprehensive inventory of AI infrastructure, but all the other infrastructure
+
+279
+00:27:54,880 --> 00:27:55,880
+ as well.
+
+280
+00:27:55,880 --> 00:27:59,880
+ Change tracking, change management, the thing that's missing from that previous slide that
+
+281
+00:27:59,880 --> 00:28:03,880
+ I asked you about, it is required by many organisations.
+
+282
+00:28:03,880 --> 00:28:09,880
+ And multi-account aggregation, can I look at all the stuff across, not just one AWS account,
+
+283
+00:28:09,880 --> 00:28:11,880
+ or just Azure, or just GCP.
+
+284
+00:28:11,880 --> 00:28:12,880
+ Can I do it for everything?
+
+285
+00:28:12,880 --> 00:28:14,880
+ Can I do it for my on-premises infrastructure?
+
+286
+00:28:14,880 --> 00:28:22,880
+ And this is where AWS config wins, because it is very good at continuously checking the state
+
+287
+00:28:22,880 --> 00:28:28,880
+ of things that were deployed to make sure the state has not changed without the necessary
+
+288
+00:28:28,880 --> 00:28:29,880
+ improvements.
+
+289
+00:28:29,880 --> 00:28:33,880
+ So it's one time I'm going to bang on about a particular service.
+
+290
+00:28:33,880 --> 00:28:34,880
+ It's very good at doing this.
+
+291
+00:28:34,880 --> 00:28:37,880
+ It's very good at doing it at scale.
+
+292
+00:28:37,880 --> 00:28:42,880
+ If your cloud provider doesn't have a service like this, then ask their account team, why
+
+293
+00:28:42,880 --> 00:28:43,880
+ not?
+
+294
+00:28:43,880 --> 00:28:48,880
+ And it's also reassuringly well priced.
+
+295
+00:28:48,880 --> 00:28:50,880
+ I won't say expensive.
+
+296
+00:28:50,880 --> 00:28:53,880
+ But it's about visibility first.
+
+297
+00:28:53,880 --> 00:28:57,880
+ Now, what else can we do to automate this governance pipeline?
+
+298
+00:28:57,880 --> 00:29:01,880
+ As I said, there's a gap in the market for somebody to build an orchestration AI that
+
+299
+00:29:01,880 --> 00:29:06,880
+ will manage governance at speed, and make it easier for the people who run the governance
+
+300
+00:29:06,880 --> 00:29:11,880
+ solution to do other things, like more thinking, rather than dogmatically following policies.
+
+301
+00:29:11,880 --> 00:29:13,880
+ So policy is code.
+
+302
+00:29:13,880 --> 00:29:17,880
+ The great thing about computers is that they are dogmatic and they will follow policy if
+
+303
+00:29:17,880 --> 00:29:18,880
+ you encode it.
+
+304
+00:29:18,880 --> 00:29:28,880
+ So in your pipeline to deliver your new wonder AI project, you can put in place lots of things,
+
+305
+00:29:28,880 --> 00:29:33,880
+ lots of controls that are added to that code repository and travel with it, and they're
+
+306
+00:29:33,880 --> 00:29:36,880
+ approved automatically by different services.
+
+307
+00:29:36,880 --> 00:29:41,880
+ such as, in the case of Amazon, there are various policies around identity and authorisation,
+
+308
+00:29:41,880 --> 00:29:43,880
+ security control policies and resource control policies.
+
+309
+00:29:43,880 --> 00:29:46,880
+ I won't talk about what they are, you can look that up on the internet.
+
+310
+00:29:46,880 --> 00:29:51,880
+ But the whole point being is they are an interpretation of the organisational policies.
+
+311
+00:29:51,880 --> 00:29:52,880
+ What type of crypto?
+
+312
+00:29:52,880 --> 00:29:53,880
+ What type of data?
+
+313
+00:29:53,880 --> 00:29:54,880
+ What type of users?
+
+314
+00:29:54,880 --> 00:29:55,880
+ Where is it allowed to go?
+
+315
+00:29:55,880 --> 00:29:58,880
+ What country is allowed to be processed in?
+
+316
+00:29:58,880 --> 00:30:01,880
+ What countries are allowed to see that data?
+
+317
+00:30:01,880 --> 00:30:05,880
+ Config rules and conformance packs, these basically do it at scale.
+
+318
+00:30:05,880 --> 00:30:08,880
+ So that config tool I talked about in the previous slide.
+
+319
+00:30:08,880 --> 00:30:14,880
+ You can now say, okay, I want to set up a config pack that implements ISO 42001 or implements
+
+320
+00:30:14,880 --> 00:30:18,880
+ one of those frameworks that I talked about earlier.
+
+321
+00:30:18,880 --> 00:30:19,880
+ It's ready to go.
+
+322
+00:30:19,880 --> 00:30:20,880
+ Just do it.
+
+323
+00:30:20,880 --> 00:30:22,880
+ You don't need to invent anything to do that.
+
+324
+00:30:22,880 --> 00:30:23,880
+ You just turn it on.
+
+325
+00:30:23,880 --> 00:30:24,880
+ Well, you pay for it.
+
+326
+00:30:24,880 --> 00:30:25,880
+ Let me turn it on.
+
+327
+00:30:25,880 --> 00:30:30,880
+ It's easier than building it and then turning it on and supporting it yourself.
+
+328
+00:30:30,880 --> 00:30:33,880
+ CloudFormation guard hooks, proactive should leave validation.
+
+329
+00:30:33,880 --> 00:30:38,880
+ So every time you roll out an infrastructure change, it can be dynamically assessed.
+
+330
+00:30:38,880 --> 00:30:43,880
+ And that assessment can be dynamically put into your risk management framework automatically.
+
+331
+00:30:43,880 --> 00:30:45,880
+ That's unblocking you.
+
+332
+00:30:45,880 --> 00:30:46,880
+ And see the policies.
+
+333
+00:30:46,880 --> 00:30:47,880
+ These are used in terms of your risk management framework.
+
+334
+00:30:47,880 --> 00:30:48,880
+ That's unblocking you.
+
+335
+00:30:48,880 --> 00:30:49,880
+ And see the policies.
+

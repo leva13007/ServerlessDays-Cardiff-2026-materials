@@ -1,0 +1,144 @@
+because that really highlights the supply chain risks
+that our customers face,
+and actually a large area where AI can really help them.
+But in all seriousness, I mean, I think, you know,
+we use a lot of microservices architecture
+in terms of our platform.
+Most of our customers can see a public cloud instance
+of our system, but, you know,
+there's a very big part of the market right now
+pushing for private cloud and on-prem.
+I think the future is gonna look a lot more
+sort of multimodal in terms of how AI
+is going to be deployed.
+So, by all means, cloud infrastructure is really
+a fact of life and important and great.
+But I think we shouldn't be assuming
+that that is the only model.
+And certainly, you know, when it comes to some
+of the partnerships we have with people like NVIDIA
+or some of the startups working with the
+Isambard Superpeer in Bristol, you know,
+we're able to do things that we simply can't do
+on cloud infrastructure.
+So, cloud is, you know, the most important thing,
+of course, but it's not everything.
+And I think if you're working with a vendor
+who's cloud only, you're missing a big part of the magic
+and the ability to deliver things like
+sovereign AI systems.
+Yeah, absolutely.
+Oliver, anything to add?
+Yeah, I agree with Charles, actually, on this one.
+I think we've definitely got the flexibility.
+We've increased our flexibility.
+But certainly on some areas, like we work a lot in defense,
+the need to protect a lot of very key information has meant we've got to go
+on that multi-modal, you know, publisher for the time being.
+Fab.
+Okay.
+Any questions from the audience?
+So, Jim is going to do a run round with the microphone.
+Put your hand up if there is any.
+Appreciate you going.
+You'll be shy.
+I'll start us off then, I've got a question.
+So, you can't look at the news.
+Every other story is, you know, concerns AI these days.
+And we're probably still very much on the hype cycle.
+So, I wondered if the panel had any examples where they thought
+AI usage is overhyped.
+So, for me, it's not the AI itself that's overhyped.
+It's that people don't understand AI.
+And there's a great image I saw on LinkedIn, unfortunately,
+which basically is, like, the majority of the world haven't even used AI
+to do an equivalent to a Google search.
+Those that have used AI basically use it as a glorified Google search.
+And there's, like, two teeny little dots at the bottom of companies
+that are actually, like, you guys, actually using AI properly.
+And then there's not even a whole dot of which probably most people
+in this room actually live in, which is people who are really trying
+to do some cool shit with AI.
+And so, for me, the other angle isn't that it's AI is overhyped.
+It's that the use cases are a bit sloppy at the moment.
+But the opportunity hasn't even yet been touched upon.
+I mean, we spoke about it before.
+For me, the AI and the social media at the moment is just completely,
+I don't know, you know, putting little ears on people's faces and so on.
+AI is super powerful.
+It's also super consuming.
+We all know all these big guys are lending each other money around.
+And not a lot of people aren't making any in the hyperscalers.
+And I just think AI and social media is something that we're dedicating with,
+you know, take people in data centers and make them realize what it's using
+to put the little ears on the face, basically.
+I don't know.
+I watched a video yesterday which was a deepfake of Lewis Hamilton and Charles Leclerc
+were disco dancing together on the track of the spot.
+It was amazing.
+I think I was very happy with the CO2 that was burnt to produce that.
+It was pretty.
+I just wish they did it in real life.
+That would be so cool.
+For me, the most over-hide thing is really around sort of token.
+Token, what's the one I'm looking for?
+Kind of the obsession about tokens.
+I think token obsession is a really big problem.
+The label token to a lot of our customers doesn't mean anything.
+They feel that they're buying chips to go to the casino.
+And they feel that somehow they're getting screwed but they don't quite understand how.
+And I think that actually reflects reality.
+Nobody really understands what a token is.
+You can only retrospectively analyze how it's calculated.
+There's so many problems with tokens as a pricing mechanism.
+And the biggest problem for CFOs who get the bill is it's like,
+what the fuck have I just spent all this money on?
+What's the value back to my organization?
+So we've done something very different in our business.
+Where we have customers using consumption pricing.
+We're charging them by the hour saved and the hour of human time equivalent.
+And that means that if you're paying for tokens and you're asking the AI to dig 10 holes and fill them in again.
+You're paying for all of that work which was completely unnecessary.
+Whereas if you're paying for the time that is being done.
+You really think about every task in terms of its human equivalence.
+And you're asking yourself the question.
+Would I have asked a human to have done this?
+And so when we bill our customers and give them a bill for 150 hours of human time saved.
+We charge less than minimum wage.
+So there's always an implicit ROI built into that.
+And I think the whole question about pricing for AI is going to evolve over the coming years.
+But my bet is that we're going to start to move to a model which is much more intuitive for us as humans to understand.
+Like our time equivalent as opposed to something which is a made up metric like tokens.
+It's overhyped but just over annoying.
+I detest the email slot from AI.
+So much so I banned it in our business.
+Because what someone would write a two word answer now becomes all paragraphs I'm going to read through.
+So it's just stop using it.
+It drives me absolutely bonkers.
+So yeah, we've just banned it completely.
+Stop.
+Okay.
+So I think it is lunchtime.
+So I just want to end with one very quick question.
+And you can be as biased as you like.
+So what's one AI tool or technology that developers should be looking at today?
+That's really easy for me.
+It's onteric.
+You can find us at onteric.com.
+For me, I would urge people to look at the type safe models as well because they are part of an answer basically.
+Well, I guess I'll copy Jen here.
+EA Global AI.
+And I've got a handful of gift cards here for anyone who wants to grab me as I'm walking out.
+You can get eight hours of your life back and you can pass them on to a colleague.
+And for me, 3.IS is phenomenal.
+We're loving it.
+Brilliant.
+Lovely.
+Well, hopefully that's given you something to do away with.
+And do come and chat to them during lunch because I know you've all got a lot more to say.
+But for now, can you please join me in thanking the amazing panellists?
+Thank you very much here, our panel.
+It is that time of day.
+Lunch time, everybody.
+If you could go and grab some lunch in the room.
+Thank you very much here, our panel.

@@ -1,0 +1,454 @@
+Mix up the agenda slightly so we can hit lunch, which is the most important part of the day on time.
+Thank you very much for being flexible and going after this.
+So, what we're going to do is, it's a first for service days, we're going to run our first ever panel.
+So thank you very much to Sarah from FinTech Wales who put this together.
+She's a master, an esteemed panel who will introduce themselves shortly.
+So we're going to have a discussion and hopefully maybe a bit of Q&A at the end.
+So please, if you've got any questions, have a think about it.
+All about AI and financial services from experimentation to production.
+So we've got quite a big financial services community here in Cardiff.
+And we're going to have a good old discussion about how FinTech in Wales is using AI.
+So I'd like to welcome our panel to the stage.
+Thank you.
+Hello.
+Yep, first test, does the mic work?
+Shall we?
+Hello.
+Hello.
+Thank you.
+Thank you, Jim.
+So yes, I am Sarah Jones, the CEO of FinTech Wales.
+Delighted to be here today.
+So, yeah, great room.
+So, you know, obviously, we're not going to do the, what is AI?
+I think we're a little bit further than that in this room, I think.
+If not, come and talk to us later.
+So obviously, I imagine everyone is talking about AI, looking, are we doing enough?
+Are we not doing enough?
+Are we moving too fast, too slow?
+So this is sort of, we're going to get behind the hype of AI and actually what is working?
+How can we get it from experimentation to production without losing the trust and everything else
+that comes with it?
+So I'm going to ask my amazing panellists.
+We've got a genius group of people here.
+And so I'm going to be very quiet, hopefully.
+If you could just introduce yourselves, tell us a little bit about yourselves, and then
+we'll delve into the questions.
+That should be.
+Try it.
+It's not working.
+Is it?
+Oh, okay.
+Hi there.
+Is it?
+Can you hear us?
+Yeah.
+Yeah.
+Give us a wave here for the back if you can't any time through.
+Hey, so I'm Jen, co-founder of an AI business called Onteric.
+We specialize in neuro-symbolic AI, and we're using that to build the world's first neuro-symbolic
+AI company brain, which basically is like a self-learning semantic layer.
+Hi, I'm Alex Levon.
+I'm a group gen AI principal.
+I also do a lot of personal work in AI as well, helping some charities as well.
+And I have been in IT all my life, and for the first time, things are changing very quickly.
+Thanks, Alex.
+Hi, everyone.
+I'm Charles Radcliffe.
+I'm a CEO and founder of EA Global AI, a Cardiff-based competitor to Public City.
+So we're not a frontier model company, but we are making open-source, open-weighted models
+safe, selling to customers in financial services, legal and professional services, and other
+regulated industries who really care about sovereignty and control of their data.
+Hi, everyone.
+I'm a curveball to the panel.
+So I am the owner of British Rotor Therm, and we make stuff.
+So we design and make phenomenally accurate and reliable sensors that go from managing engines
+in submarines, to aircraft, to pipelines, to running Heathrow airports, the water system.
+And we use a lot of that data as well, turning it into knowledge.
+So, yeah, pleasure to be here with the panel today.
+I love that.
+We always have a curveball to the panel, so keep those extra other visions coming.
+So from experimentation to production, Alex, let's start with you.
+So we're seeing all sorts of organisations experimenting.
+How can you go from experimentation to actually real-life solutions, and what are the challenges
+you've seen?
+So, you know, three years ago, four years ago, when it all started, I think we were experimenting
+like crazy, doing video stuff, doing audio stuff, and having a lot of fun with it.
+Of course, not enterprise, really.
+I think most of the cases that when we experiment, we actually realise that the technology is catching
+up for us.
+So, realistically, half of it is happening on its own.
+So the big hyperscalers, like Anthropic, like Google and so on, their harness is the product.
+It's not so much just the element.
+So we are seeing a lot more cases coming to fruition.
+The ones that are easy to get into fruition are the black office cases.
+We find that a lot of internal process, there's no risk.
+The risk is limited, it's behind the lines.
+These ones are the first to come in.
+But the challenge is to get them to life is a challenge that we always had.
+It's the in-out problems.
+And a lot of organisations are realising that they are not ready in terms of information events,
+knowing their ontology, what it is they do.
+So the work that you haven't done yet, you still have to do it.
+And that's what's accelerating the implementation of life cases for us.
+Anyone want to add to that?
+I love what Alex has said.
+It's basically the whole thesis behind our company.
+Our problem that we're trying to solve is that so many models now are amazing.
+You can do so much with AI, but you can only do that if AI can understand the business or the use case it's trying to support.
+And most data is fragmented, inaccessible, all shit.
+I'm happy to say shit, not just much.
+It's shit.
+It's accessible.
+It conflicts.
+So if you think about any of you've got a job, you've got final version 7.4, final, again final.
+And how do you know that that's actually the final version versus something else?
+And I think what we're seeing, we talk to a lot of businesses, and what we're seeing is they're all being put under pressure by their boards to implement AI,
+but they just haven't got the foundations right to do that successfully yet.
+And that's the biggest hurdle that they need to get over, is to build the foundations that AI can then actually work,
+because it's not the models that are the limiting factor anymore.
+So Charles, you've built an AI business for businesses to adopt and use.
+So tell us about your journey and what you've learned along the way.
+Yeah, well, I think my journey really started when I was in a corporate job.
+I was stupid enough to leave a well-paid corporate role and sustain an AI company before the pandemic.
+But I was, in my last corporate role, I was responsible for building the AI strategy and delivering the adoption within a large financial services firm.
+And I think what I learned in that role was that there was a lot of playtime, a lot of proof of concepts,
+a lot of side of desks initiatives and people's pet projects.
+But very few of those initiatives actually made it into production.
+And when I looked at it, and when I spoke to people in the organization, what I found was a lot of people,
+when you asked them about the success rate that they thought we would get as a firm from proof of concepts to production,
+you know, they were saying things like, you know, half of the POCs we do are going to make it into live.
+When you asked them what they thought the pilot success rate into production was, it was more like 90%.
+But when we actually looked for the data, the truth was that only about 10% of proof of concepts ever made into production,
+only about 50% sort of pilots did.
+And I think that was a really interesting exercise to go through,
+because what we did was we started to look at the value in terms of the impact of the organization
+of each of the initiatives that we were running.
+And then we essentially discounted it.
+We multiplied it by the likelihood of it making production.
+And then with a metric that we then held in our AI center was the total value of that portfolio.
+And what that meant was that I could go to the CEO or the board and say, you know,
+my budget is X and the value of my portfolio, hopefully, was always a multiple of X.
+And therefore, you should give me more money so I can do more AI.
+But it was a very, very deliberate strategy.
+And by doing that, we were much, much better able to be selective as to which vendors to work with,
+which initiatives to pursue, and also the right level of governance around each opportunity.
+So that thinking, we've definitely applied now with the other side of the table.
+We're selling it to organizations.
+So we don't do proof of concepts when, you know, really we don't think there's any chance
+of it making into production.
+Pilots are things we make sure all the controls are in place and all of the things
+that we need the customer to have ready before we think they're going to buy are in place
+before we take them on.
+And then we basically, you know, try and manage our sales process, you know,
+reflecting, you know, my own experience from being in a corporate.
+Okay, so Jen, as an AI, a founder of an AI business solutions,
+how are you, you know, balancing the pressure of trying to innovate quickly
+as well as delivering technology that's safe, reliable, scalable?
+Getting it completely wrong.
+We literally had this conversation on Monday, and my team is basically a bunch of PhDs
+and very smart, wonderful engineers, and we are building a type of AI that doesn't really
+exist.
+So neuro-symbolic AI is a combination of sort of neural network learning and the symbolic AI
+or traditional logic-based AI.
+And we really started building this on the premise that large language models had some immutable
+architectural limitations.
+So they will hallucinate, they're stochastic, so you can't audit how that decision has been made.
+And we thought we were being very clever, coming up with this super reliable, you know,
+regulator-friendly AI that actually the FCA has just come out with, nothing to do with us,
+but saying that neuro-symbolic AI is the way in which AI can be reliably adopted in financial
+services because of its architectural design.
+However, a lot of people just don't care, and so we've actually ended up now effectively
+loosening our aims a little bit and saying we need to take a bit more risk in how we're
+building.
+We can throw the odd bit of LLM in the right place at the right time.
+The output that we produce is deterministic, and that's kind of our guiding light, where
+we produce, you have to be able to reconstitute, which is our differentiator, but we can be
+a bit more brazen with it.
+So ironically, as people who are trying to do some quite cutting-edge tech, the way we're
+government-funded as part of the Frontier AI Sovereign Initiative, we're doing some really
+cool stuff, but we've been too academic about it, and actually we just needed to take a little
+bit more of a brazen attitude, we'd have probably got there a little bit faster.
+Nice, is it that sort of done is better than perfect?
+Yeah, it's tricky though when your USP is perfect, but yeah.
+And we set the stall quite high.
+Yeah, we set the stall quite high, but I think more to the point what we see so much within
+financial services is this complete fear of anything, like AI is scary, AI is bad, and
+those of us that have been, like you're working for 25 years, those who've been around long
+enough know that there's all sorts of new things that come along, whether it's the cloud,
+whether it's internet, and actually sometimes you've just got to try it to understand it, and just
+a bit of experimentation can take you a long way.
+Yeah.
+Okay, Oliver, over to you, from your sort of experiences and insights, have you seen technology
+that's worked brilliantly, but it's been stopped by something, and that's it?
+Yes, but I'll answer it in a different way.
+What I see, and again, reason I'm here is I think it's really important you go across industry.
+You know, you can get stuck in, whether financial services, or you can get stuck in manufacturing
+or engineering, actually when you look outside, everyone's got things to learn on, and I think
+the real winners will be the ones that take bits from all the different industries.
+So, there's so much random stuff being done, and I think leadership are not putting guidelines
+in place.
+So, you know, from our side, it's actually less experimentation.
+You only can do it if there's a productivity gain.
+You know, don't waste your time, I'm not saying, you know, don't try it, but don't waste your
+time on tons of experiments when your customer wants your value.
+You know, at the end of the day, it's the customer that's paying for you.
+So, you know, what is driving value?
+So, in our business, we're really, really strict in terms of what our vectors are, and unless
+it's adding a productivity gain, you don't do it, unless it's approved for some other reason.
+And I think, how do you tie that productivity gain is have a really clear vision.
+You know, a brilliant book by Cameron Herald called Vivid Vision.
+You should all write that down and read it, but, you know, don't have a one-paragraph vision
+statement.
+Write a 20-page document of how you see the business, or get whoever the CEO or your manager,
+and then let your team decide how to enact that, and then what tools do you need that's
+going to deliver your bit of it whichever department you're in.
+But it's got to have a productivity improvement.
+Otherwise, someone's coming to eat your breakfast the next day.
+And I think that's, you know, constantly from my side as CEO, I'm always pulling everyone
+back into the vectors.
+And you see the ones that have the most aligned vectors.
+They are smashing stuff at 10 times, 100 times the pace of others in their industry.
+So, I don't know if I answered your question, Sarah, but, you know, just that's the way we're
+approaching it instead of, you know, which technologies.
+Well, and it was a perfect segue into the next section as well.
+So, thank you.
+So, customer facing AI, what's working?
+So, Jen, back to you.
+You've taken a different approach to AI in terms of, you know, accuracy, consistency.
+So, tell us, you know, your journey on that and why it's making a difference to customers.
+Yeah, so the joy that we have is people can trust the output that's run through our solution.
+So, we work with mortgage brokers and financial advisors.
+If anybody's going through the pain of getting a mortgage, we can effectively read your entire
+case file, consolidate it, or we put it in something called a knowledge graph.
+For those of you that know, a future knowledge graph, so you get a really comprehensive understanding
+of that data set, and what would normally take hours takes us about 10 seconds.
+And in some of our clients, they have that in a client portal, so instead of you having
+to go away and then a week later be told you've not got the right docs, you can be told in
+that moment.
+I think, as you were saying earlier, a lot of companies are very reticent to enable AI
+on a customer-facing journey.
+I think it actually goes back to your point around what's the value add.
+People are willing to experiment internally, but you're not willing to experiment with
+the customer, and nor should you.
+And so, we very much approach all of our go-to-market, what is the very explicit value, and all of
+our business cases, we state a return on investment, and we have a minimum threshold of 3.5x return
+on investment, and if we don't feel that we can smash that out the water, it's not the right
+client for us, because we're in that stage of a journey as a business that we need to prove
+that value.
+But in terms of answering the question, the customer-facing bit comes when businesses can
+trust that the outcome, A, is reliable, and B, is productive, I think.
+And in terms of comparing to the conventional LN, LN, and LN, and space systems, what are
+the trade-offs or opportunities, really?
+What we do is really hard.
+I think what everybody does is hard.
+The FCA's Mills review actually said that neuro-symbolic AI is great, but really, really difficult
+to get right.
+And it's really, really difficult to get right, but I think it's really exciting.
+I think the thing that I would take away from it all is, at the moment, too much we hear,
+is AI being synonymous with LLMs, AI is a broad discipline, and if you go back to the basics
+of what's the problem you're trying to solve, what's the value that solving that problem
+brings, and then what tools have you got in your toolkit to solve it, and just being a bit
+more imaginative about how you can go about solving that problem, that can really move the
+dial, I think, more than anything else.
+And Alex, when talking about the bigger businesses, you know, docking AI and customer faces and
+things, you know, a lot of our members are like, "We should be a bit further along," or
+some are flying.
+So how can bigger businesses innovate without, you know, disproving the trust of customers?
+Where do they start?
+They have the toughest job, because large-scale industries are carrying a ton of legacy.
+big systems of records, massive systems, a huge amount of money invested in there, so
+the write-off could be quite dangerous as well, and Sherwood probably wouldn't like that.
+You know, as you were saying, there are some advances that allow us to make things safe in
+front of the customer, but the problems they have is all our systems are usually designed
+for us.
+So our systems of record have been designed for the company, never for the customers.
+Even in the digital era, we did spaghetti APIs to try to make the customer experience somehow
+fit, but less basic.
+Most of it is rubbish if you have to book a flight and travel tomorrow on your phone and
+you're 85 years old.
+It's going to get confusing.
+So the shift here is actually we have an opportunity with AI to do hyper-personalization.
+And that means this graph can be customer tailored.
+Every single sentence, every single event, every single product purchase and so on is one
+customer database.
+And now that means for big organization we have to work at the way, how do we look at all
+these memories and get our reports.
+The reason we have then one system of record, because there was a bit of specialization,
+we couldn't do ourselves.
+But the world now is really changing.
+So I think the big organizations are not going to get there, but trying to let go of our old
+stuff, it's going to be very difficult for them.
+So the new AI in commerce.
+Do you remember the quadrant?
+You know, the gardener quadrant?
+Now that bottom right is starting to look real good.
+You still have IBM at the top, but on the bottom right, you've got the anthropic.
+And the new arrivals have less legacy to share, basically.
+And I suppose this is a question for everyone, really.
+How do you decide when AI should make a decision or recommendation?
+And what are the absolute no-goes that you need that human element?
+Anyone want to jump at that one?
+I can answer that.
+So I'll try and keep this really short answer.
+When I was at Deutsche Bank, there had just been a paper published about 40% of jobs
+have been impacted by AI in the next 40 years, I think it was.
+It was a paper in 2016.
+And I was asked to basically put together something that spoke about the impact of jobs
+in the bank from AI over the coming years.
+And we were an employer of about 100,000 people at the time.
+Many fewer now, I think Deutsche Bank is, but at the time it was 100,000 people.
+And I wrote Ben Olsen's paper, and it basically looked at every single job in the economy.
+And it broke down what the sort of tasks were involved in each of those jobs, and the propensity
+of each of those tasks to be automatable using current technology or things that we could imagine
+would be coming into the market for the next few years.
+And right at the bottom of the list were hairdressers and plumbers.
+And my mum is a hairdresser.
+You wouldn't think it perhaps, but she was, is.
+And so I went home and I said to my mum, good news mum, hairdressers won't be put out of work by AI.
+And she said, oh, why is that?
+And I said, well, obviously because hairdressing requires like a high level of dexterity.
+And she's like, no, hairdressing's got nothing to do with that.
+Hairdressing's really all about therapy.
+Hairdressing is really, you know, it's stroking people's ego as much as it is about stroking people's hair.
+People talk to their hairdresser about things they couldn't talk to their spouse or their friends
+or, you know, they just, you know, want to have a relationship and they want to talk about things.
+And that's really what hairdressing is about.
+It's all about human touch.
+And there was this profound insight that struck me on the train back to London.
+And I went into the office and I said, guys, we've thought about this the wrong way.
+We should be looking at all the jobs in the bank and we should be analysing which jobs
+there's a high level of human touch required.
+And those are the jobs we should put a ring around and AI should never, ever, ever touch.
+And everything else, well, that's fair game.
+And I probably can't say what proportion of 100,000 people in the bank have those high human touch jobs.
+But you could imagine it's a very small percentage.
+And those four things we identified were creativity, relationship management, strategic thinking and accountability.
+And, as I say, in a 100,000 person organisation, those are very, very few things.
+If you look at everyone else in the bank, a lot of those people were shuffling paper around,
+typing things in from one screen to another screen, doing a lot of things which, you know, even in 2016 we could see was readily automatable.
+And certainly today, you know, we'd be very straightforward to automate.
+So, I think for me and running an AI company that very much focuses on white collar work and eliminating white collar work,
+that's the conversation we have with our customers all the time.
+It's like you should be reserving creative, strategic, accountability, and relationship management roles for humans.
+And you should not let AI touch those things.
+But everything else is fair game.
+And let's start going after it.
+Nice. Yeah, go for it.
+I was going to take a different angle because I grew 100% with everything that you said.
+I feel so anti-human in the loop as a backstop that myself and Anderling actually wrote a research paper on a human in the loop.
+And it's basically a lot of it's performance art.
+So my co-founder flies planes for fun and I spent a decade in the army.
+And in both of those spaces, it's recognised that confirmation virus is a really dangerous thing.
+And that if you are just going and checking something at the end of a journey, it's a really terrible use of humans.
+We are shit at it, to use the shit word again.
+And I think there's a real misnomer around the AI space that it's okay if somebody checks it at the end.
+All the research clearly says the opposite.
+I think we default to that because we haven't got conviction in the tools that we're using to deliver the jobs.
+So I would break it down, not only in the way that Charles has done, but when you are looking at how you remove
+or you need humans to check work that's being done.
+Firstly, using the right tool that can be used to deliver that.
+So I'm biased, but a neurosymbolic AI is more accurate than humans.
+Why are you then putting somebody else in to only effectively muddy the waters?
+But we have this conversation with the FCA regularly that their approach to saying the human in the loop is a backstop.
+It isn't and it shouldn't be.
+I mean, both opinions are absolutely valid.
+The human contact is definitely, if you look at Stanford, the human agency scale, exactly what Charles said.
+I think it doesn't tell you, you still need people who do that due diligence.
+So talking about verifying things at the end.
+Is that up from work?
+In the neurosymbolic world, you have to do it.
+Because you have to explain the ontology to an AI and give you the right context.
+So that attention to detail is still going to be important.
+And God knows AI tempts me every day to shlop it away in five minutes because it's so good.
+But I realize sometimes that what I've created is no longer my own.
+So I've reverted back to say give me the option.
+I want to make those decisions because I have to present it.
+Otherwise, I'm going to look like a lemon by something that's superbly produced.
+But I have very little input in it.
+So again, that work up front, you know, laws of conservation is super important.
+Just checking on time.
+I think just under ten minutes are we, Jim?
+Five, five.
+So we've got a couple more questions.
+And then we'll be coming to the audience if you will.
+So do get some questions ready.
+So, Oliver, over to you.
+Your business has gone on the transformation journey.
+So tell us about your experience and perhaps what you've learned that people can take away.
+Say, right, this is the definite no's or the definite yes.
+Now, we love process.
+So I had the fortune of working for the Japanese for the first ten years of my career.
+And their attention to precision is like no other society on earth.
+It's just, they love precision.
+And it embedded me.
+I'm very grateful to spend many years over there.
+But in our, in my world, where we make hardware, but also, you know, offer the software solutions.
+Everything's a process.
+You know, from when you brush your teeth in the morning.
+How you get to work.
+To how you quote for your sales.
+To how you write a program.
+To how you pick the metal.
+To how you machine the metal.
+Everything is a process.
+And we dial that in.
+And we teach our people the discipline to follow those processes.
+And what I, I've come to realize is that gave us the best ever foundation for, for AI and automation.
+And, and we're able to put things through at such a faster pace than, than, than anyone else.
+And, and UK, you know, we've unfortunately quite sloppy in how we, we do work.
+But if you have discipline.
+You know, everyone, everyone in this audience.
+You follow a process your whole life.
+You know, whether it's you, whether it's at home or at work.
+And, and, you know, don't waste your life or your work away.
+So, you know, so get your process optimized.
+If you can, if you can build that foundation in.
+I think that AI and automation is a phenomenal tool on top of it.
+And I think that's where we found we've accelerated so much quicker than what we're seeing, you know, around the UK and Europe.
+And I think now, you know, personally for me, you know, I was, I was with a number of Chinese businesses.
+China on the manufacturing side are the world leaders at the moment.
+I mean, what they're doing on end to end automation is insane.
+And half of me lives the optimist and half of me lives as a, you know, paranoid.
+And, you know, and I worry that they will, or the competition will come and take everything from me in the next couple of years or few years.
+And then the other side of me thinks, wow, I'm doing really good.
+I'll, I'll, I'll, I'll do incredibly well.
+So I, I think that foundational side, you know, you know, and it's another pillar, having that clear vision and vectors, but that foundational piece is really crucial.
+And, you know, that's why I'm here today.
+The conversation we had earlier, the conversation last night with the team, I've learned so much that I'm taking into our three manufacturing businesses.
+And I, and I, and I think I encourage people to actually step out of their industry and go and see what others are doing on, on AI and automation.
+Because it might just, again, that's the creativity, like Charles was talking about.
+It just sparks.
+I'm like, oh, wow.
+I mean, you know, actually I can apply that into, into my sector.
+So, so I think that's, you know, something that we should all get stuck in your own little hole, but actually go out and speak to other people, get into, you know, if you want to come and visit us down in Margham, you know, we've got a factory.
+Come and, come and see us and see what we're doing, but it might change the way you approach some of the work you do.
+And I think that's what it's about, you know, when humans have the most phenomenal brains and incredible creativity, but you need to feed it, don't you?
+You need to feed that.
+Definitely.
+Right.
+One very quick question then before we come to the audience.
+So given that we are at serverless days today, it'd be interesting to hear sort of where serverless or cloud native architecture fit into your AI strategies.
+Anything you want to share with the audience?
+I mean, I'll say nothing interesting.
+Everything is.
+And everything, you know, will be on a going forward basis.
+Yeah, nothing more to run from that.
+I mean, generally, the cloud accessibility is fantastic.
+They have the biggest and the best models.
+I'll be honest, I'm starting to look at SLMs and, you know, open wide models as well.
+All this kind of sovereignty thing.
+I think it's quite interesting as well.
+And I think looking at the serverless, I think there might be a chance for, you know, the rack space of this world in China.
+We got steamrolled by AWS and the hyperscalers to actually create something that could be sovereign.
+I want to say European, you know, not from the US or China.
+So this is something I find fascinating.
+I don't know whether I could implement something like that.
+I think Charles probably have got a better answer than me for that.
+But, yeah, I wonder what, you know, Serverless, for example, would do in that sovereignty domain and so on.
+Because I think that's an attractive proposition for immobiles, for governments and so on.
+Yeah.
+I mean, for us, firstly, incredibly grateful to AWS for the free credits we've had for the last few years.
+We wouldn't be here without you.
+I'm grateful to people like Google for fucking up yesterday and turning off things like Revoluts.
+Because that was really helpful as well.

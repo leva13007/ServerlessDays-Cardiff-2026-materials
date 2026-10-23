@@ -1,0 +1,1816 @@
+1
+00:00:00,000 --> 00:00:05,640
+ Mix up the agenda slightly so we can hit lunch, which is the most important part of the day on time.
+
+2
+00:00:05,880 --> 00:00:09,460
+ Thank you very much for being flexible and going after this.
+
+3
+00:00:10,340 --> 00:00:18,960
+ So, what we're going to do is, it's a first for service days, we're going to run our first ever panel.
+
+4
+00:00:19,780 --> 00:00:24,220
+ So thank you very much to Sarah from FinTech Wales who put this together.
+
+5
+00:00:24,860 --> 00:00:31,680
+ She's a master, an esteemed panel who will introduce themselves shortly.
+
+6
+00:00:32,240 --> 00:00:36,040
+ So we're going to have a discussion and hopefully maybe a bit of Q&A at the end.
+
+7
+00:00:36,120 --> 00:00:38,880
+ So please, if you've got any questions, have a think about it.
+
+8
+00:00:39,240 --> 00:00:46,100
+ All about AI and financial services from experimentation to production.
+
+9
+00:00:46,940 --> 00:00:50,780
+ So we've got quite a big financial services community here in Cardiff.
+
+10
+00:00:52,700 --> 00:00:59,900
+ And we're going to have a good old discussion about how FinTech in Wales is using AI.
+
+11
+00:01:00,240 --> 00:01:02,220
+ So I'd like to welcome our panel to the stage.
+
+12
+00:01:02,420 --> 00:01:02,800
+ Thank you.
+
+13
+00:01:07,300 --> 00:01:07,820
+ Hello.
+
+14
+00:01:08,180 --> 00:01:10,000
+ Yep, first test, does the mic work?
+
+15
+00:01:10,700 --> 00:01:11,080
+ Shall we?
+
+16
+00:01:15,600 --> 00:01:16,100
+ Hello.
+
+17
+00:01:16,100 --> 00:01:16,100
+ Hello.
+
+18
+00:01:16,100 --> 00:01:17,280
+ Thank you.
+
+19
+00:01:17,440 --> 00:01:17,980
+ Thank you, Jim.
+
+20
+00:01:18,620 --> 00:01:21,960
+ So yes, I am Sarah Jones, the CEO of FinTech Wales.
+
+21
+00:01:22,800 --> 00:01:24,040
+ Delighted to be here today.
+
+22
+00:01:24,240 --> 00:01:25,340
+ So, yeah, great room.
+
+23
+00:01:26,140 --> 00:01:29,900
+ So, you know, obviously, we're not going to do the, what is AI?
+
+24
+00:01:30,140 --> 00:01:33,000
+ I think we're a little bit further than that in this room, I think.
+
+25
+00:01:33,340 --> 00:01:34,520
+ If not, come and talk to us later.
+
+26
+00:01:35,240 --> 00:01:39,340
+ So obviously, I imagine everyone is talking about AI, looking, are we doing enough?
+
+27
+00:01:39,460 --> 00:01:40,660
+ Are we not doing enough?
+
+28
+00:01:40,860 --> 00:01:43,140
+ Are we moving too fast, too slow?
+
+29
+00:01:44,040 --> 00:01:49,580
+ So this is sort of, we're going to get behind the hype of AI and actually what is working?
+
+30
+00:01:50,040 --> 00:01:56,820
+ How can we get it from experimentation to production without losing the trust and everything else
+
+31
+00:01:56,820 --> 00:01:57,480
+ that comes with it?
+
+32
+00:01:57,820 --> 00:02:00,980
+ So I'm going to ask my amazing panellists.
+
+33
+00:02:01,100 --> 00:02:03,100
+ We've got a genius group of people here.
+
+34
+00:02:03,660 --> 00:02:05,100
+ And so I'm going to be very quiet, hopefully.
+
+35
+00:02:05,700 --> 00:02:08,700
+ If you could just introduce yourselves, tell us a little bit about yourselves, and then
+
+36
+00:02:08,700 --> 00:02:10,480
+ we'll delve into the questions.
+
+37
+00:02:15,620 --> 00:02:16,600
+ That should be.
+
+38
+00:02:16,820 --> 00:02:17,280
+ Try it.
+
+39
+00:02:18,080 --> 00:02:18,460
+ It's not working.
+
+40
+00:02:18,780 --> 00:02:19,120
+ Is it?
+
+41
+00:02:19,220 --> 00:02:19,680
+ Oh, okay.
+
+42
+00:02:19,880 --> 00:02:20,120
+ Hi there.
+
+43
+00:02:20,160 --> 00:02:20,400
+ Is it?
+
+44
+00:02:20,600 --> 00:02:21,300
+ Can you hear us?
+
+45
+00:02:21,560 --> 00:02:21,820
+ Yeah.
+
+46
+00:02:22,060 --> 00:02:22,320
+ Yeah.
+
+47
+00:02:22,940 --> 00:02:25,800
+ Give us a wave here for the back if you can't any time through.
+
+48
+00:02:26,460 --> 00:02:31,500
+ Hey, so I'm Jen, co-founder of an AI business called Onteric.
+
+49
+00:02:31,500 --> 00:02:38,400
+ We specialize in neuro-symbolic AI, and we're using that to build the world's first neuro-symbolic
+
+50
+00:02:38,400 --> 00:02:43,100
+ AI company brain, which basically is like a self-learning semantic layer.
+
+51
+00:02:44,940 --> 00:02:46,020
+ Hi, I'm Alex Levon.
+
+52
+00:02:46,180 --> 00:02:47,640
+ I'm a group gen AI principal.
+
+53
+00:02:48,160 --> 00:02:53,320
+ I also do a lot of personal work in AI as well, helping some charities as well.
+
+54
+00:02:54,380 --> 00:03:00,840
+ And I have been in IT all my life, and for the first time, things are changing very quickly.
+
+55
+00:03:01,500 --> 00:03:03,700
+ Thanks, Alex.
+
+56
+00:03:04,020 --> 00:03:04,720
+ Hi, everyone.
+
+57
+00:03:04,800 --> 00:03:05,560
+ I'm Charles Radcliffe.
+
+58
+00:03:05,720 --> 00:03:13,740
+ I'm a CEO and founder of EA Global AI, a Cardiff-based competitor to Public City.
+
+59
+00:03:14,300 --> 00:03:19,460
+ So we're not a frontier model company, but we are making open-source, open-weighted models
+
+60
+00:03:19,460 --> 00:03:25,100
+ safe, selling to customers in financial services, legal and professional services, and other
+
+61
+00:03:25,100 --> 00:03:28,980
+ regulated industries who really care about sovereignty and control of their data.
+
+62
+00:03:30,260 --> 00:03:30,820
+ Hi, everyone.
+
+63
+00:03:31,880 --> 00:03:33,880
+ I'm a curveball to the panel.
+
+64
+00:03:34,080 --> 00:03:38,700
+ So I am the owner of British Rotor Therm, and we make stuff.
+
+65
+00:03:38,940 --> 00:03:46,480
+ So we design and make phenomenally accurate and reliable sensors that go from managing engines
+
+66
+00:03:46,480 --> 00:03:52,740
+ in submarines, to aircraft, to pipelines, to running Heathrow airports, the water system.
+
+67
+00:03:53,300 --> 00:03:56,900
+ And we use a lot of that data as well, turning it into knowledge.
+
+68
+00:03:57,240 --> 00:04:00,440
+ So, yeah, pleasure to be here with the panel today.
+
+69
+00:04:00,880 --> 00:04:01,440
+ I love that.
+
+70
+00:04:01,500 --> 00:04:06,040
+ We always have a curveball to the panel, so keep those extra other visions coming.
+
+71
+00:04:06,340 --> 00:04:10,360
+ So from experimentation to production, Alex, let's start with you.
+
+72
+00:04:10,480 --> 00:04:13,040
+ So we're seeing all sorts of organisations experimenting.
+
+73
+00:04:13,800 --> 00:04:21,200
+ How can you go from experimentation to actually real-life solutions, and what are the challenges
+
+74
+00:04:21,200 --> 00:04:21,680
+ you've seen?
+
+75
+00:04:22,780 --> 00:04:28,180
+ So, you know, three years ago, four years ago, when it all started, I think we were experimenting
+
+76
+00:04:28,180 --> 00:04:33,040
+ like crazy, doing video stuff, doing audio stuff, and having a lot of fun with it.
+
+77
+00:04:33,660 --> 00:04:35,240
+ Of course, not enterprise, really.
+
+78
+00:04:36,700 --> 00:04:43,780
+ I think most of the cases that when we experiment, we actually realise that the technology is catching
+
+79
+00:04:43,780 --> 00:04:44,300
+ up for us.
+
+80
+00:04:44,420 --> 00:04:47,700
+ So, realistically, half of it is happening on its own.
+
+81
+00:04:48,000 --> 00:04:54,420
+ So the big hyperscalers, like Anthropic, like Google and so on, their harness is the product.
+
+82
+00:04:54,660 --> 00:04:56,060
+ It's not so much just the element.
+
+83
+00:04:56,640 --> 00:05:00,040
+ So we are seeing a lot more cases coming to fruition.
+
+84
+00:05:00,520 --> 00:05:03,700
+ The ones that are easy to get into fruition are the black office cases.
+
+85
+00:05:04,220 --> 00:05:06,980
+ We find that a lot of internal process, there's no risk.
+
+86
+00:05:07,300 --> 00:05:09,260
+ The risk is limited, it's behind the lines.
+
+87
+00:05:10,680 --> 00:05:12,520
+ These ones are the first to come in.
+
+88
+00:05:12,740 --> 00:05:17,160
+ But the challenge is to get them to life is a challenge that we always had.
+
+89
+00:05:17,460 --> 00:05:20,420
+ It's the in-out problems.
+
+90
+00:05:20,800 --> 00:05:25,560
+ And a lot of organisations are realising that they are not ready in terms of information events,
+
+91
+00:05:25,680 --> 00:05:27,560
+ knowing their ontology, what it is they do.
+
+92
+00:05:28,080 --> 00:05:31,380
+ So the work that you haven't done yet, you still have to do it.
+
+93
+00:05:31,580 --> 00:05:36,180
+ And that's what's accelerating the implementation of life cases for us.
+
+94
+00:05:37,460 --> 00:05:39,400
+ Anyone want to add to that?
+
+95
+00:05:40,100 --> 00:05:41,400
+ I love what Alex has said.
+
+96
+00:05:41,480 --> 00:05:43,640
+ It's basically the whole thesis behind our company.
+
+97
+00:05:44,980 --> 00:05:50,340
+ Our problem that we're trying to solve is that so many models now are amazing.
+
+98
+00:05:50,520 --> 00:05:58,300
+ You can do so much with AI, but you can only do that if AI can understand the business or the use case it's trying to support.
+
+99
+00:05:58,900 --> 00:06:02,040
+ And most data is fragmented, inaccessible, all shit.
+
+100
+00:06:02,500 --> 00:06:03,940
+ I'm happy to say shit, not just much.
+
+101
+00:06:05,080 --> 00:06:05,500
+ It's shit.
+
+102
+00:06:05,580 --> 00:06:06,120
+ It's accessible.
+
+103
+00:06:06,580 --> 00:06:07,540
+ It conflicts.
+
+104
+00:06:07,540 --> 00:06:15,100
+ So if you think about any of you've got a job, you've got final version 7.4, final, again final.
+
+105
+00:06:15,540 --> 00:06:18,660
+ And how do you know that that's actually the final version versus something else?
+
+106
+00:06:18,940 --> 00:06:26,120
+ And I think what we're seeing, we talk to a lot of businesses, and what we're seeing is they're all being put under pressure by their boards to implement AI,
+
+107
+00:06:26,880 --> 00:06:30,700
+ but they just haven't got the foundations right to do that successfully yet.
+
+108
+00:06:30,700 --> 00:06:35,980
+ And that's the biggest hurdle that they need to get over, is to build the foundations that AI can then actually work,
+
+109
+00:06:36,220 --> 00:06:39,020
+ because it's not the models that are the limiting factor anymore.
+
+110
+00:06:40,280 --> 00:06:44,840
+ So Charles, you've built an AI business for businesses to adopt and use.
+
+111
+00:06:44,940 --> 00:06:47,960
+ So tell us about your journey and what you've learned along the way.
+
+112
+00:06:48,800 --> 00:06:54,380
+ Yeah, well, I think my journey really started when I was in a corporate job.
+
+113
+00:06:54,720 --> 00:07:00,120
+ I was stupid enough to leave a well-paid corporate role and sustain an AI company before the pandemic.
+
+114
+00:07:00,120 --> 00:07:10,040
+ But I was, in my last corporate role, I was responsible for building the AI strategy and delivering the adoption within a large financial services firm.
+
+115
+00:07:11,300 --> 00:07:15,940
+ And I think what I learned in that role was that there was a lot of playtime, a lot of proof of concepts,
+
+116
+00:07:16,160 --> 00:07:21,000
+ a lot of side of desks initiatives and people's pet projects.
+
+117
+00:07:21,220 --> 00:07:24,360
+ But very few of those initiatives actually made it into production.
+
+118
+00:07:25,220 --> 00:07:30,040
+ And when I looked at it, and when I spoke to people in the organization, what I found was a lot of people,
+
+119
+00:07:30,760 --> 00:07:36,940
+ when you asked them about the success rate that they thought we would get as a firm from proof of concepts to production,
+
+120
+00:07:37,560 --> 00:07:42,160
+ you know, they were saying things like, you know, half of the POCs we do are going to make it into live.
+
+121
+00:07:42,700 --> 00:07:48,000
+ When you asked them what they thought the pilot success rate into production was, it was more like 90%.
+
+122
+00:07:48,000 --> 00:07:53,960
+ But when we actually looked for the data, the truth was that only about 10% of proof of concepts ever made into production,
+
+123
+00:07:54,140 --> 00:07:57,080
+ only about 50% sort of pilots did.
+
+124
+00:07:57,560 --> 00:08:02,020
+ And I think that was a really interesting exercise to go through,
+
+125
+00:08:02,120 --> 00:08:08,300
+ because what we did was we started to look at the value in terms of the impact of the organization
+
+126
+00:08:08,300 --> 00:08:11,100
+ of each of the initiatives that we were running.
+
+127
+00:08:11,560 --> 00:08:12,820
+ And then we essentially discounted it.
+
+128
+00:08:12,880 --> 00:08:15,640
+ We multiplied it by the likelihood of it making production.
+
+129
+00:08:16,300 --> 00:08:22,140
+ And then with a metric that we then held in our AI center was the total value of that portfolio.
+
+130
+00:08:22,660 --> 00:08:26,600
+ And what that meant was that I could go to the CEO or the board and say, you know,
+
+131
+00:08:26,620 --> 00:08:32,380
+ my budget is X and the value of my portfolio, hopefully, was always a multiple of X.
+
+132
+00:08:32,380 --> 00:08:34,760
+ And therefore, you should give me more money so I can do more AI.
+
+133
+00:08:35,480 --> 00:08:37,000
+ But it was a very, very deliberate strategy.
+
+134
+00:08:37,660 --> 00:08:44,160
+ And by doing that, we were much, much better able to be selective as to which vendors to work with,
+
+135
+00:08:44,300 --> 00:08:49,020
+ which initiatives to pursue, and also the right level of governance around each opportunity.
+
+136
+00:08:49,760 --> 00:08:53,060
+ So that thinking, we've definitely applied now with the other side of the table.
+
+137
+00:08:53,240 --> 00:08:54,480
+ We're selling it to organizations.
+
+138
+00:08:55,340 --> 00:08:59,820
+ So we don't do proof of concepts when, you know, really we don't think there's any chance
+
+139
+00:08:59,820 --> 00:09:00,800
+ of it making into production.
+
+140
+00:09:01,120 --> 00:09:05,780
+ Pilots are things we make sure all the controls are in place and all of the things
+
+141
+00:09:05,780 --> 00:09:10,400
+ that we need the customer to have ready before we think they're going to buy are in place
+
+142
+00:09:10,400 --> 00:09:11,460
+ before we take them on.
+
+143
+00:09:11,940 --> 00:09:16,300
+ And then we basically, you know, try and manage our sales process, you know,
+
+144
+00:09:16,300 --> 00:09:19,700
+ reflecting, you know, my own experience from being in a corporate.
+
+145
+00:09:21,080 --> 00:09:25,400
+ Okay, so Jen, as an AI, a founder of an AI business solutions,
+
+146
+00:09:25,400 --> 00:09:29,180
+ how are you, you know, balancing the pressure of trying to innovate quickly
+
+147
+00:09:29,180 --> 00:09:33,900
+ as well as delivering technology that's safe, reliable, scalable?
+
+148
+00:09:34,840 --> 00:09:36,440
+ Getting it completely wrong.
+
+149
+00:09:36,440 --> 00:09:46,180
+ We literally had this conversation on Monday, and my team is basically a bunch of PhDs
+
+150
+00:09:46,180 --> 00:09:53,380
+ and very smart, wonderful engineers, and we are building a type of AI that doesn't really
+
+151
+00:09:53,380 --> 00:09:54,020
+ exist.
+
+152
+00:09:54,560 --> 00:10:01,100
+ So neuro-symbolic AI is a combination of sort of neural network learning and the symbolic AI
+
+153
+00:10:01,100 --> 00:10:02,920
+ or traditional logic-based AI.
+
+154
+00:10:03,520 --> 00:10:09,180
+ And we really started building this on the premise that large language models had some immutable
+
+155
+00:10:09,180 --> 00:10:10,180
+ architectural limitations.
+
+156
+00:10:10,540 --> 00:10:17,280
+ So they will hallucinate, they're stochastic, so you can't audit how that decision has been made.
+
+157
+00:10:17,900 --> 00:10:23,380
+ And we thought we were being very clever, coming up with this super reliable, you know,
+
+158
+00:10:23,560 --> 00:10:28,520
+ regulator-friendly AI that actually the FCA has just come out with, nothing to do with us,
+
+159
+00:10:28,580 --> 00:10:33,640
+ but saying that neuro-symbolic AI is the way in which AI can be reliably adopted in financial
+
+160
+00:10:33,640 --> 00:10:36,380
+ services because of its architectural design.
+
+161
+00:10:37,020 --> 00:10:44,040
+ However, a lot of people just don't care, and so we've actually ended up now effectively
+
+162
+00:10:44,040 --> 00:10:49,700
+ loosening our aims a little bit and saying we need to take a bit more risk in how we're
+
+163
+00:10:49,700 --> 00:10:50,000
+ building.
+
+164
+00:10:50,160 --> 00:10:53,200
+ We can throw the odd bit of LLM in the right place at the right time.
+
+165
+00:10:53,900 --> 00:10:58,640
+ The output that we produce is deterministic, and that's kind of our guiding light, where
+
+166
+00:10:58,640 --> 00:11:04,920
+ we produce, you have to be able to reconstitute, which is our differentiator, but we can be
+
+167
+00:11:04,920 --> 00:11:06,160
+ a bit more brazen with it.
+
+168
+00:11:06,280 --> 00:11:10,500
+ So ironically, as people who are trying to do some quite cutting-edge tech, the way we're
+
+169
+00:11:10,500 --> 00:11:15,120
+ government-funded as part of the Frontier AI Sovereign Initiative, we're doing some really
+
+170
+00:11:15,120 --> 00:11:20,400
+ cool stuff, but we've been too academic about it, and actually we just needed to take a little
+
+171
+00:11:20,400 --> 00:11:23,280
+ bit more of a brazen attitude, we'd have probably got there a little bit faster.
+
+172
+00:11:23,920 --> 00:11:26,060
+ Nice, is it that sort of done is better than perfect?
+
+173
+00:11:26,920 --> 00:11:31,740
+ Yeah, it's tricky though when your USP is perfect, but yeah.
+
+174
+00:11:31,780 --> 00:11:32,920
+ And we set the stall quite high.
+
+175
+00:11:32,960 --> 00:11:36,560
+ Yeah, we set the stall quite high, but I think more to the point what we see so much within
+
+176
+00:11:36,560 --> 00:11:43,140
+ financial services is this complete fear of anything, like AI is scary, AI is bad, and
+
+177
+00:11:43,140 --> 00:11:46,580
+ those of us that have been, like you're working for 25 years, those who've been around long
+
+178
+00:11:46,580 --> 00:11:50,560
+ enough know that there's all sorts of new things that come along, whether it's the cloud,
+
+179
+00:11:50,560 --> 00:11:56,400
+ whether it's internet, and actually sometimes you've just got to try it to understand it, and just
+
+180
+00:11:56,400 --> 00:11:58,260
+ a bit of experimentation can take you a long way.
+
+181
+00:11:58,260 --> 00:11:58,760
+ Yeah.
+
+182
+00:11:58,760 --> 00:12:04,220
+ Okay, Oliver, over to you, from your sort of experiences and insights, have you seen technology
+
+183
+00:12:04,220 --> 00:12:08,040
+ that's worked brilliantly, but it's been stopped by something, and that's it?
+
+184
+00:12:08,040 --> 00:12:17,680
+ Yes, but I'll answer it in a different way.
+
+185
+00:12:17,680 --> 00:12:24,900
+ What I see, and again, reason I'm here is I think it's really important you go across industry.
+
+186
+00:12:24,900 --> 00:12:30,260
+ You know, you can get stuck in, whether financial services, or you can get stuck in manufacturing
+
+187
+00:12:30,260 --> 00:12:35,660
+ or engineering, actually when you look outside, everyone's got things to learn on, and I think
+
+188
+00:12:35,660 --> 00:12:40,760
+ the real winners will be the ones that take bits from all the different industries.
+
+189
+00:12:40,760 --> 00:12:52,620
+ So, there's so much random stuff being done, and I think leadership are not putting guidelines
+
+190
+00:12:52,620 --> 00:12:53,620
+ in place.
+
+191
+00:12:53,620 --> 00:12:57,620
+ So, you know, from our side, it's actually less experimentation.
+
+192
+00:12:57,620 --> 00:13:01,480
+ You only can do it if there's a productivity gain.
+
+193
+00:13:01,480 --> 00:13:06,720
+ You know, don't waste your time, I'm not saying, you know, don't try it, but don't waste your
+
+194
+00:13:06,720 --> 00:13:11,080
+ time on tons of experiments when your customer wants your value.
+
+195
+00:13:11,080 --> 00:13:15,120
+ You know, at the end of the day, it's the customer that's paying for you.
+
+196
+00:13:15,120 --> 00:13:17,260
+ So, you know, what is driving value?
+
+197
+00:13:17,260 --> 00:13:24,740
+ So, in our business, we're really, really strict in terms of what our vectors are, and unless
+
+198
+00:13:24,740 --> 00:13:31,080
+ it's adding a productivity gain, you don't do it, unless it's approved for some other reason.
+
+199
+00:13:31,080 --> 00:13:37,640
+ And I think, how do you tie that productivity gain is have a really clear vision.
+
+200
+00:13:37,640 --> 00:13:41,180
+ You know, a brilliant book by Cameron Herald called Vivid Vision.
+
+201
+00:13:41,180 --> 00:13:47,520
+ You should all write that down and read it, but, you know, don't have a one-paragraph vision
+
+202
+00:13:47,520 --> 00:13:48,520
+ statement.
+
+203
+00:13:48,520 --> 00:13:54,940
+ Write a 20-page document of how you see the business, or get whoever the CEO or your manager,
+
+204
+00:13:54,940 --> 00:14:04,420
+ and then let your team decide how to enact that, and then what tools do you need that's
+
+205
+00:14:04,420 --> 00:14:07,960
+ going to deliver your bit of it whichever department you're in.
+
+206
+00:14:07,960 --> 00:14:11,960
+ But it's got to have a productivity improvement.
+
+207
+00:14:11,960 --> 00:14:15,300
+ Otherwise, someone's coming to eat your breakfast the next day.
+
+208
+00:14:15,300 --> 00:14:21,960
+ And I think that's, you know, constantly from my side as CEO, I'm always pulling everyone
+
+209
+00:14:21,960 --> 00:14:22,960
+ back into the vectors.
+
+210
+00:14:22,960 --> 00:14:26,500
+ And you see the ones that have the most aligned vectors.
+
+211
+00:14:26,500 --> 00:14:32,340
+ They are smashing stuff at 10 times, 100 times the pace of others in their industry.
+
+212
+00:14:32,340 --> 00:14:37,880
+ So, I don't know if I answered your question, Sarah, but, you know, just that's the way we're
+
+213
+00:14:37,880 --> 00:14:39,880
+ approaching it instead of, you know, which technologies.
+
+214
+00:14:39,880 --> 00:14:43,420
+ Well, and it was a perfect segue into the next section as well.
+
+215
+00:14:43,420 --> 00:14:44,420
+ So, thank you.
+
+216
+00:14:44,420 --> 00:14:46,420
+ So, customer facing AI, what's working?
+
+217
+00:14:46,420 --> 00:14:47,420
+ So, Jen, back to you.
+
+218
+00:14:47,420 --> 00:14:51,420
+ You've taken a different approach to AI in terms of, you know, accuracy, consistency.
+
+219
+00:14:51,420 --> 00:14:57,340
+ So, tell us, you know, your journey on that and why it's making a difference to customers.
+
+220
+00:14:57,340 --> 00:15:03,880
+ Yeah, so the joy that we have is people can trust the output that's run through our solution.
+
+221
+00:15:03,880 --> 00:15:06,260
+ So, we work with mortgage brokers and financial advisors.
+
+222
+00:15:06,260 --> 00:15:10,420
+ If anybody's going through the pain of getting a mortgage, we can effectively read your entire
+
+223
+00:15:10,420 --> 00:15:14,420
+ case file, consolidate it, or we put it in something called a knowledge graph.
+
+224
+00:15:14,420 --> 00:15:18,740
+ For those of you that know, a future knowledge graph, so you get a really comprehensive understanding
+
+225
+00:15:18,740 --> 00:15:23,340
+ of that data set, and what would normally take hours takes us about 10 seconds.
+
+226
+00:15:23,340 --> 00:15:27,320
+ And in some of our clients, they have that in a client portal, so instead of you having
+
+227
+00:15:27,320 --> 00:15:32,660
+ to go away and then a week later be told you've not got the right docs, you can be told in
+
+228
+00:15:32,660 --> 00:15:33,660
+ that moment.
+
+229
+00:15:33,660 --> 00:15:39,140
+ I think, as you were saying earlier, a lot of companies are very reticent to enable AI
+
+230
+00:15:39,140 --> 00:15:40,140
+ on a customer-facing journey.
+
+231
+00:15:40,140 --> 00:15:44,340
+ I think it actually goes back to your point around what's the value add.
+
+232
+00:15:44,340 --> 00:15:47,340
+ People are willing to experiment internally, but you're not willing to experiment with
+
+233
+00:15:47,340 --> 00:15:49,160
+ the customer, and nor should you.
+
+234
+00:15:49,160 --> 00:15:55,400
+ And so, we very much approach all of our go-to-market, what is the very explicit value, and all of
+
+235
+00:15:55,400 --> 00:16:01,120
+ our business cases, we state a return on investment, and we have a minimum threshold of 3.5x return
+
+236
+00:16:01,120 --> 00:16:05,640
+ on investment, and if we don't feel that we can smash that out the water, it's not the right
+
+237
+00:16:05,640 --> 00:16:09,740
+ client for us, because we're in that stage of a journey as a business that we need to prove
+
+238
+00:16:09,740 --> 00:16:10,740
+ that value.
+
+239
+00:16:10,740 --> 00:16:15,560
+ But in terms of answering the question, the customer-facing bit comes when businesses can
+
+240
+00:16:15,560 --> 00:16:21,800
+ trust that the outcome, A, is reliable, and B, is productive, I think.
+
+241
+00:16:21,800 --> 00:16:27,620
+ And in terms of comparing to the conventional LN, LN, and LN, and space systems, what are
+
+242
+00:16:27,620 --> 00:16:31,620
+ the trade-offs or opportunities, really?
+
+243
+00:16:31,620 --> 00:16:32,860
+ What we do is really hard.
+
+244
+00:16:32,860 --> 00:16:34,860
+ I think what everybody does is hard.
+
+245
+00:16:34,860 --> 00:16:40,680
+ The FCA's Mills review actually said that neuro-symbolic AI is great, but really, really difficult
+
+246
+00:16:40,680 --> 00:16:41,680
+ to get right.
+
+247
+00:16:41,680 --> 00:16:45,000
+ And it's really, really difficult to get right, but I think it's really exciting.
+
+248
+00:16:45,000 --> 00:16:50,680
+ I think the thing that I would take away from it all is, at the moment, too much we hear,
+
+249
+00:16:50,680 --> 00:16:56,500
+ is AI being synonymous with LLMs, AI is a broad discipline, and if you go back to the basics
+
+250
+00:16:56,500 --> 00:17:00,500
+ of what's the problem you're trying to solve, what's the value that solving that problem
+
+251
+00:17:00,500 --> 00:17:05,700
+ brings, and then what tools have you got in your toolkit to solve it, and just being a bit
+
+252
+00:17:05,700 --> 00:17:09,500
+ more imaginative about how you can go about solving that problem, that can really move the
+
+253
+00:17:09,500 --> 00:17:11,500
+ dial, I think, more than anything else.
+
+254
+00:17:11,500 --> 00:17:18,500
+ And Alex, when talking about the bigger businesses, you know, docking AI and customer faces and
+
+255
+00:17:18,500 --> 00:17:21,500
+ things, you know, a lot of our members are like, "We should be a bit further along," or
+
+256
+00:17:21,500 --> 00:17:22,500
+ some are flying.
+
+257
+00:17:22,500 --> 00:17:30,500
+ So how can bigger businesses innovate without, you know, disproving the trust of customers?
+
+258
+00:17:30,500 --> 00:17:31,500
+ Where do they start?
+
+259
+00:17:31,500 --> 00:17:37,500
+ They have the toughest job, because large-scale industries are carrying a ton of legacy.
+
+260
+00:17:37,500 --> 00:17:42,500
+ big systems of records, massive systems, a huge amount of money invested in there, so
+
+261
+00:17:42,500 --> 00:17:47,500
+ the write-off could be quite dangerous as well, and Sherwood probably wouldn't like that.
+
+262
+00:17:47,500 --> 00:17:53,500
+ You know, as you were saying, there are some advances that allow us to make things safe in
+
+263
+00:17:53,500 --> 00:17:57,500
+ front of the customer, but the problems they have is all our systems are usually designed
+
+264
+00:17:57,500 --> 00:17:58,500
+ for us.
+
+265
+00:17:58,500 --> 00:18:02,500
+ So our systems of record have been designed for the company, never for the customers.
+
+266
+00:18:02,500 --> 00:18:08,500
+ Even in the digital era, we did spaghetti APIs to try to make the customer experience somehow
+
+267
+00:18:08,500 --> 00:18:09,500
+ fit, but less basic.
+
+268
+00:18:09,500 --> 00:18:13,500
+ Most of it is rubbish if you have to book a flight and travel tomorrow on your phone and
+
+269
+00:18:13,500 --> 00:18:14,500
+ you're 85 years old.
+
+270
+00:18:14,500 --> 00:18:16,500
+ It's going to get confusing.
+
+271
+00:18:16,500 --> 00:18:22,500
+ So the shift here is actually we have an opportunity with AI to do hyper-personalization.
+
+272
+00:18:22,500 --> 00:18:27,500
+ And that means this graph can be customer tailored.
+
+273
+00:18:27,500 --> 00:18:32,500
+ Every single sentence, every single event, every single product purchase and so on is one
+
+274
+00:18:32,500 --> 00:18:34,500
+ customer database.
+
+275
+00:18:34,500 --> 00:18:39,500
+ And now that means for big organization we have to work at the way, how do we look at all
+
+276
+00:18:39,500 --> 00:18:41,500
+ these memories and get our reports.
+
+277
+00:18:41,500 --> 00:18:45,500
+ The reason we have then one system of record, because there was a bit of specialization,
+
+278
+00:18:45,500 --> 00:18:46,500
+ we couldn't do ourselves.
+
+279
+00:18:46,500 --> 00:18:48,500
+ But the world now is really changing.
+
+280
+00:18:48,500 --> 00:18:54,500
+ So I think the big organizations are not going to get there, but trying to let go of our old
+
+281
+00:18:54,500 --> 00:18:57,500
+ stuff, it's going to be very difficult for them.
+
+282
+00:18:57,500 --> 00:18:59,500
+ So the new AI in commerce.
+
+283
+00:18:59,500 --> 00:19:00,500
+ Do you remember the quadrant?
+
+284
+00:19:00,500 --> 00:19:02,500
+ You know, the gardener quadrant?
+
+285
+00:19:02,500 --> 00:19:05,500
+ Now that bottom right is starting to look real good.
+
+286
+00:19:05,500 --> 00:19:10,500
+ You still have IBM at the top, but on the bottom right, you've got the anthropic.
+
+287
+00:19:10,500 --> 00:19:15,500
+ And the new arrivals have less legacy to share, basically.
+
+288
+00:19:15,500 --> 00:19:17,500
+ And I suppose this is a question for everyone, really.
+
+289
+00:19:17,500 --> 00:19:22,500
+ How do you decide when AI should make a decision or recommendation?
+
+290
+00:19:22,500 --> 00:19:26,500
+ And what are the absolute no-goes that you need that human element?
+
+291
+00:19:26,500 --> 00:19:29,500
+ Anyone want to jump at that one?
+
+292
+00:19:29,500 --> 00:19:31,500
+ I can answer that.
+
+293
+00:19:31,500 --> 00:19:34,500
+ So I'll try and keep this really short answer.
+
+294
+00:19:34,500 --> 00:19:41,500
+ When I was at Deutsche Bank, there had just been a paper published about 40% of jobs
+
+295
+00:19:41,500 --> 00:19:43,500
+ have been impacted by AI in the next 40 years, I think it was.
+
+296
+00:19:43,500 --> 00:19:46,500
+ It was a paper in 2016.
+
+297
+00:19:46,500 --> 00:19:53,500
+ And I was asked to basically put together something that spoke about the impact of jobs
+
+298
+00:19:53,500 --> 00:19:57,500
+ in the bank from AI over the coming years.
+
+299
+00:19:57,500 --> 00:20:00,500
+ And we were an employer of about 100,000 people at the time.
+
+300
+00:20:00,500 --> 00:20:03,500
+ Many fewer now, I think Deutsche Bank is, but at the time it was 100,000 people.
+
+301
+00:20:03,500 --> 00:20:08,500
+ And I wrote Ben Olsen's paper, and it basically looked at every single job in the economy.
+
+302
+00:20:08,500 --> 00:20:14,500
+ And it broke down what the sort of tasks were involved in each of those jobs, and the propensity
+
+303
+00:20:14,500 --> 00:20:20,500
+ of each of those tasks to be automatable using current technology or things that we could imagine
+
+304
+00:20:20,500 --> 00:20:22,500
+ would be coming into the market for the next few years.
+
+305
+00:20:22,500 --> 00:20:27,500
+ And right at the bottom of the list were hairdressers and plumbers.
+
+306
+00:20:27,500 --> 00:20:29,500
+ And my mum is a hairdresser.
+
+307
+00:20:29,500 --> 00:20:32,500
+ You wouldn't think it perhaps, but she was, is.
+
+308
+00:20:32,500 --> 00:20:40,500
+ And so I went home and I said to my mum, good news mum, hairdressers won't be put out of work by AI.
+
+309
+00:20:40,500 --> 00:20:41,500
+ And she said, oh, why is that?
+
+310
+00:20:41,500 --> 00:20:46,500
+ And I said, well, obviously because hairdressing requires like a high level of dexterity.
+
+311
+00:20:46,500 --> 00:20:49,500
+ And she's like, no, hairdressing's got nothing to do with that.
+
+312
+00:20:49,500 --> 00:20:51,500
+ Hairdressing's really all about therapy.
+
+313
+00:20:51,500 --> 00:20:56,500
+ Hairdressing is really, you know, it's stroking people's ego as much as it is about stroking people's hair.
+
+314
+00:20:56,500 --> 00:21:01,500
+ People talk to their hairdresser about things they couldn't talk to their spouse or their friends
+
+315
+00:21:01,500 --> 00:21:05,500
+ or, you know, they just, you know, want to have a relationship and they want to talk about things.
+
+316
+00:21:05,500 --> 00:21:07,500
+ And that's really what hairdressing is about.
+
+317
+00:21:07,500 --> 00:21:09,500
+ It's all about human touch.
+
+318
+00:21:09,500 --> 00:21:14,500
+ And there was this profound insight that struck me on the train back to London.
+
+319
+00:21:14,500 --> 00:21:17,500
+ And I went into the office and I said, guys, we've thought about this the wrong way.
+
+320
+00:21:17,500 --> 00:21:21,500
+ We should be looking at all the jobs in the bank and we should be analysing which jobs
+
+321
+00:21:21,500 --> 00:21:24,500
+ there's a high level of human touch required.
+
+322
+00:21:24,500 --> 00:21:29,500
+ And those are the jobs we should put a ring around and AI should never, ever, ever touch.
+
+323
+00:21:29,500 --> 00:21:32,500
+ And everything else, well, that's fair game.
+
+324
+00:21:32,500 --> 00:21:39,500
+ And I probably can't say what proportion of 100,000 people in the bank have those high human touch jobs.
+
+325
+00:21:39,500 --> 00:21:41,500
+ But you could imagine it's a very small percentage.
+
+326
+00:21:41,500 --> 00:21:49,500
+ And those four things we identified were creativity, relationship management, strategic thinking and accountability.
+
+327
+00:21:49,500 --> 00:21:54,500
+ And, as I say, in a 100,000 person organisation, those are very, very few things.
+
+328
+00:21:54,500 --> 00:21:58,500
+ If you look at everyone else in the bank, a lot of those people were shuffling paper around,
+
+329
+00:21:58,500 --> 00:22:06,500
+ typing things in from one screen to another screen, doing a lot of things which, you know, even in 2016 we could see was readily automatable.
+
+330
+00:22:06,500 --> 00:22:10,500
+ And certainly today, you know, we'd be very straightforward to automate.
+
+331
+00:22:10,500 --> 00:22:17,500
+ So, I think for me and running an AI company that very much focuses on white collar work and eliminating white collar work,
+
+332
+00:22:17,500 --> 00:22:20,500
+ that's the conversation we have with our customers all the time.
+
+333
+00:22:20,500 --> 00:22:26,500
+ It's like you should be reserving creative, strategic, accountability, and relationship management roles for humans.
+
+334
+00:22:26,500 --> 00:22:28,500
+ And you should not let AI touch those things.
+
+335
+00:22:28,500 --> 00:22:30,500
+ But everything else is fair game.
+
+336
+00:22:30,500 --> 00:22:33,500
+ And let's start going after it.
+
+337
+00:22:33,500 --> 00:22:35,500
+ Nice. Yeah, go for it.
+
+338
+00:22:35,500 --> 00:22:40,500
+ I was going to take a different angle because I grew 100% with everything that you said.
+
+339
+00:22:40,500 --> 00:22:50,500
+ I feel so anti-human in the loop as a backstop that myself and Anderling actually wrote a research paper on a human in the loop.
+
+340
+00:22:50,500 --> 00:22:52,500
+ And it's basically a lot of it's performance art.
+
+341
+00:22:52,500 --> 00:22:57,500
+ So my co-founder flies planes for fun and I spent a decade in the army.
+
+342
+00:22:57,500 --> 00:23:02,500
+ And in both of those spaces, it's recognised that confirmation virus is a really dangerous thing.
+
+343
+00:23:02,500 --> 00:23:08,500
+ And that if you are just going and checking something at the end of a journey, it's a really terrible use of humans.
+
+344
+00:23:08,500 --> 00:23:11,500
+ We are shit at it, to use the shit word again.
+
+345
+00:23:11,500 --> 00:23:18,500
+ And I think there's a real misnomer around the AI space that it's okay if somebody checks it at the end.
+
+346
+00:23:18,500 --> 00:23:22,500
+ All the research clearly says the opposite.
+
+347
+00:23:22,500 --> 00:23:29,500
+ I think we default to that because we haven't got conviction in the tools that we're using to deliver the jobs.
+
+348
+00:23:29,500 --> 00:23:35,500
+ So I would break it down, not only in the way that Charles has done, but when you are looking at how you remove
+
+349
+00:23:35,500 --> 00:23:38,500
+ or you need humans to check work that's being done.
+
+350
+00:23:38,500 --> 00:23:42,500
+ Firstly, using the right tool that can be used to deliver that.
+
+351
+00:23:42,500 --> 00:23:46,500
+ So I'm biased, but a neurosymbolic AI is more accurate than humans.
+
+352
+00:23:46,500 --> 00:23:52,500
+ Why are you then putting somebody else in to only effectively muddy the waters?
+
+353
+00:23:52,500 --> 00:24:00,500
+ But we have this conversation with the FCA regularly that their approach to saying the human in the loop is a backstop.
+
+354
+00:24:00,500 --> 00:24:05,500
+ It isn't and it shouldn't be.
+
+355
+00:24:05,500 --> 00:24:08,500
+ I mean, both opinions are absolutely valid.
+
+356
+00:24:08,500 --> 00:24:15,500
+ The human contact is definitely, if you look at Stanford, the human agency scale, exactly what Charles said.
+
+357
+00:24:15,500 --> 00:24:20,500
+ I think it doesn't tell you, you still need people who do that due diligence.
+
+358
+00:24:20,500 --> 00:24:23,500
+ So talking about verifying things at the end.
+
+359
+00:24:23,500 --> 00:24:24,500
+ Is that up from work?
+
+360
+00:24:24,500 --> 00:24:27,500
+ In the neurosymbolic world, you have to do it.
+
+361
+00:24:27,500 --> 00:24:31,500
+ Because you have to explain the ontology to an AI and give you the right context.
+
+362
+00:24:31,500 --> 00:24:35,500
+ So that attention to detail is still going to be important.
+
+363
+00:24:35,500 --> 00:24:41,500
+ And God knows AI tempts me every day to shlop it away in five minutes because it's so good.
+
+364
+00:24:42,500 --> 00:24:46,500
+ But I realize sometimes that what I've created is no longer my own.
+
+365
+00:24:46,500 --> 00:24:49,500
+ So I've reverted back to say give me the option.
+
+366
+00:24:49,500 --> 00:24:51,500
+ I want to make those decisions because I have to present it.
+
+367
+00:24:51,500 --> 00:24:55,500
+ Otherwise, I'm going to look like a lemon by something that's superbly produced.
+
+368
+00:24:55,500 --> 00:24:57,500
+ But I have very little input in it.
+
+369
+00:24:57,500 --> 00:25:02,500
+ So again, that work up front, you know, laws of conservation is super important.
+
+370
+00:25:03,500 --> 00:25:04,500
+ Just checking on time.
+
+371
+00:25:04,500 --> 00:25:07,500
+ I think just under ten minutes are we, Jim?
+
+372
+00:25:07,500 --> 00:25:08,500
+ Five, five.
+
+373
+00:25:08,500 --> 00:25:09,500
+ So we've got a couple more questions.
+
+374
+00:25:09,500 --> 00:25:11,500
+ And then we'll be coming to the audience if you will.
+
+375
+00:25:11,500 --> 00:25:13,500
+ So do get some questions ready.
+
+376
+00:25:13,500 --> 00:25:15,500
+ So, Oliver, over to you.
+
+377
+00:25:15,500 --> 00:25:18,500
+ Your business has gone on the transformation journey.
+
+378
+00:25:18,500 --> 00:25:21,500
+ So tell us about your experience and perhaps what you've learned that people can take away.
+
+379
+00:25:21,500 --> 00:25:24,500
+ Say, right, this is the definite no's or the definite yes.
+
+380
+00:25:24,500 --> 00:25:28,500
+ Now, we love process.
+
+381
+00:25:28,500 --> 00:25:35,500
+ So I had the fortune of working for the Japanese for the first ten years of my career.
+
+382
+00:25:35,500 --> 00:25:44,500
+ And their attention to precision is like no other society on earth.
+
+383
+00:25:44,500 --> 00:25:47,500
+ It's just, they love precision.
+
+384
+00:25:47,500 --> 00:25:49,500
+ And it embedded me.
+
+385
+00:25:49,500 --> 00:25:53,500
+ I'm very grateful to spend many years over there.
+
+386
+00:25:53,500 --> 00:26:01,500
+ But in our, in my world, where we make hardware, but also, you know, offer the software solutions.
+
+387
+00:26:01,500 --> 00:26:02,500
+ Everything's a process.
+
+388
+00:26:02,500 --> 00:26:05,500
+ You know, from when you brush your teeth in the morning.
+
+389
+00:26:05,500 --> 00:26:06,500
+ How you get to work.
+
+390
+00:26:06,500 --> 00:26:08,500
+ To how you quote for your sales.
+
+391
+00:26:08,500 --> 00:26:10,500
+ To how you write a program.
+
+392
+00:26:10,500 --> 00:26:12,500
+ To how you pick the metal.
+
+393
+00:26:12,500 --> 00:26:13,500
+ To how you machine the metal.
+
+394
+00:26:13,500 --> 00:26:15,500
+ Everything is a process.
+
+395
+00:26:15,500 --> 00:26:17,500
+ And we dial that in.
+
+396
+00:26:17,500 --> 00:26:22,500
+ And we teach our people the discipline to follow those processes.
+
+397
+00:26:22,500 --> 00:26:34,500
+ And what I, I've come to realize is that gave us the best ever foundation for, for AI and automation.
+
+398
+00:26:34,500 --> 00:26:41,500
+ And, and we're able to put things through at such a faster pace than, than, than anyone else.
+
+399
+00:26:41,500 --> 00:26:46,500
+ And, and UK, you know, we've unfortunately quite sloppy in how we, we do work.
+
+400
+00:26:46,500 --> 00:26:48,500
+ But if you have discipline.
+
+401
+00:26:48,500 --> 00:26:52,500
+ You know, everyone, everyone in this audience.
+
+402
+00:26:52,500 --> 00:26:54,500
+ You follow a process your whole life.
+
+403
+00:26:54,500 --> 00:26:58,500
+ You know, whether it's you, whether it's at home or at work.
+
+404
+00:26:58,500 --> 00:27:02,500
+ And, and, you know, don't waste your life or your work away.
+
+405
+00:27:02,500 --> 00:27:04,500
+ So, you know, so get your process optimized.
+
+406
+00:27:04,500 --> 00:27:09,500
+ If you can, if you can build that foundation in.
+
+407
+00:27:09,500 --> 00:27:14,500
+ I think that AI and automation is a phenomenal tool on top of it.
+
+408
+00:27:14,500 --> 00:27:22,500
+ And I think that's where we found we've accelerated so much quicker than what we're seeing, you know, around the UK and Europe.
+
+409
+00:27:22,500 --> 00:27:29,500
+ And I think now, you know, personally for me, you know, I was, I was with a number of Chinese businesses.
+
+410
+00:27:29,500 --> 00:27:32,500
+ China on the manufacturing side are the world leaders at the moment.
+
+411
+00:27:32,500 --> 00:27:36,500
+ I mean, what they're doing on end to end automation is insane.
+
+412
+00:27:36,500 --> 00:27:43,500
+ And half of me lives the optimist and half of me lives as a, you know, paranoid.
+
+413
+00:27:43,500 --> 00:27:52,500
+ And, you know, and I worry that they will, or the competition will come and take everything from me in the next couple of years or few years.
+
+414
+00:27:52,500 --> 00:27:55,500
+ And then the other side of me thinks, wow, I'm doing really good.
+
+415
+00:27:55,500 --> 00:27:57,500
+ I'll, I'll, I'll, I'll do incredibly well.
+
+416
+00:27:57,500 --> 00:28:08,500
+ So I, I think that foundational side, you know, you know, and it's another pillar, having that clear vision and vectors, but that foundational piece is really crucial.
+
+417
+00:28:08,500 --> 00:28:10,500
+ And, you know, that's why I'm here today.
+
+418
+00:28:10,500 --> 00:28:21,500
+ The conversation we had earlier, the conversation last night with the team, I've learned so much that I'm taking into our three manufacturing businesses.
+
+419
+00:28:21,500 --> 00:28:28,500
+ And I, and I, and I think I encourage people to actually step out of their industry and go and see what others are doing on, on AI and automation.
+
+420
+00:28:28,500 --> 00:28:32,500
+ Because it might just, again, that's the creativity, like Charles was talking about.
+
+421
+00:28:32,500 --> 00:28:33,500
+ It just sparks.
+
+422
+00:28:33,500 --> 00:28:34,500
+ I'm like, oh, wow.
+
+423
+00:28:34,500 --> 00:28:38,500
+ I mean, you know, actually I can apply that into, into my sector.
+
+424
+00:28:38,500 --> 00:28:52,500
+ So, so I think that's, you know, something that we should all get stuck in your own little hole, but actually go out and speak to other people, get into, you know, if you want to come and visit us down in Margham, you know, we've got a factory.
+
+425
+00:28:52,500 --> 00:28:58,500
+ Come and, come and see us and see what we're doing, but it might change the way you approach some of the work you do.
+
+426
+00:28:58,500 --> 00:29:07,500
+ And I think that's what it's about, you know, when humans have the most phenomenal brains and incredible creativity, but you need to feed it, don't you?
+
+427
+00:29:07,500 --> 00:29:08,500
+ You need to feed that.
+
+428
+00:29:08,500 --> 00:29:09,500
+ Definitely.
+
+429
+00:29:09,500 --> 00:29:10,500
+ Right.
+
+430
+00:29:10,500 --> 00:29:12,500
+ One very quick question then before we come to the audience.
+
+431
+00:29:12,500 --> 00:29:21,500
+ So given that we are at serverless days today, it'd be interesting to hear sort of where serverless or cloud native architecture fit into your AI strategies.
+
+432
+00:29:21,500 --> 00:29:23,500
+ Anything you want to share with the audience?
+
+433
+00:29:23,500 --> 00:29:25,500
+ I mean, I'll say nothing interesting.
+
+434
+00:29:25,500 --> 00:29:26,500
+ Everything is.
+
+435
+00:29:26,500 --> 00:29:30,500
+ And everything, you know, will be on a going forward basis.
+
+436
+00:29:30,500 --> 00:29:33,500
+ Yeah, nothing more to run from that.
+
+437
+00:29:33,500 --> 00:29:38,500
+ I mean, generally, the cloud accessibility is fantastic.
+
+438
+00:29:38,500 --> 00:29:41,500
+ They have the biggest and the best models.
+
+439
+00:29:41,500 --> 00:29:46,500
+ I'll be honest, I'm starting to look at SLMs and, you know, open wide models as well.
+
+440
+00:29:46,500 --> 00:29:48,500
+ All this kind of sovereignty thing.
+
+441
+00:29:48,500 --> 00:29:51,500
+ I think it's quite interesting as well.
+
+442
+00:29:51,500 --> 00:29:58,500
+ And I think looking at the serverless, I think there might be a chance for, you know, the rack space of this world in China.
+
+443
+00:29:58,500 --> 00:30:06,500
+ We got steamrolled by AWS and the hyperscalers to actually create something that could be sovereign.
+
+444
+00:30:06,500 --> 00:30:10,500
+ I want to say European, you know, not from the US or China.
+
+445
+00:30:10,500 --> 00:30:12,500
+ So this is something I find fascinating.
+
+446
+00:30:12,500 --> 00:30:15,500
+ I don't know whether I could implement something like that.
+
+447
+00:30:15,500 --> 00:30:17,500
+ I think Charles probably have got a better answer than me for that.
+
+448
+00:30:17,500 --> 00:30:25,500
+ But, yeah, I wonder what, you know, Serverless, for example, would do in that sovereignty domain and so on.
+
+449
+00:30:25,500 --> 00:30:29,500
+ Because I think that's an attractive proposition for immobiles, for governments and so on.
+
+450
+00:30:29,500 --> 00:30:30,500
+ Yeah.
+
+451
+00:30:30,500 --> 00:30:38,500
+ I mean, for us, firstly, incredibly grateful to AWS for the free credits we've had for the last few years.
+
+452
+00:30:38,500 --> 00:30:40,500
+ We wouldn't be here without you.
+
+453
+00:30:40,500 --> 00:30:47,500
+ I'm grateful to people like Google for fucking up yesterday and turning off things like Revoluts.
+
+454
+00:30:47,500 --> 00:30:49,580
+ Because that was really helpful as well.
+

@@ -1,0 +1,125 @@
+as well, and why every model call should stay inside a step, so Replay never asks the model
+again. So I have a blog post as well about reason, you can find it in one of the links
+at the end as well. So let's talk about state. We've looked at execution history, that's
+been the entire conversation so far, and that holds until that conversation outlives a single
+execution, or if it moves to another channel. So there are two kinds of state when it comes
+to these conversational agents. First, what each of these holds. So the durable execution
+state, it is for recovery, which operations ran, what they returned, which callback is
+pending, and agent storage on the other hand is for context, what the customer said and
+what was agreed upon. And then the scope. Execution state belongs to one execution of
+one function. Agent storage, it belongs to the customer. It is across different executions,
+across different channels, like I said before, SMS, WhatsApp, voice, whatever that might be,
+and it's across agents. And that's the one that makes a phone call, for instance, work as well.
+And then we have lifetime. When an execution ends, the history within the Lambda console for
+that execution is kept for up to 90 days. It's configurable. But the agent storage, well,
+that lives for as long as you want it to stay. And then who reads it? Well, the runtime reads
+execution state every time we do a replay. And any agent can read agent storage. And that includes us as
+humans can read it using our tools as well. So the execution makes sure that we never send
+the same message twice. But agent storage makes sure that the customer never has to repeat themselves
+because we have that conversational history stored. And that sits in the architecture diagram just like this.
+This is DynamoDB. It could be any type of storage as well. We are using DynamoDB. We're keying it to a customer.
+In this case, I've been using, there is a storage library for Strands Agent SDK called Strands
+Agents DynamoDB Storage Library. I think it's version 0.1 so far, so maybe not production ready.
+But the way it works is a great way to be able to store this type of conversational history across customers.
+So let's just follow this then and add on another channel to it. Because so far we have messages.
+But what happens when the customer wants to call? Well, let's say then that we have a few beads.
+We're going to follow the yellow here. The call starts. The customer is going to now dial the same number
+that they've been texting all along. So we're sending a call incoming to a regular Lambda function.
+It is now going to find that customer using the caller ID. And it's completing that pending reply callback
+that we have in the execution history. And it's going to tell us to connect the call to our voice agent
+with the customer ID in the header so we know who the customer is. The voice agent, it runs on target.
+And it's going to hold the web socket open for us through the entire call. And it can then read the context
+from the agent storage that we had in DiamondDB. So it can open with, well, I see you wanted to move Wednesday's appointment.
+Because it knows that from the agent storage. And we're doing then a speech to text, text to speech in this voice relay. And the agents, strands agents on bedrock, we just see it.
+The text turns. So you can use bedrock with that text to be able to give a reply back. None of this touches the durable execution. Checkpointing on every sentence in a voice call would add a lot of latency and honestly wouldn't recover anything.
+So while we are waiting, the coordinator is waiting for that call, it isn't running. It is still just suspended as of now.
+Same as with that hour-long job that we saw before. Something outside is going to do that callback.
+And now it's a phone call. But then the call ends, the customer hangs up. Now the agent is going to write the call summary
+And it's going to complete call ended with whatever was agreed. Moving the appointment to 9am on Wednesday, for instance.
+Now the coordinator, the durable function, is going to resume again. And the specialist can now book it using that summary from the voice call and send out a confirmation text message.
+So let's walk through this now. From the beginning. We have the customer phone on the left, agent storage on the right.
+The reminder goes out. It's saved as the first turn. It is going to be keyed by that customer so we know who it belongs to.
+Can we reschedule? The agent then offers two slots on Thursday. A return goes into the same customer's partition in the agent storage.
+Three hours pass. The execution is suspended. Nothing runs. Then easier to just call.
+And then they call the number that they've been texting. So switching over to the call instead.
+Before the voice agent says a word, the voice agent is going to read the summary from the agent storage so it knows what has happened so far.
+It's using that customer ID that came in through the call headers.
+It opens with the context. You wanted to move Wednesday's appointment. No one has to repeat anything.
+The voice agent agrees on 10. It doesn't book. It doesn't have write access. Because that's the booking agent.
+The customer hangs up. Call ended completes with what was agreed and the coordinator resumes where it was suspended.
+The booking specialist can now book and the confirmation goes out through SMS back in the thread where it started.
+So it's one execution, the text, the call and the follow up.
+The customer changes channel. Twice in this case. And the system still knew where the conversation was.
+What had been done and what it mustn't do again. That's why.
+And here's that same conversation. But as a trace this time.
+Turn one. The webhook. The coordinator invocation. Routing. The specialist with its bedrock call nested inside.
+The send and the wait for the next reply.
+Three hours later a new invocation. And the same trace.
+We're using open telemetry. There is a plugin or an SDK for durable functions.
+I think it's still in preview. It works really well already.
+And it joins it all that way. Using this same conversation ID.
+And the voice call. It runs, like we showed, outside of the durable execution.
+But it's going to keep that same conversation ID. And meaning that it can join in on that same trace as well.
+So the execution history tells you what one execution did.
+The trace tells you what happened end to end in this entire conversation.
+And to know whether it's helping customers, you have to record the model, the prompt version, and maybe the validation results for every turn as well.
+Like I said, the SDK is still in preview, but it is working really well already.
+So let's look just at a few production controls. Things that make this work.
+And I think there's six decisions. First off, deploys. An execution is going to be pinned to that specific version that started it.
+You know, when you update the Lambda function with new code, it's going to generate a new version.
+And the execution is pinned to that. When you invoke it as a version or as an alias.
+So you should publish your versions and you shouldn't rename steps while old executions can still receive those.
+And there are side effects. Remember to use idempotency keys that I showed in an earlier step as well.
+And you should have at most ones for sends, like messages, for instance.
+Retrys happen per step. If the execution itself fails, nothing is going to retry it.
+So you need to have a dead letter cube in place, for instance, or a status event that can clean up these as well.
+And finding the execution. To be able to have a callback through a webhook, for instance, that is able to resume that correct execution,
+you need to find that execution id. I tried using APIs for this, but the API to list that,
+it defaults to 15 requests per second, which is probably fine in a demo environment.
+But once you move this to production, that's not going to hold.
+So you need to be able to store that, the callback id per conversation, so you can easily list it as well.
+The callback API defaults to 6,000 requests per second, which is obviously not better.
+Timeouts and double texts, you need to decide what happens when nobody replies, and when a second message arrives mid-turn as well.
+And the last one isn't visible for me. Here we go.
+So we have the limits as well. Yes.
+So 30,000 operations and 100 megabytes of checkpoint data per execution is worth knowing as well.
+So they've just increased these limits on the service quite a lot to be able to enable a lot more different use cases.
+So there are a few questions I want you to ask yourself when you are deciding a system using durable execution to make sure that you're actually ready for it.
+And each one of these is something that I've walked through so far.
+So first off, do in-flight executions keep the version they started?
+And that's invoking a version or an alias.
+As I said, it's going to be pinned to a specific version.
+Is every model called, generated id, timestamp, uuids, and so on, are they in such a step?
+And that's the replay rule that I showed early on.
+Which of your steps have side effects and what stops them from running twice?
+Think about sending message or it could be doing a bank transfer for instance.
+Using the idempotency key and at most is important.
+And how does a replay find its callback without listing executions?
+So you need to store that callback id somewhere when you start waiting for it.
+And what happens when a callback never completes?
+Or if an execution fails entirely?
+Think about timeouts, heartbeats, and have something that is able to clean it up as well.
+So if you don't have answers to one of these, maybe that's work left to be due before you're able to actually launch it.
+If you want to try this, pick one flow that already waits.
+Something that you are building that could be a reminder system, an approval thing, or a follow-up of some sort.
+And build that using durable functions.
+I think we have a lot of stuff already that's either built around queues or state tables and so on.
+If you want to try this out, I have some code samples that you can try out on GitHub.
+With simple durable execution workflows that you can try both locally and you can deploy them as well.
+And if you're building durable functions, do check out the durable viz extension that you can run in your IDE.
+It allows you to visualize the workflows in a way that makes it easier to follow along as well.
+So, the customer who wrote "Can we reschedule?"
+It should never need to know how many Lambda invocations, retries, or channels were behind the answer.
+That's the thing that we as developers need to fix.
+The execution makes sure that we never send the same message twice.
+Agent storage makes sure that the customer never has to repeat themselves.
+And the execution history of Lambda Durable Functions can't tell you when every PI was wrong.
+So you have to build the checks that make that work.
+And with that, I want to thank you all for being in this session and for being here today at serverless days.
+Thank you so much.
+Thank you so much.
+Thank you so much.
+Thank you so much.
+Thank you.
+So this is - we're just going into a break.
+So this is - we're just going into a break.

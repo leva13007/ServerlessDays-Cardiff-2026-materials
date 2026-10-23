@@ -1,0 +1,616 @@
+1
+00:00:00,000 --> 00:00:29,980
+ Thank you.
+
+2
+00:00:30,000 --> 00:00:59,980
+ Thank you.
+
+3
+00:01:00,000 --> 00:01:29,980
+ Thank you.
+
+4
+00:01:30,000 --> 00:01:59,980
+ Thank you.
+
+5
+00:02:00,000 --> 00:02:29,980
+ Thank you.
+
+6
+00:02:30,000 --> 00:02:59,980
+ Thank you.
+
+7
+00:03:00,000 --> 00:03:21,980
+ So, thank you for your patience, everybody.
+
+8
+00:03:22,200 --> 00:03:24,600
+ We've had serious technical problems with you there.
+
+9
+00:03:24,600 --> 00:03:29,540
+ So, Rob is going to do his talk, just a bit of a lighter talk, just to give us an insight.
+
+10
+00:03:30,000 --> 00:03:35,200
+ about how AI impacts the security operations center,
+
+11
+00:03:35,200 --> 00:03:37,200
+ the pure cyber run.
+
+12
+00:03:37,200 --> 00:03:39,360
+ Thank you, Ron. Apologies to the Gremlins.
+
+13
+00:03:39,360 --> 00:03:41,040
+ Give me a big round of applause, Ron.
+
+14
+00:03:48,040 --> 00:03:49,480
+ - Cool. Right. Hi, everyone.
+
+15
+00:03:49,480 --> 00:03:51,320
+ So we're gonna have to do this a bit differently
+
+16
+00:03:51,320 --> 00:03:54,920
+ as I have no slides, but that's fine.
+
+17
+00:03:56,040 --> 00:03:57,160
+ So last talk of the day.
+
+18
+00:03:57,160 --> 00:03:58,880
+ So I will keep this quite brief,
+
+19
+00:03:58,880 --> 00:04:03,140
+ But I'm here to talk to you about AI within the SOC.
+
+20
+00:04:03,400 --> 00:04:07,500
+ For those who don't know what the SOC is, not the one that goes on your foot,
+
+21
+00:04:07,720 --> 00:04:09,600
+ but the Security Operations Centre.
+
+22
+00:04:09,600 --> 00:04:11,660
+ So I'm CTO of Pure Cyber.
+
+23
+00:04:12,860 --> 00:04:17,460
+ We're a local Cardiff-based managed service provider for cybersecurity.
+
+24
+00:04:18,680 --> 00:04:20,280
+ Governors, we do pen testing.
+
+25
+00:04:20,460 --> 00:04:22,540
+ And one of the other things we do is defensive security,
+
+26
+00:04:22,820 --> 00:04:25,520
+ which is sort of my passion and the area I look after.
+
+27
+00:04:26,320 --> 00:04:43,320
+ So, we've had, see AIs, we've heard lots of great talks today about how people are interested in AI, serverless technologies, I am again a big user of serverless, but thinking about how we use AI within cyber security.
+
+28
+00:04:43,320 --> 00:05:05,480
+ So, historically, cybersecurity is heavily human-focused, it's very much log-based, we're talking millions, sometimes billions of rows of logs, and what we traditionally do would be having some detections done over the top, some detection engineers, they would come in, they would curate rules, schedules, etc.
+
+29
+00:05:06,300 --> 00:05:09,820
+ that would in turn turn into alerts which someone would go and investigate.
+
+30
+00:05:10,400 --> 00:05:11,200
+ Always a human.
+
+31
+00:05:11,820 --> 00:05:13,420
+ Now, we still have humans.
+
+32
+00:05:13,740 --> 00:05:16,200
+ Humans are the most important part in that chain.
+
+33
+00:05:16,520 --> 00:05:20,020
+ But what we're able to do now is sort of speed up a lot of that process.
+
+34
+00:05:20,740 --> 00:05:25,080
+ So, if we took an example where we had three alerts,
+
+35
+00:05:25,160 --> 00:05:27,800
+ it could be an unusual sign-in from another country.
+
+36
+00:05:28,080 --> 00:05:33,220
+ It could be 10 minutes later, an unrecognised device we've never seen.
+
+37
+00:05:33,520 --> 00:05:39,940
+ 20 minutes later, it might be that we've had 5,000 email messages read or Xlustraded or exported up.
+
+38
+00:05:40,620 --> 00:05:42,320
+ Isolated, they might mean nothing.
+
+39
+00:05:43,280 --> 00:05:46,120
+ But together, they might give us a pattern or an indicator of attack.
+
+40
+00:05:46,680 --> 00:05:54,880
+ So, historically, building those rules, then investigating those pivots, external sources,
+
+41
+00:05:54,880 --> 00:05:59,100
+ was very human-focused and takes a lot of time.
+
+42
+00:05:59,100 --> 00:06:05,900
+ Now, before the event of AI, we've automated in this space before, but it's traditional automation.
+
+43
+00:06:06,120 --> 00:06:11,760
+ So everything is very fixed. It usually needs engineers, and it's point in time.
+
+44
+00:06:11,880 --> 00:06:16,200
+ If anything changes, we need to go and change our automation to consider the flow.
+
+45
+00:06:16,880 --> 00:06:19,520
+ Now, what does a SOC do?
+
+46
+00:06:19,680 --> 00:06:22,680
+ So fundamentally, we're a 24-7 team.
+
+47
+00:06:23,380 --> 00:06:27,380
+ We're the 24-7 on-call team, 365 days a year,
+
+48
+00:06:27,380 --> 00:06:37,000
+ and we're responding to alerts, we're taking action if needed for a variety of different companies and sectors within pure cyber.
+
+49
+00:06:37,420 --> 00:06:41,980
+ But a SOC is always there, it's always on, and we're there to provide assurance for companies.
+
+50
+00:06:42,420 --> 00:06:48,820
+ So what we usually do is we get told of something if someone wants to report, or usually we've seen it through our signals.
+
+51
+00:06:49,280 --> 00:06:56,640
+ We would then do some investigation, we would then respond if we needed to, and then there would be any lessons learned.
+
+52
+00:06:56,640 --> 00:07:02,000
+ that might be actually this is completely denying we get it every day at 3 o'clock you need to tune
+
+53
+00:07:02,000 --> 00:07:06,960
+ that alert or it might be something that actually we found a real incident how are we going to deal
+
+54
+00:07:06,960 --> 00:07:12,240
+ with that how are we going to stop that happening again so that's great i've talked about the
+
+55
+00:07:12,240 --> 00:07:19,840
+ defensive side but actually how's ai changed for the attacker so i'm sure everyone here has had
+
+56
+00:07:20,800 --> 00:07:27,520
+ phishing emails have you noticed they're spelt a bit better than not all of them i do think why
+
+57
+00:07:27,520 --> 00:07:32,480
+ aren't you using an llm when i get the ones that are still terrible but it's enabled attackers to
+
+58
+00:07:32,480 --> 00:07:40,240
+ really just speed up what they do and the quality of what they do um also reconnaissance targeted
+
+59
+00:07:40,240 --> 00:07:46,160
+ attacks targeted that would take time people have to go out they have to do research um look for
+
+60
+00:07:46,160 --> 00:07:52,880
+ exposed assets look for vulnerabilities look for particular people you may want to target now
+
+61
+00:07:54,000 --> 00:08:00,720
+ llm's ai's just speed that up so so an attacker could now say right i'm looking at company x
+
+62
+00:08:00,720 --> 00:08:05,200
+ giving everything you know tell me who the network engineers are tell me who the admins might be
+
+63
+00:08:05,200 --> 00:08:12,240
+ that then they can start to target so malware um i think some of the the frontier models have got
+
+64
+00:08:12,240 --> 00:08:18,640
+ pretty good at this and putting their guardrails in place but malware it's so quick for them to
+
+65
+00:08:18,640 --> 00:08:24,080
+ just change it modify it change the signature spin it back up so to try and get around av
+
+66
+00:08:24,080 --> 00:08:32,240
+ protection etc and deepfakes being able to mimic humans whether it's through voice trying to
+
+67
+00:08:32,240 --> 00:08:40,240
+ manipulate help desk we all saw how that went for one large company last year and just yeah so that
+
+68
+00:08:40,240 --> 00:08:45,160
+ prevalent rise of actually we're using it for defense also the attackers are
+
+69
+00:08:45,160 --> 00:08:49,600
+ also using it it's nothing we haven't seen before what we're seeing now it's
+
+70
+00:08:49,600 --> 00:08:57,220
+ the volume and the speed is increased massively so yeah we are main use of they
+
+71
+00:08:57,220 --> 00:09:02,140
+ are currently now you'll hear a lot of buzzwords around security at the moment
+
+72
+00:09:02,140 --> 00:09:07,900
+ of agentic socks and automating the humans out of the loop and that's great
+
+73
+00:09:07,900 --> 00:09:10,440
+ and that's marketing for some companies.
+
+74
+00:09:10,860 --> 00:09:14,200
+ It's not really where it is actually on the ground at the moment.
+
+75
+00:09:14,420 --> 00:09:16,120
+ Humans are still a human part of it.
+
+76
+00:09:16,400 --> 00:09:21,880
+ What it does is it enables the analysts to just focus on what they need to focus on
+
+77
+00:09:21,880 --> 00:09:23,240
+ and try and cut through the noise.
+
+78
+00:09:23,700 --> 00:09:28,900
+ A lot of what a security team will look at most days is benign.
+
+79
+00:09:29,820 --> 00:09:36,720
+ It's mostly sort of looking through a needle in a haystack type scenario.
+
+80
+00:09:36,720 --> 00:09:40,800
+ So it just allows us to cut some of that noise down and really focus on the signals that matter.
+
+81
+00:09:41,940 --> 00:09:45,760
+ And actually talking about that detection engineering, it's quite a complex thing to do.
+
+82
+00:09:46,480 --> 00:09:49,340
+ A lot of the security products all support different languages.
+
+83
+00:09:50,640 --> 00:09:55,800
+ So to try and do that at scale across different technologies and understand that,
+
+84
+00:09:56,160 --> 00:09:58,820
+ it helps our detection engineers write their detections.
+
+85
+00:09:58,900 --> 00:10:00,120
+ It also helps them translate.
+
+86
+00:10:00,360 --> 00:10:04,700
+ If we're running, might be running Microsoft Sentinel here, we might have Splunk over here.
+
+87
+00:10:05,060 --> 00:10:11,040
+ Actually having a common base of rules that we can then apply and translate and tune at scale.
+
+88
+00:10:11,620 --> 00:10:18,340
+ We can also use it for testing, for historically looking and going back and sort of working out the fidelity and the quality of our rules.
+
+89
+00:10:18,800 --> 00:10:28,240
+ And then reporting, a bit that no one likes to do, whether you're writing documentation for code or you're an analyst and you're reporting on some findings.
+
+90
+00:10:28,820 --> 00:10:33,120
+ What it also allows us to do is sort of standardise that reporting.
+
+91
+00:10:33,120 --> 00:10:38,720
+ So we've got the data, we've got the grounding data that we need to generate those reports.
+
+92
+00:10:38,840 --> 00:10:43,720
+ We can actually then spin out different report personas and standardize the output.
+
+93
+00:10:44,100 --> 00:10:47,960
+ So analyst A, analyst B, or analyst C, the customer gets a consistent approach.
+
+94
+00:10:54,960 --> 00:10:56,920
+ This laptop is not having a good day.
+
+95
+00:10:57,260 --> 00:10:59,220
+ I think I'm going to have to get a new, this is brand new as well.
+
+96
+00:11:00,620 --> 00:11:14,000
+ When we create these rules, we treat them like code. I'm a tech guy who has ended up working in cybersecurity for quite a few years now, but historically a developer, and that's my sort of background.
+
+97
+00:11:14,920 --> 00:11:27,780
+ So we now treat these rules like code, but we can describe them in plain text. We can run it against it, as we've already seen, and we can find out how it's firing and why it's firing.
+
+98
+00:11:29,420 --> 00:11:48,660
+ So this is all great, but that's the reason why at the moment we're using it to aid and assist instead of making those assumptions of deterministic outcomes is because you might get, it looks at something, it goes, oh, I've checked this IP, it's fine, I've checked that, it's fine.
+
+99
+00:11:48,660 --> 00:11:51,220
+ But it's like, well, what have you checked?
+
+100
+00:11:51,300 --> 00:11:52,000
+ How have you checked it?
+
+101
+00:11:52,060 --> 00:11:53,160
+ What source have you used?
+
+102
+00:11:53,640 --> 00:11:54,740
+ Have you looked?
+
+103
+00:11:54,940 --> 00:11:57,560
+ Is that some data that you've seen from six months ago?
+
+104
+00:11:57,620 --> 00:11:59,420
+ Is it actually real or reflective now?
+
+105
+00:11:59,860 --> 00:12:02,280
+ So we still want humans in that loop.
+
+106
+00:12:03,980 --> 00:12:06,120
+ Like I said, it's just speeding them up.
+
+107
+00:12:06,580 --> 00:12:11,380
+ It also, at the moment, to make those deterministic outcomes,
+
+108
+00:12:11,820 --> 00:12:14,200
+ it's not just a case of getting better models
+
+109
+00:12:14,200 --> 00:12:19,200
+ or writing better problems or building better agencies.
+
+110
+00:12:19,200 --> 00:12:22,200
+ It's actually looking at all the playbooks historically
+
+111
+00:12:22,200 --> 00:12:25,200
+ and all the things that we've done have always been designed
+
+112
+00:12:25,200 --> 00:12:27,200
+ around humans and human understanding.
+
+113
+00:12:27,200 --> 00:12:30,200
+ And actually, if you point a model at some of these
+
+114
+00:12:30,200 --> 00:12:32,200
+ or ground with these playbooks to say,
+
+115
+00:12:32,200 --> 00:12:35,200
+ take these actions in this way, they're written for humans.
+
+116
+00:12:35,200 --> 00:12:38,200
+ It's not written for an AI agent.
+
+117
+00:12:38,200 --> 00:12:41,200
+ So it doesn't always do it in the same way.
+
+118
+00:12:41,200 --> 00:12:43,200
+ And that's why it's actually making sure for us
+
+119
+00:12:43,200 --> 00:12:48,400
+ for us, that everything that we now do, we set up for AI, but we think about it in a
+
+120
+00:12:48,400 --> 00:12:56,480
+ different way. We have to be a lot more specific. So big rules of what we're doing is client
+
+121
+00:12:56,480 --> 00:13:01,000
+ data needs to stay in the boundary that the client agreed to. And when we're working,
+
+122
+00:13:01,200 --> 00:13:08,600
+ we're an MSP, so we work with lots of companies, all have different requirements. They have
+
+123
+00:13:08,600 --> 00:13:12,760
+ different agreements with us in terms of authorities to act or things we can get involved
+
+124
+00:13:12,760 --> 00:13:16,340
+ and things we can't. So it's really important that we need to make sure that we have that
+
+125
+00:13:16,340 --> 00:13:25,520
+ really good grounding before we allow an LLM to go away and just modify or make outcomes
+
+126
+00:13:25,520 --> 00:13:31,280
+ on a customer's environment. And then again, when it comes to actions, at the moment, within
+
+127
+00:13:31,280 --> 00:13:38,220
+ our setup, some other companies are different. A lot of what we're using AI agents for is
+
+128
+00:13:38,220 --> 00:13:43,580
+ it's we only really, it's making, it's helping, it's assisting, it's providing recommendations,
+
+129
+00:13:44,400 --> 00:13:46,520
+ it's not currently taking action.
+
+130
+00:13:47,140 --> 00:13:50,960
+ Now it can, but we've got that turned off at the moment, and it's something that we're
+
+131
+00:13:50,960 --> 00:13:52,060
+ constantly evaluating.
+
+132
+00:13:53,540 --> 00:13:59,700
+ If it were to do that, for anything of a certain confidence, Chloe would always go to a human
+
+133
+00:13:59,700 --> 00:14:00,400
+ for approval.
+
+134
+00:14:00,820 --> 00:14:04,160
+ And as one of the speakers said earlier, that is, it can be quite dangerous because they
+
+135
+00:14:04,160 --> 00:14:07,800
+ might start taking that sort of literally, and a human is just going to get used to going,
+
+136
+00:14:07,800 --> 00:14:09,700
+ and okay, yeah, they said it's fine, it said it's fine.
+
+137
+00:14:09,820 --> 00:14:12,980
+ So it's about making sure that your internal processes
+
+138
+00:14:12,980 --> 00:14:17,020
+ and your internal QA catches that
+
+139
+00:14:17,020 --> 00:14:20,520
+ and makes sure that a human is still doing what they always did,
+
+140
+00:14:20,600 --> 00:14:22,060
+ we're just doing it a lot quicker.
+
+141
+00:14:23,500 --> 00:14:25,020
+ So what changes on each side?
+
+142
+00:14:25,160 --> 00:14:27,200
+ So just to sum up, for the attacker, it's cheaper,
+
+143
+00:14:27,740 --> 00:14:29,200
+ it's faster, more convincing,
+
+144
+00:14:29,920 --> 00:14:33,480
+ but it's the same intent, just more attempts per day.
+
+145
+00:14:34,480 --> 00:14:37,000
+ For us, it's less of the day collecting evidence,
+
+146
+00:14:37,220 --> 00:14:43,040
+ less of the day trawling through, writing large queries, and more deciding what we need
+
+147
+00:14:43,040 --> 00:14:46,980
+ to do, and piecing those sort of dots together ourselves.
+
+148
+00:14:50,080 --> 00:14:54,400
+ So, really sorry I couldn't show you the slides, and I had some cool examples and stuff, but
+
+149
+00:14:54,400 --> 00:14:59,840
+ just thought I'd talk you through that anyway. But yeah, if anyone wants to sort of find out
+
+150
+00:14:59,840 --> 00:15:04,760
+ a little bit more about cybersecurity, or SOX in general, on how we're using agentic
+
+151
+00:15:04,760 --> 00:15:10,180
+ agents, drop me a message on LinkedIn, and I'd be more than happy to discuss.
+
+152
+00:15:10,460 --> 00:15:12,900
+ And thank you very much, and sorry for the technical difficulties.
+
+153
+00:15:14,020 --> 00:15:14,960
+ Thank you very much.
+
+154
+00:15:15,140 --> 00:15:17,220
+ Thanks, Robbie, for all the two really difficult...
+

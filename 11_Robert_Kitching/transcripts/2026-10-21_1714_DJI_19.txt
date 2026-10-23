@@ -1,0 +1,154 @@
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+So, thank you for your patience, everybody.
+We've had serious technical problems with you there.
+So, Rob is going to do his talk, just a bit of a lighter talk, just to give us an insight.
+about how AI impacts the security operations center,
+the pure cyber run.
+Thank you, Ron. Apologies to the Gremlins.
+Give me a big round of applause, Ron.
+- Cool. Right. Hi, everyone.
+So we're gonna have to do this a bit differently
+as I have no slides, but that's fine.
+So last talk of the day.
+So I will keep this quite brief,
+But I'm here to talk to you about AI within the SOC.
+For those who don't know what the SOC is, not the one that goes on your foot,
+but the Security Operations Centre.
+So I'm CTO of Pure Cyber.
+We're a local Cardiff-based managed service provider for cybersecurity.
+Governors, we do pen testing.
+And one of the other things we do is defensive security,
+which is sort of my passion and the area I look after.
+So, we've had, see AIs, we've heard lots of great talks today about how people are interested in AI, serverless technologies, I am again a big user of serverless, but thinking about how we use AI within cyber security.
+So, historically, cybersecurity is heavily human-focused, it's very much log-based, we're talking millions, sometimes billions of rows of logs, and what we traditionally do would be having some detections done over the top, some detection engineers, they would come in, they would curate rules, schedules, etc.
+that would in turn turn into alerts which someone would go and investigate.
+Always a human.
+Now, we still have humans.
+Humans are the most important part in that chain.
+But what we're able to do now is sort of speed up a lot of that process.
+So, if we took an example where we had three alerts,
+it could be an unusual sign-in from another country.
+It could be 10 minutes later, an unrecognised device we've never seen.
+20 minutes later, it might be that we've had 5,000 email messages read or Xlustraded or exported up.
+Isolated, they might mean nothing.
+But together, they might give us a pattern or an indicator of attack.
+So, historically, building those rules, then investigating those pivots, external sources,
+was very human-focused and takes a lot of time.
+Now, before the event of AI, we've automated in this space before, but it's traditional automation.
+So everything is very fixed. It usually needs engineers, and it's point in time.
+If anything changes, we need to go and change our automation to consider the flow.
+Now, what does a SOC do?
+So fundamentally, we're a 24-7 team.
+We're the 24-7 on-call team, 365 days a year,
+and we're responding to alerts, we're taking action if needed for a variety of different companies and sectors within pure cyber.
+But a SOC is always there, it's always on, and we're there to provide assurance for companies.
+So what we usually do is we get told of something if someone wants to report, or usually we've seen it through our signals.
+We would then do some investigation, we would then respond if we needed to, and then there would be any lessons learned.
+that might be actually this is completely denying we get it every day at 3 o'clock you need to tune
+that alert or it might be something that actually we found a real incident how are we going to deal
+with that how are we going to stop that happening again so that's great i've talked about the
+defensive side but actually how's ai changed for the attacker so i'm sure everyone here has had
+phishing emails have you noticed they're spelt a bit better than not all of them i do think why
+aren't you using an llm when i get the ones that are still terrible but it's enabled attackers to
+really just speed up what they do and the quality of what they do um also reconnaissance targeted
+attacks targeted that would take time people have to go out they have to do research um look for
+exposed assets look for vulnerabilities look for particular people you may want to target now
+llm's ai's just speed that up so so an attacker could now say right i'm looking at company x
+giving everything you know tell me who the network engineers are tell me who the admins might be
+that then they can start to target so malware um i think some of the the frontier models have got
+pretty good at this and putting their guardrails in place but malware it's so quick for them to
+just change it modify it change the signature spin it back up so to try and get around av
+protection etc and deepfakes being able to mimic humans whether it's through voice trying to
+manipulate help desk we all saw how that went for one large company last year and just yeah so that
+prevalent rise of actually we're using it for defense also the attackers are
+also using it it's nothing we haven't seen before what we're seeing now it's
+the volume and the speed is increased massively so yeah we are main use of they
+are currently now you'll hear a lot of buzzwords around security at the moment
+of agentic socks and automating the humans out of the loop and that's great
+and that's marketing for some companies.
+It's not really where it is actually on the ground at the moment.
+Humans are still a human part of it.
+What it does is it enables the analysts to just focus on what they need to focus on
+and try and cut through the noise.
+A lot of what a security team will look at most days is benign.
+It's mostly sort of looking through a needle in a haystack type scenario.
+So it just allows us to cut some of that noise down and really focus on the signals that matter.
+And actually talking about that detection engineering, it's quite a complex thing to do.
+A lot of the security products all support different languages.
+So to try and do that at scale across different technologies and understand that,
+it helps our detection engineers write their detections.
+It also helps them translate.
+If we're running, might be running Microsoft Sentinel here, we might have Splunk over here.
+Actually having a common base of rules that we can then apply and translate and tune at scale.
+We can also use it for testing, for historically looking and going back and sort of working out the fidelity and the quality of our rules.
+And then reporting, a bit that no one likes to do, whether you're writing documentation for code or you're an analyst and you're reporting on some findings.
+What it also allows us to do is sort of standardise that reporting.
+So we've got the data, we've got the grounding data that we need to generate those reports.
+We can actually then spin out different report personas and standardize the output.
+So analyst A, analyst B, or analyst C, the customer gets a consistent approach.
+This laptop is not having a good day.
+I think I'm going to have to get a new, this is brand new as well.
+When we create these rules, we treat them like code. I'm a tech guy who has ended up working in cybersecurity for quite a few years now, but historically a developer, and that's my sort of background.
+So we now treat these rules like code, but we can describe them in plain text. We can run it against it, as we've already seen, and we can find out how it's firing and why it's firing.
+So this is all great, but that's the reason why at the moment we're using it to aid and assist instead of making those assumptions of deterministic outcomes is because you might get, it looks at something, it goes, oh, I've checked this IP, it's fine, I've checked that, it's fine.
+But it's like, well, what have you checked?
+How have you checked it?
+What source have you used?
+Have you looked?
+Is that some data that you've seen from six months ago?
+Is it actually real or reflective now?
+So we still want humans in that loop.
+Like I said, it's just speeding them up.
+It also, at the moment, to make those deterministic outcomes,
+it's not just a case of getting better models
+or writing better problems or building better agencies.
+It's actually looking at all the playbooks historically
+and all the things that we've done have always been designed
+around humans and human understanding.
+And actually, if you point a model at some of these
+or ground with these playbooks to say,
+take these actions in this way, they're written for humans.
+It's not written for an AI agent.
+So it doesn't always do it in the same way.
+And that's why it's actually making sure for us
+for us, that everything that we now do, we set up for AI, but we think about it in a
+different way. We have to be a lot more specific. So big rules of what we're doing is client
+data needs to stay in the boundary that the client agreed to. And when we're working,
+we're an MSP, so we work with lots of companies, all have different requirements. They have
+different agreements with us in terms of authorities to act or things we can get involved
+and things we can't. So it's really important that we need to make sure that we have that
+really good grounding before we allow an LLM to go away and just modify or make outcomes
+on a customer's environment. And then again, when it comes to actions, at the moment, within
+our setup, some other companies are different. A lot of what we're using AI agents for is
+it's we only really, it's making, it's helping, it's assisting, it's providing recommendations,
+it's not currently taking action.
+Now it can, but we've got that turned off at the moment, and it's something that we're
+constantly evaluating.
+If it were to do that, for anything of a certain confidence, Chloe would always go to a human
+for approval.
+And as one of the speakers said earlier, that is, it can be quite dangerous because they
+might start taking that sort of literally, and a human is just going to get used to going,
+and okay, yeah, they said it's fine, it said it's fine.
+So it's about making sure that your internal processes
+and your internal QA catches that
+and makes sure that a human is still doing what they always did,
+we're just doing it a lot quicker.
+So what changes on each side?
+So just to sum up, for the attacker, it's cheaper,
+it's faster, more convincing,
+but it's the same intent, just more attempts per day.
+For us, it's less of the day collecting evidence,
+less of the day trawling through, writing large queries, and more deciding what we need
+to do, and piecing those sort of dots together ourselves.
+So, really sorry I couldn't show you the slides, and I had some cool examples and stuff, but
+just thought I'd talk you through that anyway. But yeah, if anyone wants to sort of find out
+a little bit more about cybersecurity, or SOX in general, on how we're using agentic
+agents, drop me a message on LinkedIn, and I'd be more than happy to discuss.
+And thank you very much, and sorry for the technical difficulties.
+Thank you very much.
+Thanks, Robbie, for all the two really difficult...

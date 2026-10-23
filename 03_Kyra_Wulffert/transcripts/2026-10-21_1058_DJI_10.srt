@@ -1,0 +1,140 @@
+1
+00:00:00,000 --> 00:00:12,000
+ These multi-agent solutions, they also have that strategy of running back a particular agent and not the whole fleet, depending on what the problem was.
+
+2
+00:00:13,000 --> 00:00:15,000
+ So it's, again, a little bit more complex.
+
+3
+00:00:20,000 --> 00:00:43,000
+ Some common anti-patterns, and I think this applies to any project, is that sometimes, because everyone is super excited about the technology, we get like, oh, we want to be an agent for this, but this is something so wide and broad and vague that it will never get into something meaningful.
+
+4
+00:00:44,000 --> 00:01:05,000
+ So that's very important to fix one use case, like, okay, this is the use case we want to start with, start with small, work on that, define your KPIs, get to the dose so that you can see, okay, I can achieve this, we can maintain this, we can deploy this, and then you can extend to something more complex or ambitious.
+
+5
+00:01:06,000 --> 00:01:18,000
+ Yeah, that's like, one of the first issues we have seen, second one is over-engineering, not everything is an agent, sometimes we just need an LLM call and that's it, or a few tools.
+
+6
+00:01:19,000 --> 00:01:25,000
+ So, again, like, start simple, and get more complexity as you see that it is needed.
+
+7
+00:01:26,000 --> 00:01:32,000
+ Human in the loop is very important, so when you don't have a human in the loop, then you don't know what they are achieving.
+
+8
+00:01:33,000 --> 00:01:40,000
+ It's very important to get the SME reviewers, get that continuous flow we were mentioning before.
+
+9
+00:01:41,000 --> 00:01:55,000
+ And versioning as well, so if you have, like, approaches like a string somewhere, you don't know, and then you don't track it, and the same with the tools and so on, it's very, very difficult to control and obtain the solution.
+
+10
+00:01:56,000 --> 00:02:08,000
+ And those were mostly like technical issues and challenges, but one of the biggest challenges, because we have so many personas now on these projects.
+
+11
+00:02:09,000 --> 00:02:18,000
+ So we have the executives worried about ROI, the product managers, worried about how can we get an option of this solution.
+
+12
+00:02:19,000 --> 00:02:24,000
+ The engineers very keen to have it, like, deploying in a faster way.
+
+13
+00:02:25,000 --> 00:02:30,000
+ Data scientists with another matrix in mind, and so on, so everyone has their own agenda.
+
+14
+00:02:31,000 --> 00:02:43,000
+ So it's very important from the beginning to identify what are the roles, the responsibility, who is all there, accountable, consulted, or informed about something.
+
+15
+00:02:44,000 --> 00:02:53,000
+ And also what are the KPIs of each of these particular roles, so that you have that alignment from the beginning, you can report on those KPIs.
+
+16
+00:02:53,000 --> 00:02:57,000
+ And like, everyone is happy because like, there is a consensus.
+
+17
+00:02:58,000 --> 00:03:10,000
+ This is like, one of the main reasons why many projects are not getting into production, because it's told, "Ah, I want this else," and the people didn't know about that, and so on.
+
+18
+00:03:11,000 --> 00:03:12,000
+ So, this is very important.
+
+19
+00:03:13,000 --> 00:03:21,000
+ And then going back to those principles we were mentioning before, they are still like very, very valid and very applicable.
+
+20
+00:03:22,000 --> 00:03:39,000
+ And if you do the analogy with like Formula 1, the principle of flow is like that lap moment, where you are just like doing all the tactics that are important to like, get very fast, and like with good quality, with good speed.
+
+21
+00:03:40,000 --> 00:03:44,000
+ And then we are just like, and select our little challenges, changes in the code.
+
+22
+00:03:45,000 --> 00:03:50,000
+ Then the RAIS piece will be like the feedback, where you have like a strategy for the RAIS.
+
+23
+00:03:51,000 --> 00:03:57,000
+ And then the learning, the continuous learning will be like a season vision, like what are we aiming to.
+
+24
+00:03:58,000 --> 00:04:07,000
+ We are still applying the same principles, but now in the context of these more complex solutions, with so many, many moving parts, and a faster world in technology as well.
+
+25
+00:04:08,000 --> 00:04:13,000
+ So, this is me for today, so thank you very much.
+
+26
+00:04:14,000 --> 00:04:20,000
+ We have written a book with a couple of colleagues from our experience on the field.
+
+27
+00:04:21,000 --> 00:04:23,000
+ It's available online, open for everyone.
+
+28
+00:04:24,000 --> 00:04:27,000
+ So, I'll be here if you have any questions, just let me know.
+
+29
+00:04:27,000 --> 00:04:28,000
+ Or you can also contact me on LinkedIn.
+
+30
+00:04:29,000 --> 00:04:30,000
+ Thank you very much.
+
+31
+00:04:38,000 --> 00:04:39,000
+ Thank you very much, everybody.
+
+32
+00:04:39,000 --> 00:04:40,000
+ Thank you, Kira.
+
+33
+00:04:40,000 --> 00:04:41,000
+ Thank you.
+
+34
+00:04:41,000 --> 00:04:42,000
+ And that's the end of the first session.
+
+35
+00:04:42,000 --> 00:04:43,000
+ Thank you, Julian, as well.
+

@@ -1,0 +1,202 @@
+it's always a massive brain dump there in terms of I think for those of us that
+have used Lambda for quite a long time you know the days back into 2014 onwards
+when it was launched you know all you had was things like you could control like
+the amount of CPU just one or two little controls and now all of a sudden all the
+new features and services it's you know an incredible service that has evolved massively
+we'll also hear a lot of talk around agents I think you know going through
+things like generative AI now to regenerative systems that's a change of
+probably all of us it's affected and you know we even saw in that talk so when we
+talk about things like firecracker with micro ENs the kind of like primitives that
+underpin agent systems running on running on AWS and as we sort of move away from
+sort of traditional machine learning models to AI systems that also leads to a
+change of operating practices that are required that's why I'm delighted to bring
+our stage the next speaker she's an AI specialist architect at Databricks to tell
+us more about the world of agent ops so please put your hands together
+the camera will first
+Thank you.
+Thank you.
+Thank you.
+Thank you.
+I'm a special solution architect at Databricks, where I work specially on ML projects and lately
+GNI, which is everywhere.
+So in the last two to three years, I've been architecting, developing, and deploying GNI and ML projects in different industries.
+And today I wanted to talk about those learnings, very quick evolution in the last, especially the last year, and how to do chip models and that evolution from there to operating agents.
+And what we have seen, especially in the last year, is that everyone is trying agents.
+I think everyone has tried decoding agents and also companies are trying to do POCs, pilots, everyone is very excited about the new technology.
+But then when we asked about how many of these project prototypes are going into production, it's just a tiny, tiny bit of that initial load of initiatives.
+We saw this in the ML projects as well.
+So this is quite normal.
+We have seen also that models are getting really, really good, so it's not a problem of the models, but it's a problem of the operational gap.
+So there is no observability, poor evaluations, poor governance, and all of this is then blocking those prototypes to go to the next level.
+So that's like the context why we are having this talk today, and what we will go to cover is just like how we go from DevOps to Agent Ops.
+Also, what are the common challenges we see in the industry, what are the solutions we have been practicing, and we see that work as well with customers, and go back to those principles that we have applied in traditional software development, and that are also still evolving, but very valid and present in the agent era.
+So, yeah.
+So, we have in class in development, software development, the DevOps principles, so I'm not sure if you are familiar with the handbook of DevOps, and there are three main ways, the way of flow, the way of feedback, and the way of continuous learning.
+So, flow is all about these very quick changes and deliveries of software, but in a reliable and safe way.
+And then we have the feedback, where we are actually monitoring, testing, and gathering all these signals, and then in the continuous learning, we learn from errors, and iterate those test suites, the architecture, the patterns we are using.
+And that was really well, and it has also been evolving to the DevOps and the Agent Ops, where I'm not sure if we have many data scientists here in the audience, but in the DevOps, we have like nearly three personas, so the data engineer, the data scientist, and then the ML engineer, and the idea was everything was centered around the model.
+So, we will train a model, so we will train a model, we will train a model, we will train a model, we will train a model, we will train a model, we will train a model, and those metrics were quite deterministic, so if it was classification, like decision, recall, accuracy, if it was a forecasting model, or a regression model, so around the curve, and so on, so it was quite, not easy, but quite, yeah, defined, and like a limited scope of how we measure it.
+So, then we have like, then we have like a, also, quite fixed behavior, so it will be like classification, or it will give you like an answer, right?
+And also, you will test, once in production, if the model will show like drifting, due to the model behavior, or to the data.
+So, it was complex, but now, with the agentic era, we have not a model, but we have a compound system.
+So, we have there models, prompts, tools, the context, we need to do different routine, we need to ensure that we have guardraps in place, so lots of little components all together in this composed model architecture.
+Now, we don't have a model giving you an answer, but we have an agent making decisions based on the particular input, and those decisions, because we have the stochastic nature of LLMs, can be, can be changing, right?
+So, you need to be like, throw the whole harness to ensure that it is doing what you are expecting it to do.
+And because we are talking about natural language, it's very difficult to test and measure and evaluate as well.
+So, you don't have this nice decision to collect some metrics, you now have to think about, is this relevant? Is this following a particular tone? Is this toxic?
+There are lots of different aspects you need to take into consideration when evaluating this kind of agentic solutions.
+As I mentioned, behavior is different, so it changes at runtime depending on what it is deciding to do.
+Because it's taking actions, it's quite dangerous, so if you are talking with a chatbot, and it starts advertising the wrong product, or giving you the wrong information, that's really bad for your company.
+And now we don't have these three personas only, but we have lots of people involved, because it's like, you can have like the product owners, the SMEs, you still have data scientists, we have now software engineers building these agentic solutions.
+It's lots of personas, and all of them with different objectives, so it's more difficult and challenging to manage as projects.
+And what are the common challenges we have seen from this evolution, is that, one, is controlling governance, so before it was about who can access the model, now it's like, who can access the agent, and what can you do with this agent?
+So, usually what we have seen in a lot of customers, is that they run these agents, with a service principle that maybe has lots of permissions, much more permissions than a user should have.
+So, this is one of the common things we see, and that can create some security and vulnerability issues.
+Then we have, because everyone is super excited about this, everyone is building tools, building agents, building MCPs, and skills, and if you don't have like a managed way to have like a registry or something to have control of that, you will have lots of overlap and agent explore, which is like super messy, and then you will have things just building the same thing again and again.
+And then guardrails, so they have been neglected in many first implementations, and then later on when you are in production, or going into production, you notice that they were like really badly needed.
+So, this is like a commonly stable charge we have seen.
+Then in terms of observability and feedback, it's important to have like everything traceable observable, because as we have this composed system with so many bits moving around, you cannot just observe input and output.
+Because sometimes the output is quite confident, but it's wrong, and it's important to know where it went wrong.
+Was it contacting the wrong sub-agent?
+Was it contacting the trying to get information from the wrong tool?
+Was it missing context?
+So if you don't have that observability, it's just like a black box to imagine.
+It's just like a graphic, and feedback is elsewhere, so this is about, now we have different personas, right?
+You can run your evaluations in development, then you have your subject matter experts giving you feedback, which is super valuable because it's the human expert feedback, you can get to your solutions.
+And then once you are in production, for instance, you have these counter-apps done, or you can provide feedback regarding the answer you received.
+And if you don't have like a consolidated way to get all of this feedback, it's just like wasted feedback.
+That is very, very important to improve your model.
+And then the final one, I think everyone is super concerned about this now, is that tokens are expensive, and especially like C-level executives, they want to see the return of investment.
+And it's very important to be able to track this.
+And it's challenging.
+Another challenge we see that is very common is the relevability and the evaluations gap.
+So, relevability, because now we have these multi-steps decisions and processes to get to that output.
+When evaluating, maybe we see, oh, single step data is doing amazing, but then we will have to do the multiple reasoning steps.
+There might be some errors.
+And if you are not evaluating this correctly, you might get like misleading impression about the quality of the solution.
+Then, as we discussed, like we have this stochastic system, so unless you don't have like a really good hardness, you will have like, every time you ask one plus one, maybe you will have different answers.
+But for more complex questions, you might get different answers to the same question, so we need to avoid that.
+And also, initially, with so many people just doing bite checks and get super excited about the bite checking, like, oh, yes, it's doing what I want and so on.
+And that's great for development. But then, if you go to the vision of a production scale solution, you need to consider also all the edge cases, the bad situations, which are very difficult to cover in just bite checking.
+And last but not least, the maintenance, and this is like the result of, how do you maintain all of this that you have not controlled, governed, you cannot observe, you cannot trace, you don't know how much it's costing.
+So it's like a compounded debt, that is very expensive if you don't try to, like, consider about this from the start.
+And then, so those are like the main challenges. So what kind of solutions have we seen that are working and are the trend now?
+So, first of all, in these solutions, we have several levels of PCT. There are, like, simple automations that is just, like, doing a call to the LLM with a instruction and that's it.
+So that's, like, level one super simple. Then we have the second level is when you have, like, what you used to know as track.
+You go and have the retrieval, and based on the retrieval, you craft the answer, the response to the question.
+The next level is, besides that context, you give also tools, MCP servers, in order to either gather more information or trigger actions.
+And then the last level, to be honest, we don't have many customers doing this yet, because it's quite difficult to, to maintain it.
+So, you know, the first thing that is, like, something that's not necessary for the use case is the multi-agent.
+So here you have either a supervisor with several agents, where you can, based on the tasks, just, like, assign a task to the agent.
+Or you have several agents talking with each other via A2A or something similar.
+And that's what very complex solutions, where you need, like, multiple actions, and you need, like, alignment among the agents too.
+So, how do you remind those complexities?
+We can see, like, five operational controls that we can have across all these layers of complexity we have seen in the architectures.
+And they are, like, tracing, that's for the observability, because now we need to check, like, what is doing each tool, like, each code the LL is doing.
+So, what is happening with that?
+That's important.
+And, um, evaluation gates.
+So, here is what I was mentioning, build this golden data set.
+Similar as with any ML project.
+You need to have this very nice distribution of good, bad, and very seldom use cases of what is expected output.
+Governance, yeah, deployment and rollback strategies, and how you are going to monitor this.
+And for the first architecture, it's very easy, it's very similar to emerging solutions.
+You have just, like, tracing of the prompt and the input output tokens, how long is it taking, the golden data sets we mentioned already.
+You are going in the model at the prompt, and deployment is, like, quick rollback, you can do canary deployment as well.
+And the monitoring will be just, like, the response drift and great limits, right?
+In the second architecture, the next level, it's a little bit more complex, because now you have that retriever, so you have to trace as well,
+Is it going to the right vector search index?
+Is it retriever the right information?
+So, is it grounded?
+Can you decide where it is coming from?
+Which chunk of information was it using in order to prompt the response?
+Governance, now we have this vector search index, and the whole pipeline to maintain it, and up to date, so that's another thing to govern.
+And the deployment as well, we have this new element in order to consider it, and then for the monitoring, we just, like, have that next level as well.
+So, it's a little bit more complex.
+For tool coding, it gets more complex, because now we have more tools, more components to double-check, to test, you have to evaluate, to be sure that each tool is doing the right thing,
+that the agent is able to understand what those tools are doing, and then able to route the request accordingly.
+You need to ensure that there are, like, the right permissions as well for those tools, and if you are doing the canary deployment, you have to consider, okay, what do I, how do I want to do it?
+It's just like, what sets of tools I want to prove in this deployment, and so on.
+So, it gets, like, level of complexity is a little bit higher, and then also the monitoring gets about the tools that you are leveraging, if they are failing, do we have photo alerts, and so forth.
+And then the last one, because you have several agents, you have distributed traces, so you should be able to discern which agent is doing what trace, and what set of tools that particular agents are using,
+the cross-agent identities, so again, like, managing what can they access or not, the deployment, if you have, like, an orchestrator,
+they create those orchestrator gates, have this per-agent versioning, and then, like, a snapshot of what the versions that orchestrator will be handling,
+and then, for the monitoring, like, change if there are many loops, if there are, like, escalation gates, what are the cost per role, so it gets quite, quite complicated.
+So, in terms of that control and governance questions we have as the first challenge, one recommendation is to have that on behalf of the user,
+instead of having the service principle, who knows how much of the access, that you are not aware of, or, and that the agent doesn't need to have,
+so, that's one thing, the other one is, regarding this agent's role, like, tool is probably to have, like, a government registry,
+that, once, one helps to democratize, as well, like, the access to tools, and so on, to your, your teams and organizations,
+and two, it's much easier to maintain, also, things that are not used, that are not useful, then you can just, like, remove them from the registry,
+and people know that that's the case. You can also, like, control permissions, who has access to what, and they have the guardrails in place,
+and that will be, like, run-time policy on every action, so, are we allowed this action, are we denied it, or do we need a human approval in order to close it?
+And that will ensure that your agent is there, doing the right thing, or at least limiting the options, to avoid errors.
+And here, we have, like, an example of that traceability we were talking about. So, on the left side, we have, like, this input-output log,
+where we see, okay, the user was asking about why they were charged twice, and the LLM answers with, like, a very convincing answer, but it's completely wrong.
+So, maybe it was passing the formatting, the right tone, and so on, but it's wrong. And we cannot see here why it was wrong.
+But then, if we are tracing what the LLM is doing, and what the tools have, is it trying to get, and so on, we can see that, when it was trying to get the invoices,
+that tool that tool was timing out, so it doesn't know the latest status, so it goes to a cache of that tool, which was stale,
+so it was not having the right information for the customer, and therefore it was giving the wrong answer.
+So, if you don't have that trace, it's very difficult to know. And then, going back into that evaluation and observability,
+we have, like, several, again, quite complex, several sources. So, we have our, like, deterministic checks,
+like, as we used to have in, like, normal software development, where you can check, like, the format, the policy rules,
+PII patterns, like, these are, like, very, very useful, and I highly encourage you to keep using them as, like,
+use as much deterministic approaches as possible, because they are very cheap and quick to run.
+And then, you can run it in, run them in every request, in your CI and in production, and it won't, like, cost you much,
+and it will bring you a lot of value about how is the quality of the solution.
+Then, we have the LLM judges. Here, there are different schools of talks. I find them very useful,
+but it depends a lot on what kind of judges you are using. And they are expensive because you are hitting an LLM in order to get that,
+and they are slow. So, slow in comparison, slower in comparison with the deterministic ones.
+So, the idea here is use them when you are doing your CI process on your golden beta set,
+so that you are super sure that every change was tested and it's not, like, two integrations and so on.
+But the production is very expensive to run, so you need to have, like, a sampling of your production traffic
+that you will evaluate with those LLM judges. The most helpful one is the domain experts feedback,
+and this is something that you need to have in your projects, in your solutions.
+But this is, like, people are very difficult to just get the bandwidth in order to do that,
+so this is something you can do sporadically. At the beginning, it's important to have it once,
+until you get to that good quality, good enough to get to production.
+But then, once in production, you need also to keep them involved, like, with a review from time to time,
+quarterly, mostly, depends on your solution, based on what you see from the output in production.
+Judge alignment is about particularly when you have very complex agentic solutions.
+Let's say, for instance, a solution that is providing assistance to a user based on their medical information.
+So, it has to be very, very careful about the sensitivity of the data, what kind of recommendations it does, and so on.
+So, even humans evaluating this sometimes cannot get aligned to what is wrong or what is right.
+So, you need to have that phase of aligning what is wrong and right with the human experts,
+and then propagate that to your LLM judges.
+And then, end users is about the thumbs up, down, feedback you get from the product.
+So, the idea is that you need to get all of these sources of information, which are like gold for your solution,
+and try to get it consolidated in one data model, so that you can action on them.
+So, another, like best practice that we have identified and seen, like working in the industry, is like having drive alerts.
+So, before we had alerts on, oh, it is up, it is running, how long is it taking, did we get any particular errors, right?
+But now, we have this very complex system, so we need also to alert on, maybe the agent is getting into a loop,
+and you don't see it, and it is like taking edges to bring something, like alert on the loops,
+or what the agent is doing when we were back to these guardrails, hello, this deny, or like forward to a human.
+How much is this happening, this escalation towards a human, and this can be an indication of that something is wrong in your logic,
+or something degenerated, or maybe the data is changing, so that's something important to have.
+Because you have the tools, also like monitor those tools, and alert on them, and also the cost.
+So, it is important to alert if you are getting out of budget.
+I think everyone has heard of these stories of companies just growing their budget very quickly because of, like, not having this control in place.
+And then, because you can, it's a lot of effort, but it's effort well invested.
+When you create that evaluation data set, so how do you create it?
+You start with the spike testing, we were talking before, but because we are tracing every call we are doing,
+every test we are doing, you can use those traces in order to create your golden data set,
+or so when the SMEs are trying the solution.
+And this effort very, very well justified, because then this is what you are going to use in your CI/CD process.
+And then also later on in your production deployment, so as I was mentioning, just on a sample of the production traffic,
+and also, you also trace, based on those traces from the traffic, you can do offline analysis and see,
+oh, we were missing this edge use case.
+And they bring it back into your golden data set, so that it is, like, including, and you will have, like, better coverage.
+Here is just an example, where you have just, like, a PR, and just a refund intent, so you're just changing a line in your Java file from your agent,
+and then CI test are fine, because it looks good for the unit test and the lint, but then, because we have this evaluation game we created with the golden data set,
+and so on, we can see that the billing task is now degenerating in comparison to what it was before, so we can block it, we can go and analyze what was going on.
+And then once it is fixed, and then once it is fixed, we run again, and we see that it's even vector than before, which is amazing,
+and then we deploy, we say current deployment, and then based on that, we go, like, okay, this is the release in production.
+So it's, like, really key to have that evaluation game in your deployment and development loop.
+And because we have, again, so many moving components there, it's important to version the whole agent, so that when it comes to rollbacks,
+and so you know exactly what version was working with what, and in general for, like, tracing, like, tracking, also, like, your evaluations and your different deployments.
+So we need to version the problems, the tools, the routing logic, the model and parameters, how they're pinned, and the data sources, like, what was I using for this particular vector search index.
+Oh, what's that? And then, also, what were the evaluation thresholds I was using for that release.
+So that it's easier to know when you have to rollback, or when you are ready for the next deployment, you have, like, a baseline to compare it.
+So this is key to have. And then going to rollback. So because it's an agent doing actions, rollback is not as easy as just, oh, let's go back to the last version, and that's it.
+So it's, that's important to have it, but you need to have a strategy as well. So before, oh, wow, sorry, I don't know about that black box, but you need to have, like, a plan for what is my plan when I need to rollback.
+And especially, like, say for side effects, because if it was sending, for instance, a refund that was wrong, then I have to have that control measure,
+well, that was wrong, we need to charge again, or vice versa. So this is important to consider, especially when your agent is doing actions. And then in case of the,

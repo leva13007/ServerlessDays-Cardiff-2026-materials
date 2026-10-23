@@ -1,0 +1,808 @@
+1
+00:00:00,000 --> 00:00:05,280
+ it's always a massive brain dump there in terms of I think for those of us that
+
+2
+00:00:05,280 --> 00:00:09,720
+ have used Lambda for quite a long time you know the days back into 2014 onwards
+
+3
+00:00:09,720 --> 00:00:14,100
+ when it was launched you know all you had was things like you could control like
+
+4
+00:00:14,100 --> 00:00:18,240
+ the amount of CPU just one or two little controls and now all of a sudden all the
+
+5
+00:00:18,240 --> 00:00:23,840
+ new features and services it's you know an incredible service that has evolved massively
+
+6
+00:00:23,840 --> 00:00:29,620
+ we'll also hear a lot of talk around agents I think you know going through
+
+7
+00:00:29,620 --> 00:00:32,980
+ things like generative AI now to regenerative systems that's a change of
+
+8
+00:00:32,980 --> 00:00:39,940
+ probably all of us it's affected and you know we even saw in that talk so when we
+
+9
+00:00:39,940 --> 00:00:43,820
+ talk about things like firecracker with micro ENs the kind of like primitives that
+
+10
+00:00:43,820 --> 00:00:50,380
+ underpin agent systems running on running on AWS and as we sort of move away from
+
+11
+00:00:50,380 --> 00:00:55,840
+ sort of traditional machine learning models to AI systems that also leads to a
+
+12
+00:00:55,840 --> 00:01:00,880
+ change of operating practices that are required that's why I'm delighted to bring
+
+13
+00:01:00,880 --> 00:01:06,160
+ our stage the next speaker she's an AI specialist architect at Databricks to tell
+
+14
+00:01:06,160 --> 00:01:09,520
+ us more about the world of agent ops so please put your hands together
+
+15
+00:01:09,520 --> 00:01:12,880
+ the camera will first
+
+16
+00:01:12,880 --> 00:01:42,860
+ Thank you.
+
+17
+00:01:42,880 --> 00:02:12,860
+ Thank you.
+
+18
+00:02:12,880 --> 00:02:42,860
+ Thank you.
+
+19
+00:02:42,880 --> 00:03:12,860
+ Thank you.
+
+20
+00:03:12,860 --> 00:03:20,180
+ I'm a special solution architect at Databricks, where I work specially on ML projects and lately
+
+21
+00:03:20,180 --> 00:03:22,040
+ GNI, which is everywhere.
+
+22
+00:03:22,920 --> 00:03:32,780
+ So in the last two to three years, I've been architecting, developing, and deploying GNI and ML projects in different industries.
+
+23
+00:03:33,380 --> 00:03:49,620
+ And today I wanted to talk about those learnings, very quick evolution in the last, especially the last year, and how to do chip models and that evolution from there to operating agents.
+
+24
+00:03:49,620 --> 00:03:58,800
+ And what we have seen, especially in the last year, is that everyone is trying agents.
+
+25
+00:03:58,800 --> 00:04:08,340
+ I think everyone has tried decoding agents and also companies are trying to do POCs, pilots, everyone is very excited about the new technology.
+
+26
+00:04:08,340 --> 00:04:22,160
+ But then when we asked about how many of these project prototypes are going into production, it's just a tiny, tiny bit of that initial load of initiatives.
+
+27
+00:04:22,160 --> 00:04:25,280
+ We saw this in the ML projects as well.
+
+28
+00:04:25,280 --> 00:04:27,760
+ So this is quite normal.
+
+29
+00:04:27,760 --> 00:04:38,120
+ We have seen also that models are getting really, really good, so it's not a problem of the models, but it's a problem of the operational gap.
+
+30
+00:04:38,120 --> 00:04:48,340
+ So there is no observability, poor evaluations, poor governance, and all of this is then blocking those prototypes to go to the next level.
+
+31
+00:04:50,000 --> 00:05:02,120
+ So that's like the context why we are having this talk today, and what we will go to cover is just like how we go from DevOps to Agent Ops.
+
+32
+00:05:02,540 --> 00:05:27,180
+ Also, what are the common challenges we see in the industry, what are the solutions we have been practicing, and we see that work as well with customers, and go back to those principles that we have applied in traditional software development, and that are also still evolving, but very valid and present in the agent era.
+
+33
+00:05:28,660 --> 00:05:30,300
+ So, yeah.
+
+34
+00:05:32,080 --> 00:05:50,780
+ So, we have in class in development, software development, the DevOps principles, so I'm not sure if you are familiar with the handbook of DevOps, and there are three main ways, the way of flow, the way of feedback, and the way of continuous learning.
+
+35
+00:05:50,780 --> 00:05:59,620
+ So, flow is all about these very quick changes and deliveries of software, but in a reliable and safe way.
+
+36
+00:06:00,140 --> 00:06:16,380
+ And then we have the feedback, where we are actually monitoring, testing, and gathering all these signals, and then in the continuous learning, we learn from errors, and iterate those test suites, the architecture, the patterns we are using.
+
+37
+00:06:17,960 --> 00:06:43,420
+ And that was really well, and it has also been evolving to the DevOps and the Agent Ops, where I'm not sure if we have many data scientists here in the audience, but in the DevOps, we have like nearly three personas, so the data engineer, the data scientist, and then the ML engineer, and the idea was everything was centered around the model.
+
+38
+00:06:43,420 --> 00:07:10,080
+ So, we will train a model, so we will train a model, we will train a model, we will train a model, we will train a model, we will train a model, we will train a model, and those metrics were quite deterministic, so if it was classification, like decision, recall, accuracy, if it was a forecasting model, or a regression model, so around the curve, and so on, so it was quite, not easy, but quite, yeah, defined, and like a limited scope of how we measure it.
+
+39
+00:07:10,420 --> 00:07:19,420
+ So, then we have like, then we have like a, also, quite fixed behavior, so it will be like classification, or it will give you like an answer, right?
+
+40
+00:07:19,420 --> 00:07:29,420
+ And also, you will test, once in production, if the model will show like drifting, due to the model behavior, or to the data.
+
+41
+00:07:29,420 --> 00:07:38,420
+ So, it was complex, but now, with the agentic era, we have not a model, but we have a compound system.
+
+42
+00:07:38,420 --> 00:07:54,420
+ So, we have there models, prompts, tools, the context, we need to do different routine, we need to ensure that we have guardraps in place, so lots of little components all together in this composed model architecture.
+
+43
+00:07:54,420 --> 00:08:10,420
+ Now, we don't have a model giving you an answer, but we have an agent making decisions based on the particular input, and those decisions, because we have the stochastic nature of LLMs, can be, can be changing, right?
+
+44
+00:08:10,420 --> 00:08:17,420
+ So, you need to be like, throw the whole harness to ensure that it is doing what you are expecting it to do.
+
+45
+00:08:17,420 --> 00:08:24,420
+ And because we are talking about natural language, it's very difficult to test and measure and evaluate as well.
+
+46
+00:08:24,420 --> 00:08:36,420
+ So, you don't have this nice decision to collect some metrics, you now have to think about, is this relevant? Is this following a particular tone? Is this toxic?
+
+47
+00:08:36,420 --> 00:08:43,420
+ There are lots of different aspects you need to take into consideration when evaluating this kind of agentic solutions.
+
+48
+00:08:43,420 --> 00:08:53,420
+ As I mentioned, behavior is different, so it changes at runtime depending on what it is deciding to do.
+
+49
+00:08:53,420 --> 00:09:05,420
+ Because it's taking actions, it's quite dangerous, so if you are talking with a chatbot, and it starts advertising the wrong product, or giving you the wrong information, that's really bad for your company.
+
+50
+00:09:05,420 --> 00:09:23,420
+ And now we don't have these three personas only, but we have lots of people involved, because it's like, you can have like the product owners, the SMEs, you still have data scientists, we have now software engineers building these agentic solutions.
+
+51
+00:09:23,420 --> 00:09:33,420
+ It's lots of personas, and all of them with different objectives, so it's more difficult and challenging to manage as projects.
+
+52
+00:09:33,420 --> 00:09:57,420
+ And what are the common challenges we have seen from this evolution, is that, one, is controlling governance, so before it was about who can access the model, now it's like, who can access the agent, and what can you do with this agent?
+
+53
+00:09:57,420 --> 00:10:11,420
+ So, usually what we have seen in a lot of customers, is that they run these agents, with a service principle that maybe has lots of permissions, much more permissions than a user should have.
+
+54
+00:10:11,420 --> 00:10:17,420
+ So, this is one of the common things we see, and that can create some security and vulnerability issues.
+
+55
+00:10:17,420 --> 00:10:43,420
+ Then we have, because everyone is super excited about this, everyone is building tools, building agents, building MCPs, and skills, and if you don't have like a managed way to have like a registry or something to have control of that, you will have lots of overlap and agent explore, which is like super messy, and then you will have things just building the same thing again and again.
+
+56
+00:10:43,420 --> 00:10:58,420
+ And then guardrails, so they have been neglected in many first implementations, and then later on when you are in production, or going into production, you notice that they were like really badly needed.
+
+57
+00:10:58,420 --> 00:11:02,420
+ So, this is like a commonly stable charge we have seen.
+
+58
+00:11:02,420 --> 00:11:19,420
+ Then in terms of observability and feedback, it's important to have like everything traceable observable, because as we have this composed system with so many bits moving around, you cannot just observe input and output.
+
+59
+00:11:19,420 --> 00:11:26,420
+ Because sometimes the output is quite confident, but it's wrong, and it's important to know where it went wrong.
+
+60
+00:11:26,420 --> 00:11:28,420
+ Was it contacting the wrong sub-agent?
+
+61
+00:11:28,420 --> 00:11:32,420
+ Was it contacting the trying to get information from the wrong tool?
+
+62
+00:11:32,420 --> 00:11:34,420
+ Was it missing context?
+
+63
+00:11:34,420 --> 00:11:39,420
+ So if you don't have that observability, it's just like a black box to imagine.
+
+64
+00:11:39,420 --> 00:11:46,420
+ It's just like a graphic, and feedback is elsewhere, so this is about, now we have different personas, right?
+
+65
+00:11:46,420 --> 00:11:58,420
+ You can run your evaluations in development, then you have your subject matter experts giving you feedback, which is super valuable because it's the human expert feedback, you can get to your solutions.
+
+66
+00:11:58,420 --> 00:12:07,420
+ And then once you are in production, for instance, you have these counter-apps done, or you can provide feedback regarding the answer you received.
+
+67
+00:12:07,420 --> 00:12:13,420
+ And if you don't have like a consolidated way to get all of this feedback, it's just like wasted feedback.
+
+68
+00:12:13,420 --> 00:12:16,420
+ That is very, very important to improve your model.
+
+69
+00:12:16,420 --> 00:12:32,420
+ And then the final one, I think everyone is super concerned about this now, is that tokens are expensive, and especially like C-level executives, they want to see the return of investment.
+
+70
+00:12:32,420 --> 00:12:35,420
+ And it's very important to be able to track this.
+
+71
+00:12:35,420 --> 00:12:37,420
+ And it's challenging.
+
+72
+00:12:37,420 --> 00:12:43,420
+ Another challenge we see that is very common is the relevability and the evaluations gap.
+
+73
+00:12:43,420 --> 00:12:54,420
+ So, relevability, because now we have these multi-steps decisions and processes to get to that output.
+
+74
+00:12:54,420 --> 00:13:03,420
+ When evaluating, maybe we see, oh, single step data is doing amazing, but then we will have to do the multiple reasoning steps.
+
+75
+00:13:03,420 --> 00:13:05,420
+ There might be some errors.
+
+76
+00:13:05,420 --> 00:13:15,420
+ And if you are not evaluating this correctly, you might get like misleading impression about the quality of the solution.
+
+77
+00:13:15,420 --> 00:13:26,420
+ Then, as we discussed, like we have this stochastic system, so unless you don't have like a really good hardness, you will have like, every time you ask one plus one, maybe you will have different answers.
+
+78
+00:13:26,420 --> 00:13:37,420
+ But for more complex questions, you might get different answers to the same question, so we need to avoid that.
+
+79
+00:13:37,420 --> 00:13:47,420
+ And also, initially, with so many people just doing bite checks and get super excited about the bite checking, like, oh, yes, it's doing what I want and so on.
+
+80
+00:13:47,420 --> 00:14:04,420
+ And that's great for development. But then, if you go to the vision of a production scale solution, you need to consider also all the edge cases, the bad situations, which are very difficult to cover in just bite checking.
+
+81
+00:14:04,420 --> 00:14:22,420
+ And last but not least, the maintenance, and this is like the result of, how do you maintain all of this that you have not controlled, governed, you cannot observe, you cannot trace, you don't know how much it's costing.
+
+82
+00:14:22,420 --> 00:14:33,420
+ So it's like a compounded debt, that is very expensive if you don't try to, like, consider about this from the start.
+
+83
+00:14:33,420 --> 00:14:43,420
+ And then, so those are like the main challenges. So what kind of solutions have we seen that are working and are the trend now?
+
+84
+00:14:43,420 --> 00:14:56,420
+ So, first of all, in these solutions, we have several levels of PCT. There are, like, simple automations that is just, like, doing a call to the LLM with a instruction and that's it.
+
+85
+00:14:56,420 --> 00:15:04,420
+ So that's, like, level one super simple. Then we have the second level is when you have, like, what you used to know as track.
+
+86
+00:15:04,420 --> 00:15:13,420
+ You go and have the retrieval, and based on the retrieval, you craft the answer, the response to the question.
+
+87
+00:15:13,420 --> 00:15:25,420
+ The next level is, besides that context, you give also tools, MCP servers, in order to either gather more information or trigger actions.
+
+88
+00:15:25,420 --> 00:15:33,420
+ And then the last level, to be honest, we don't have many customers doing this yet, because it's quite difficult to, to maintain it.
+
+89
+00:15:33,420 --> 00:15:38,420
+ So, you know, the first thing that is, like, something that's not necessary for the use case is the multi-agent.
+
+90
+00:15:38,420 --> 00:15:48,420
+ So here you have either a supervisor with several agents, where you can, based on the tasks, just, like, assign a task to the agent.
+
+91
+00:15:48,420 --> 00:15:54,420
+ Or you have several agents talking with each other via A2A or something similar.
+
+92
+00:15:54,420 --> 00:16:07,420
+ And that's what very complex solutions, where you need, like, multiple actions, and you need, like, alignment among the agents too.
+
+93
+00:16:07,420 --> 00:16:10,420
+ So, how do you remind those complexities?
+
+94
+00:16:10,420 --> 00:16:20,420
+ We can see, like, five operational controls that we can have across all these layers of complexity we have seen in the architectures.
+
+95
+00:16:20,420 --> 00:16:29,420
+ And they are, like, tracing, that's for the observability, because now we need to check, like, what is doing each tool, like, each code the LL is doing.
+
+96
+00:16:29,420 --> 00:16:30,420
+ So, what is happening with that?
+
+97
+00:16:30,420 --> 00:16:31,420
+ That's important.
+
+98
+00:16:31,420 --> 00:16:34,420
+ And, um, evaluation gates.
+
+99
+00:16:34,420 --> 00:16:39,420
+ So, here is what I was mentioning, build this golden data set.
+
+100
+00:16:39,420 --> 00:16:42,420
+ Similar as with any ML project.
+
+101
+00:16:42,420 --> 00:16:50,420
+ You need to have this very nice distribution of good, bad, and very seldom use cases of what is expected output.
+
+102
+00:16:50,420 --> 00:16:58,420
+ Governance, yeah, deployment and rollback strategies, and how you are going to monitor this.
+
+103
+00:16:58,420 --> 00:17:04,420
+ And for the first architecture, it's very easy, it's very similar to emerging solutions.
+
+104
+00:17:04,420 --> 00:17:14,420
+ You have just, like, tracing of the prompt and the input output tokens, how long is it taking, the golden data sets we mentioned already.
+
+105
+00:17:14,420 --> 00:17:22,420
+ You are going in the model at the prompt, and deployment is, like, quick rollback, you can do canary deployment as well.
+
+106
+00:17:22,420 --> 00:17:28,420
+ And the monitoring will be just, like, the response drift and great limits, right?
+
+107
+00:17:28,420 --> 00:17:36,420
+ In the second architecture, the next level, it's a little bit more complex, because now you have that retriever, so you have to trace as well,
+
+108
+00:17:36,420 --> 00:17:40,420
+ Is it going to the right vector search index?
+
+109
+00:17:40,420 --> 00:17:43,420
+ Is it retriever the right information?
+
+110
+00:17:43,420 --> 00:17:45,420
+ So, is it grounded?
+
+111
+00:17:45,420 --> 00:17:47,420
+ Can you decide where it is coming from?
+
+112
+00:17:47,420 --> 00:17:51,420
+ Which chunk of information was it using in order to prompt the response?
+
+113
+00:17:51,420 --> 00:17:59,420
+ Governance, now we have this vector search index, and the whole pipeline to maintain it, and up to date, so that's another thing to govern.
+
+114
+00:17:59,420 --> 00:18:09,420
+ And the deployment as well, we have this new element in order to consider it, and then for the monitoring, we just, like, have that next level as well.
+
+115
+00:18:09,420 --> 00:18:12,420
+ So, it's a little bit more complex.
+
+116
+00:18:12,420 --> 00:18:25,420
+ For tool coding, it gets more complex, because now we have more tools, more components to double-check, to test, you have to evaluate, to be sure that each tool is doing the right thing,
+
+117
+00:18:25,420 --> 00:18:34,420
+ that the agent is able to understand what those tools are doing, and then able to route the request accordingly.
+
+118
+00:18:34,420 --> 00:18:47,420
+ You need to ensure that there are, like, the right permissions as well for those tools, and if you are doing the canary deployment, you have to consider, okay, what do I, how do I want to do it?
+
+119
+00:18:47,420 --> 00:18:53,420
+ It's just like, what sets of tools I want to prove in this deployment, and so on.
+
+120
+00:18:53,420 --> 00:19:06,420
+ So, it gets, like, level of complexity is a little bit higher, and then also the monitoring gets about the tools that you are leveraging, if they are failing, do we have photo alerts, and so forth.
+
+121
+00:19:06,420 --> 00:19:23,420
+ And then the last one, because you have several agents, you have distributed traces, so you should be able to discern which agent is doing what trace, and what set of tools that particular agents are using,
+
+122
+00:19:23,420 --> 00:19:36,420
+ the cross-agent identities, so again, like, managing what can they access or not, the deployment, if you have, like, an orchestrator,
+
+123
+00:19:36,420 --> 00:19:46,420
+ they create those orchestrator gates, have this per-agent versioning, and then, like, a snapshot of what the versions that orchestrator will be handling,
+
+124
+00:19:46,420 --> 00:19:59,420
+ and then, for the monitoring, like, change if there are many loops, if there are, like, escalation gates, what are the cost per role, so it gets quite, quite complicated.
+
+125
+00:19:59,420 --> 00:20:12,420
+ So, in terms of that control and governance questions we have as the first challenge, one recommendation is to have that on behalf of the user,
+
+126
+00:20:12,420 --> 00:20:22,420
+ instead of having the service principle, who knows how much of the access, that you are not aware of, or, and that the agent doesn't need to have,
+
+127
+00:20:22,420 --> 00:20:30,420
+ so, that's one thing, the other one is, regarding this agent's role, like, tool is probably to have, like, a government registry,
+
+128
+00:20:30,420 --> 00:20:39,420
+ that, once, one helps to democratize, as well, like, the access to tools, and so on, to your, your teams and organizations,
+
+129
+00:20:39,420 --> 00:20:47,420
+ and two, it's much easier to maintain, also, things that are not used, that are not useful, then you can just, like, remove them from the registry,
+
+130
+00:20:47,420 --> 00:20:56,420
+ and people know that that's the case. You can also, like, control permissions, who has access to what, and they have the guardrails in place,
+
+131
+00:20:56,420 --> 00:21:06,420
+ and that will be, like, run-time policy on every action, so, are we allowed this action, are we denied it, or do we need a human approval in order to close it?
+
+132
+00:21:06,420 --> 00:21:13,420
+ And that will ensure that your agent is there, doing the right thing, or at least limiting the options, to avoid errors.
+
+133
+00:21:13,420 --> 00:21:25,420
+ And here, we have, like, an example of that traceability we were talking about. So, on the left side, we have, like, this input-output log,
+
+134
+00:21:25,420 --> 00:21:40,420
+ where we see, okay, the user was asking about why they were charged twice, and the LLM answers with, like, a very convincing answer, but it's completely wrong.
+
+135
+00:21:40,420 --> 00:21:49,420
+ So, maybe it was passing the formatting, the right tone, and so on, but it's wrong. And we cannot see here why it was wrong.
+
+136
+00:21:49,420 --> 00:21:59,420
+ But then, if we are tracing what the LLM is doing, and what the tools have, is it trying to get, and so on, we can see that, when it was trying to get the invoices,
+
+137
+00:21:59,420 --> 00:22:11,420
+ that tool that tool was timing out, so it doesn't know the latest status, so it goes to a cache of that tool, which was stale,
+
+138
+00:22:11,420 --> 00:22:17,420
+ so it was not having the right information for the customer, and therefore it was giving the wrong answer.
+
+139
+00:22:17,420 --> 00:22:29,420
+ So, if you don't have that trace, it's very difficult to know. And then, going back into that evaluation and observability,
+
+140
+00:22:29,420 --> 00:22:37,420
+ we have, like, several, again, quite complex, several sources. So, we have our, like, deterministic checks,
+
+141
+00:22:37,420 --> 00:22:46,420
+ like, as we used to have in, like, normal software development, where you can check, like, the format, the policy rules,
+
+142
+00:22:46,420 --> 00:22:54,420
+ PII patterns, like, these are, like, very, very useful, and I highly encourage you to keep using them as, like,
+
+143
+00:22:54,420 --> 00:23:00,420
+ use as much deterministic approaches as possible, because they are very cheap and quick to run.
+
+144
+00:23:00,420 --> 00:23:08,420
+ And then, you can run it in, run them in every request, in your CI and in production, and it won't, like, cost you much,
+
+145
+00:23:08,420 --> 00:23:13,420
+ and it will bring you a lot of value about how is the quality of the solution.
+
+146
+00:23:13,420 --> 00:23:19,420
+ Then, we have the LLM judges. Here, there are different schools of talks. I find them very useful,
+
+147
+00:23:19,420 --> 00:23:29,420
+ but it depends a lot on what kind of judges you are using. And they are expensive because you are hitting an LLM in order to get that,
+
+148
+00:23:29,420 --> 00:23:35,420
+ and they are slow. So, slow in comparison, slower in comparison with the deterministic ones.
+
+149
+00:23:35,420 --> 00:23:40,420
+ So, the idea here is use them when you are doing your CI process on your golden beta set,
+
+150
+00:23:40,420 --> 00:23:47,420
+ so that you are super sure that every change was tested and it's not, like, two integrations and so on.
+
+151
+00:23:47,420 --> 00:23:54,420
+ But the production is very expensive to run, so you need to have, like, a sampling of your production traffic
+
+152
+00:23:54,420 --> 00:24:02,420
+ that you will evaluate with those LLM judges. The most helpful one is the domain experts feedback,
+
+153
+00:24:02,420 --> 00:24:07,420
+ and this is something that you need to have in your projects, in your solutions.
+
+154
+00:24:07,420 --> 00:24:13,420
+ But this is, like, people are very difficult to just get the bandwidth in order to do that,
+
+155
+00:24:13,420 --> 00:24:18,420
+ so this is something you can do sporadically. At the beginning, it's important to have it once,
+
+156
+00:24:18,420 --> 00:24:22,420
+ until you get to that good quality, good enough to get to production.
+
+157
+00:24:22,420 --> 00:24:29,420
+ But then, once in production, you need also to keep them involved, like, with a review from time to time,
+
+158
+00:24:29,420 --> 00:24:36,420
+ quarterly, mostly, depends on your solution, based on what you see from the output in production.
+
+159
+00:24:36,420 --> 00:24:42,420
+ Judge alignment is about particularly when you have very complex agentic solutions.
+
+160
+00:24:42,420 --> 00:24:51,420
+ Let's say, for instance, a solution that is providing assistance to a user based on their medical information.
+
+161
+00:24:51,420 --> 00:25:00,420
+ So, it has to be very, very careful about the sensitivity of the data, what kind of recommendations it does, and so on.
+
+162
+00:25:00,420 --> 00:25:08,420
+ So, even humans evaluating this sometimes cannot get aligned to what is wrong or what is right.
+
+163
+00:25:08,420 --> 00:25:14,420
+ So, you need to have that phase of aligning what is wrong and right with the human experts,
+
+164
+00:25:14,420 --> 00:25:18,420
+ and then propagate that to your LLM judges.
+
+165
+00:25:18,420 --> 00:25:23,420
+ And then, end users is about the thumbs up, down, feedback you get from the product.
+
+166
+00:25:23,420 --> 00:25:30,420
+ So, the idea is that you need to get all of these sources of information, which are like gold for your solution,
+
+167
+00:25:30,420 --> 00:25:37,420
+ and try to get it consolidated in one data model, so that you can action on them.
+
+168
+00:25:37,420 --> 00:25:52,420
+ So, another, like best practice that we have identified and seen, like working in the industry, is like having drive alerts.
+
+169
+00:25:52,420 --> 00:26:01,420
+ So, before we had alerts on, oh, it is up, it is running, how long is it taking, did we get any particular errors, right?
+
+170
+00:26:01,420 --> 00:26:08,420
+ But now, we have this very complex system, so we need also to alert on, maybe the agent is getting into a loop,
+
+171
+00:26:08,420 --> 00:26:14,420
+ and you don't see it, and it is like taking edges to bring something, like alert on the loops,
+
+172
+00:26:14,420 --> 00:26:24,420
+ or what the agent is doing when we were back to these guardrails, hello, this deny, or like forward to a human.
+
+173
+00:26:24,420 --> 00:26:31,420
+ How much is this happening, this escalation towards a human, and this can be an indication of that something is wrong in your logic,
+
+174
+00:26:31,420 --> 00:26:37,420
+ or something degenerated, or maybe the data is changing, so that's something important to have.
+
+175
+00:26:37,420 --> 00:26:45,420
+ Because you have the tools, also like monitor those tools, and alert on them, and also the cost.
+
+176
+00:26:45,420 --> 00:26:48,420
+ So, it is important to alert if you are getting out of budget.
+
+177
+00:26:48,420 --> 00:27:00,420
+ I think everyone has heard of these stories of companies just growing their budget very quickly because of, like, not having this control in place.
+
+178
+00:27:00,420 --> 00:27:10,420
+ And then, because you can, it's a lot of effort, but it's effort well invested.
+
+179
+00:27:10,420 --> 00:27:14,420
+ When you create that evaluation data set, so how do you create it?
+
+180
+00:27:14,420 --> 00:27:20,420
+ You start with the spike testing, we were talking before, but because we are tracing every call we are doing,
+
+181
+00:27:20,420 --> 00:27:25,420
+ every test we are doing, you can use those traces in order to create your golden data set,
+
+182
+00:27:25,420 --> 00:27:29,420
+ or so when the SMEs are trying the solution.
+
+183
+00:27:29,420 --> 00:27:37,420
+ And this effort very, very well justified, because then this is what you are going to use in your CI/CD process.
+
+184
+00:27:37,420 --> 00:27:45,420
+ And then also later on in your production deployment, so as I was mentioning, just on a sample of the production traffic,
+
+185
+00:27:45,420 --> 00:27:52,420
+ and also, you also trace, based on those traces from the traffic, you can do offline analysis and see,
+
+186
+00:27:52,420 --> 00:27:55,420
+ oh, we were missing this edge use case.
+
+187
+00:27:55,420 --> 00:28:06,420
+ And they bring it back into your golden data set, so that it is, like, including, and you will have, like, better coverage.
+
+188
+00:28:06,420 --> 00:28:18,420
+ Here is just an example, where you have just, like, a PR, and just a refund intent, so you're just changing a line in your Java file from your agent,
+
+189
+00:28:18,420 --> 00:28:31,420
+ and then CI test are fine, because it looks good for the unit test and the lint, but then, because we have this evaluation game we created with the golden data set,
+
+190
+00:28:31,420 --> 00:28:42,420
+ and so on, we can see that the billing task is now degenerating in comparison to what it was before, so we can block it, we can go and analyze what was going on.
+
+191
+00:28:42,420 --> 00:28:48,420
+ And then once it is fixed, and then once it is fixed, we run again, and we see that it's even vector than before, which is amazing,
+
+192
+00:28:48,420 --> 00:28:57,420
+ and then we deploy, we say current deployment, and then based on that, we go, like, okay, this is the release in production.
+
+193
+00:28:57,420 --> 00:29:05,420
+ So it's, like, really key to have that evaluation game in your deployment and development loop.
+
+194
+00:29:05,420 --> 00:29:17,420
+ And because we have, again, so many moving components there, it's important to version the whole agent, so that when it comes to rollbacks,
+
+195
+00:29:17,420 --> 00:29:28,420
+ and so you know exactly what version was working with what, and in general for, like, tracing, like, tracking, also, like, your evaluations and your different deployments.
+
+196
+00:29:28,420 --> 00:29:42,420
+ So we need to version the problems, the tools, the routing logic, the model and parameters, how they're pinned, and the data sources, like, what was I using for this particular vector search index.
+
+197
+00:29:42,420 --> 00:29:51,420
+ Oh, what's that? And then, also, what were the evaluation thresholds I was using for that release.
+
+198
+00:29:51,420 --> 00:29:59,420
+ So that it's easier to know when you have to rollback, or when you are ready for the next deployment, you have, like, a baseline to compare it.
+
+199
+00:29:59,420 --> 00:30:11,420
+ So this is key to have. And then going to rollback. So because it's an agent doing actions, rollback is not as easy as just, oh, let's go back to the last version, and that's it.
+
+200
+00:30:11,420 --> 00:30:28,420
+ So it's, that's important to have it, but you need to have a strategy as well. So before, oh, wow, sorry, I don't know about that black box, but you need to have, like, a plan for what is my plan when I need to rollback.
+
+201
+00:30:28,420 --> 00:30:38,420
+ And especially, like, say for side effects, because if it was sending, for instance, a refund that was wrong, then I have to have that control measure,
+
+202
+00:30:38,420 --> 00:30:49,580
+ well, that was wrong, we need to charge again, or vice versa. So this is important to consider, especially when your agent is doing actions. And then in case of the,
+

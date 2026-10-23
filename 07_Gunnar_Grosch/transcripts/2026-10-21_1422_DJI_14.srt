@@ -1,0 +1,1096 @@
+1
+00:00:00,000 --> 00:00:02,240
+ and general instability around the world.
+
+2
+00:00:02,240 --> 00:00:03,780
+ I think the topic of digital sovereignty
+
+3
+00:00:03,780 --> 00:00:07,100
+ is going to become more and more important.
+
+4
+00:00:07,100 --> 00:00:09,960
+ So now we're going to move to a slightly different topic.
+
+5
+00:00:09,960 --> 00:00:13,480
+ So if you remember, back to the morning keynote from Julian,
+
+6
+00:00:13,480 --> 00:00:15,520
+ he was talking around all the different flavors
+
+7
+00:00:15,520 --> 00:00:17,080
+ of Lambda functions that are available,
+
+8
+00:00:17,080 --> 00:00:20,360
+ having gone from the original, what's now called event
+
+9
+00:00:20,360 --> 00:00:22,720
+ functions, through to web functions that
+
+10
+00:00:22,720 --> 00:00:25,080
+ was only launched a week or two ago.
+
+11
+00:00:25,080 --> 00:00:27,960
+ One of the things we touched on was Lambda drawable functions.
+
+12
+00:00:27,960 --> 00:00:31,680
+ essentially a way of creating a long-running,
+
+13
+00:00:31,680 --> 00:00:35,640
+ stable, fault-tolerant workflow using Familial and Decode.
+
+14
+00:00:36,760 --> 00:00:39,780
+ And now for our next door, we're going to dive deeper into
+
+15
+00:00:39,780 --> 00:00:41,500
+ how to actually use durable functions
+
+16
+00:00:41,500 --> 00:00:44,680
+ with a specific use case of building a conversational agent.
+
+17
+00:00:46,040 --> 00:00:49,480
+ So our next speaker has traveled all the way from Stockholm
+
+18
+00:00:49,480 --> 00:00:50,760
+ to speak to us today.
+
+19
+00:00:51,640 --> 00:00:53,600
+ He's an AWS serverless hero.
+
+20
+00:00:53,600 --> 00:00:57,800
+ He's formerly a principal developer advocate at AWS.
+
+21
+00:00:57,800 --> 00:00:59,980
+ And now he's developer applicator, SIDGE.
+
+22
+00:00:59,980 --> 00:01:03,120
+ So please, put your hands together for Gunnar Grosje.
+
+23
+00:01:27,800 --> 00:01:57,780
+ Thank you.
+
+24
+00:01:57,800 --> 00:02:27,780
+ Thank you.
+
+25
+00:02:27,800 --> 00:02:57,780
+ Thank you.
+
+26
+00:02:57,800 --> 00:03:27,780
+ Thank you.
+
+27
+00:03:27,800 --> 00:03:57,780
+ Thank you.
+
+28
+00:03:57,800 --> 00:04:27,780
+ Thank you.
+
+29
+00:04:27,800 --> 00:04:57,780
+ Thank you.
+
+30
+00:04:57,800 --> 00:05:27,780
+ Thank you.
+
+31
+00:05:27,800 --> 00:05:57,780
+ Thank you.
+
+32
+00:05:57,800 --> 00:06:27,780
+ Thank you.
+
+33
+00:06:27,800 --> 00:06:57,780
+ Thank you.
+
+34
+00:06:57,800 --> 00:07:24,280
+ Alright. There we go. That was a final break that you all needed, I think.
+
+35
+00:07:24,280 --> 00:07:32,840
+ So hi everyone, my name is Jonnar Grosch, I am a developer advocate at Cinch, I'm also an AWS serverless hero.
+
+36
+00:07:33,920 --> 00:07:39,220
+ And this talk is about agents, and especially agents that have to wait.
+
+37
+00:07:40,060 --> 00:07:44,840
+ And the example all the way through is about a conversation.
+
+38
+00:07:45,760 --> 00:07:49,560
+ The patterns that we're going to look at, they fit any type of agent loop.
+
+39
+00:07:49,560 --> 00:07:57,800
+ One that waits for a person, for an approval, for a webhook, or any type of long-running job.
+
+40
+00:07:58,720 --> 00:08:03,160
+ So, we're going to look through this, and it's fairly technical.
+
+41
+00:08:03,340 --> 00:08:08,720
+ We're going to see some code, and we'll get into how durable execution replays.
+
+42
+00:08:09,420 --> 00:08:12,160
+ So, let's just start off with a message.
+
+43
+00:08:12,520 --> 00:08:14,360
+ A message that's very easy to send.
+
+44
+00:08:15,280 --> 00:08:18,880
+ So, I think you've all received messages like this.
+
+45
+00:08:19,560 --> 00:08:27,480
+ an appointment reminder from in this case a clinic it's just one outbound sms nothing really hard
+
+46
+00:08:27,480 --> 00:08:32,600
+ about this part and the architecture to do something like this is super simple on service
+
+47
+00:08:33,240 --> 00:08:40,520
+ we have an aws lambda function calling some sort of messaging api and the customer in the end gets
+
+48
+00:08:40,520 --> 00:08:48,040
+ that sms and yes that's the singe logo for the messaging i work for singe so i obviously have
+
+49
+00:08:48,040 --> 00:08:53,320
+ to put that in but this could be Twilio, it could be any type of messaging API that you're using for
+
+50
+00:08:53,320 --> 00:09:03,320
+ this. Everything in this talk is about what happens on the AWS side of this diagram. Request in,
+
+51
+00:09:03,320 --> 00:09:11,400
+ response out, and this is where most of the conversation of AI demos usually stop. But then,
+
+52
+00:09:11,400 --> 00:09:19,560
+ what happens when the customer wants to write back so we have sent a reminder but i as a customer
+
+53
+00:09:19,560 --> 00:09:25,800
+ want to reply back there i want to rescape so now all of a sudden we're in a conversation
+
+54
+00:09:26,440 --> 00:09:32,440
+ the patient they expect the next next message to know which appointment they talk about
+
+55
+00:09:33,000 --> 00:09:39,720
+ they might answer with the follow-up tomorrow or next week even they might call instead so the
+
+56
+00:09:39,720 --> 00:09:46,180
+ The system has to remember what was said, wait for the next message, without actually
+
+57
+00:09:46,180 --> 00:09:51,960
+ knowing when that message is going to come, and it has to be able to resume safely.
+
+58
+00:09:51,960 --> 00:09:57,660
+ And if anything goes wrong in between, it should be able to fix that as well.
+
+59
+00:09:57,660 --> 00:10:04,720
+ So if we get it wrong, the customer or the patient might show up at the wrong time.
+
+60
+00:10:04,720 --> 00:10:10,640
+ clinic well they're going to lose their slot and the customer is going to stop trusting these types
+
+61
+00:10:10,640 --> 00:10:17,920
+ of messages so a lot of the agent demos they're able to answer that first message but this is
+
+62
+00:10:17,920 --> 00:10:24,560
+ about the second one and the third and the phone call after that so there are a few things that
+
+63
+00:10:24,560 --> 00:10:32,560
+ makes this a bit harder than it actually looks so first off it's human time a lambda function well
+
+64
+00:10:32,560 --> 00:10:39,040
+ it can run for up to 15 minutes, but as I said, the patient might reply tomorrow or next week.
+
+65
+00:10:39,040 --> 00:10:42,560
+ So obviously we can't just do it in one invocation of a lambda function.
+
+66
+00:10:44,160 --> 00:10:48,480
+ Second, it's compounding. And this was discussed earlier today as well.
+
+67
+00:10:48,480 --> 00:10:57,120
+ If every step inside an agent workflow succeeds say 85% of the time, have 10 of those in row,
+
+68
+00:10:57,120 --> 00:11:04,640
+ well then you have success rate of 20 percent in the end every time a retry redo's work that's
+
+69
+00:11:04,640 --> 00:11:12,080
+ already finished you roll those dices once again and third when it comes to conversations what we
+
+70
+00:11:12,080 --> 00:11:18,560
+ have channels the might start with an sms like we saw but next the customer might want to continue
+
+71
+00:11:18,560 --> 00:11:24,000
+ with whatsapp or they might want to pick up the phone and actually call someone rich i know it's
+
+72
+00:11:24,000 --> 00:11:28,760
+ It's weird in 2026, but people do actually still call.
+
+73
+00:11:28,760 --> 00:11:33,140
+ That's one conversation from the customer perspective.
+
+74
+00:11:33,140 --> 00:11:37,300
+ And the usual fix for this is to spread one conversation
+
+75
+00:11:37,300 --> 00:11:39,760
+ a lot of infrastructure.
+
+76
+00:11:39,760 --> 00:11:42,040
+ So we use cues.
+
+77
+00:11:42,040 --> 00:11:44,920
+ We might use DynamoDB tables, the store state,
+
+78
+00:11:44,920 --> 00:11:45,940
+ and so on and so on.
+
+79
+00:11:45,940 --> 00:11:47,860
+ So we have to fix all of that.
+
+80
+00:11:47,860 --> 00:11:52,240
+ So the answer for that is usually clear.
+
+81
+00:11:52,240 --> 00:11:57,720
+ We create some sort of event-driven architecture for this to be able to do it.
+
+82
+00:11:57,780 --> 00:12:01,100
+ But those things can easily fail.
+
+83
+00:12:01,800 --> 00:12:06,160
+ So let's say we have a webhook that puts a message onto some sort of queue.
+
+84
+00:12:06,700 --> 00:12:13,380
+ We have a processor that works out the reply, and then a sender of some sort that delivers it.
+
+85
+00:12:13,960 --> 00:12:18,400
+ And then we store all of that conversation state in a Dynamite TV table somewhere.
+
+86
+00:12:19,100 --> 00:12:34,220
+ But now if we follow the numbers, the reply goes out, well, the processor might crash before it records that turn, and the message comes back for a retry, and nothing recorded says that the customer already got an answer.
+
+87
+00:12:34,900 --> 00:12:38,520
+ If you send it again, well, the customer will get that message twice.
+
+88
+00:12:39,020 --> 00:12:40,660
+ And think about that as something else.
+
+89
+00:12:40,760 --> 00:12:42,220
+ Let's think of a bank transfer.
+
+90
+00:12:42,500 --> 00:12:45,240
+ Well, we don't want to transfer money twice, of course.
+
+91
+00:12:45,240 --> 00:12:50,700
+ But if you don't do it again, the customer might never get the message, and they might never answer.
+
+92
+00:12:52,100 --> 00:12:59,300
+ So what then is if this type of conversation, instead of being sticked together by a bunch of different services,
+
+93
+00:12:59,800 --> 00:13:05,940
+ could stay as sequential code, with the runtime in itself recording each step?
+
+94
+00:13:06,920 --> 00:13:09,280
+ And Julian talked about this this morning as well.
+
+95
+00:13:09,280 --> 00:13:16,580
+ that is AWS Lambda Durable Functions where the runtime takes care of time and
+
+96
+00:13:16,580 --> 00:13:24,920
+ failure for us and the actual conversation stays as ordinary code. So
+
+97
+00:13:24,920 --> 00:13:31,340
+ the model here when it comes to Durable Functions is execute, checkpoint, suspend
+
+98
+00:13:31,340 --> 00:13:38,340
+ or fail, replay and resume. So each Durable operation records its own
+
+99
+00:13:38,340 --> 00:13:44,100
+ result and when the function suspends waiting for a customer or when it fails
+
+100
+00:13:44,100 --> 00:13:51,320
+ the runtime is then able to later invoke again and it starts from the top.
+
+101
+00:13:51,320 --> 00:13:58,000
+ Completed operations, they don't run again. They return a saved result from the
+
+102
+00:13:58,000 --> 00:14:03,120
+ previous one and execution continues from the first operation that hasn't
+
+103
+00:14:03,120 --> 00:14:10,380
+ already completed. So you then write all of this, that workflow, as sequential code
+
+104
+00:14:10,380 --> 00:14:17,520
+ and the runtime is then able to turn that into a recoverable process. And that
+
+105
+00:14:17,520 --> 00:14:21,420
+ means that the invocation that we previously built things around when it
+
+106
+00:14:21,420 --> 00:14:28,560
+ comes to AWS Lambda isn't longer the unit that we have to think of. So a durable
+
+107
+00:14:28,560 --> 00:14:35,420
+ execution can span a bunch of different lambda function invocations. Between them, nothing
+
+108
+00:14:35,420 --> 00:14:43,920
+ runs. So the execution is still alive, it's suspended, and the runtime knows exactly where
+
+109
+00:14:43,920 --> 00:14:48,940
+ it stopped within that execution. And that's the shape of a conversation, and that's why
+
+110
+00:14:48,940 --> 00:14:56,020
+ this is such a good fit. The customer expects the system to remember the last message, no
+
+111
+00:14:56,020 --> 00:15:02,520
+ matter how many invocations it took to get there. Compute is going to stop while
+
+112
+00:15:02,520 --> 00:15:07,240
+ it's suspended. You do pay for your operations and for the checkpoint data
+
+113
+00:15:07,240 --> 00:15:12,100
+ that you write and you keep. So it isn't entirely for you to wait but you're not
+
+114
+00:15:12,100 --> 00:15:18,580
+ paying for a function just sitting idle. So the glue version of the initial
+
+115
+00:15:18,580 --> 00:15:22,960
+ architecture diagram just looks like this. So now we have two different
+
+116
+00:15:22,960 --> 00:15:28,420
+ Lambda functions instead. The webhook is the same as the function before. The
+
+117
+00:15:28,420 --> 00:15:33,580
+ customer's message arrives through the messaging API and the webhook either
+
+118
+00:15:33,580 --> 00:15:40,060
+ starts a new execution of our Lambda durable function or it then continues one
+
+119
+00:15:40,060 --> 00:15:46,060
+ that's already been waiting. So everything else is one function. We have
+
+120
+00:15:46,060 --> 00:15:51,760
+ what I call the coordinator. It is going to call Bedrock to create whatever
+
+121
+00:15:51,760 --> 00:15:57,520
+ reply. It is then going to send that reply out to the customer through the messaging API.
+
+122
+00:15:58,560 --> 00:16:04,480
+ The things I talked about before, like queues, state tables, and so on, we don't need them
+
+123
+00:16:04,480 --> 00:16:10,960
+ with this type of solution. So which turn we're on in the conversation? The back and forth between
+
+124
+00:16:10,960 --> 00:16:18,240
+ the customer and the agent, what we've sent so far and what we're waiting for, all of that lives
+
+125
+00:16:18,240 --> 00:16:25,440
+ within that durable execution now so this is one agent it has one prompt it has one model
+
+126
+00:16:25,440 --> 00:16:33,280
+ one set of permissions so to coordinate to them this is what it looks like in code this is a bit
+
+127
+00:16:33,280 --> 00:16:39,120
+ simplified just to be able to fit it on the slide but read it from top to bottom we wait for the
+
+128
+00:16:39,120 --> 00:16:46,880
+ customer we get the agent's answer and we send the reply and then we loop over and over and there are
+
+129
+00:16:46,880 --> 00:16:51,700
+ two operations that carry this entire conversation. One is wait for callback.
+
+130
+00:16:51,700 --> 00:16:57,080
+ That means that we're suspending this durable execution until something
+
+131
+00:16:57,080 --> 00:17:02,000
+ outside, that's going to be that webhook that we saw, completes the callback when
+
+132
+00:17:02,000 --> 00:17:08,960
+ the customer replies. The other one is step. That's where we run work, calling
+
+133
+00:17:08,960 --> 00:17:14,420
+ bedrock for instance. We create whatever message we want to send and then we
+
+134
+00:17:14,420 --> 00:17:19,220
+ checkpoint it. The model call and then the send, where we actually send out the
+
+135
+00:17:19,220 --> 00:17:26,300
+ message. And if you look at the names of this, we call them names like reply1,
+
+136
+00:17:26,300 --> 00:17:33,420
+ answer1, sendreply1. Each turn gets its own name. So the next turn is going to be
+
+137
+00:17:33,420 --> 00:17:40,260
+ reply2, answer2, sendreply2. The runtime is then able to use this to match the
+
+138
+00:17:40,260 --> 00:17:48,420
+ same result to code on Veef. And you saw probably Julian's slide earlier
+
+139
+00:17:48,420 --> 00:17:53,400
+ comparing step functions to durable functions and I agree with what he showed
+
+140
+00:17:53,400 --> 00:18:00,000
+ there. It's great to use step functions when most of the work is calling other
+
+141
+00:18:00,000 --> 00:18:05,280
+ AWS services or perhaps you have workflows that other teams needs to see
+
+142
+00:18:05,280 --> 00:18:13,040
+ But since all of this is application logic, using durable functions is a great fit for these types of applications.
+
+143
+00:18:14,520 --> 00:18:18,880
+ So we're doing replays, running this over and over again in loops.
+
+144
+00:18:18,960 --> 00:18:24,640
+ And there are a few rules around this, but there's one that's super important to remember.
+
+145
+00:18:25,780 --> 00:18:30,520
+ On replay, the handler is going to run all of that code again from the top.
+
+146
+00:18:30,520 --> 00:18:34,940
+ So complete the operations, they're going to return the same result.
+
+147
+00:18:35,280 --> 00:18:41,120
+ anything outside of one of these operations is going to run again so on
+
+148
+00:18:41,120 --> 00:18:46,880
+ the left here we have the agent call in this case it's going to run every time
+
+149
+00:18:46,880 --> 00:18:51,560
+ we invoke this lambda function so we are going to get a different draft created
+
+150
+00:18:51,560 --> 00:18:57,840
+ by bedrock and we are going to send this message every time on the right you can
+
+151
+00:18:57,840 --> 00:19:02,680
+ see that both of these are put inside steps it means that the draft is going
+
+152
+00:19:02,680 --> 00:19:07,640
+ be generated once and it's going to be saved. It's not going to run that same thing again.
+
+153
+00:19:08,440 --> 00:19:15,080
+ And the send, once again, also just happens once and it is recorded. So the rule here is that
+
+154
+00:19:15,080 --> 00:19:22,640
+ things like model calls, generated IDs, timestamps, anything that has a side effect,
+
+155
+00:19:22,640 --> 00:19:28,380
+ you put those inside of a step, one of these operations. And you should treat the operations
+
+156
+00:19:28,380 --> 00:19:34,600
+ names as a contract. So rename one while executions are running, the replay isn't
+
+157
+00:19:34,600 --> 00:19:40,740
+ going to line up. One more thing to think about as well is that inside a step
+
+158
+00:19:40,740 --> 00:19:46,700
+ doesn't mean exactly once. The default can run a step again if the function dies
+
+159
+00:19:46,700 --> 00:19:52,920
+ mid-step. So at most once won't rerun it. But then you don't know if it's finished.
+
+160
+00:19:52,920 --> 00:19:59,820
+ so neither mode here is exactly once and that's important to remember so for the
+
+161
+00:19:59,820 --> 00:20:05,300
+ message for instance we need to generate an item potency key so in and we do
+
+162
+00:20:05,300 --> 00:20:10,620
+ that in its own step so that way we can make sure that we're only sending this
+
+163
+00:20:10,620 --> 00:20:20,340
+ message once all right so there we go the message still comes through the web
+
+164
+00:20:20,340 --> 00:20:27,540
+ like we saw before. And the coordinator that we have, it's the one that's driving the conversation.
+
+165
+00:20:28,260 --> 00:20:33,780
+ But we are now able to take that architecture we had before, and we can make it multi-agent.
+
+166
+00:20:33,900 --> 00:20:40,100
+ And there are a few reasons why this can actually be helpful for us. So if we have one agent,
+
+167
+00:20:40,460 --> 00:20:47,680
+ like before, where we had one model, we have one prompt, one set of permissions, it means that
+
+168
+00:20:47,680 --> 00:20:54,780
+ that agent can do things that we perhaps don't want it to do, but instead we can create what
+
+169
+00:20:54,780 --> 00:21:01,400
+ we call specialists. So we use that coordinator as a way to route to specialist agents within
+
+170
+00:21:01,400 --> 00:21:07,980
+ our conversation flow. And each of these specialists can have their own AWS Lambda function, meaning
+
+171
+00:21:07,980 --> 00:21:15,020
+ that they have their own set of IAM permissions, a specific role. And each of these can have
+
+172
+00:21:15,020 --> 00:21:21,960
+ specific prompt, allowing them to do specific things. So, for us, this could be a booking
+
+173
+00:21:21,960 --> 00:21:27,940
+ agent, it could be a rescheduling agent, it could be a canceled agent. Think of any specific
+
+174
+00:21:27,940 --> 00:21:32,980
+ use case where you can break it down into these different things that the agent is allowed
+
+175
+00:21:32,980 --> 00:21:40,580
+ to do. So, in this case, we are now able to have specific permission for each of these
+
+176
+00:21:40,580 --> 00:21:46,480
+ agents, so only the booking one, for instance, can write access to the booking
+
+177
+00:21:46,480 --> 00:21:52,080
+ system. And we are then using this to invoke checkpoints for each of these
+
+178
+00:21:52,080 --> 00:21:59,400
+ specialists and the results coming out. If the specialist call will have side
+
+179
+00:21:59,400 --> 00:22:04,940
+ effects, you can give each of these calls its own step so a retry doesn't do that
+
+180
+00:22:04,940 --> 00:22:13,100
+ booking twice. And what happens then if we have type of work that takes longer to
+
+181
+00:22:13,100 --> 00:22:17,940
+ run than 15 minutes that a Lambda function can? Well, we can do that as well with
+
+182
+00:22:17,940 --> 00:22:25,700
+ durable functions. We just need to call some other service. So let's say that we
+
+183
+00:22:25,700 --> 00:22:31,640
+ have a specialist that has work that takes 60 minutes. That could be generating a
+
+184
+00:22:31,640 --> 00:22:35,960
+ report, maybe it's a batch of documents that needs to be processed, maybe it's
+
+185
+00:22:35,960 --> 00:22:42,320
+ just a long agent task of some sort. A single durable step can run for that long
+
+186
+00:22:42,320 --> 00:22:48,080
+ because it can only run for 15 minutes. So we run it somewhere else, somewhere
+
+187
+00:22:48,080 --> 00:22:52,940
+ that's built for long-running work. That could be a container task on Fargate for
+
+188
+00:22:52,940 --> 00:22:58,460
+ instance. It could be an EC2 instance, it could be a batch job. And we just wait for
+
+189
+00:22:58,460 --> 00:23:04,820
+ that to finish using wait for callback. The submitter is going to start the task and it
+
+190
+00:23:04,820 --> 00:23:12,500
+ hands it that callback ID. And once the coordinator suspends, nothing is going to run within that
+
+191
+00:23:12,500 --> 00:23:19,820
+ durable function. It is just running or an initiated durable execution and then it waits
+
+192
+00:23:19,820 --> 00:23:26,540
+ for that callback. The task is going to send heartbeats over and over again. So if it dies,
+
+193
+00:23:26,540 --> 00:23:31,820
+ the heartbeat timeout will fail that callback and it can do that in minutes
+
+194
+00:23:31,820 --> 00:23:37,100
+ instead of waiting for the entire hour and when it's done it's going to complete
+
+195
+00:23:37,100 --> 00:23:42,440
+ the callback and it will then remember what happened it will resume the
+
+196
+00:23:42,440 --> 00:23:47,180
+ coordinator and it will do the next step in this case it might be to then send a
+
+197
+00:23:47,180 --> 00:23:53,540
+ text message to the customer saying that this is the results of that report or
+
+198
+00:23:53,540 --> 00:23:59,720
+ a job that we did. So remember that shape. The coordinator suspends. Something outside
+
+199
+00:23:59,720 --> 00:24:05,820
+ completes the callback, and here it is an hour of machine work, but it can also be something
+
+200
+00:24:05,820 --> 00:24:12,220
+ else. We'll look at an example in just a bit. If it's under 15 minutes, a regular lambda
+
+201
+00:24:12,220 --> 00:24:18,500
+ function invokes enough. All right, so let's give the coordinator its specialists. This
+
+202
+00:24:18,500 --> 00:24:23,340
+ is the architecture we had, and then for each specialist, we're simply adding a lambda
+
+203
+00:24:23,340 --> 00:24:29,380
+ function for each. And many times we've looked at a lambda function invoking another lambda
+
+204
+00:24:29,380 --> 00:24:35,060
+ function as an anti-pattern, but in this case we have specific operation in durable functions
+
+205
+00:24:35,060 --> 00:24:39,900
+ that allows us to invoke lambda functions. And the way it works, when it's then waiting
+
+206
+00:24:39,900 --> 00:24:45,380
+ for that invoke, means that it is no longer an anti-pattern.
+
+207
+00:24:45,380 --> 00:25:12,200
+ Alright, so let's look at how we can actually visualize this, because I'm a visual camera guy, I like code, I like writing durable function code as well, but sometimes when these workflows grow, it's hard to actually get a grasp of what they look like, and that's where step functions usually shine, because you create a workflow and you can see what it actually looks like.
+
+208
+00:25:12,200 --> 00:25:30,960
+ So, this is a gap in durable functions as of now, so I created a simple tool called "Durable Viz" that allows you to run it within your IDE and you can simply by looking at the durable function code, you can then visualize it like this as a workflow.
+
+209
+00:25:30,960 --> 00:25:40,480
+ And what we're seeing here is the handler for our multi-agent coordinator, the one we just looked at, but it's simplified just a bit.
+
+210
+00:25:40,480 --> 00:25:51,940
+ But it's the greeting, it is the loop, it's waiting for each reply, it's routing, the early exit when the customer is done, and then the specialist invoke, and finally the send.
+
+211
+00:25:52,380 --> 00:26:00,640
+ If we just look at the normal term, wait for reply, route, the specialist invoke, send, and then around the loop again.
+
+212
+00:26:02,240 --> 00:26:12,300
+ So to me, this helps to understand how durable functions actually work when you look at it just like a step functions workflow, because that's basically what it is.
+
+213
+00:26:13,820 --> 00:26:17,020
+ And this is every path that the code can take in this case.
+
+214
+00:26:17,340 --> 00:26:19,840
+ It shows us what the code is doing.
+
+215
+00:26:20,300 --> 00:26:27,920
+ The execution history, on the other hand, it shows the path that a real conversation, a real execution actually took.
+
+216
+00:26:27,920 --> 00:26:33,180
+ And that's something that you can see in the AWS console when you go into a durable function.
+
+217
+00:26:33,960 --> 00:26:35,660
+ So I'm going to show you what that looks like.
+
+218
+00:26:36,440 --> 00:26:41,000
+ So let's look at execution history through a conversation.
+
+219
+00:26:42,400 --> 00:26:49,520
+ So the first message starts the execution in our durable execution.
+
+220
+00:26:50,100 --> 00:26:53,620
+ So route 1 is the routing model's decision, checkpointed.
+
+221
+00:26:53,620 --> 00:27:05,860
+ Handle one, we are now calling one of the specialists, it is invoked as a separate Lambda function, and then send reply, the reply, the message that gets sent once.
+
+222
+00:27:06,580 --> 00:27:12,280
+ And then the customer answers, Thursday morning, that's going to be reply two, now we're in the loop, in that loop.
+
+223
+00:27:12,820 --> 00:27:20,180
+ The callback, the webhook completed with their message, and then handle two, the second specialist term, and the confirmation.
+
+224
+00:27:21,440 --> 00:27:24,240
+ And then at the bottom, reply 3, suspend.
+
+225
+00:27:24,800 --> 00:27:28,680
+ The phone is quiet, nothing is running for the customer right now.
+
+226
+00:27:29,040 --> 00:27:33,800
+ And that's one path through the map on the previous slide where we saw the workflow.
+
+227
+00:27:35,080 --> 00:27:42,640
+ So let's just look at some of the things that I learned out of building these kind of workflows.
+
+228
+00:27:44,500 --> 00:27:51,020
+ I've had this specific agent running and we've had customers actually using it
+
+229
+00:27:51,020 --> 00:27:55,260
+ and sending messages back and forth.
+
+230
+00:27:55,400 --> 00:27:58,740
+ And the durable side of things, it never failed.
+
+231
+00:27:58,740 --> 00:28:03,140
+ The checkpoints, the callbacks, all the resumes just worked.
+
+232
+00:28:03,780 --> 00:28:06,840
+ What did fail many times was the model.
+
+233
+00:28:07,740 --> 00:28:10,720
+ Sometimes the reply was confidently wrong,
+
+234
+00:28:11,240 --> 00:28:14,300
+ a time that didn't exist, a booking it never made.
+
+235
+00:28:15,660 --> 00:28:20,120
+ Infrastructure reports success, but the customer gets the wrong answer.
+
+236
+00:28:20,920 --> 00:28:25,080
+ Durable execution isn't gonna fix that part of things.
+
+237
+00:28:25,080 --> 00:28:27,980
+ So we need to do a few things to make sure
+
+238
+00:28:27,980 --> 00:28:30,280
+ that it actually replies correctly.
+
+239
+00:28:30,280 --> 00:28:34,680
+ It is non-deterministic as we heard earlier today as well.
+
+240
+00:28:34,680 --> 00:28:37,600
+ So what we can do is add a gate before the send.
+
+241
+00:28:37,600 --> 00:28:40,600
+ So the specialist returns the structured result
+
+242
+00:28:40,600 --> 00:28:42,840
+ and you check it against the booking system
+
+243
+00:28:42,840 --> 00:28:45,480
+ before you actually send the message.
+
+244
+00:28:45,480 --> 00:28:47,180
+ Then you send it.
+
+245
+00:28:47,180 --> 00:28:49,860
+ And recoverable can still be wrong.
+
+246
+00:28:49,860 --> 00:28:53,800
+ The workflow comes back, but the answer doesn't get any better.
+
+247
+00:28:54,640 --> 00:28:57,940
+ And second, choose a model per specialist.
+
+248
+00:28:58,260 --> 00:29:02,860
+ So when we break it down into multiple agents like this, with multiple specialists,
+
+249
+00:29:03,420 --> 00:29:06,960
+ we can then set models based on what they actually need to do.
+
+250
+00:29:07,120 --> 00:29:09,520
+ Some models can be fast, cheap models.
+
+251
+00:29:10,140 --> 00:29:14,800
+ Some can be more reasoning-type models that give you a better answer in return.
+
+252
+00:29:17,020 --> 00:29:21,020
+ And the execution history, it told me that the workflow
+
+253
+00:29:21,020 --> 00:29:25,020
+ succeeded, the one we saw before, but it doesn't tell me if the answer
+
+254
+00:29:25,020 --> 00:29:29,020
+ that it actually gave was true.
+
+255
+00:29:29,020 --> 00:29:33,020
+ So, I want to show you, this is kind of a
+
+256
+00:29:33,020 --> 00:29:37,020
+ path to the side of things, but something that I've been using for a while
+
+257
+00:29:37,020 --> 00:29:41,020
+ now that helps a lot when building these types of systems.
+
+258
+00:29:41,020 --> 00:29:45,020
+ I'm using a system for prompts that's called
+
+259
+00:29:45,020 --> 00:29:50,020
+ kind of like a framework for prompts. It has five sections.
+
+260
+00:29:50,020 --> 00:29:54,020
+ And this, what we're seeing on the screen right now, is the change specialist.
+
+261
+00:29:54,020 --> 00:29:59,020
+ It's shortened to fit on the screen. But it's following these five steps.
+
+262
+00:29:59,020 --> 00:30:02,020
+ So first off, the role, who the agent is and what it knows.
+
+263
+00:30:02,020 --> 00:30:08,020
+ Instructions is the actual task for the specialist. It's a sentence or two.
+
+264
+00:30:08,020 --> 00:30:14,020
+ Steps, those are the steps that it should take to be able to do the work.
+
+265
+00:30:14,020 --> 00:30:17,020
+ when there's more than one single decision.
+
+266
+00:30:17,020 --> 00:30:21,020
+ An expectation is exactly what comes back from the agent,
+
+267
+00:30:21,020 --> 00:30:25,020
+ which is what makes the gate on the previous slide possible.
+
+268
+00:30:25,020 --> 00:30:28,020
+ And then narrowing, what it must never do.
+
+269
+00:30:28,020 --> 00:30:31,020
+ Never list options, never change a confirmation number,
+
+270
+00:30:31,020 --> 00:30:34,020
+ never add details that aren't in the product.
+
+271
+00:30:34,020 --> 00:30:38,020
+ And this isn't going to make the model deterministic,
+
+272
+00:30:38,020 --> 00:30:41,020
+ but it makes it deterministic-ish.
+
+273
+00:30:41,020 --> 00:30:46,540
+ The same kind of message is going to get the same kind of answer most of the time.
+
+274
+00:30:46,540 --> 00:30:49,580
+ But most of the time is why that gate that I showed before
+

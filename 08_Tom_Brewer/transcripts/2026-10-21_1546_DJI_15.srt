@@ -1,0 +1,668 @@
+1
+00:00:00,000 --> 00:00:26,640
+ So welcome back everyone, we're there with the final stretch, we have a few great talks
+
+2
+00:00:26,640 --> 00:00:33,760
+ now standing between ourselves and either home or the bar, so hopefully you'll enjoy our last sessions.
+
+3
+00:00:35,200 --> 00:00:39,520
+ So I think a lot of things we've heard about today have all been, you know, new services,
+
+4
+00:00:39,520 --> 00:00:44,960
+ things you can deliver using things like Agenda AI, and that's often simple if you're in a greenfield
+
+5
+00:00:44,960 --> 00:00:50,400
+ environment, but it can be quite difficult where most organizations, they're also carrying the sort
+
+6
+00:00:50,400 --> 00:00:56,320
+ of debts of legacy systems. So a big challenge is, you know, how do you transform and build
+
+7
+00:00:56,320 --> 00:01:02,080
+ new digital services or net new digital capability on top of legacy. And that's why I'm delighted to
+
+8
+00:01:02,080 --> 00:01:06,000
+ welcome our next speaker, talking about how they've been transforming through legacy
+
+9
+00:01:06,560 --> 00:01:10,720
+ at the DVLA. Please bring your hands together for Tom Brewer, CTO of DVLA.
+
+10
+00:01:14,720 --> 00:01:28,320
+ So as Matt says, my name is Tom Brewer, I'm the Chief Technology Officer for the DVLA, and I'm going to
+
+11
+00:01:28,320 --> 00:01:34,720
+ talk a little bit today about how we have set ourselves out to transform through the constraints
+
+12
+00:01:34,720 --> 00:01:40,960
+ of legacy technology. So I'm going to start with a bit of a prelude of what is the DVLA, a little bit of
+
+13
+00:01:40,960 --> 00:01:46,720
+ background information. So anybody here from the public sector? I'm assuming there's a reasonable
+
+14
+00:01:46,720 --> 00:01:55,520
+ amount. There we go, plenty more. Anybody here work with legacy technology? There we go, yeah,
+
+15
+00:01:55,520 --> 00:02:03,200
+ a bit of a ball ache, right? One of those things. So DVLA, who are we? Well, we're the
+
+16
+00:02:03,200 --> 00:02:09,040
+ driver and vehicle licensing agency. So here are some stats to talk about the scale at which we operate.
+
+17
+00:02:10,160 --> 00:02:16,480
+ We cater for 48 million vehicles, 53 million driving licenses. We touch pretty much every
+
+18
+00:02:16,480 --> 00:02:24,320
+ household in the UK. We collect my own £10 billion worth of tax for the Exchequer every year. We raise
+
+19
+00:02:24,320 --> 00:02:32,480
+ over 150 million in funding through sale of personalised plates. We send quite a lot of letters. We have
+
+20
+00:02:33,440 --> 00:02:40,880
+ roughly 120 or so million going out every year. We have 12 million deliveries in. Loads of those are
+
+21
+00:02:40,880 --> 00:02:47,280
+ driving licenses being set back. Huge amount of paper. You can imagine the efficiencies in the organisation
+
+22
+00:02:47,840 --> 00:02:55,200
+ through a shift towards digital. Some other things. We issue 12 million driving licenses.
+
+23
+00:02:55,200 --> 00:03:02,560
+ We issue 18.5 million registration documents for vehicles. Of the driving licenses that we issue,
+
+24
+00:03:03,520 --> 00:03:11,840
+ 750,000 of them require a medical decision to ensure that those people who have got medical conditions
+
+25
+00:03:11,840 --> 00:03:22,240
+ are fit to drive. So what that means in terms of our digital footprint. We cater for 6.24 billion
+
+26
+00:03:22,240 --> 00:03:27,840
+ digital interactions every year. Those are digital transactions that customers carry out directly
+
+27
+00:03:27,840 --> 00:03:38,640
+ with us. And digital inquiries where external stakeholders request our data. We have licensed
+
+28
+00:03:38,640 --> 00:03:43,360
+ four and a half million people through our voice recognition software. Some people
+
+29
+00:03:43,360 --> 00:03:49,600
+ phone up for help with their vehicle taxation. Our digital take up in terms of the services that we
+
+30
+00:03:49,600 --> 00:03:56,800
+ provide is over 85 percent. And we've got nearly half a million people using our chatbots. So again,
+
+31
+00:03:56,800 --> 00:04:04,080
+ talking about scale, we are pretty big when it comes to the UK public sector and the general citizen
+
+32
+00:04:04,080 --> 00:04:14,480
+ population. So a little bit about our digital strategy. I'm not going to labour this really. But we've broken it
+
+33
+00:04:14,480 --> 00:04:20,000
+ down into five key areas. So we want to build out an account proposition for our customers,
+
+34
+00:04:20,000 --> 00:04:24,960
+ which is a single area for our customers to access all the DVLA services. I'll come back to that later.
+
+35
+00:04:25,920 --> 00:04:34,640
+ We have a driver's suite of technology that was predicated on a significant legacy ecosystem.
+
+36
+00:04:35,600 --> 00:04:42,800
+ We have the same free vehicle services landscape. Again, the majority of it being legacy technology.
+
+37
+00:04:43,920 --> 00:04:48,800
+ We want to transform both of those areas to ensure that we're on the latest technology platforms and the
+
+38
+00:04:48,800 --> 00:04:53,840
+ services that we provide to our customers are slick, efficient and can be changed rapidly and the
+
+39
+00:04:53,840 --> 00:04:59,360
+ technology doesn't get in the way of any of that. We are a data rich organisation. We want to ensure
+
+40
+00:04:59,360 --> 00:05:06,080
+ that we've got both a data platform suitable for internal use, so future trend forecasting, reporting,
+
+41
+00:05:06,080 --> 00:05:13,120
+ analytics and so on and so forth, but also the ability to provide information easily to those external
+
+42
+00:05:13,120 --> 00:05:20,320
+ stakeholders who want to inquire on our data. Then it goes, so it's obvious to say then, all of our
+
+43
+00:05:20,320 --> 00:05:27,120
+ infrastructure will be cloud first. That is our strategy and that's where we want to get towards.
+
+44
+00:05:27,840 --> 00:05:33,760
+ So the challenge for us, how can we transform ageing in very complex legacy technology,
+
+45
+00:05:33,760 --> 00:05:37,280
+ whilst actually building out enhanced services for the future.
+
+46
+00:05:38,880 --> 00:05:46,560
+ So we started with the concept, right? So this is our vision. Nothing really groundbreaking. There's
+
+47
+00:05:46,560 --> 00:05:53,360
+ shattering in there really. It's a customer account provision where our customers can access all of
+
+48
+00:05:53,360 --> 00:06:02,320
+ the DLA services, whether their driver licensing, vehicle licensing, contact center, any support channels,
+
+49
+00:06:02,320 --> 00:06:09,840
+ they require manage their demographic details, potentially also include the ability to also
+
+50
+00:06:09,840 --> 00:06:16,800
+ deliver other organisation services. So we're talking with colleagues at the DVSA, for example,
+
+51
+00:06:16,800 --> 00:06:23,200
+ to see whether or not we can put DVSA MOT services or booking a driving test through the account as well.
+
+52
+00:06:23,200 --> 00:06:29,840
+ So it's a single stop for customers to be able to access all of the services that mean something to them.
+
+53
+00:06:29,840 --> 00:06:34,880
+ Like I say, nothing else's shattering in here. Amazon introduced a customer account in 1995.
+
+54
+00:06:35,440 --> 00:06:42,880
+ However, in the public sector, this is the thing to do, right? So even now you go across government,
+
+55
+00:06:42,880 --> 00:06:48,960
+ you go to gov.uk, go to access a government service. It's a one-in-one, you access the smash stream,
+
+56
+00:06:48,960 --> 00:06:54,000
+ you go through the transaction, you get an application reference number at the end and that's your offer. Thank you very much.
+
+57
+00:06:55,200 --> 00:07:00,160
+ With this idea, obviously, we can persist the interactions we've had with our customer,
+
+58
+00:07:00,160 --> 00:07:05,760
+ we can build on our knowledge of the customer and then we can enhance the services as a result.
+
+59
+00:07:06,560 --> 00:07:17,520
+ So, the starting point. We came up with this a while ago. So I'm going to look back to the dark days of
+
+60
+00:07:18,400 --> 00:07:26,560
+ COVID where the DVLA technology was under control of the chief architect, an AWS hero,
+
+61
+00:07:26,560 --> 00:07:34,720
+ whose identity like Batman or the stick from Top Gear may never be fun again, but it basically set us out
+
+62
+00:07:35,680 --> 00:07:42,720
+ with a starting point. So we asked ourselves, how do we get where we need to be? We knew that we had
+
+63
+00:07:42,720 --> 00:07:49,600
+ these legacy drivers and vehicles estates. So the drivers one, very heavily mainframe oriented,
+
+64
+00:07:49,600 --> 00:07:56,320
+ we had a system of record that stores all of the driver licensing details, built-in technologies,
+
+65
+00:07:56,320 --> 00:08:04,480
+ natural and adidas. I'm sure half of you probably won third of them. We had a suite of online driver
+
+66
+00:08:04,480 --> 00:08:10,960
+ licensing services that our customers use, built-in very own versions of Java and Oracle. We had bespoke
+
+67
+00:08:10,960 --> 00:08:16,160
+ ETLs, extract, transform load transactions, and we have a load of batch operations holding them all
+
+68
+00:08:16,160 --> 00:08:21,840
+ together. Much the same in vehicle space, except the system of record was built in a 4GL modeling
+
+69
+00:08:21,840 --> 00:08:29,040
+ language called Consumer Associates Gen, and was backed by Oracle. Outside of that exact same problem
+
+70
+00:08:29,040 --> 00:08:38,240
+ statement. So what did we do? Well, we decided to target drivers first. So like legacy drivers at stake,
+
+71
+00:08:38,240 --> 00:08:44,000
+ so as we talked about, predicated on mainframe, had some old Java and Oracle in there as well,
+
+72
+00:08:44,000 --> 00:08:49,200
+ some nasty file transfer, and a little bit of cloud. So as we're looking at that diagram,
+
+73
+00:08:50,160 --> 00:08:54,800
+ all the box on the left hand side is mainframe tech, got a little bit of cloud up in the top right,
+
+74
+00:08:54,800 --> 00:09:01,200
+ and then we've got old, deteriorated legacy technology that can't be changed easily in the box on the bottom right.
+
+75
+00:09:02,560 --> 00:09:10,080
+ All of the stakeholders outside the boxes are external organizations, and who interact with us via
+
+76
+00:09:10,720 --> 00:09:17,040
+ very outdated mechanisms. So again, like I say, this is back in 2020. So what did we do?
+
+77
+00:09:17,600 --> 00:09:23,680
+ Well, we looked at first and foremost swapping out the drivers websites that our customers saw.
+
+78
+00:09:24,400 --> 00:09:30,160
+ So we built a suite of strategic legacy adapters. We took the opportunity whilst we were doing those to
+
+79
+00:09:30,160 --> 00:09:38,720
+ clean out the business logic within that core system record. We rewrote all of those services in such a way
+
+80
+00:09:38,720 --> 00:09:44,720
+ that we could then offer them up through the customer account. So what that first bit of transformation did
+
+81
+00:09:44,720 --> 00:09:49,760
+ was build that first implementation of the customer account that we were talking about. So if you remember
+
+82
+00:09:49,760 --> 00:09:57,120
+ the central mind map that I showed earlier, this was the building block for it. So we put a couple of key
+
+83
+00:09:57,120 --> 00:10:02,240
+ principles in place, it would be a single point of entry. It would be built off the gov.uk one login,
+
+84
+00:10:02,240 --> 00:10:07,840
+ so we would actually know that we would be able to identify all of our users. We know exactly who they were,
+
+85
+00:10:07,840 --> 00:10:13,440
+ that would mean that we could persist services to them. All built in modern technology, and we were
+
+86
+00:10:13,440 --> 00:10:19,600
+ able now to join that service offering. So it starts to open the door to, well, actually, if somebody is
+
+87
+00:10:19,600 --> 00:10:23,520
+ really wearing their driving license, actually, would they want to tax their car at the same time and pay
+
+88
+00:10:23,520 --> 00:10:28,640
+ once rather than doing the same with transactions and start getting an idea of customer behavior and all the rest of it.
+
+89
+00:10:28,640 --> 00:10:34,160
+ And just that first phase of transformation and rewriting legacy allowed us to do two things.
+
+90
+00:10:34,160 --> 00:10:40,640
+ It enhances customer services and decommission a stack of old, very difficult to support software.
+
+91
+00:10:40,640 --> 00:10:49,920
+ Second stage for us was we changed all of the ways that the external stakeholders communicated with us.
+
+92
+00:10:49,920 --> 00:10:55,920
+ So we moved them all off from total file-based transfer systems into a more modern FTP-based structure,
+
+93
+00:10:55,920 --> 00:11:05,040
+ wherever we could. And then finally, we are now in the stage where we are moving to be able to migrate
+
+94
+00:11:05,040 --> 00:11:12,720
+ the system of record from the mainframe into AWS cloud. The savings for that will be huge on an annual basis.
+
+95
+00:11:12,720 --> 00:11:19,200
+ Those will run into the millions. Not only that, as a part of this, we managed to reduce our code-based
+
+96
+00:11:19,200 --> 00:11:27,440
+ footprint by about 25%. We've rewritten all of the peripheral mainframe native processes and practices,
+
+97
+00:11:27,440 --> 00:11:33,440
+ we've put them into cloud native technology and tooling that we understand fully. We've removed all of our
+
+98
+00:11:33,440 --> 00:11:38,560
+ reliance on manual tests and manual deployment and all of that nasty stuff that comes along with legacy
+
+99
+00:11:38,560 --> 00:11:45,040
+ technology. All of it now is in modern development processes and practices. So what we will have is a
+
+100
+00:11:45,040 --> 00:11:51,760
+ supportable, well-documented system that's fit for the future. So this is going live in the next few months.
+
+101
+00:11:51,760 --> 00:11:58,400
+ It'll be the culmination of about six years worth of transformational effort. And just to show very
+
+102
+00:11:58,400 --> 00:12:03,120
+ briefly what this has actually meant to the organisation. This is just a very quick look of one of the
+
+103
+00:12:03,120 --> 00:12:08,400
+ services. So I mentioned earlier that we've rewritten all of our driver services. Well, this is a driver
+
+104
+00:12:08,400 --> 00:12:16,480
+ medical service. So if you have a medical condition, you have to let the DVLA know because it could have a
+
+105
+00:12:16,480 --> 00:12:23,040
+ potential impact on your ability to drive or to have a license. So we rewrote a website that allowed our
+
+106
+00:12:23,040 --> 00:12:27,520
+ customers to do this. So they could search for conditions, medical conditions online, and then they
+
+107
+00:12:27,520 --> 00:12:34,800
+ could submit those medical conditions directly to us. So we've written this, we've included more conditions,
+
+108
+00:12:34,800 --> 00:12:40,080
+ and we've plugged it directly into Microsoft Dynamics, which is our casework system in the back end.
+
+109
+00:12:40,080 --> 00:12:48,080
+ So what we've done is we've supported the submission of this licensing condition into Dynamics and using
+
+110
+00:12:48,080 --> 00:12:53,440
+ deterministic logic in the back end. We've automated a load of the decision making, and we've got to a
+
+111
+00:12:53,440 --> 00:13:00,400
+ point where we can now suggest to a clerk the correct licensing decision. So rather than our clerks have
+
+112
+00:13:00,400 --> 00:13:05,200
+ to go back through all of the information and then come to the decision themselves, it'll be presented to them.
+
+113
+00:13:05,200 --> 00:13:10,640
+ They sound to check it, then they sign it off. We're not yet at the point where we could fully automate
+
+114
+00:13:10,640 --> 00:13:15,440
+ this decision making process or use AI to replace it, but we're inching ever closer.
+
+115
+00:13:17,360 --> 00:13:22,880
+ So what this means is for the customer in looking at it through the lens of the customer account,
+
+116
+00:13:22,880 --> 00:13:30,320
+ this is what Ricky, Ricky's our pal who's submitted a medical condition, left-hand screenshot shows his
+
+117
+00:13:30,320 --> 00:13:34,960
+ home page of his customer account, he's got some personal details in there, by the license details,
+
+118
+00:13:34,960 --> 00:13:40,240
+ but on the bottom right there's a button called your submissions. Click on that, his submission shows
+
+119
+00:13:40,240 --> 00:13:45,040
+ the status of his current application. So one of the issues that we've seen previously is the sheer
+
+120
+00:13:45,040 --> 00:13:50,880
+ volume of contacts we've had through our contact centre with people chasing status of application.
+
+121
+00:13:50,880 --> 00:13:57,680
+ Because of the granularity allowed by the new systems that we've built, we've been able now to provide
+
+122
+00:13:57,680 --> 00:14:04,720
+ ready updates to all submissions for all of our customers who are chasing medical decisions through
+
+123
+00:14:04,720 --> 00:14:09,440
+ the customer account, which has driven our contact centre volumes down immeasurably.
+
+124
+00:14:10,800 --> 00:14:15,440
+ So what that actually means for the organisation is a couple of, like what I think, pretty effective
+
+125
+00:14:16,080 --> 00:14:21,920
+ charts. So just off the back of that driver's medical service, we released that in April of this year.
+
+126
+00:14:22,720 --> 00:14:34,080
+ The graph on the left-hand side is our digital take-up, so prior to releasing this it was at 16%, as of today it's up and over 30%, and that's in under six months.
+
+127
+00:14:34,800 --> 00:14:41,760
+ The graph on the right shows the backlog of our customers who are awaiting medical licensing decisions.
+
+128
+00:14:41,760 --> 00:15:02,880
+ So where it has been paper-based in the past, where they've had to send paper in, and we've had to send it off to GPs, and then get it back, and then clerks have to do all the work to assess, and then work out the licensing decision, that together with a backlog and a hangover from Covid, and a number of other things, the volumes of these submissions that we were getting, the backlog was going up, you can see at the very peak was when we deployed the new
+
+129
+00:15:02,880 --> 00:15:20,960
+ new transform services, and the backlog figures are dropping significantly. So not only is this a better service to our customers, it's about a much more efficient operation, but we've also been able to remove a large chunk of legacy from the estate as well.
+
+130
+00:15:21,920 --> 00:15:42,400
+ So a couple of other things we've enabled as part of that transformation, so we're now working with the gov.uk teams, you can now see your customer accounts, your driving vehicles accounts through the gov.uk app, so it's read-only at the moment, but we're going to be adding transactions like being able to tax your vehicle through the app at some point soon.
+
+131
+00:15:43,040 --> 00:16:03,520
+ You can see a digital version of your driving license through the gov.uk wallet, so that is an ISO certified digital version of the driving license credential that at some point in the future we hope will get parity with the phone card driving license and enable a whole suite of new transactions by digital driving license online.
+
+132
+00:16:04,480 --> 00:16:15,280
+ So as you can see, whilst we started with the base of pure legacy, over five or six years we've gotten to a position now where we've almost fully transformed that driver's ecosystem.
+
+133
+00:16:16,080 --> 00:16:25,040
+ It hasn't always gone to fun, but for the most part it's enabled us to get a significant step closer to our strategic aims.
+
+134
+00:16:26,000 --> 00:16:55,980
+ So I'm just moving on to vehicles, so our idea was vehicles, right, we've got legacy vehicles as a state, we're not going to cover it in a huge amount of detail, very similar to the driver's state in terms of main topography, slightly different technology stack, we thought, right, okay, cool, we've got the vehicles target architecture, we've all followed the same steps, you know, five or six years, 20, 30 plus, we're in the same place, we've all of our services transformed, we've got no more legacy, this is great, we've got sequences worked out and data.
+
+135
+00:16:56,000 --> 00:16:59,280
+ We've got everything, we've got patterns of work, what could go wrong, right?
+
+136
+00:17:02,560 --> 00:17:05,500
+ No, there we go, sorry, there we go, we're back.
+
+137
+00:17:07,360 --> 00:17:13,300
+ Yeah, so like Mike Tyson famously said, everybody's got a plan until they get punched in the face.
+
+138
+00:17:14,000 --> 00:17:16,140
+ This was our punch in the face.
+
+139
+00:17:16,800 --> 00:17:22,000
+ So anybody here about electric vehicles, heard of the EVED policy that's coming in?
+
+140
+00:17:22,820 --> 00:17:35,680
+ So EVED is a central government policy that DVOA is going to be delivering, it's a move towards a pence per mile taxation model rather than an emissions-based model.
+
+141
+00:17:36,520 --> 00:17:41,040
+ So this policy has got to be delivered by 2028.
+
+142
+00:17:42,200 --> 00:17:46,520
+ A large amount of the work means changing our legacy systems.
+
+143
+00:17:46,520 --> 00:17:59,520
+ So all of a sudden, what that meant for us was, well, all of our best state plans to transform away from our vehicles' estate following the same plans as before, had not entirely gone out the window, but certainly needed some change.
+
+144
+00:18:01,320 --> 00:18:05,040
+ So we spent a lot of time looking at it and thinking, you know, what can we do?
+
+145
+00:18:05,100 --> 00:18:10,340
+ Does this mean we're going to have to invest all of our time now in building up yet more technical debt in our legacy platforms?
+
+146
+00:18:11,880 --> 00:18:17,380
+ Or can we rework our approach and see this as an opportunity rather than a hindrance?
+
+147
+00:18:18,700 --> 00:18:24,920
+ So we've, we chose the latter, we chose not to do all of this work in legacy.
+
+148
+00:18:26,120 --> 00:18:30,300
+ We accepted that we were still going to be constrained by legacy and there would be some change in there.
+
+149
+00:18:30,640 --> 00:18:37,900
+ But actually we identified the areas where we could build up new strategic pieces of our vehicles' estate.
+
+150
+00:18:38,360 --> 00:18:42,520
+ The tax calculator, for example, that had previously only looked at emissions-based taxation.
+
+151
+00:18:43,220 --> 00:18:49,960
+ We'd wanted to rewrite it anyway, but now we had the opportunity to extend that for multiple different types of tax calculation.
+
+152
+00:18:50,760 --> 00:18:55,800
+ We have taken the opportunity to design a new fleet system.
+
+153
+00:18:55,800 --> 00:19:07,000
+ So for all of the large corporate fleet entities who would need to tax vehicles en masse, they will have a new service, which will be purely transformational for the corporate sector.
+
+154
+00:19:08,000 --> 00:19:11,980
+ We could future-proof it for telematics, so smart connected vehicles coming in.
+
+155
+00:19:15,120 --> 00:19:27,660
+ The information that comes from connected vehicles like odometer readings and position and mileage and all the other great stuff that comes from it was something that we were looking at, but we couldn't really have a target output for it.
+
+156
+00:19:27,660 --> 00:19:35,140
+ But actually future-proofing it for telematics when you align it with a paper-mile taxation model, the two become very, very powerful.
+
+157
+00:19:35,740 --> 00:19:37,700
+ So we started to look at it through that lens as well.
+
+158
+00:19:38,360 --> 00:19:43,940
+ So all of these new things we could start building, building out and looking at as a part of the EVED delivery.
+
+159
+00:19:44,300 --> 00:19:49,980
+ But at the same time, we could start to prototype our new vehicle system of registers.
+
+160
+00:19:50,140 --> 00:19:51,980
+ So we just changed the sequencing somewhat.
+
+161
+00:19:53,040 --> 00:20:00,360
+ So what that means now in terms of transformation, once we've delivered EVED and those first initial parts of transformation, the proof of concept,
+
+162
+00:20:00,360 --> 00:20:09,920
+ it means then that we can move on to transformation more fully in the second phase, but with a load of strategic components that we couldn't have had otherwise.
+
+163
+00:20:09,920 --> 00:20:19,980
+ So even though the plan wasn't exactly as we wanted it to be rather, the response to change, even though we did have the constraints of legacy technology, being able to look at what our plan was,
+
+164
+00:20:19,980 --> 00:20:38,380
+ realise that actually that our plan wasn't going to be workable anymore because of external impacts that were out of our control, but actually taking those as an opportunity and a way to reassess what we wanted to do, redesign our sequencing and then implement that, has actually resulted in many different things.
+
+165
+00:20:38,600 --> 00:20:57,880
+ in what will probably be a better outcome for both of the DLA as an organisation and for the customers that we are delivering these services for.
+
+166
+00:20:59,240 --> 00:21:03,220
+ And that is it from me. Thank you very much for listening.
+
+167
+00:21:03,220 --> 00:21:21,920
+ So yeah, thank you very much there to Tom Brewer. It's like a fascinating,
+
